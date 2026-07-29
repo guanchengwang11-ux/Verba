@@ -1,0 +1,13 @@
+.settings-overlay[hidden] { display: none !important; }
+
+.env-guide {
+  margin-top: 18px;
+  padding: 13px;
+  border: 1px solid #d8e8dc;
+  border-radius: 9px;
+  background: #f5faf6;
+}
+
+.env-guide strong { color: #235b45; font-size: 11px; }
+.env-guide p { margin: 5px 0 9px !important; }
+.env-guide code { display: block; overflow: auto; padding: 8px 9px; border-radius: 6px; background: #e8f1eb; color: #0d6b50; font: 11px "DM Mono", monospace; }

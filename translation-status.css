@@ -1,0 +1,4 @@
+.meaning-check { margin-top: 10px; color: #78857d; font-size: 10px; line-height: 1.6; }
+.meaning-check strong { color: #5c6a61; font-weight: 800; }
+.translation-error { color: #af3c3c; }
+.translate-button:disabled { cursor: wait; opacity: .72; }

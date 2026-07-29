@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verba — 职场双语表达</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" /><link rel="stylesheet" href="language-toggle.css" /><link rel="stylesheet" href="translation-status.css" /><link rel="stylesheet" href="sidebar-compact.css" /><link rel="stylesheet" href="provider-settings.css" /><link rel="stylesheet" href="configuration-fix.css" /><link rel="stylesheet" href="api-keys.css" /><link rel="stylesheet" href="desktop-features.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">V</span><span>verba</span></a>
+      <button class="new-chat"><span>＋</span> <span data-i18n="newTranslation">新建翻译</span></button>
+      <nav>
+        <p class="nav-label" data-i18n="workspace">工作区</p>
+        <a class="nav-link active" href="#"><span>✦</span><span data-i18n="workspaceTranslate">翻译工作台</span></a>
+        <button class="nav-link" id="openHistory"><span>◷</span><span data-i18n="history">历史记录</span></button>
+        <button class="nav-link" id="openGlossary"><span>▣</span><span data-i18n="glossaryNav">术语词典</span></button>
+        <button class="nav-link" id="openApiKeys"><span>⌘</span><span data-i18n="apiKeys">API 密钥</span></button>
+        <p class="nav-label second" data-i18n="recent">最近使用</p>
+        <a class="recent-link" href="#" data-i18n="recentOne">Q3 项目进度同步</a><a class="recent-link" href="#" data-i18n="recentTwo">供应商邮件回复</a><a class="recent-link" href="#" data-i18n="recentThree">产品需求讨论</a>
+      </nav>
+      <div class="sidebar-bottom"><button class="nav-link" id="openAppSettings"><span>⚙</span><span data-i18n="settings">设置</span></button><div class="profile"><div class="avatar">L</div><div><b>Lin Zhang</b><small data-i18n="plan">专业版</small></div><span class="more">•••</span></div></div>
+    </aside>
+    <main>
+      <header class="topbar"><div><p class="eyebrow">WORKSPACE / 01</p><h1 data-i18n="workspaceTranslate">翻译工作台</h1></div><div class="top-actions"><button class="api-settings-button" id="openSettings">⌘ <span data-i18n="apiSettings">API 设置</span></button><button class="interface-language" id="interfaceLanguage">EN</button><button class="icon-button">♧</button><button class="help-button">？ <span data-i18n="help">帮助中心</span></button></div></header>
+      <section class="hero"><div class="hero-copy"><span class="pulse"></span><span data-i18n="madeFor">为真实协作而生</span></div><h2 data-i18n="heroTitle">听起来，就像你本来就会说。</h2><p data-i18n="heroDescription">不只是逐字翻译。Verba 读懂职场语境，帮你用恰当的方式与全球同事沟通。</p></section>
+      <section class="mode-section"><div class="section-heading"><div><p class="eyebrow" data-i18n="chooseStyle">选择表达方式</p><h3 data-i18n="whereUsed">这段话会用在哪里？</h3></div><span class="mode-tip" data-i18n="modeTip">不同场景，不同表达</span></div><div class="mode-grid"><button class="mode-card active" data-mode="email"><span class="mode-icon email-icon">✉</span><span class="mode-title" data-i18n="emailMode">专业邮件</span><span class="mode-desc" data-i18n="emailDesc">专业 · 简洁 · 得体</span><span class="selected">✓</span></button><button class="mode-card" data-mode="chat"><span class="mode-icon chat-icon">☏</span><span class="mode-title" data-i18n="chatMode">同事协作</span><span class="mode-desc" data-i18n="chatDesc">自然 · 随和 · 地道</span><span class="selected">✓</span></button></div></section>
+      <section class="translator-card">
+        <div class="language-row"><button class="language active" id="sourceLanguage">中文 <span>⌄</span></button><button class="swap" id="swapLanguages">⇄</button><button class="language" id="targetLanguage">English <span>⌄</span></button><div class="context-badge"><span></span><b id="modeName">专业邮件</b><em id="modeSub">Professional & concise</em></div></div>
+        <div class="translation-panes">
+          <div class="pane source-pane"><textarea id="sourceText" maxlength="1000" placeholder="输入你想表达的内容…">麻烦你确认一下这个版本是否可以在今天下班前完成审核？谢谢！</textarea><div class="pane-footer"><span id="counter">27 / 1000</span><div><button class="small-action" id="clearText" data-i18n="clear">清空</button><button class="small-action">⌘ V <span data-i18n="paste">粘贴</span></button></div></div></div>
+          <div class="divider"></div>
+          <div class="pane result-pane"><div class="result-label"><span data-i18n="translationLabel">VERBA 译文</span><span class="confidence">● <span data-i18n="nativeTone">Native-level tone</span></span></div><div id="translatedText" class="translated-text">Could you please confirm whether this version can be reviewed by the end of the day? Thank you!</div><div class="tone-note" id="toneNote"><span>✦</span> Polished for clarity and a professional, courteous tone.</div><div class="meaning-check" id="meaningCheck"><strong data-i18n="meaningLabel">英文含义：</strong><span id="meaningText">This asks someone to confirm whether the version can be reviewed by the end of the day.</span></div><div class="result-footer"><button class="small-action" data-i18n="regenerate">↻ 再生成</button><div><button class="copy-button" id="copyText">▣ <span data-i18n="copy">复制译文</span></button></div></div></div>
+        </div>
+        <div class="translate-footer"><div><span class="shortcut">⌘ Enter</span> <span data-i18n="translateHint">开始翻译</span></div><button class="translate-button" id="translateButton"><span data-i18n="translate">翻译</span> <span>→</span></button></div>
+      </section>
+      <section class="quick-section"><div class="section-heading"><div><p class="eyebrow" data-i18n="inspiration">灵感库</p><h3 data-i18n="commonScenarios">常用协作场景</h3></div><a href="#" data-i18n="browseAll">浏览全部 →</a></div><div class="quick-grid"><button class="quick-card" data-text="我会尽快处理这个问题，晚些时候给你更新。"><span>↗</span><b data-i18n="followUp">跟进进度</b><small>I'll get on this shortly...</small></button><button class="quick-card" data-text="这个时间对我来说没问题，我们到时见。"><span>◷</span><b data-i18n="confirmMeeting">确认会议</b><small>That time works for me...</small></button><button class="quick-card" data-text="谢谢你的反馈，这个建议非常有帮助。"><span>♡</span><b data-i18n="replyFeedback">回复反馈</b><small>Thanks for the feedback...</small></button></div></section>
+    </main>
+  </div>
+  <div class="settings-overlay" id="settingsOverlay" hidden>
+    <section class="settings-panel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+      <div class="settings-header"><div><p class="eyebrow" data-i18n="translationSetup">翻译设置</p><h2 id="settingsTitle" data-i18n="apiSettings">API 设置</h2></div><button class="close-settings" id="closeSettings" aria-label="Close">×</button></div>
+      <div class="settings-section"><h3 data-i18n="providerTitle">选择翻译引擎</h3><p data-i18n="providerDescription">选择一个 API。密钥只从本地 `.env` 文件读取。</p><div class="provider-options"><button class="provider-option active" data-provider="openai">OpenAI <small>GPT</small></button><button class="provider-option" data-provider="gemini">Google <small>Gemini</small></button><button class="provider-option" data-provider="deepseek">DeepSeek</button></div><div class="env-guide"><strong data-i18n="envGuideTitle">先完善你的 `.env` 文件</strong><p data-i18n="envGuideDescription">在项目根目录复制 `.env.example` 为 `.env`，填入你要使用的服务商密钥，然后重启 `node server.mjs`。</p><code id="providerEnvName">OPENAI_API_KEY=sk-...</code></div></div>
+      <div class="settings-footer"><span data-i18n="envSaved">密钥不会显示、保存或发送到浏览器</span><button class="save-settings" id="saveSettings" data-i18n="saveProvider">使用此引擎</button></div>
+    </section>
+  </div>
+  <div class="settings-overlay" id="glossaryOverlay" hidden>
+    <section class="settings-panel glossary-panel" role="dialog" aria-modal="true" aria-labelledby="glossaryTitle">
+      <div class="settings-header"><div><p class="eyebrow" data-i18n="translationSetup">翻译设置</p><h2 id="glossaryTitle" data-i18n="glossaryTitle">强制术语词典</h2></div><button class="close-settings" id="closeGlossary" aria-label="Close">×</button></div>
+      <div class="settings-section glossary-section"><div class="glossary-title"><div><h3 data-i18n="glossaryTitle">强制术语词典</h3><p data-i18n="glossaryDescription">出现这些词时，翻译将严格使用你指定的对应表达。</p></div><button class="add-term" id="addTerm">＋ <span data-i18n="addTerm">添加术语</span></button></div><div class="glossary-head"><span data-i18n="sourceTerm">原文词汇</span><span data-i18n="targetTerm">指定译法</span></div><div id="glossaryRows" class="glossary-rows"></div></div>
+      <div class="settings-footer"><span data-i18n="settingsSaved">术语词典将保存在此浏览器中</span><button class="save-settings" id="saveGlossary" data-i18n="saveGlossary">保存词典</button></div>
+    </section>
+  </div>
+  <div class="settings-overlay" id="apiKeyOverlay" hidden>
+    <section class="settings-panel" role="dialog" aria-modal="true" aria-labelledby="apiKeyTitle">
+      <div class="settings-header"><div><p class="eyebrow" data-i18n="translationSetup">翻译设置</p><h2 id="apiKeyTitle" data-i18n="apiKeys">API 密钥</h2></div><button class="close-settings" id="closeApiKeys" aria-label="Close">×</button></div>
+      <div class="settings-section"><h3 data-i18n="apiKeyDescriptionTitle">管理你的翻译服务密钥</h3><p data-i18n="apiKeyDescription">密钥会安全保存到本机 Verba 配置中，不会显示在翻译界面中。</p><label class="key-label" for="openaiKey">OpenAI API Key <span class="key-status" id="openaiStatus"></span></label><input id="openaiKey" class="api-key-input" type="password" autocomplete="off" placeholder="sk-..." /><label class="key-label" for="geminiKey">Google Gemini API Key <span class="key-status" id="geminiStatus"></span></label><input id="geminiKey" class="api-key-input" type="password" autocomplete="off" placeholder="AIza..." /><label class="key-label" for="deepseekKey">DeepSeek API Key <span class="key-status" id="deepseekStatus"></span></label><input id="deepseekKey" class="api-key-input" type="password" autocomplete="off" placeholder="sk-..." /></div>
+      <div class="settings-footer"><span id="keySaveMessage" data-i18n="keysLocal">仅保存在此电脑的 Verba 配置中</span><button class="save-settings" id="saveApiKeys" data-i18n="saveKeys">保存密钥</button></div>
+    </section>
+  </div>
+  <div class="settings-overlay" id="historyOverlay" hidden>
+    <section class="settings-panel history-panel" role="dialog" aria-modal="true" aria-labelledby="historyTitle"><div class="settings-header"><div><p class="eyebrow">WORKSPACE</p><h2 id="historyTitle">历史记录</h2></div><button class="close-settings" id="closeHistory" aria-label="Close">×</button></div><div class="settings-section"><input class="api-key-input" id="historySearch" type="search" placeholder="搜索原文、译文或英文含义" /><div class="history-list" id="historyList"></div></div></section>
+  </div>
+  <div class="settings-overlay" id="appSettingsOverlay" hidden>
+    <section class="settings-panel" role="dialog" aria-modal="true" aria-labelledby="appSettingsTitle"><div class="settings-header"><div><p class="eyebrow">VERBA</p><h2 id="appSettingsTitle">设置</h2></div><button class="close-settings" id="closeAppSettings" aria-label="Close">×</button></div><div class="settings-section"><h3>应用更新</h3><p id="updateStatus">尚未检查更新。</p><button class="save-settings" id="checkUpdates">检查更新</button><button class="save-settings" id="installUpdate" hidden>重启并安装更新</button></div></section>
+  </div>
+  <div class="toast" id="toast">已复制到剪贴板</div><script src="app.js"></script><script src="api-keys.js"></script><script src="desktop-features.js"></script>
+</body>
+</html>

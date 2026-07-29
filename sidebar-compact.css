@@ -1,0 +1,14 @@
+/* Compact sidebar labels keep navigation readable without wrapping Chinese words. */
+.sidebar { width: 220px; padding: 24px 13px 16px; }
+.brand { font-size: 20px; padding: 0 8px 22px; }
+.new-chat { height: 42px; font-size: 13px; padding: 0 13px; }
+.new-chat span { font-size: 18px; }
+nav { padding: 21px 3px; }
+.nav-link, .recent-link { gap: 9px; padding: 8px 8px; font-size: 12px; line-height: 1.3; }
+.nav-link span { flex: 0 0 16px; font-size: 15px; }
+.nav-link > span:last-child { min-width: 0; overflow-wrap: normal; word-break: keep-all; }
+.recent-link { font-size: 11px; padding: 7px 8px; }
+.nav-label { font-size: 9px; margin: 0 5px 8px; }
+.nav-label.second { margin-top: 24px; }
+.profile { padding: 14px 5px 0; }
+main { margin-left: 220px; width: calc(100% - 220px); }

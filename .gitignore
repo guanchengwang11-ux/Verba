@@ -1,0 +1,11 @@
+.env
+node_modules/
+dist/
+.pnpm-store/
+*.log
+logs/
+config/
+translation-history.json
+updater.log
+.DS_Store
+Thumbs.db

@@ -1,0 +1,7 @@
+.history-list { display: grid; gap: 8px; margin-top: 16px; max-height: 420px; overflow: auto; }
+.history-item { display: grid; gap: 4px; border: 1px solid #dce5de; border-radius: 9px; background: #fff; padding: 11px; text-align: left; cursor: pointer; }
+.history-item:hover { border-color: #66ae88; background: #f6fbf7; }
+.history-item span { color: #26342c; font-size: 12px; font-weight: 700; }
+.history-item small { color: #6e7c73; font-size: 11px; }
+.history-item em { color: #98a39b; font: 9px "DM Mono", monospace; font-style: normal; }
+.history-empty { color: #87938a; font-size: 12px; padding: 24px 0; text-align: center; }

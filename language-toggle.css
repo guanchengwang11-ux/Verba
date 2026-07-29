@@ -1,0 +1,15 @@
+.interface-language {
+  min-width: 42px;
+  height: 38px;
+  padding: 0 10px;
+  border: 1px solid #dde5dd;
+  border-radius: 9px;
+  background: #fff;
+  color: #0d6b50;
+  cursor: pointer;
+  font: 500 12px "DM Mono", monospace;
+}
+
+.interface-language:hover {
+  background: #e2f2e9;
+}
