@@ -44,3 +44,11 @@ jobs:
         run: pnpm run release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload NSIS blockmap
+        shell: pwsh
+        run: |
+          $version = node -p "require('./package.json').version"
+          gh release upload "${{ github.ref_name }}" "dist/Verba-Setup-$version.exe.blockmap" --clobber
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
