@@ -40,6 +40,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Check internationalization resources
+        run: pnpm run i18n:check
+
       - name: Build installer and publish GitHub Release
         run: pnpm run release
         env:

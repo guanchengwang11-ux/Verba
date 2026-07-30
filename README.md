@@ -6,7 +6,7 @@ Workplace Chinese–English translation interface with email and colleague-chat 
 
 1. Copy `.env.example` to a new local file named `.env`.
 2. Replace `your_api_key_here` with a real OpenAI API key beginning with `sk-`. Do not use Chinese placeholder text and do not place the key in frontend files.
-3. Optionally set `OPENAI_MODEL` (the default is `gpt-5`), then start the local server:
+3. Add one or more provider API keys, then start the local server:
 
 ```powershell
 node server.mjs
@@ -31,7 +31,7 @@ The translation endpoint returns a context-aware translation plus an English mea
 
 Open **API keys** in the app to choose OpenAI, Google Gemini, or DeepSeek. The desktop app saves keys to its local configuration `.env`; keys are never placed in frontend files.
 
-The current defaults are `gpt-5.6-luna`, `gemini-3.5-flash`, and `deepseek-v4-flash`. The server queries each provider's model-list endpoint and uses an account-visible fallback when the configured model is unavailable. Existing `GEMINI_MODEL=gemini-2.5-flash` values are automatically migrated to `gemini-3.5-flash`.
+Verba never relies on an unverified hard-coded model as its default. After an API key is saved, it discovers models from that provider account, filters for stable low- or medium-cost text models, and runs a minimal JSON-format health check. The verified model choice and health state are stored only in local `model-state.json` data. Open **API settings** to see the selected model, check its status, force a recheck, or enable a manual override. Model names do not need to be added to `.env`.
 
 Open **Glossary** in the sidebar to edit the mandatory glossary. Each `source term → required translation` pair is stored locally in the browser, included in every request, and the model is instructed to use it exactly.
 

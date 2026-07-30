@@ -8,6 +8,7 @@ dist/
 logs/
 config/
 translation-history.json
+model-state.json
 updater.log
 .DS_Store
 Thumbs.db

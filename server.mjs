@@ -3,6 +3,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { extname, join, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
 import { randomUUID } from "node:crypto";
+import { modelManager } from "./model-manager.mjs";
 
 let publicDirectory = process.env.VERBA_APP_DIR || process.cwd();
 let configurationDirectory = process.env.VERBA_CONFIG_DIR || process.cwd();
@@ -111,8 +112,8 @@ async function saveApiKeys(keys) {
     process.env[environmentKey] = value.trim();
   }
   await writeFile(environmentFile, `${lines.filter((line, index) => line || index < lines.length - 1).join("\n")}\n`, "utf8");
-  modelCache.clear();
-  return getKeyStatus();
+  const models = await modelManager.refreshAll({ force: true });
+  return { keys: getKeyStatus(), models: models.status };
 }
 
 const styleInstructions = {
@@ -120,77 +121,24 @@ const styleInstructions = {
   chat: "Write as a natural message to a trusted colleague: friendly, relaxed, concise, and never overly formal."
 };
 
-const defaultModels = { openai: "gpt-5.6-luna", gemini: "gemini-3.5-flash", deepseek: "deepseek-v4-flash" };
-const retiredModelMigrations = { gemini: { "gemini-2.5-flash": "gemini-3.5-flash" } };
-const modelCache = new Map();
-
-const outputSchema = {
-  type: "object",
-  properties: {
-    translation: { type: "string", description: "The natural, context-appropriate translation." },
-    englishMeaning: { type: "string", description: "A concise English explanation of the translated text's literal meaning." }
-  },
-  required: ["translation", "englishMeaning"],
-  additionalProperties: false
-};
-
-const geminiOutputSchema = {
-  type: "OBJECT",
-  properties: {
-    translation: { type: "STRING", description: "The natural, context-appropriate translation." },
-    englishMeaning: { type: "STRING", description: "A concise English explanation of the translated text's literal meaning." }
-  },
-  required: ["translation", "englishMeaning"],
-  propertyOrdering: ["translation", "englishMeaning"]
-};
-
 function sendJson(response, statusCode, payload) {
   response.writeHead(statusCode, { "Content-Type": "application/json; charset=utf-8" });
   response.end(JSON.stringify(payload));
 }
 
+function errorCode(error) {
+  if (error?.status === 401) return "INVALID_API_KEY";
+  if (error?.status === 403) return "PERMISSION_DENIED";
+  if (error?.status === 429 || /quota/i.test(error?.message || "")) return "INSUFFICIENT_QUOTA";
+  if (error?.status === 404 || /model/i.test(error?.message || "")) return "MODEL_UNAVAILABLE";
+  return "TRANSLATION_FAILED";
+}
+
 async function translate(body) {
   const provider = body.provider || "openai";
-  const environmentKey = { openai: "OPENAI_API_KEY", gemini: "GEMINI_API_KEY", deepseek: "DEEPSEEK_API_KEY" }[provider];
-  const apiKey = (process.env[environmentKey] || "").trim();
-  if (!environmentKey || !/^[\x21-\x7E]{20,}$/.test(apiKey)) throw new Error(`${provider} API key is not configured correctly. Add a valid key to ${environmentKey} in .env, then restart the server.`);
-
   const instructions = buildInstructions(body);
-  const model = await resolveModel(provider, apiKey);
-  if (provider === "gemini") return translateWithGemini(body.text, instructions, apiKey, model);
-  if (provider === "deepseek") return translateWithDeepSeek(body.text, instructions, apiKey, model);
-  return translateWithOpenAI(body.text, instructions, apiKey, model);
-}
-
-async function resolveModel(provider, apiKey) {
-  const configuredModel = process.env[`${provider.toUpperCase()}_MODEL`]?.trim();
-  const migratedModel = retiredModelMigrations[provider]?.[configuredModel] || configuredModel || defaultModels[provider];
-  const availableModels = await listAvailableModels(provider, apiKey);
-  if (!availableModels.length) return migratedModel;
-  if (availableModels.includes(migratedModel)) return migratedModel;
-  const preferredModels = [defaultModels[provider], "gemini-flash-latest", "gpt-5.4-mini", "gpt-5", "deepseek-v4-pro"];
-  return preferredModels.find((model) => availableModels.includes(model)) || availableModels[0];
-}
-
-async function listAvailableModels(provider, apiKey) {
-  const cacheKey = `${provider}:${apiKey.slice(-8)}`;
-  const cached = modelCache.get(cacheKey);
-  if (cached && Date.now() - cached.createdAt < 10 * 60 * 1000) return cached.models;
-  const request = {
-    openai: { url: "https://api.openai.com/v1/models", headers: { Authorization: `Bearer ${apiKey}` }, parse: (data) => data.data?.map((model) => model.id) || [] },
-    gemini: { url: "https://generativelanguage.googleapis.com/v1beta/models", headers: { "x-goog-api-key": apiKey }, parse: (data) => data.models?.filter((model) => model.supportedGenerationMethods?.includes("generateContent")).map((model) => model.name.replace(/^models\//, "")) || [] },
-    deepseek: { url: "https://api.deepseek.com/models", headers: { Authorization: `Bearer ${apiKey}` }, parse: (data) => data.data?.map((model) => model.id) || [] }
-  }[provider];
-  try {
-    const response = await fetch(request.url, { headers: request.headers });
-    const data = await response.json();
-    if (!response.ok) return [];
-    const models = request.parse(data);
-    modelCache.set(cacheKey, { createdAt: Date.now(), models });
-    return models;
-  } catch {
-    return [];
-  }
+  const response = await modelManager.translate({ provider, text: body.text, instructions });
+  return parseTranslationOutput(response.rawOutput, provider === "openai" ? "OpenAI" : provider === "gemini" ? "Gemini" : "DeepSeek");
 }
 
 function buildInstructions(body) {
@@ -198,57 +146,6 @@ function buildInstructions(body) {
   const targetLanguage = body.direction === "zhToEn" ? "English" : "Chinese";
   const glossary = (body.glossary || []).map((entry) => `${entry.source} => ${entry.target}`).join("\n");
   return `You are Verba, an expert workplace translator. Translate from ${sourceLanguage} to ${targetLanguage}. ${styleInstructions[body.mode] || styleInstructions.email} Preserve the user's intent, degree of certainty, names, dates, numbers, and requests. Do not add facts. ${glossary ? `The following glossary is mandatory. Use the target exactly whenever its source term appears:\n${glossary}` : ""} Return JSON only with translation and englishMeaning. englishMeaning must be a short, literal English explanation of what the final translation says, so an English speaker can verify a Chinese output.`;
-}
-
-async function translateWithOpenAI(text, instructions, apiKey, model) {
-  const response = await fetch("https://api.openai.com/v1/responses", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      model,
-      store: false,
-      instructions,
-      input: text,
-      text: {
-        format: {
-          type: "json_schema",
-          name: "workplace_translation",
-          strict: true,
-          schema: outputSchema
-        }
-      }
-    })
-  });
-
-  const data = await response.json();
-  if (!response.ok) throw new Error(data.error?.message || "The translation service could not complete the request.");
-  return parseTranslationOutput(data.output_text, "OpenAI");
-}
-
-async function translateWithGemini(text, instructions, apiKey, model) {
-  const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
-    method: "POST",
-    headers: { "x-goog-api-key": apiKey, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      systemInstruction: { parts: [{ text: instructions }] },
-      contents: [{ role: "user", parts: [{ text }] }],
-      generationConfig: { responseMimeType: "application/json", responseSchema: geminiOutputSchema }
-    })
-  });
-  const data = await response.json();
-  if (!response.ok) throw new Error(data.error?.message || "Gemini could not complete the translation.");
-  return parseTranslationOutput(data.candidates?.[0]?.content?.parts?.map((part) => part.text || "").join("") || "", "Gemini");
-}
-
-async function translateWithDeepSeek(text, instructions, apiKey, model) {
-  const response = await fetch("https://api.deepseek.com/chat/completions", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ model, messages: [{ role: "system", content: instructions }, { role: "user", content: text }], response_format: { type: "json_object" }, max_tokens: 1000, stream: false })
-  });
-  const data = await response.json();
-  if (!response.ok) throw new Error(data.error?.message || "DeepSeek could not complete the translation.");
-  return parseTranslationOutput(data.choices?.[0]?.message?.content || "", "DeepSeek");
 }
 
 function parseTranslationOutput(rawOutput, provider) {
@@ -268,12 +165,24 @@ function parseTranslationOutput(rawOutput, provider) {
 async function handleRequest(request, response) {
   const url = new URL(request.url, `http://${request.headers.host}`);
   if (request.method === "GET" && url.pathname === "/health") return sendJson(response, 200, { status: "ok" });
-  if (request.method === "GET" && url.pathname === "/api/config") return sendJson(response, 200, { keys: getKeyStatus() });
+  if (request.method === "GET" && url.pathname === "/api/config") return sendJson(response, 200, { keys: getKeyStatus(), models: modelManager.getStatus() });
   if (request.method === "POST" && url.pathname === "/api/config") {
     let rawBody = "";
     for await (const chunk of request) rawBody += chunk;
-    try { return sendJson(response, 200, { keys: await saveApiKeys(JSON.parse(rawBody).keys) }); }
+    try { return sendJson(response, 200, await saveApiKeys(JSON.parse(rawBody).keys)); }
     catch (error) { return sendJson(response, 400, { error: error.message || "Unable to save API keys." }); }
+  }
+  if (request.method === "GET" && url.pathname === "/api/models") return sendJson(response, 200, { models: modelManager.getStatus() });
+  if (request.method === "POST" && url.pathname === "/api/models") {
+    let rawBody = "";
+    for await (const chunk of request) rawBody += chunk;
+    try {
+      const body = JSON.parse(rawBody);
+      if (!['openai', 'gemini', 'deepseek'].includes(body.provider)) return sendJson(response, 400, { error: "Unknown provider." });
+      if (body.action === "refresh") return sendJson(response, 200, { models: await modelManager.refresh(body.provider, { force: true }) });
+      if (body.action === "override") return sendJson(response, 200, { models: await modelManager.setManualOverride(body.provider, body.model, { allowHighCost: body.allowHighCost }) });
+      return sendJson(response, 400, { error: "Unsupported model action." });
+    } catch (error) { return sendJson(response, error.status || 400, { error: error.message || "Unable to update model settings." }); }
   }
   if (request.method === "GET" && url.pathname === "/api/history") {
     const search = url.searchParams.get("q")?.trim().toLowerCase() || "";
@@ -318,7 +227,7 @@ async function handleRequest(request, response) {
       }
       return sendJson(response, 200, await translate(body));
     } catch (error) {
-      return sendJson(response, 500, { error: error.message || "Unable to translate right now. Please try again." });
+      return sendJson(response, error.status || 500, { errorCode: errorCode(error) });
     }
   }
 
@@ -338,6 +247,7 @@ export async function startServer(options = {}) {
   publicDirectory = options.publicDirectory || publicDirectory;
   configurationDirectory = options.configurationDirectory || configurationDirectory;
   await loadEnvironmentFile();
+  await modelManager.initialize({ configurationDirectory });
   const server = createServer(handleRequest);
   const port = Number(options.port || process.env.PORT || 3000);
   await new Promise((resolve, reject) => {

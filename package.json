@@ -1,12 +1,14 @@
 {
   "name": "verba-workplace-translator",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Context-aware workplace Chinese-English translator",
   "main": "electron-main.cjs",
   "author": "Verba",
   "license": "UNLICENSED",
   "scripts": {
     "start": "electron .",
+    "i18n:check": "node scripts/check-i18n.mjs",
+    "test": "node scripts/check-i18n.mjs && node --test tests/*.test.mjs",
     "pack": "electron-builder --dir",
     "dist": "node scripts/prepare-electron-builder.cjs && electron-builder --win nsis",
     "release": "node scripts/prepare-electron-builder.cjs && electron-builder --win nsis --publish always"
@@ -26,6 +28,7 @@
     "files": [
       "**/*",
       "!dist/**",
+      "!tests/**",
       "!node_modules/.cache/**"
     ],
     "win": {
