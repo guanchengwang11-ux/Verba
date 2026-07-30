@@ -1,7 +1,14 @@
 .history-list { display: grid; gap: 8px; margin-top: 16px; max-height: 420px; overflow: auto; }
-.history-item { display: grid; gap: 4px; border: 1px solid #dce5de; border-radius: 9px; background: #fff; padding: 11px; text-align: left; cursor: pointer; }
+.history-item { display: grid; gap: 9px; border: 1px solid #dce5de; border-radius: 9px; background: #fff; padding: 11px; text-align: left; cursor: pointer; }
 .history-item:hover { border-color: #66ae88; background: #f6fbf7; }
-.history-item span { color: #26342c; font-size: 12px; font-weight: 700; }
-.history-item small { color: #6e7c73; font-size: 11px; }
-.history-item em { color: #98a39b; font: 9px "DM Mono", monospace; font-style: normal; }
+.history-copy { display: grid; gap: 4px; min-width: 0; }
+.history-source, .history-translation { cursor: text; user-select: text; white-space: pre-wrap; overflow-wrap: anywhere; }
+.history-source { color: #26342c; font-size: 12px; font-weight: 700; }
+.history-translation { color: #6e7c73; font-size: 11px; }
+.history-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: #87938a; font-size: 10px; }
+.history-meta em { color: #98a39b; font: 9px "DM Mono", monospace; font-style: normal; white-space: nowrap; }
+.history-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.history-action, .history-restore { border: 1px solid #dce5de; border-radius: 6px; background: #fff; color: #42765b; cursor: pointer; font: inherit; font-size: 10px; padding: 4px 7px; }
+.history-restore { margin-left: auto; background: #eff8f1; border-color: #b9ddc5; }
+.history-action:hover, .history-restore:hover { border-color: #66ae88; }
 .history-empty { color: #87938a; font-size: 12px; padding: 24px 0; text-align: center; }

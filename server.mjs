@@ -42,12 +42,57 @@ async function readHistory() {
   }
 }
 
+function historyLanguageLabels(direction) {
+  return direction === "enToZh"
+    ? { sourceLanguage: "English", targetLanguage: "Chinese", sourceLanguageLabel: "English", targetLanguageLabel: "中文" }
+    : { sourceLanguage: "Chinese", targetLanguage: "English", sourceLanguageLabel: "中文", targetLanguageLabel: "English" };
+}
+
+function normalizeHistoryItem(item) {
+  const direction = item.direction === "enToZh" ? "enToZh" : "zhToEn";
+  const mode = item.mode === "chat" ? "chat" : "email";
+  const provider = ["openai", "gemini", "deepseek"].includes(item.provider) ? item.provider : "";
+  return {
+    source: item.source.trim(),
+    translation: item.translation.trim(),
+    englishMeaning: item.englishMeaning.trim(),
+    requestId: typeof item.requestId === "string" ? item.requestId : "",
+    direction,
+    mode,
+    provider,
+    ...historyLanguageLabels(direction)
+  };
+}
+
+function isRecentDuplicate(entry, item, now) {
+  const createdAt = Date.parse(entry.createdAt);
+  return Number.isFinite(createdAt)
+    && now - createdAt < 15000
+    && Boolean(entry.requestId)
+    && entry.requestId === item.requestId
+    && entry.source === item.source
+    && entry.translation === item.translation
+    && entry.sourceLanguage === item.sourceLanguage
+    && entry.targetLanguage === item.targetLanguage;
+}
+
 async function saveHistoryItem(item) {
   const history = await readHistory();
-  const entry = { id: randomUUID(), createdAt: new Date().toISOString(), ...item };
+  const normalizedItem = normalizeHistoryItem(item);
+  const now = Date.now();
+  const duplicate = history.find((entry) => isRecentDuplicate(entry, normalizedItem, now));
+  if (duplicate) return { item: duplicate, created: false };
+
+  const entry = { id: randomUUID(), createdAt: new Date(now).toISOString(), ...normalizedItem };
   history.unshift(entry);
   await writeFile(historyFilePath(), JSON.stringify(history.slice(0, 200), null, 2), "utf8");
-  return entry;
+  return { item: entry, created: true };
+}
+
+function historySearchText(entry) {
+  const directionTerms = entry.direction === "enToZh" ? "English 中文 English Chinese" : "中文 English Chinese English";
+  const modeTerms = entry.mode === "chat" ? "chat team colleague 同事 协作 自然" : "email professional 邮件 专业";
+  return [entry.source, entry.translation, entry.englishMeaning, entry.sourceLanguage, entry.targetLanguage, entry.sourceLanguageLabel, entry.targetLanguageLabel, entry.direction, entry.mode, entry.provider, directionTerms, modeTerms].filter(Boolean).join("\n").toLowerCase();
 }
 
 export function setUpdateHandlers(handlers) { updateHandlers = handlers; }
@@ -233,7 +278,7 @@ async function handleRequest(request, response) {
   if (request.method === "GET" && url.pathname === "/api/history") {
     const search = url.searchParams.get("q")?.trim().toLowerCase() || "";
     const history = await readHistory();
-    const filtered = search ? history.filter((entry) => [entry.source, entry.translation, entry.englishMeaning].some((value) => value?.toLowerCase().includes(search))) : history;
+    const filtered = search ? history.filter((entry) => historySearchText(entry).includes(search)) : history;
     return sendJson(response, 200, { history: filtered });
   }
   if (request.method === "POST" && url.pathname === "/api/history") {
@@ -241,8 +286,13 @@ async function handleRequest(request, response) {
     for await (const chunk of request) rawBody += chunk;
     try {
       const item = JSON.parse(rawBody);
-      if (![item.source, item.translation, item.englishMeaning].every((value) => typeof value === "string" && value.length <= 2000)) return sendJson(response, 400, { error: "Invalid history item." });
-      return sendJson(response, 201, { item: await saveHistoryItem(item) });
+      if (![item.source, item.translation, item.englishMeaning].every((value) => typeof value === "string" && value.trim().length > 0 && value.length <= 2000)) return sendJson(response, 400, { error: "Invalid history item." });
+      if (item.direction && !["zhToEn", "enToZh"].includes(item.direction)) return sendJson(response, 400, { error: "Invalid history direction." });
+      if (item.mode && !["email", "chat"].includes(item.mode)) return sendJson(response, 400, { error: "Invalid history mode." });
+      if (item.provider && !["openai", "gemini", "deepseek"].includes(item.provider)) return sendJson(response, 400, { error: "Invalid history provider." });
+      if (item.requestId && (typeof item.requestId !== "string" || item.requestId.length > 120)) return sendJson(response, 400, { error: "Invalid history request ID." });
+      const saved = await saveHistoryItem(item);
+      return sendJson(response, saved.created ? 201 : 200, saved);
     } catch (error) { return sendJson(response, 400, { error: error.message || "Unable to save history." }); }
   }
   if (request.method === "GET" && url.pathname === "/api/update") return sendJson(response, 200, { update: updateHandlers?.getState?.() || { status: "unavailable" } });

@@ -4,48 +4,90 @@ const historyList = document.querySelector("#historyList");
 const historySearch = document.querySelector("#historySearch");
 const updateStatus = document.querySelector("#updateStatus");
 const installUpdateButton = document.querySelector("#installUpdate");
+const sourceText = document.querySelector("#sourceText");
+const translatedText = document.querySelector("#translatedText");
+const meaningText = document.querySelector("#meaningText");
+const counter = document.querySelector("#counter");
 let historyItems = [];
-let pendingHistorySave;
+let historySearchTimer;
+let historyRequestNumber = 0;
 
 function closeOverlay(overlay) { overlay.hidden = true; }
 function escapeText(value) { return String(value || "").replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]); }
+function selectedText() { return window.getSelection?.().toString().trim() || ""; }
+function historyModeLabel(item) { return item.mode === "chat" ? "同事协作 / Team chat" : "专业邮件 / Professional email"; }
+function historyLanguageLabel(item) {
+  const sourceLanguage = item.sourceLanguageLabel || item.sourceLanguage || (item.direction === "enToZh" ? "English" : "中文");
+  const targetLanguage = item.targetLanguageLabel || item.targetLanguage || (item.direction === "enToZh" ? "中文" : "English");
+  return `${sourceLanguage} → ${targetLanguage}`;
+}
+
+function renderHistoryItem(item) {
+  return `<article class="history-item" data-id="${escapeText(item.id)}"><div class="history-copy"><span class="history-source">${escapeText(item.source)}</span><small class="history-translation">${escapeText(item.translation)}</small></div><div class="history-meta"><span>${escapeText(historyLanguageLabel(item))} · ${escapeText(historyModeLabel(item))}</span><em>${new Date(item.createdAt).toLocaleString()}</em></div><div class="history-actions"><button type="button" class="history-action" data-history-action="copy-source">复制原文</button><button type="button" class="history-action" data-history-action="copy-translation">复制译文</button><button type="button" class="history-restore" data-history-action="restore">恢复到翻译页</button></div></article>`;
+}
+
+function renderHistoryEmpty(query) {
+  historyList.innerHTML = `<p class="history-empty">${query ? "未找到相关历史记录" : "暂无历史记录"}</p>`;
+}
 
 async function loadHistory() {
   const query = historySearch.value.trim();
+  const requestNumber = ++historyRequestNumber;
   const response = await fetch(`/api/history?q=${encodeURIComponent(query)}`);
   const data = await response.json();
   if (!response.ok) throw new Error(data.error || "Unable to load history.");
+  if (requestNumber !== historyRequestNumber) return;
   historyItems = data.history;
-  historyList.innerHTML = historyItems.length ? historyItems.map((item) => `<button class="history-item" data-id="${item.id}"><span>${escapeText(item.source)}</span><small>${escapeText(item.translation)}</small><em>${new Date(item.createdAt).toLocaleString()}</em></button>`).join("") : "<p class=\"history-empty\">暂无历史记录</p>";
+  historyList.innerHTML = historyItems.length ? historyItems.map(renderHistoryItem).join("") : "";
+  if (!historyItems.length) renderHistoryEmpty(query);
 }
 
-function queueHistorySave() {
-  clearTimeout(pendingHistorySave);
-  pendingHistorySave = setTimeout(async () => {
-    const source = document.querySelector("#sourceText").value.trim();
-    const translation = document.querySelector("#translatedText").textContent.trim();
-    const englishMeaning = document.querySelector("#meaningText").textContent.trim();
-    const hasError = document.querySelector("#translatedText").classList.contains("translation-error");
-    if (!source || !translation || !englishMeaning || hasError) return;
-    await fetch("/api/history", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ source, translation, englishMeaning }) });
-  }, 250);
+async function saveHistory(detail) {
+  const response = await fetch("/api/history", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(detail) });
+  const data = await response.json();
+  if (!response.ok) throw new Error(data.error || "Unable to save history.");
+  return data;
 }
 
-new MutationObserver(queueHistorySave).observe(document.querySelector("#translatedText"), { childList: true, characterData: true, subtree: true });
+function restoreHistory(item) {
+  sourceText.value = item.source;
+  counter.textContent = `${item.source.length} / 1000`;
+  translatedText.classList.remove("translation-error");
+  translatedText.textContent = item.translation;
+  meaningText.textContent = item.englishMeaning;
+  closeOverlay(historyOverlay);
+}
 
-document.querySelector("#openHistory").addEventListener("click", async () => { historyOverlay.hidden = false; try { await loadHistory(); } catch (error) { historyList.innerHTML = `<p class="history-empty">${escapeText(error.message)}</p>`; } });
+async function copyHistoryValue(value) {
+  await navigator.clipboard.writeText(value);
+}
+
+document.addEventListener("verba:translation-complete", (event) => {
+  saveHistory(event.detail).catch((error) => console.error("Unable to save translation history:", error));
+});
+
+document.querySelector("#openHistory").addEventListener("click", async () => {
+  historyOverlay.hidden = false;
+  historySearch.value = "";
+  try { await loadHistory(); } catch (error) { historyList.innerHTML = `<p class="history-empty">${escapeText(error.message)}</p>`; }
+});
 document.querySelector("#closeHistory").addEventListener("click", () => closeOverlay(historyOverlay));
 historyOverlay.addEventListener("click", (event) => { if (event.target === historyOverlay) closeOverlay(historyOverlay); });
-historySearch.addEventListener("input", () => { clearTimeout(historySearch.timer); historySearch.timer = setTimeout(loadHistory, 200); });
-historyList.addEventListener("click", (event) => {
-  const button = event.target.closest(".history-item");
-  const item = historyItems.find((entry) => entry.id === button?.dataset.id);
+historySearch.addEventListener("input", () => {
+  clearTimeout(historySearchTimer);
+  historySearchTimer = setTimeout(() => loadHistory().catch((error) => { historyList.innerHTML = `<p class="history-empty">${escapeText(error.message)}</p>`; }), 180);
+});
+historyList.addEventListener("click", async (event) => {
+  const card = event.target.closest(".history-item");
+  if (!card) return;
+  const item = historyItems.find((entry) => entry.id === card.dataset.id);
   if (!item) return;
-  document.querySelector("#sourceText").value = item.source;
-  document.querySelector("#counter").textContent = `${item.source.length} / 1000`;
-  document.querySelector("#translatedText").textContent = item.translation;
-  document.querySelector("#meaningText").textContent = item.englishMeaning;
-  closeOverlay(historyOverlay);
+  const action = event.target.closest("[data-history-action]")?.dataset.historyAction;
+  if (action === "copy-source") return copyHistoryValue(item.source).catch((error) => console.error("Unable to copy source:", error));
+  if (action === "copy-translation") return copyHistoryValue(item.translation).catch((error) => console.error("Unable to copy translation:", error));
+  if (action === "restore") return restoreHistory(item);
+  if (event.target.closest(".history-actions")) return;
+  if (!selectedText()) restoreHistory(item);
 });
 
 function showUpdateState(update) {
