@@ -10,7 +10,7 @@
     "i18n:check": "node scripts/check-i18n.mjs",
     "test": "node scripts/check-i18n.mjs && node --test tests/*.test.mjs",
     "pack": "electron-builder --dir",
-    "dist": "node scripts/prepare-electron-builder.cjs && electron-builder --win nsis",
+    "dist": "node scripts/prepare-electron-builder.cjs && electron-builder --win nsis --publish never",
     "release": "npm run dist"
   },
   "dependencies": {
