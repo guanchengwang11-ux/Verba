@@ -5,7 +5,7 @@
   <title>Verba — 职场双语表达</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" /><link rel="stylesheet" href="language-toggle.css" /><link rel="stylesheet" href="translation-status.css" /><link rel="stylesheet" href="sidebar-compact.css" /><link rel="stylesheet" href="provider-settings.css" /><link rel="stylesheet" href="configuration-fix.css" /><link rel="stylesheet" href="api-keys.css" /><link rel="stylesheet" href="desktop-features.css" />
+  <link rel="stylesheet" href="style.css" /><link rel="stylesheet" href="language-toggle.css" /><link rel="stylesheet" href="translation-status.css" /><link rel="stylesheet" href="sidebar-compact.css" /><link rel="stylesheet" href="provider-settings.css" /><link rel="stylesheet" href="configuration-fix.css" /><link rel="stylesheet" href="api-keys.css" /><link rel="stylesheet" href="desktop-features.css" /><link rel="stylesheet" href="interaction.css" />
 </head>
 <body>
   <div class="app-shell">
@@ -66,6 +66,6 @@
   <div class="settings-overlay" id="appSettingsOverlay" hidden>
     <section class="settings-panel" role="dialog" aria-modal="true" aria-labelledby="appSettingsTitle"><div class="settings-header"><div><p class="eyebrow">VERBA</p><h2 id="appSettingsTitle">设置</h2></div><button class="close-settings" id="closeAppSettings" aria-label="Close">×</button></div><div class="settings-section"><h3>应用更新</h3><p id="updateStatus">尚未检查更新。</p><button class="save-settings" id="checkUpdates">检查更新</button><button class="save-settings" id="installUpdate" hidden>重启并安装更新</button></div></section>
   </div>
-  <div class="toast" id="toast">已复制到剪贴板</div><script src="app.js"></script><script src="api-keys.js"></script><script src="desktop-features.js"></script>
-</body>
+  <div class="toast" id="toast">已复制到剪贴板</div><script src="ui-feedback.js"></script><script src="app.js"></script><script src="api-keys.js"></script><script src="desktop-features.js"></script>
+<script src="app-interactions.js"></script></body>
 </html>

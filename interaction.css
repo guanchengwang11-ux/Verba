@@ -1,0 +1,17 @@
+:root { --focus-ring: 0 0 0 3px rgba(41, 151, 103, .28); }
+html { scrollbar-gutter: stable; }
+body.has-modal { overflow: hidden; }
+button, [role="button"], .mode-card, .quick-card, .recent-link { transition: transform .14s ease, background-color .14s ease, border-color .14s ease, box-shadow .14s ease, color .14s ease, opacity .14s ease; }
+button:not(:disabled):not([aria-disabled="true"]):hover, [role="button"]:not([aria-disabled="true"]):hover, .mode-card:hover, .quick-card:hover, .recent-link:hover { box-shadow: 0 4px 12px rgba(24, 72, 46, .10); }
+button:not(:disabled):not([aria-disabled="true"]):active, [role="button"]:not([aria-disabled="true"]):active, .mode-card:active, .quick-card:active, .recent-link:active { transform: scale(.97); }
+button:focus-visible, [role="button"]:focus-visible, .mode-card:focus-visible, .quick-card:focus-visible, .recent-link:focus-visible { outline: 0; box-shadow: var(--focus-ring); }
+button:disabled, [aria-disabled="true"] { cursor: not-allowed; opacity: .58; }
+button.is-loading { position: relative; cursor: wait; }
+button.is-loading::after { content: ""; display: inline-block; width: 11px; height: 11px; margin-left: 7px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; vertical-align: -1px; animation: verba-spin .7s linear infinite; }
+button.is-success { background: #187a54 !important; border-color: #187a54 !important; color: #fff !important; }
+button.is-error { background: #b84040 !important; border-color: #b84040 !important; color: #fff !important; }
+.action-feedback { position: fixed; z-index: 50; right: 22px; bottom: 22px; max-width: min(360px, calc(100vw - 44px)); border-radius: 9px; padding: 10px 13px; color: #fff; background: #172b20; box-shadow: 0 12px 28px rgba(15, 43, 28, .22); font-size: 12px; font-weight: 700; opacity: 0; pointer-events: none; transform: translateY(10px); transition: opacity .18s ease, transform .18s ease; }
+.action-feedback.show { opacity: 1; transform: translateY(0); }
+.action-feedback.success { background: #187a54; }
+.action-feedback.error { background: #b84040; }
+@keyframes verba-spin { to { transform: rotate(360deg); } }
