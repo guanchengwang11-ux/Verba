@@ -1,6 +1,6 @@
 {
   "name": "verba-workplace-translator",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Context-aware workplace Chinese-English translator",
   "main": "electron-main.cjs",
   "author": "Verba",
