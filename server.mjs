@@ -4,6 +4,7 @@ import { extname, join, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
 import { randomUUID } from "node:crypto";
 import { modelManager } from "./model-manager.mjs";
+import { parseTranslationOutput, sanitizeTranslationOutput } from "./translation-output.mjs";
 
 let publicDirectory = process.env.VERBA_APP_DIR || process.cwd();
 let configurationDirectory = process.env.VERBA_CONFIG_DIR || process.cwd();
@@ -49,13 +50,13 @@ function historyLanguageLabels(direction) {
     : { sourceLanguage: "Chinese", targetLanguage: "English", sourceLanguageLabel: "中文", targetLanguageLabel: "English" };
 }
 
-function normalizeHistoryItem(item) {
+export function normalizeHistoryItem(item) {
   const direction = item.direction === "enToZh" ? "enToZh" : "zhToEn";
   const mode = item.mode === "chat" ? "chat" : "email";
   const provider = ["openai", "gemini", "deepseek"].includes(item.provider) ? item.provider : "";
   return {
     source: item.source.trim(),
-    translation: item.translation.trim(),
+    translation: sanitizeTranslationOutput(item.translation),
     englishMeaning: item.englishMeaning.trim(),
     requestId: typeof item.requestId === "string" ? item.requestId : "",
     direction,
@@ -146,20 +147,6 @@ function buildInstructions(body) {
   const targetLanguage = body.direction === "zhToEn" ? "English" : "Chinese";
   const glossary = (body.glossary || []).map((entry) => `${entry.source} => ${entry.target}`).join("\n");
   return `You are Verba, an expert workplace translator. Translate from ${sourceLanguage} to ${targetLanguage}. ${styleInstructions[body.mode] || styleInstructions.email} Preserve the user's intent, degree of certainty, names, dates, numbers, and requests. Do not add facts. ${glossary ? `The following glossary is mandatory. Use the target exactly whenever its source term appears:\n${glossary}` : ""} Return JSON only with translation and englishMeaning. englishMeaning must be a short, literal English explanation of what the final translation says, so an English speaker can verify a Chinese output.`;
-}
-
-function parseTranslationOutput(rawOutput, provider) {
-  const cleanedOutput = String(rawOutput).trim().replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, "");
-  let parsed;
-  try {
-    parsed = JSON.parse(cleanedOutput);
-  } catch {
-    throw new Error(`${provider} returned an incomplete translation response. Please try again.`);
-  }
-  if (typeof parsed.translation !== "string" || typeof parsed.englishMeaning !== "string") {
-    throw new Error(`${provider} returned an unexpected translation response. Please try again.`);
-  }
-  return { translation: parsed.translation.trim(), englishMeaning: parsed.englishMeaning.trim() };
 }
 
 async function handleRequest(request, response) {

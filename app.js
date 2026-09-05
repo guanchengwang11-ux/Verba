@@ -38,7 +38,7 @@ window.VerbaI18n.ready.then(() => {
       const data = await response.json();
       if (!response.ok) throw new Error(i18n.error(data.errorCode));
       result.textContent = data.translation; meaning.textContent = data.englishMeaning; toneNote.textContent = currentMode === "email" ? t("studio.emailDescription") : t("studio.chatDescription");
-      document.dispatchEvent(new CustomEvent("verba:translation-complete", { detail: { source: text, translation: data.translation, englishMeaning: data.englishMeaning, direction, mode: currentMode, provider, requestId } }));
+      if (data.translation) document.dispatchEvent(new CustomEvent("verba:translation-complete", { detail: { source: text, translation: data.translation, englishMeaning: data.englishMeaning, direction, mode: currentMode, provider, requestId } }));
     } catch (error) { result.classList.add("translation-error"); result.textContent = error.message || i18n.error("TRANSLATION_FAILED"); window.VerbaUi.showFeedback(result.textContent, "error"); }
     finally { window.VerbaUi.setButtonState(translateButton); }
   }
@@ -51,7 +51,6 @@ window.VerbaI18n.ready.then(() => {
   document.querySelector("#saveSettings").addEventListener("click", () => { localStorage.setItem("verba-provider", provider); window.VerbaUi.showFeedback(t("api.useProvider"), "success"); closeAllOverlays(); });
   document.querySelector("#addTerm").addEventListener("click", () => createGlossaryRow()); document.querySelector("#saveGlossary").addEventListener("click", () => { localStorage.setItem("verba-glossary", JSON.stringify(getGlossary())); closeAllOverlays(); });
   source.addEventListener("input", () => { updateCounter(); resetResult(); }); document.querySelector("#translateButton").addEventListener("click", requestTranslation); document.querySelector("#clearText").addEventListener("click", () => { source.value = ""; updateCounter(); resetResult(); source.focus(); });
-  document.querySelectorAll(".quick-card").forEach((card) => card.addEventListener("click", () => { source.value = card.dataset.text; updateCounter(); resetResult(); source.focus(); }));
   document.addEventListener("keydown", (event) => { if ((event.metaKey || event.ctrlKey) && event.key === "Enter") requestTranslation(); if (event.key === "Escape") closeAllOverlays(); });
   window.addEventListener("verba:locale-changed", updateDynamicText); updateCounter(); updateDynamicText();
 });
