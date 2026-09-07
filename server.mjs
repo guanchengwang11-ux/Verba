@@ -5,6 +5,12 @@ import { fileURLToPath } from "node:url";
 import { randomUUID } from "node:crypto";
 import { modelManager } from "./model-manager.mjs";
 import { parseTranslationOutput, sanitizeTranslationOutput } from "./translation-output.mjs";
+import {
+  TEAM_CHAT_STYLE_INSTRUCTIONS,
+  executeTranslationPolicy,
+} from "./translation-policy.mjs";
+import { buildEntityProtectionInstruction, isPreserveExactlyGlossaryEntry, protectEntities } from "./entity-protection.mjs";
+import { analyzeSemanticConstraints, buildSemanticConstraintInstruction } from "./semantic-role-protection.mjs";
 
 let publicDirectory = process.env.VERBA_APP_DIR || process.cwd();
 let configurationDirectory = process.env.VERBA_CONFIG_DIR || process.cwd();
@@ -119,7 +125,7 @@ async function saveApiKeys(keys) {
 
 const styleInstructions = {
   email: "Write as a polished workplace email: professional, concise, courteous, and direct.",
-  chat: "Write as a natural message to a trusted colleague: friendly, relaxed, concise, and never overly formal."
+  chat: TEAM_CHAT_STYLE_INSTRUCTIONS
 };
 
 function sendJson(response, statusCode, payload) {
@@ -137,16 +143,30 @@ function errorCode(error) {
 
 async function translate(body) {
   const provider = body.provider || "openai";
-  const instructions = buildInstructions(body);
-  const response = await modelManager.translate({ provider, text: body.text, instructions });
-  return parseTranslationOutput(response.rawOutput, provider === "openai" ? "OpenAI" : provider === "gemini" ? "Gemini" : "DeepSeek");
+  const providerName = provider === "openai" ? "OpenAI" : provider === "gemini" ? "Gemini" : "DeepSeek";
+  const protectedInput = protectEntities(body.text, body.glossary);
+  const semanticConstraints = analyzeSemanticConstraints({ originalText: body.text, protectedText: protectedInput.text, direction: body.direction, entityMap: protectedInput.entityMap });
+  const baseInstructions = buildInstructions(body, protectedInput.entityMap, semanticConstraints);
+  return executeTranslationPolicy({
+    sourceText: body.text,
+    mode: body.mode,
+    entityMap: protectedInput.entityMap,
+    semanticConstraints,
+    generate: async ({ correctionInstruction }) => {
+      const instructions = correctionInstruction ? `${baseInstructions} ${correctionInstruction}` : baseInstructions;
+      const response = await modelManager.translate({ provider, text: protectedInput.text, instructions });
+      return parseTranslationOutput(response.rawOutput, providerName, { sanitize: false });
+    }
+  });
 }
 
-function buildInstructions(body) {
+export function buildInstructions(body, entityMap = [], semanticConstraints = null) {
   const sourceLanguage = body.direction === "zhToEn" ? "Chinese" : "English";
   const targetLanguage = body.direction === "zhToEn" ? "English" : "Chinese";
-  const glossary = (body.glossary || []).map((entry) => `${entry.source} => ${entry.target}`).join("\n");
-  return `You are Verba, an expert workplace translator. Translate from ${sourceLanguage} to ${targetLanguage}. ${styleInstructions[body.mode] || styleInstructions.email} Preserve the user's intent, degree of certainty, names, dates, numbers, and requests. Do not add facts. ${glossary ? `The following glossary is mandatory. Use the target exactly whenever its source term appears:\n${glossary}` : ""} Return JSON only with translation and englishMeaning. englishMeaning must be a short, literal English explanation of what the final translation says, so an English speaker can verify a Chinese output.`;
+  const glossary = (body.glossary || []).filter((entry) => !isPreserveExactlyGlossaryEntry(entry)).map((entry) => `${entry.source} => ${entry.target}`).join("\n");
+  const protectedInstruction = buildEntityProtectionInstruction(entityMap);
+  const semanticInstruction = buildSemanticConstraintInstruction(semanticConstraints);
+  return `You are Verba, an expert workplace translator. Translate from ${sourceLanguage} to ${targetLanguage}. Accuracy and semantic-role preservation always take priority over naturalness or brevity. ${styleInstructions[body.mode] || styleInstructions.email} Preserve the user's intent, participants, who asks whom, who performs each action, degree of certainty, negation, conditions, completion state, names, dates, numbers, and requests. Do not add facts. ${protectedInstruction} ${semanticInstruction} ${glossary ? `The following glossary is mandatory. Use the target exactly whenever its source term appears:\n${glossary}` : ""} Return JSON only with translation and englishMeaning. englishMeaning must be a short, literal English explanation independently based on the original source meaning, including its participant roles; do not derive it by paraphrasing the translation.`;
 }
 
 async function handleRequest(request, response) {
@@ -209,7 +229,7 @@ async function handleRequest(request, response) {
     for await (const chunk of request) rawBody += chunk;
     try {
       const body = JSON.parse(rawBody);
-      if (!body.text?.trim() || body.text.length > 1000 || !["email", "chat"].includes(body.mode) || !["zhToEn", "enToZh"].includes(body.direction) || !["openai", "gemini", "deepseek"].includes(body.provider || "openai") || !Array.isArray(body.glossary || []) || (body.glossary || []).some((entry) => !entry?.source || !entry?.target || entry.source.length > 120 || entry.target.length > 120)) {
+      if (!body.text?.trim() || body.text.length > 1000 || !["email", "chat"].includes(body.mode) || !["zhToEn", "enToZh"].includes(body.direction) || !["openai", "gemini", "deepseek"].includes(body.provider || "openai") || !Array.isArray(body.glossary || []) || (body.glossary || []).some((entry) => !entry?.source || (!entry?.target && entry?.preserveExactly !== true) || entry.source.length > 120 || (entry.target || "").length > 120)) {
         return sendJson(response, 400, { error: "Please provide text (up to 1000 characters), a valid mode, and a valid language direction." });
       }
       return sendJson(response, 200, await translate(body));

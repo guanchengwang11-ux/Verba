@@ -5,7 +5,7 @@ export function sanitizeTranslationOutput(text) {
     .trimEnd();
 }
 
-export function parseTranslationOutput(rawOutput, provider) {
+export function parseTranslationOutput(rawOutput, provider, { sanitize = true } = {}) {
   const cleanedOutput = String(rawOutput).trim().replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, "");
   let parsed;
   try {
@@ -17,7 +17,7 @@ export function parseTranslationOutput(rawOutput, provider) {
     throw new Error(`${provider} returned an unexpected translation response. Please try again.`);
   }
   return {
-    translation: sanitizeTranslationOutput(parsed.translation),
+    translation: sanitize ? sanitizeTranslationOutput(parsed.translation) : parsed.translation,
     englishMeaning: parsed.englishMeaning.trim()
   };
 }
