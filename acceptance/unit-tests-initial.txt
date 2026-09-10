@@ -1,0 +1,149 @@
+
+> verba-workplace-translator@1.1.0 test
+> node scripts/check-i18n.mjs && node --test tests/*.test.mjs
+
+i18n check passed: 173 matching keys
+✔ replaces every entity in the reported failing sentence with program-level placeholders (3.6ms)
+✖ detects names, multi-word names, brands, acronyms, accounts, and identifiers (2.1161ms)
+✔ excludes common sentence starters, weekdays, and language names (0.1968ms)
+✖ restores exact and mildly altered placeholder formats (0.8403ms)
+✔ detects missing, duplicated, and leaked placeholders (0.3681ms)
+✔ gives glossary preserve entries highest priority (0.3083ms)
+✖ builds instructions without relying on the model to identify entities (0.3957ms)
+✔ accepts equivalent amount, quantity, and localized date formatting (7.2089ms)
+✔ blocks changed amounts, currencies, quantities, and explicit dates (1.2152ms)
+✔ marks an unrecognized date expression as uncertain instead of fabricating certainty (0.2844ms)
+{"event":"model_refresh","provider":"openai","discovered":2,"verified":1,"selected":"gpt-4o-mini","status":"ready"}
+✔ does not use the first listed model when policy blocks it (11.4005ms)
+{"event":"translation","provider":"openai","model":"model-a","success":false,"status":404,"retryNextModel":true}
+{"event":"translation","provider":"openai","model":"model-b","latencyMs":5,"usage":null,"success":true}
+✔ switches to a fallback after an invalid model response (4.9047ms)
+{"event":"translation_attempt","requestId":"facb0740-88a2-4413-acd9-ce8c4806ca3d","timestamp":"2026-09-09T10:51:53.775Z","attempt":1,"provider":"openai","model":"model-a","result":"failed","stage":"provider_request","internalCode":"PROVIDER_UNAVAILABLE","httpStatus":503,"providerErrorCode":"","latencyMs":0,"modelSwitched":false,"willRetry":false,"retryReason":"model_fallback","success":false}
+{"event":"translation_attempt","requestId":"facb0740-88a2-4413-acd9-ce8c4806ca3d","timestamp":"2026-09-09T10:51:53.775Z","attempt":2,"provider":"openai","model":"model-b","result":"success","stage":"provider_request","httpStatus":200,"providerErrorCode":"","latencyMs":5,"modelSwitched":true,"willRetry":false,"success":true}
+✔ switches immediately after a transient failure when a fallback exists (5.2032ms)
+{"event":"translation","provider":"openai","model":"model-a","latencyMs":5,"usage":null,"success":true}
+✔ retries one transient failure when no fallback model exists (759.9173ms)
+{"event":"translation_attempt","requestId":"3bdb4f8b-d346-45a2-97d8-eff986ba0789","timestamp":"2026-09-09T10:51:54.539Z","attempt":1,"provider":"openai","model":"model-a","result":"failed","stage":"provider_request","internalCode":"PROVIDER_UNAVAILABLE","httpStatus":401,"providerErrorCode":"","latencyMs":0,"modelSwitched":false,"willRetry":false,"retryReason":"","success":false}
+✔ does not switch models after an authorization failure (2.7103ms)
+{"event":"translation_attempt","requestId":"821e1e16-ed63-4594-9e36-30861c927d59","timestamp":"2026-09-09T10:51:54.542Z","attempt":1,"provider":"openai","model":"model-a","result":"failed","stage":"provider_request","internalCode":"PROVIDER_RATE_LIMIT","httpStatus":429,"providerErrorCode":"","latencyMs":0,"modelSwitched":false,"willRetry":false,"retryReason":"model_fallback","success":false}
+{"event":"translation_attempt","requestId":"821e1e16-ed63-4594-9e36-30861c927d59","timestamp":"2026-09-09T10:51:54.542Z","attempt":2,"provider":"openai","model":"model-b","result":"success","stage":"provider_request","httpStatus":200,"providerErrorCode":"","latencyMs":5,"modelSwitched":true,"willRetry":false,"success":true}
+✔ switches models immediately after rate limiting without an identical retry (3.8543ms)
+{"event":"translation_attempt","requestId":"eaaa16e1-184f-4798-8b06-37d61c301fad","timestamp":"2026-09-09T10:51:54.546Z","attempt":1,"provider":"openai","model":"model-a","result":"failed","stage":"provider_request","internalCode":"PROVIDER_UNAVAILABLE","httpStatus":503,"providerErrorCode":"","latencyMs":0,"modelSwitched":false,"willRetry":false,"retryReason":"model_fallback","success":false}
+{"event":"translation_attempt","requestId":"eaaa16e1-184f-4798-8b06-37d61c301fad","timestamp":"2026-09-09T10:51:54.546Z","attempt":2,"provider":"openai","model":"model-b","result":"failed","stage":"provider_request","internalCode":"PROVIDER_UNAVAILABLE","httpStatus":503,"providerErrorCode":"","latencyMs":0,"modelSwitched":true,"willRetry":false,"retryReason":"model_fallback","success":false}
+{"event":"translation_attempt","requestId":"eaaa16e1-184f-4798-8b06-37d61c301fad","timestamp":"2026-09-09T10:51:54.546Z","attempt":3,"provider":"openai","model":"model-c","result":"failed","stage":"provider_request","internalCode":"PROVIDER_UNAVAILABLE","httpStatus":503,"providerErrorCode":"","latencyMs":0,"modelSwitched":true,"willRetry":true,"retryReason":"PROVIDER_UNAVAILABLE","success":false}
+{"event":"translation_attempt","requestId":"eaaa16e1-184f-4798-8b06-37d61c301fad","timestamp":"2026-09-09T10:51:55.301Z","attempt":4,"provider":"openai","model":"model-c","result":"failed","stage":"provider_request","internalCode":"PROVIDER_UNAVAILABLE","httpStatus":503,"providerErrorCode":"","latencyMs":0,"modelSwitched":false,"willRetry":false,"retryReason":"","success":false}
+✔ shares a four-request budget across retries and model fallbacks (759.3273ms)
+✔ does not call or retry a provider after request cancellation (3.285ms)
+{"event":"model_refresh","provider":"openai","discovered":1,"verified":1,"selected":"gpt-4o-mini","status":"ready"}
+✔ uses the verified cache before its 24-hour expiry (3.1ms)
+✔ keeps the last verified model when model discovery fails (2.785ms)
+✔ extracts the listener-to-David delegation frame (7.3718ms)
+✔ extracts ask, tell, remind, let, have, want, and need relationships (7.2695ms)
+✔ rejects turning an indirect request into direct address (1.8524ms)
+✔ accepts the correct listener-to-David relationship and English meaning (1.5365ms)
+✔ protects negation, time, condition, modality, and completion (2.0488ms)
+✔ builds a high-priority semantic instruction with hidden entity tokens (0.472ms)
+✔ treats missing lexical evidence as uncertain warnings (0.5758ms)
+✔ allows natural order and polite paraphrases when roles remain intact (0.2451ms)
+✔ blocks explicit polarity, time-direction, modality, completion, and role reversals (1.0516ms)
+{"event":"translation_attempt","requestId":"67261a52-6d91-4c79-8be9-4eb5f997c8a8","timestamp":"2026-09-09T10:51:53.792Z","attempt":1,"provider":"gemini","model":"model-a","result":"failed","stage":"provider_request","internalCode":"PROVIDER_UNAVAILABLE","httpStatus":503,"providerErrorCode":"UNAVAILABLE","latencyMs":25,"willRetry":false}
+{"event":"translation_attempt","requestId":"67261a52-6d91-4c79-8be9-4eb5f997c8a8","timestamp":"2026-09-09T10:51:53.792Z","attempt":2,"provider":"gemini","model":"model-b","result":"success","stage":"provider_request","httpStatus":200,"latencyMs":20,"modelSwitched":true,"success":true}
+{"event":"translation_complete","requestId":"67261a52-6d91-4c79-8be9-4eb5f997c8a8","timestamp":"2026-09-09T10:51:53.792Z","provider":"gemini","model":"model-b","stage":"complete","success":true,"providerRequestCount":2,"totalLatencyMs":3}
+✔ classifies provider failures into distinct internal error codes (0.9111ms)
+✔ diagnostics record attempts and model switches without sensitive values (3.7251ms)
+✔ removes only trailing punctuation and whitespace (1.2668ms)
+✔ applies the same translation sanitizing to every provider response (0.8664ms)
+✔ keeps screen, history event, and clipboard inputs identical by returning one canonical translation (0.2554ms)
+✔ reports parse, shape, and empty-output failures separately (0.5283ms)
+{"event":"translation_validation_warning","requestId":"b300dca7-f50c-445d-8657-bc56b1da1708","timestamp":"2026-09-09T10:51:53.859Z","validationAttempt":1,"provider":"gemini","stage":"policy_validation","severity":"warning","issueCodes":["speaker_role_missing"],"ruleIds":["SEM-UNCERTAIN-SPEAKER-ROLE-MISSING"],"disposition":"allow","success":true,"validationMs":0}
+{"event":"translation_validation_failed","requestId":"48158308-a794-4fdd-a55b-7dfe25d5a16d","timestamp":"2026-09-09T10:51:53.861Z","validationAttempt":1,"provider":"gemini","stage":"semantic_validation","internalCode":"SEMANTIC_VALIDATION_FAILED","willRegenerate":true,"severity":"critical","issueCodes":["currency_or_amount_changed"],"ruleIds":["FACT-CURRENCY-001"],"disposition":"block","retryReason":"SEMANTIC_VALIDATION_FAILED","success":false,"validationMs":0}
+{"event":"translation_validation_passed","requestId":"48158308-a794-4fdd-a55b-7dfe25d5a16d","timestamp":"2026-09-09T10:51:53.861Z","validationAttempt":2,"provider":"gemini","stage":"policy_validation","severity":"pass","issueCodes":[],"ruleIds":[],"disposition":"allow","success":true,"validationMs":0}
+✔ Team chat prompt defines neutral workplace chat without changing email style (0.9468ms)
+✔ removes preserve-exactly glossary entries from translation mappings (1.6596ms)
+✔ restores entities in all required English to Chinese examples (10.0373ms)
+✔ preserves English names embedded in Chinese to English translation (2.4967ms)
+✔ preserves all requested participant relationships and factual constraints (1.8997ms)
+✔ regenerates when semantic roles change even if the entity is preserved (0.5309ms)
+✔ OpenAI, Gemini, and DeepSeek share the same entity restoration path (0.4683ms)
+✔ regenerates once if a placeholder is lost and never returns transliterated names (0.3349ms)
+✔ throws after one retry if placeholders remain missing (0.6237ms)
+✔ stops after one semantic regeneration and reports the semantic stage (0.4268ms)
+✔ flags added regional slang as a non-blocking Team chat warning (0.2438ms)
+✔ requires a leading name to remain a direct addressee (0.6302ms)
+✔ accepts ordinary Chinese equivalents of later today without a false semantic rejection (0.7608ms)
+✔ returns warning-only translations without a second provider call (3.6312ms)
+✔ retries a changed amount once with a targeted blocking rule (1.0506ms)
+✔ never returns a persistently changed amount after the repair limit (0.3728ms)
+ℹ tests 51
+ℹ suites 0
+ℹ pass 48
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1715.8573
+
+✖ failing tests:
+
+test at tests\entity-protection.test.mjs:23:1
+✖ detects names, multi-word names, brands, acronyms, accounts, and identifiers (2.1161ms)
+  AssertionError [ERR_ASSERTION]: expected Wang Guancheng to be protected
+      at TestContext.<anonymous> (file:///F:/1.%20translator/tests/entity-protection.test.mjs:27:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\entity-protection.test.mjs:37:1
+✖ restores exact and mildly altered placeholder formats (0.8403ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Bybit让 UID 检查 __VERBA_ENTITY_2__ 的 `VERBA ENTITY 3`'
+  - 'Nana让 David 检查 Bybit 的 UID'
+  
+      at TestContext.<anonymous> (file:///F:/1.%20translator/tests/entity-protection.test.mjs:40:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Bybit让 UID 检查 __VERBA_ENTITY_2__ 的 `VERBA ENTITY 3`',
+    expected: 'Nana让 David 检查 Bybit 的 UID',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\entity-protection.test.mjs:64:1
+✖ builds instructions without relying on the model to identify entities (0.3957ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /\[\[VERBA_ENTITY_1\]\]/. Input:
+  
+  'The source contains protected entity placeholders. Copy every placeholder exactly, in the same semantic position and the same number of times. Never translate, transliterate, rename, split, omit, or explain a placeholder. Do not add Markdown around it. The original entity values are intentionally hidden from you and will be restored by the application. Valid placeholders:\n' +
+    '[[VERBA_ENTITY_0]]'
+  
+      at TestContext.<anonymous> (file:///F:/1.%20translator/tests/entity-protection.test.mjs:68:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'The source contains protected entity placeholders. Copy every placeholder exactly, in the same semantic position and the same number of times. Never translate, transliterate, rename, split, omit, or explain a placeholder. Do not add Markdown around it. The original entity values are intentionally hidden from you and will be restored by the application. Valid placeholders:\n[[VERBA_ENTITY_0]]',
+    expected: /\[\[VERBA_ENTITY_1\]\]/,
+    operator: 'match',
+    diff: 'simple'
+  }

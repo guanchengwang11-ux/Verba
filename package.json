@@ -1,6 +1,6 @@
 {
   "name": "verba-workplace-translator",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "Context-aware workplace Chinese-English translator",
   "main": "electron-main.cjs",
   "author": "Verba",
@@ -11,7 +11,9 @@
     "test": "node scripts/check-i18n.mjs && node --test tests/*.test.mjs",
     "pack": "electron-builder --dir",
     "dist": "node scripts/prepare-electron-builder.cjs && electron-builder --win nsis --publish never",
-    "release": "npm run dist"
+    "release": "npm run dist",
+    "acceptance:run": "node scripts/translation-acceptance.mjs",
+    "acceptance:report": "node scripts/translation-acceptance-report.mjs"
   },
   "dependencies": {
     "electron-log": "^5.4.3",
@@ -29,10 +31,24 @@
       "**/*",
       "!dist/**",
       "!tests/**",
-      "!node_modules/.cache/**"
+      "!node_modules/.cache/**",
+      "!acceptance/**",
+      "!scripts/translation-acceptance*.mjs",
+      "!**/.env",
+      "!**/.env.*",
+      ".env.example",
+      "!.pnpm-store/**",
+      "!.agents/**",
+      "!config/**",
+      "!logs/**",
+      "!**/*.log",
+      "!translation-history.json",
+      "!model-state.json"
     ],
     "win": {
-      "target": ["nsis"],
+      "target": [
+        "nsis"
+      ],
       "artifactName": "${productName}-Setup-${version}.${ext}"
     },
     "nsis": {
@@ -40,14 +56,16 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": "always",
       "createStartMenuShortcut": true,
-    "shortcutName": "Verba"
+      "shortcutName": "Verba"
     },
-    "publish": [{
-      "provider": "github",
-      "owner": "guanchengwang11-ux",
-      "repo": "Verba",
-      "releaseType": "release"
-    }],
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "guanchengwang11-ux",
+        "repo": "Verba",
+        "releaseType": "release"
+      }
+    ],
     "electronUpdaterCompatibility": ">= 2.16"
   }
 }

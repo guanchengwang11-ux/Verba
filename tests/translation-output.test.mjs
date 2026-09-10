@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { normalizeHistoryItem } from "../server.mjs";
 import { parseTranslationOutput, sanitizeTranslationOutput } from "../translation-output.mjs";
+import { TRANSLATION_ERROR_CODES } from "../translation-diagnostics.mjs";
 
 const cases = [
   ["Hello.", "Hello"],
@@ -48,4 +49,10 @@ test("keeps screen, history event, and clipboard inputs identical by returning o
   assert.equal(screenText, "可以吗");
   assert.equal(historyPayload, screenText);
   assert.equal(clipboardText, screenText);
+});
+
+test("reports parse, shape, and empty-output failures separately", () => {
+  assert.throws(() => parseTranslationOutput("not json", "Gemini"), (error) => error.internalCode === TRANSLATION_ERROR_CODES.JSON_PARSE_FAILED);
+  assert.throws(() => parseTranslationOutput('{"translation":"hello"}', "Gemini"), (error) => error.internalCode === TRANSLATION_ERROR_CODES.MODEL_OUTPUT_INVALID);
+  assert.throws(() => parseTranslationOutput('{"translation":"","englishMeaning":"empty"}', "Gemini"), (error) => error.internalCode === TRANSLATION_ERROR_CODES.TRANSLATION_EMPTY);
 });

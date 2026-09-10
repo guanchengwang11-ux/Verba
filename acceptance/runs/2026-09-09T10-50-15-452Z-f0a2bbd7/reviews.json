@@ -1,0 +1,134 @@
+[
+  {
+    "requestId": "c11e60b6-51de-4eea-9154-8041e1b20101",
+    "translation": "She说他已经把我们的地址发给他们了",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "她转述；他已经发送；接收者是他们；地址属于我们。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "普通代词She被错误保护并恢复为英文。"
+    },
+    "naturalness": 2,
+    "colloquial": 2,
+    "issues": "普通代词She被错误保护并恢复为英文。"
+  },
+  {
+    "requestId": "b623728b-4f69-4e2f-9c09-6f258a5af2af",
+    "translation": "They让我们转告你，会议已经取消了",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "他们提出要求，我们负责转告，你接收会议已取消的消息。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "普通代词They被错误保护并恢复为英文。"
+    },
+    "naturalness": 2,
+    "colloquial": 2,
+    "issues": "普通代词They被错误保护并恢复为英文。"
+  },
+  {
+    "requestId": "9cc35581-0c36-4047-8a65-d21d389bac17",
+    "translation": "She说他已经把我们的地址发给他们了",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "她转述；他已经发送；接收者是他们；地址属于我们。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "普通代词She被错误保护并恢复为英文。"
+    },
+    "naturalness": 2,
+    "colloquial": 2,
+    "issues": "普通代词She被错误保护并恢复为英文。"
+  },
+  {
+    "requestId": "6d877bc0-1aac-4f0d-887c-c102b94c6263",
+    "translation": "They 让我们告诉你会议已经取消了",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "他们提出要求，我们负责转告，你接收会议已取消的消息。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "普通代词They被错误保护并恢复为英文。"
+    },
+    "naturalness": 2,
+    "colloquial": 2,
+    "issues": "普通代词They被错误保护并恢复为英文。"
+  },
+  {
+    "requestId": "c11e60b6-51de-4eea-9154-8041e1b20101",
+    "translation": "She说他已经把我们的地址发给他们了。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "她转述；他已经发送；接收者是他们；地址属于我们。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "普通代词She被错误保护并恢复为英文。"
+    },
+    "naturalness": 2,
+    "colloquial": 2,
+    "issues": "普通代词She被错误保护并恢复为英文。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "b623728b-4f69-4e2f-9c09-6f258a5af2af",
+    "translation": "They让我们转告你，会议已经取消了。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "他们提出要求，我们负责转告，你接收会议已取消的消息。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "普通代词They被错误保护并恢复为英文。"
+    },
+    "naturalness": 2,
+    "colloquial": 2,
+    "issues": "普通代词They被错误保护并恢复为英文。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "9cc35581-0c36-4047-8a65-d21d389bac17",
+    "translation": "She说他已经把我们的地址发给他们了。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "她转述；他已经发送；接收者是他们；地址属于我们。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "普通代词She被错误保护并恢复为英文。"
+    },
+    "naturalness": 2,
+    "colloquial": 2,
+    "issues": "普通代词She被错误保护并恢复为英文。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "6d877bc0-1aac-4f0d-887c-c102b94c6263",
+    "translation": "They 让我们告诉你会议已经取消了。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "他们提出要求，我们负责转告，你接收会议已取消的消息。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "普通代词They被错误保护并恢复为英文。"
+    },
+    "naturalness": 2,
+    "colloquial": 2,
+    "issues": "普通代词They被错误保护并恢复为英文。",
+    "candidateAttempt": 1
+  }
+]

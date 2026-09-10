@@ -1,0 +1,15 @@
+{
+  "frozenAt": "2026-09-09T16:53:28.607Z",
+  "rule": "No product changes after this point; independent fixtures authored after freeze, first run only.",
+  "hashes": {
+    "server.mjs": "725c40e2e8982d0333d729551afdf319e7cf47e137927b5a9bb4b8f78cbb4a30",
+    "entity-protection.mjs": "284f1200a18fd8495ac603b0a5d8fc5b94e90db4ed3eba8e6e37e59e4e1fd8bf",
+    "factual-constraint-protection.mjs": "315cf78bdd160fa8c7b90126e346bca15405e17fd95af8c99d6281acc9a737c4",
+    "semantic-role-protection.mjs": "7093e0a9bbf46f1d3cce872a65af809e3a682262c3c62e993dcadb3649686789",
+    "translation-policy.mjs": "785e965742806df4bcd479d51c867e51473b95b39e22c7f063e4366d02948359",
+    "translation-output.mjs": "ace571baf564a8708cd801021ae5623a9054b6b8b5b60219cd93fd841403f74f",
+    "providers/gemini-provider.mjs": "0f2bed87b1c4b7c8533b06d8ba1a0c8c6cdfddc1b22eeb828f2f555c5e593695",
+    "providers/deepseek-provider.mjs": "56a811cc9fa25c8e146c9c22fe9c38e10db2170530be7cf2159668563ec3e4ea",
+    "providers/openai-provider.mjs": "c141aba2406ec3e0054e0111db1a852f68fb46895e4431a9118d655683b04314"
+  }
+}

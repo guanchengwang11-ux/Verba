@@ -1,0 +1,1070 @@
+[
+  {
+    "requestId": "b0b3c1f6-fc03-46a5-8773-382fe35c8b13",
+    "translation": "我借了你的充电器，不过Marta已经把她自己的还给你了",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：两件物品的所有者和动作方向不同。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "b0b3c1f6-fc03-46a5-8773-382fe35c8b13",
+    "translation": "我借了你的充电器，不过Marta已经把她自己的还给你了。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：两件物品的所有者和动作方向不同。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "926794a8-575f-4666-91bb-97c01c0abcc6",
+    "translation": "麻烦你请Omar通知Leah把草稿发给对方",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：你→Omar→Leah→他们的完整委托链。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "926794a8-575f-4666-91bb-97c01c0abcc6",
+    "translation": "麻烦你请Omar通知Leah把草稿发给对方。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：你→Omar→Leah→他们的完整委托链。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "e8ae088e-ad63-4cd1-8696-1bdac114a2b7",
+    "translation": "还没所有团队都准备好，所以先别发布那个计划",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：部分否定，不变成所有团队都没准备好；暂缓发布。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 3,
+    "colloquial": 3,
+    "issues": "还没所有团队都准备好语序生硬，应为还不是所有团队都准备好。",
+    "categories": [
+      "language"
+    ]
+  },
+  {
+    "requestId": "e8ae088e-ad63-4cd1-8696-1bdac114a2b7",
+    "translation": "还没所有团队都准备好，所以先别发布那个计划。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：部分否定，不变成所有团队都没准备好；暂缓发布。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 3,
+    "colloquial": 3,
+    "issues": "还没所有团队都准备好语序生硬，应为还不是所有团队都准备好。",
+    "categories": [
+      "language"
+    ],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "0acfe43e-07b1-4750-90d5-da4b76ed63ad",
+    "translation": "如果Rosa周五还没查完数据，就让Ben给她打个电话",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：条件时点、核对者Rosa、呼叫者Ben与接听者Rosa。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "0acfe43e-07b1-4750-90d5-da4b76ed63ad",
+    "translation": "如果Rosa周五还没查完数据，就让Ben给她打个电话。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：条件时点、核对者Rosa、呼叫者Ben与接听者Rosa。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "6b38fb41-763f-490c-b929-81c8c556c706",
+    "translation": "我不在的时候，请随时让我知道进展",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：keep in the loop取告知进展义，不新增承诺或期限。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "6b38fb41-763f-490c-b929-81c8c556c706",
+    "translation": "我不在的时候，请随时让我知道进展。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：keep in the loop取告知进展义，不新增承诺或期限。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "ebd0f49c-230e-49c1-8ac4-c1476eff0afe",
+    "translation": "我可能没理解你的意思。你是想让我们改期吗",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：不确定理解加澄清疑问；未确认改期。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "ebd0f49c-230e-49c1-8ac4-c1476eff0afe",
+    "translation": "我可能没理解你的意思。你是想让我们改期吗？",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：不确定理解加澄清疑问；未确认改期。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "fdcc9c38-e30c-4777-a20a-89daa106b172",
+    "translation": "保留They账户现状，对方会在五月份更新账户详情",
+    "reviewer": "AI",
+    "logic": {
+      "pass": false,
+      "reason": "保留账户现状范围大于保留名称的写法；she变为对方。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "她的指代被换成对方。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "保留账户现状范围大于保留名称的写法；she变为对方。",
+    "categories": [
+      "semantic",
+      "entity"
+    ]
+  },
+  {
+    "requestId": "fdcc9c38-e30c-4777-a20a-89daa106b172",
+    "translation": "保留They账户现状，对方会在五月份更新账户详情。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": false,
+      "reason": "保留账户现状范围大于保留名称的写法；she变为对方。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "她的指代被换成对方。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "保留账户现状范围大于保留名称的写法；she变为对方。",
+    "categories": [
+      "semantic",
+      "entity"
+    ],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "6d14f186-e856-4b4d-be90-dd13af45a464",
+    "translation": "我借了你的充电器，但Marta已经把她的还给你了",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：两件物品的所有者和动作方向不同。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "6d14f186-e856-4b4d-be90-dd13af45a464",
+    "translation": "我借了你的充电器，但Marta已经把她的还给你了。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：两件物品的所有者和动作方向不同。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "ddfbedd6-6a85-4cd1-a6c0-a76b502416b0",
+    "translation": "麻烦你请Omar转告Leah，把草稿发给Omar。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": false,
+      "reason": "把草稿收件人them指定为Omar。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "重复Omar并改变收件人指代。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "把草稿收件人them指定为Omar。",
+    "categories": [
+      "semantic",
+      "entity"
+    ],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "ddfbedd6-6a85-4cd1-a6c0-a76b502416b0",
+    "translation": "麻烦请Omar转告Leah，把草稿发给Omar。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": false,
+      "reason": "重试仍把收件人指定为Omar。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "重复Omar并改变收件人指代。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "重试仍把收件人指定为Omar。",
+    "categories": [
+      "semantic",
+      "entity"
+    ],
+    "candidateAttempt": 2
+  },
+  {
+    "requestId": "21ca359d-b3b2-4240-b419-34071b4e69b7",
+    "translation": "还没所有团队都准备好，所以先别发布那个计划",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：部分否定，不变成所有团队都没准备好；暂缓发布。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 3,
+    "colloquial": 3,
+    "issues": "还没所有团队都准备好语序生硬，应为还不是所有团队都准备好。",
+    "categories": [
+      "language"
+    ]
+  },
+  {
+    "requestId": "21ca359d-b3b2-4240-b419-34071b4e69b7",
+    "translation": "还没所有团队都准备好，所以先别发布那个计划。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：部分否定，不变成所有团队都没准备好；暂缓发布。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 3,
+    "colloquial": 3,
+    "issues": "还没所有团队都准备好语序生硬，应为还不是所有团队都准备好。",
+    "categories": [
+      "language"
+    ],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "a630f7d0-5e03-405c-a1fc-1b96688d1452",
+    "translation": "如果Rosa周五前还没核对完数据，就让Ben给她打个电话",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：条件时点、核对者Rosa、呼叫者Ben与接听者Rosa。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "a630f7d0-5e03-405c-a1fc-1b96688d1452",
+    "translation": "如果Rosa周五前还没核对完数据，就让Ben给她打个电话。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：条件时点、核对者Rosa、呼叫者Ben与接听者Rosa。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "27433f55-e029-4126-b6dd-45f35e0958ae",
+    "translation": "我不在的时候，请随时告知我相关进展",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：keep in the loop取告知进展义，不新增承诺或期限。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 3,
+    "issues": "请随时告知我相关进展偏书面汇报语体。",
+    "categories": [
+      "language"
+    ]
+  },
+  {
+    "requestId": "27433f55-e029-4126-b6dd-45f35e0958ae",
+    "translation": "我不在的时候，请随时告知我相关进展。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：keep in the loop取告知进展义，不新增承诺或期限。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 3,
+    "issues": "请随时告知我相关进展偏书面汇报语体。",
+    "categories": [
+      "language"
+    ],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "b37a5346-0982-4083-bb25-3503071e7881",
+    "translation": "我可能没理解你的意思。你是想让我们改一下预约时间吗",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：不确定理解加澄清疑问；未确认改期。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "b37a5346-0982-4083-bb25-3503071e7881",
+    "translation": "我可能没理解你的意思。你是想让我们改一下预约时间吗？",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：不确定理解加澄清疑问；未确认改期。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "efac6f29-b4ed-45ed-8339-58b15a0cad14",
+    "translation": "保留账户 They 的原样，对方会在五月份更新其详细信息",
+    "reviewer": "AI",
+    "logic": {
+      "pass": false,
+      "reason": "保留账户现状范围大于保留名称的写法；she变为对方。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "她的指代被换成对方。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "保留账户现状范围大于保留名称的写法；she变为对方。",
+    "categories": [
+      "semantic",
+      "entity"
+    ]
+  },
+  {
+    "requestId": "efac6f29-b4ed-45ed-8339-58b15a0cad14",
+    "translation": "They 账户保持现状，They 会在五月更新其详细信息。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": false,
+      "reason": "she变成账号They执行更新，混淆人物与账号。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "They重复并替换普通she。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "she变成账号They执行更新，混淆人物与账号。",
+    "categories": [
+      "semantic",
+      "entity"
+    ],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "efac6f29-b4ed-45ed-8339-58b15a0cad14",
+    "translation": "保留账户 They 的原样，对方会在五月份更新其详细信息。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": false,
+      "reason": "保留账户现状范围大于保留名称的写法；she变为对方。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "她的指代被换成对方。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "保留账户现状范围大于保留名称的写法；she变为对方。",
+    "categories": [
+      "semantic",
+      "entity"
+    ],
+    "candidateAttempt": 2
+  },
+  {
+    "requestId": "8718c18c-3581-490d-904f-1928bb7ea1b3",
+    "translation": "我借了你的充电器，但玛尔塔把她自己的还给你了",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：两件物品的所有者和动作方向不同。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "Marta被音译，姓名未原样保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "Marta被音译，姓名未原样保留。",
+    "categories": [
+      "entity"
+    ]
+  },
+  {
+    "requestId": "8718c18c-3581-490d-904f-1928bb7ea1b3",
+    "translation": "我借了你的充电器，但玛尔塔把她自己的还给你了。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：两件物品的所有者和动作方向不同。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "Marta被音译，姓名未原样保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "Marta被音译，姓名未原样保留。",
+    "categories": [
+      "entity"
+    ],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "3a17dd3b-593a-4e25-8797-545e53212129",
+    "translation": "你能让Omar告诉Leah把草稿发给他们吗",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：你→Omar→Leah→他们的完整委托链。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "3a17dd3b-593a-4e25-8797-545e53212129",
+    "translation": "你能让Omar告诉Leah把草稿发给他们吗？",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：你→Omar→Leah→他们的完整委托链。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "c10b7baa-3186-4c6e-9d6b-dede7b0fcf8f",
+    "translation": "不是所有团队都准备好了，所以暂时先不要发布计划",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：部分否定，不变成所有团队都没准备好；暂缓发布。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "c10b7baa-3186-4c6e-9d6b-dede7b0fcf8f",
+    "translation": "不是所有团队都准备好了，所以暂时先不要发布计划。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：部分否定，不变成所有团队都没准备好；暂缓发布。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "691c6760-b082-49f4-8526-3cb0fa8770dc",
+    "translation": "如果罗莎到周五还没核对数字，就让Ben给她打电话",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：条件时点、核对者Rosa、呼叫者Ben与接听者Rosa。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "Rosa被音译为罗莎。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "Rosa被音译为罗莎。",
+    "categories": [
+      "entity"
+    ]
+  },
+  {
+    "requestId": "691c6760-b082-49f4-8526-3cb0fa8770dc",
+    "translation": "如果罗莎到周五还没核对数字，就让Ben给她打电话。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：条件时点、核对者Rosa、呼叫者Ben与接听者Rosa。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "Rosa被音译为罗莎。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "Rosa被音译为罗莎。",
+    "categories": [
+      "entity"
+    ],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "6f04df7d-2d88-4757-9ee4-005d3b960a13",
+    "translation": "我不在的时候，你能随时告诉我进展情况吗",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：keep in the loop取告知进展义，不新增承诺或期限。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "6f04df7d-2d88-4757-9ee4-005d3b960a13",
+    "translation": "我不在的时候，你能随时告诉我进展情况吗？",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：keep in the loop取告知进展义，不新增承诺或期限。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "b5221f98-02ec-48dc-891c-1899eb9ee015",
+    "translation": "我可能没抓住你的意思。你是想让我们把预约改个时间吗",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：不确定理解加澄清疑问；未确认改期。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "b5221f98-02ec-48dc-891c-1899eb9ee015",
+    "translation": "我可能没抓住你的意思。你是想让我们把预约改个时间吗？",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：不确定理解加澄清疑问；未确认改期。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "0486c670-80df-4982-a463-52c7dcb9e3a6",
+    "translation": "保持账户 \"They\" 不变；她将在五月份更新该账户的详细信息",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：They是字面账户名，she普通代词，its为账户，May为月份。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "0486c670-80df-4982-a463-52c7dcb9e3a6",
+    "translation": "账户保持原样；她将在五月更新账户信息。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：They是字面账户名，she普通代词，its为账户，May为月份。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "账号字面名称They被漏掉。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "账号字面名称They被漏掉。",
+    "categories": [
+      "entity"
+    ],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "0486c670-80df-4982-a463-52c7dcb9e3a6",
+    "translation": "保持账户 \"They\" 不变；她将在五月份更新该账户的详细信息。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：They是字面账户名，she普通代词，its为账户，May为月份。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 2
+  },
+  {
+    "requestId": "e3c54dbd-809a-48f0-97b2-bbf4885b0eda",
+    "translation": "我借了你的充电器，但玛塔把她的还给你了",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：两件物品的所有者和动作方向不同。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "Marta被音译，姓名未原样保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "Marta被音译，姓名未原样保留。",
+    "categories": [
+      "entity"
+    ]
+  },
+  {
+    "requestId": "e3c54dbd-809a-48f0-97b2-bbf4885b0eda",
+    "translation": "我借了你的充电器，但玛塔把她的还给你了。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：两件物品的所有者和动作方向不同。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "Marta被音译，姓名未原样保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "Marta被音译，姓名未原样保留。",
+    "categories": [
+      "entity"
+    ],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "a30926cc-51e0-4b93-a947-e78dc81f94ca",
+    "translation": "你能让Omar告诉Leah把草稿发给他们吗",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：你→Omar→Leah→他们的完整委托链。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "a30926cc-51e0-4b93-a947-e78dc81f94ca",
+    "translation": "你能让Omar告诉Leah把草稿发给他们吗？",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：你→Omar→Leah→他们的完整委托链。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "cc8b9a08-3bd2-4e90-b118-7cf83b8d902c",
+    "translation": "并不是所有团队都准备好了，所以先不要发布计划",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：部分否定，不变成所有团队都没准备好；暂缓发布。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "cc8b9a08-3bd2-4e90-b118-7cf83b8d902c",
+    "translation": "并不是所有团队都准备好了，所以先不要发布计划。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：部分否定，不变成所有团队都没准备好；暂缓发布。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "a0363d29-e059-45fe-84f8-ce0ff4501a68",
+    "translation": "如果罗莎到周五还没核对数字，就让Ben给她打个电话",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：条件时点、核对者Rosa、呼叫者Ben与接听者Rosa。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "Rosa被音译为罗莎。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "Rosa被音译为罗莎。",
+    "categories": [
+      "entity"
+    ]
+  },
+  {
+    "requestId": "a0363d29-e059-45fe-84f8-ce0ff4501a68",
+    "translation": "如果罗莎到周五还没核对数字，就让Ben给她打个电话。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：条件时点、核对者Rosa、呼叫者Ben与接听者Rosa。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "Rosa被音译为罗莎。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "Rosa被音译为罗莎。",
+    "categories": [
+      "entity"
+    ],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "9b72e2e0-3784-43af-aca1-bf5a1f99dfa8",
+    "translation": "我不在的时候，能随时同步进展给我吗",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：keep in the loop取告知进展义，不新增承诺或期限。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "9b72e2e0-3784-43af-aca1-bf5a1f99dfa8",
+    "translation": "我不在的时候，能随时同步进展给我吗？",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：keep in the loop取告知进展义，不新增承诺或期限。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "020ce771-5bb6-427f-8723-510ddee74d94",
+    "translation": "我可能没明白你的意思。你是想让我们把预约改期吗",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：不确定理解加澄清疑问；未确认改期。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "020ce771-5bb6-427f-8723-510ddee74d94",
+    "translation": "我可能没明白你的意思。你是想让我们把预约改期吗？",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：不确定理解加澄清疑问；未确认改期。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "0f9821f0-768b-49de-96da-2cd9141c5185",
+    "translation": "账号“They”保持原样，她会在五月更新其详情",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：They是字面账户名，she普通代词，its为账户，May为月份。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "0f9821f0-768b-49de-96da-2cd9141c5185",
+    "translation": "账号“They”保持原样，她会在五月更新其详情。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：They是字面账户名，she普通代词，its为账户，May为月份。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  }
+]

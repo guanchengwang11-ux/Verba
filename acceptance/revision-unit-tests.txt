@@ -1,0 +1,99 @@
+
+> verba-workplace-translator@1.1.0 test
+> node scripts/check-i18n.mjs && node --test tests/*.test.mjs
+
+i18n check passed: 173 matching keys
+✔ acceptance requires an explicit, current, complete semantic review (0.6581ms)
+✔ a successful duplicate cannot hide a failed attempt in the acceptance gate (17.8028ms)
+✔ ordinary pronouns and capitalized nouns remain visible to the model (6.1265ms)
+✔ names require local grammatical context, including ambiguous modal spellings (1.5222ms)
+✔ quoted usernames, accounts and glossary terms protect spans, not spellings (0.4385ms)
+✔ restoration handles double-digit tokens and literal replacement characters (1.5901ms)
+✔ postprocessing preserves closing quotes and protected trailing punctuation (0.3615ms)
+✔ a personal name May does not inject a possibility constraint (4.882ms)
+✔ valid multi-time clauses and request nouns do not trigger semantic retries (3.4933ms)
+✔ singular report hints require a single-person introduction and simple contact event (0.8728ms)
+✔ currency amounts retain context while explicit literal instructions still win (2.0271ms)
+✔ replaces every entity in the reported failing sentence with program-level placeholders (5.3148ms)
+✔ detects names, multi-word names, brands, acronyms, accounts, and identifiers (1.771ms)
+✔ excludes common sentence starters, weekdays, and language names (0.1821ms)
+✔ restores exact and mildly altered placeholder formats (0.6926ms)
+✔ detects missing, duplicated, and leaked placeholders (0.42ms)
+✔ gives glossary preserve entries highest priority (0.3661ms)
+✔ preserves tokens while exposing typed original entity context (0.8245ms)
+✔ accepts equivalent amount, quantity, and localized date formatting (7.8977ms)
+✔ blocks changed amounts, currencies, quantities, and explicit dates (0.4173ms)
+✔ marks an unrecognized date expression as uncertain instead of fabricating certainty (0.2777ms)
+✔ recognizes spelled-out quantities across nouns and prefix currency codes (0.4783ms)
+✔ incomplete numeric extraction is uncertain, not a proven value reversal (0.2393ms)
+✔ mixed coefficients and Chinese scale units preserve currency values (1.019ms)
+{"event":"model_refresh","provider":"openai","discovered":2,"verified":1,"selected":"gpt-4o-mini","status":"ready"}
+✔ does not use the first listed model when policy blocks it (13.6249ms)
+{"event":"translation","provider":"openai","model":"model-a","success":false,"status":404,"retryNextModel":true}
+{"event":"translation","provider":"openai","model":"model-b","latencyMs":5,"usage":null,"success":true}
+✔ switches to a fallback after an invalid model response (6.6962ms)
+{"event":"translation_attempt","requestId":"e682e555-ff49-44f3-98a6-0323a0ac1ce9","timestamp":"2026-09-09T21:54:21.184Z","attempt":1,"provider":"openai","model":"model-a","result":"failed","stage":"provider_request","internalCode":"PROVIDER_UNAVAILABLE","httpStatus":503,"providerErrorCode":"","latencyMs":0,"modelSwitched":false,"willRetry":false,"retryReason":"model_fallback","success":false}
+{"event":"translation_attempt","requestId":"e682e555-ff49-44f3-98a6-0323a0ac1ce9","timestamp":"2026-09-09T21:54:21.185Z","attempt":2,"provider":"openai","model":"model-b","result":"success","stage":"provider_request","httpStatus":200,"providerErrorCode":"","latencyMs":5,"modelSwitched":true,"willRetry":false,"success":true}
+✔ switches immediately after a transient failure when a fallback exists (7.4862ms)
+{"event":"translation","provider":"openai","model":"model-a","latencyMs":5,"usage":null,"success":true}
+✔ retries one transient failure when no fallback model exists (765.6894ms)
+{"event":"translation_attempt","requestId":"01054a0e-d6bb-415c-b7fd-99a205f94467","timestamp":"2026-09-09T21:54:21.956Z","attempt":1,"provider":"openai","model":"model-a","result":"failed","stage":"provider_request","internalCode":"PROVIDER_UNAVAILABLE","httpStatus":401,"providerErrorCode":"","latencyMs":0,"modelSwitched":false,"willRetry":false,"retryReason":"","success":false}
+✔ does not switch models after an authorization failure (2.4774ms)
+{"event":"translation_attempt","requestId":"a243b064-419c-422d-9e8f-040de57634da","timestamp":"2026-09-09T21:54:21.958Z","attempt":1,"provider":"openai","model":"model-a","result":"failed","stage":"provider_request","internalCode":"PROVIDER_RATE_LIMIT","httpStatus":429,"providerErrorCode":"","latencyMs":0,"modelSwitched":false,"willRetry":false,"retryReason":"model_fallback","success":false}
+{"event":"translation_attempt","requestId":"a243b064-419c-422d-9e8f-040de57634da","timestamp":"2026-09-09T21:54:21.958Z","attempt":2,"provider":"openai","model":"model-b","result":"success","stage":"provider_request","httpStatus":200,"providerErrorCode":"","latencyMs":5,"modelSwitched":true,"willRetry":false,"success":true}
+✔ switches models immediately after rate limiting without an identical retry (3.6019ms)
+{"event":"translation_attempt","requestId":"540c3993-ed2a-4595-9f44-e966773cc221","timestamp":"2026-09-09T21:54:21.962Z","attempt":1,"provider":"openai","model":"model-a","result":"failed","stage":"provider_request","internalCode":"PROVIDER_UNAVAILABLE","httpStatus":503,"providerErrorCode":"","latencyMs":0,"modelSwitched":false,"willRetry":false,"retryReason":"model_fallback","success":false}
+{"event":"translation_attempt","requestId":"540c3993-ed2a-4595-9f44-e966773cc221","timestamp":"2026-09-09T21:54:21.962Z","attempt":2,"provider":"openai","model":"model-b","result":"failed","stage":"provider_request","internalCode":"PROVIDER_UNAVAILABLE","httpStatus":503,"providerErrorCode":"","latencyMs":0,"modelSwitched":true,"willRetry":false,"retryReason":"model_fallback","success":false}
+{"event":"translation_attempt","requestId":"540c3993-ed2a-4595-9f44-e966773cc221","timestamp":"2026-09-09T21:54:21.962Z","attempt":3,"provider":"openai","model":"model-c","result":"failed","stage":"provider_request","internalCode":"PROVIDER_UNAVAILABLE","httpStatus":503,"providerErrorCode":"","latencyMs":0,"modelSwitched":true,"willRetry":true,"retryReason":"PROVIDER_UNAVAILABLE","success":false}
+{"event":"translation_attempt","requestId":"540c3993-ed2a-4595-9f44-e966773cc221","timestamp":"2026-09-09T21:54:22.719Z","attempt":4,"provider":"openai","model":"model-c","result":"failed","stage":"provider_request","internalCode":"PROVIDER_UNAVAILABLE","httpStatus":503,"providerErrorCode":"","latencyMs":0,"modelSwitched":false,"willRetry":false,"retryReason":"","success":false}
+✔ shares a four-request budget across retries and model fallbacks (763.3027ms)
+✔ does not call or retry a provider after request cancellation (2.8441ms)
+{"event":"model_refresh","provider":"openai","discovered":1,"verified":1,"selected":"gpt-4o-mini","status":"ready"}
+✔ uses the verified cache before its 24-hour expiry (2.6187ms)
+✔ keeps the last verified model when model discovery fails (2.3888ms)
+✔ Gemini schema agrees with source-meaning-first instruction without an extra request (1.7222ms)
+✔ extracts the listener-to-David delegation frame (6.4126ms)
+✔ extracts ask, tell, remind, let, have, want, and need relationships (5.2154ms)
+✔ rejects turning an indirect request into direct address (1.3728ms)
+✔ accepts the correct listener-to-David relationship and English meaning (0.9839ms)
+✔ protects negation, time, condition, modality, and completion (2.1796ms)
+✔ builds a high-priority semantic instruction with hidden entity tokens (0.4513ms)
+✔ treats missing lexical evidence as uncertain warnings (0.4594ms)
+✔ allows natural order and polite paraphrases when roles remain intact (0.2446ms)
+✔ blocks explicit polarity, time-direction, modality, completion, and role reversals (0.9845ms)
+{"event":"translation_attempt","requestId":"f17df2be-a8fe-4aed-a47b-8a5e904659bf","timestamp":"2026-09-09T21:54:21.191Z","attempt":1,"provider":"gemini","model":"model-a","result":"failed","stage":"provider_request","internalCode":"PROVIDER_UNAVAILABLE","httpStatus":503,"providerErrorCode":"UNAVAILABLE","latencyMs":25,"willRetry":false}
+{"event":"translation_attempt","requestId":"f17df2be-a8fe-4aed-a47b-8a5e904659bf","timestamp":"2026-09-09T21:54:21.192Z","attempt":2,"provider":"gemini","model":"model-b","result":"success","stage":"provider_request","httpStatus":200,"latencyMs":20,"modelSwitched":true,"success":true}
+{"event":"translation_complete","requestId":"f17df2be-a8fe-4aed-a47b-8a5e904659bf","timestamp":"2026-09-09T21:54:21.192Z","provider":"gemini","model":"model-b","stage":"complete","success":true,"providerRequestCount":2,"totalLatencyMs":3}
+✔ classifies provider failures into distinct internal error codes (0.8897ms)
+✔ diagnostics record attempts and model switches without sensitive values (3.1743ms)
+✔ removes only trailing punctuation and whitespace (0.7334ms)
+✔ applies the same translation sanitizing to every provider response (0.7487ms)
+✔ keeps screen, history event, and clipboard inputs identical by returning one canonical translation (0.2101ms)
+✔ reports parse, shape, and empty-output failures separately (0.4413ms)
+{"event":"translation_validation_warning","requestId":"d91814e7-ce95-4310-9c2a-d0b950fc5c40","timestamp":"2026-09-09T21:54:21.267Z","validationAttempt":1,"provider":"gemini","stage":"policy_validation","severity":"warning","issueCodes":["speaker_role_missing"],"ruleIds":["SEM-UNCERTAIN-SPEAKER-ROLE-MISSING"],"disposition":"allow","success":true,"validationMs":0}
+{"event":"translation_validation_failed","requestId":"7c836158-21ef-4bcb-913f-36b91e85415c","timestamp":"2026-09-09T21:54:21.269Z","validationAttempt":1,"provider":"gemini","stage":"semantic_validation","internalCode":"SEMANTIC_VALIDATION_FAILED","willRegenerate":true,"severity":"critical","issueCodes":["currency_or_amount_changed"],"ruleIds":["FACT-CURRENCY-001"],"disposition":"block","retryReason":"SEMANTIC_VALIDATION_FAILED","success":false,"validationMs":0}
+{"event":"translation_validation_passed","requestId":"7c836158-21ef-4bcb-913f-36b91e85415c","timestamp":"2026-09-09T21:54:21.270Z","validationAttempt":2,"provider":"gemini","stage":"policy_validation","severity":"pass","issueCodes":[],"ruleIds":[],"disposition":"allow","success":true,"validationMs":1}
+✔ Team chat prompt defines neutral workplace chat without changing email style (1.5975ms)
+✔ removes preserve-exactly glossary entries from translation mappings (2.8091ms)
+✔ restores entities in all required English to Chinese examples (10.936ms)
+✔ preserves English names embedded in Chinese to English translation (2.9085ms)
+✔ preserves all requested participant relationships and factual constraints (2.1088ms)
+✔ regenerates when semantic roles change even if the entity is preserved (0.5751ms)
+✔ OpenAI, Gemini, and DeepSeek share the same entity restoration path (0.5299ms)
+✔ regenerates once if a placeholder is lost and never returns transliterated names (0.3299ms)
+✔ throws after one retry if placeholders remain missing (0.6218ms)
+✔ stops after one semantic regeneration and reports the semantic stage (0.478ms)
+✔ flags added regional slang as a non-blocking Team chat warning (0.235ms)
+✔ requires a leading name to remain a direct addressee (0.6223ms)
+✔ accepts ordinary Chinese equivalents of later today without a false semantic rejection (1.1389ms)
+✔ returns warning-only translations without a second provider call (3.4871ms)
+✔ retries a changed amount once with a targeted blocking rule (1.6366ms)
+✔ never returns a persistently changed amount after the repair limit (0.6833ms)
+ℹ tests 66
+ℹ suites 0
+ℹ pass 66
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1809.2786

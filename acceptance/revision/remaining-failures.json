@@ -1,0 +1,4759 @@
+[
+  {
+    "run": "revision-full36",
+    "id": 12,
+    "provider": "gemini",
+    "source": "My manager asked your assistant to contact their driver.",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "我的经理让你助理联系一下他的司机",
+    "englishMeaning": "My manager requested that your assistant get in touch with my manager's driver.",
+    "model": "gemini-3.1-flash-lite",
+    "requestId": "ed673475-d1c5-4cee-ad21-87d4c7aedbaf",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 4583,
+    "diagnostic": {
+      "requestId": "ed673475-d1c5-4cee-ad21-87d4c7aedbaf",
+      "timestamp": "2026-09-09T16:55:27.272Z",
+      "provider": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 0,
+      "totalLatencyMs": 4575,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "ed673475-d1c5-4cee-ad21-87d4c7aedbaf",
+          "timestamp": "2026-09-09T16:55:31.838Z",
+          "attempt": 1,
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 4565,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_passed",
+          "requestId": "ed673475-d1c5-4cee-ad21-87d4c7aedbaf",
+          "timestamp": "2026-09-09T16:55:31.847Z",
+          "validationAttempt": 1,
+          "provider": "gemini",
+          "stage": "policy_validation",
+          "severity": "pass",
+          "issueCodes": [],
+          "ruleIds": [],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "ed673475-d1c5-4cee-ad21-87d4c7aedbaf",
+          "timestamp": "2026-09-09T16:55:31.847Z",
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 4575
+        }
+      ]
+    },
+    "providerStatus": "degraded",
+    "review": {
+      "requestId": "ed673475-d1c5-4cee-ad21-87d4c7aedbaf",
+      "translation": "我的经理让你助理联系一下他的司机",
+      "reviewer": "AI",
+      "logic": {
+        "pass": false,
+        "reason": "their未指定性别，译成他的司机增加男性信息。"
+      },
+      "entities": {
+        "pass": false,
+        "reason": "司机所有者被写成男性他。"
+      },
+      "naturalness": 4,
+      "colloquial": 4,
+      "issues": "their未指定性别，译成他的司机增加男性信息。",
+      "categories": [
+        "semantic",
+        "entity"
+      ]
+    },
+    "stages": [
+      {
+        "id": 12,
+        "provider": "gemini",
+        "requestId": "ed673475-d1c5-4cee-ad21-87d4c7aedbaf",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "My manager asked your assistant to contact their driver.",
+          "entityMap": []
+        }
+      },
+      {
+        "id": 12,
+        "provider": "gemini",
+        "requestId": "ed673475-d1c5-4cee-ad21-87d4c7aedbaf",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"My manager requested that your assistant get in touch with my manager's driver.\",\n  \"translation\": \"我的经理让你助理联系一下他的司机。\"\n}",
+        "model": "gemini-3.1-flash-lite"
+      },
+      {
+        "id": 12,
+        "provider": "gemini",
+        "requestId": "ed673475-d1c5-4cee-ad21-87d4c7aedbaf",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "我的经理让你助理联系一下他的司机。"
+      },
+      {
+        "id": 12,
+        "provider": "gemini",
+        "requestId": "ed673475-d1c5-4cee-ad21-87d4c7aedbaf",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "我的经理让你助理联系一下他的司机",
+          "englishMeaning": "My manager requested that your assistant get in touch with my manager's driver."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-full36",
+    "id": 22,
+    "provider": "gemini",
+    "source": "If he hasn't replied by noon, ask her to call him.",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "如果他中午还没回复，就让她们给他打个电话",
+    "englishMeaning": "If the male subject has not provided a response before 12:00 PM, instruct the female subject to telephone the male subject.",
+    "model": "gemini-3.1-flash-lite",
+    "requestId": "4bc85026-6de7-42dd-a9ce-7ff71d416368",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 6491,
+    "diagnostic": {
+      "requestId": "4bc85026-6de7-42dd-a9ce-7ff71d416368",
+      "timestamp": "2026-09-09T16:57:21.733Z",
+      "provider": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 0,
+      "totalLatencyMs": 6486,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "4bc85026-6de7-42dd-a9ce-7ff71d416368",
+          "timestamp": "2026-09-09T16:57:28.214Z",
+          "attempt": 1,
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 6480,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_passed",
+          "requestId": "4bc85026-6de7-42dd-a9ce-7ff71d416368",
+          "timestamp": "2026-09-09T16:57:28.219Z",
+          "validationAttempt": 1,
+          "provider": "gemini",
+          "stage": "policy_validation",
+          "severity": "pass",
+          "issueCodes": [],
+          "ruleIds": [],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "4bc85026-6de7-42dd-a9ce-7ff71d416368",
+          "timestamp": "2026-09-09T16:57:28.219Z",
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 6486
+        }
+      ]
+    },
+    "providerStatus": "degraded",
+    "review": {
+      "requestId": "4bc85026-6de7-42dd-a9ce-7ff71d416368",
+      "translation": "如果他中午还没回复，就让她们给他打个电话",
+      "reviewer": "AI",
+      "logic": {
+        "pass": false,
+        "reason": "her单数被译成她们，改变执行电话动作的人数。"
+      },
+      "entities": {
+        "pass": false,
+        "reason": "她们应为她。"
+      },
+      "naturalness": 4,
+      "colloquial": 4,
+      "issues": "her单数被译成她们，改变执行电话动作的人数。",
+      "categories": [
+        "semantic",
+        "entity"
+      ]
+    },
+    "stages": [
+      {
+        "id": 22,
+        "provider": "gemini",
+        "requestId": "4bc85026-6de7-42dd-a9ce-7ff71d416368",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "If he hasn't replied by noon, ask her to call him.",
+          "entityMap": []
+        }
+      },
+      {
+        "id": 22,
+        "provider": "gemini",
+        "requestId": "4bc85026-6de7-42dd-a9ce-7ff71d416368",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"If the male subject has not provided a response before 12:00 PM, instruct the female subject to telephone the male subject.\",\n  \"translation\": \"如果他中午还没回复，就让她们给他打个电话。\"\n}",
+        "model": "gemini-3.1-flash-lite"
+      },
+      {
+        "id": 22,
+        "provider": "gemini",
+        "requestId": "4bc85026-6de7-42dd-a9ce-7ff71d416368",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "如果他中午还没回复，就让她们给他打个电话。"
+      },
+      {
+        "id": 22,
+        "provider": "gemini",
+        "requestId": "4bc85026-6de7-42dd-a9ce-7ff71d416368",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "如果他中午还没回复，就让她们给他打个电话",
+          "englishMeaning": "If the male subject has not provided a response before 12:00 PM, instruct the female subject to telephone the male subject."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-full36",
+    "id": 34,
+    "provider": "gemini",
+    "source": "Someone from support called me. They said they'd check it for us.",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "有个客服联系了我，说会帮我们查一下",
+    "englishMeaning": "A person from the support department contacted the speaker and promised that the support person would verify the matter on behalf of the speaker and their team.",
+    "model": "gemini-3.1-flash-lite",
+    "requestId": "32ff3d6b-d2f0-4c18-b237-7422b781b1b0",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 15410,
+    "diagnostic": {
+      "requestId": "32ff3d6b-d2f0-4c18-b237-7422b781b1b0",
+      "timestamp": "2026-09-09T16:59:44.674Z",
+      "provider": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 0,
+      "totalLatencyMs": 15406,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "32ff3d6b-d2f0-4c18-b237-7422b781b1b0",
+          "timestamp": "2026-09-09T17:00:00.074Z",
+          "attempt": 1,
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 15399,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_passed",
+          "requestId": "32ff3d6b-d2f0-4c18-b237-7422b781b1b0",
+          "timestamp": "2026-09-09T17:00:00.080Z",
+          "validationAttempt": 1,
+          "provider": "gemini",
+          "stage": "policy_validation",
+          "severity": "pass",
+          "issueCodes": [],
+          "ruleIds": [],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "32ff3d6b-d2f0-4c18-b237-7422b781b1b0",
+          "timestamp": "2026-09-09T17:00:00.080Z",
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 15406
+        }
+      ]
+    },
+    "providerStatus": "degraded",
+    "review": {
+      "requestId": "32ff3d6b-d2f0-4c18-b237-7422b781b1b0",
+      "translation": "有个客服联系了我，说会帮我们查一下",
+      "reviewer": "AI",
+      "logic": {
+        "pass": false,
+        "reason": "called me明确为电话沟通，联系了我省去了沟通方式；不是仅省略重复主语。"
+      },
+      "entities": {
+        "pass": true,
+        "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+      },
+      "naturalness": 4,
+      "colloquial": 4,
+      "issues": "called me明确为电话沟通，联系了我省去了沟通方式；不是仅省略重复主语。",
+      "categories": [
+        "semantic"
+      ]
+    },
+    "stages": [
+      {
+        "id": 34,
+        "provider": "gemini",
+        "requestId": "32ff3d6b-d2f0-4c18-b237-7422b781b1b0",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "Someone from support called me. They said they'd check it for us.",
+          "entityMap": []
+        }
+      },
+      {
+        "id": 34,
+        "provider": "gemini",
+        "requestId": "32ff3d6b-d2f0-4c18-b237-7422b781b1b0",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"A person from the support department contacted the speaker and promised that the support person would verify the matter on behalf of the speaker and their team.\",\n  \"translation\": \"有个客服联系了我，说会帮我们查一下。\"\n}",
+        "model": "gemini-3.1-flash-lite"
+      },
+      {
+        "id": 34,
+        "provider": "gemini",
+        "requestId": "32ff3d6b-d2f0-4c18-b237-7422b781b1b0",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "有个客服联系了我，说会帮我们查一下。"
+      },
+      {
+        "id": 34,
+        "provider": "gemini",
+        "requestId": "32ff3d6b-d2f0-4c18-b237-7422b781b1b0",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "有个客服联系了我，说会帮我们查一下",
+          "englishMeaning": "A person from the support department contacted the speaker and promised that the support person would verify the matter on behalf of the speaker and their team."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-ui",
+    "id": 6,
+    "provider": "deepseek",
+    "source": "May said she may join us later.",
+    "requestId": "b88b454e-7fec-476a-9ded-86c84ae2f9bf",
+    "translation": null,
+    "model": "deepseek-v4-flash",
+    "requestCount": 2,
+    "providerHttpRequestCount": 2,
+    "elapsedMs": 2566,
+    "errorCode": "ENTITY_VALIDATION_FAILED",
+    "diagnostic": {
+      "requestId": "b88b454e-7fec-476a-9ded-86c84ae2f9bf",
+      "timestamp": "2026-09-09T16:58:03.168Z",
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "status": "failed",
+      "errorCode": "ENTITY_VALIDATION_FAILED",
+      "stage": "entity_validation",
+      "httpStatus": 422,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 2,
+      "validationMs": 1,
+      "totalLatencyMs": 2566,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "b88b454e-7fec-476a-9ded-86c84ae2f9bf",
+          "timestamp": "2026-09-09T16:58:04.406Z",
+          "attempt": 1,
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1236,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_failed",
+          "requestId": "b88b454e-7fec-476a-9ded-86c84ae2f9bf",
+          "timestamp": "2026-09-09T16:58:04.413Z",
+          "validationAttempt": 1,
+          "provider": "deepseek",
+          "stage": "entity_validation",
+          "internalCode": "ENTITY_VALIDATION_FAILED",
+          "willRegenerate": true,
+          "severity": "critical",
+          "issueCodes": [
+            "protected_entity_mismatch"
+          ],
+          "ruleIds": [],
+          "disposition": "block",
+          "retryReason": "ENTITY_VALIDATION_FAILED",
+          "success": false,
+          "validationMs": 1
+        },
+        {
+          "event": "translation_attempt",
+          "requestId": "b88b454e-7fec-476a-9ded-86c84ae2f9bf",
+          "timestamp": "2026-09-09T16:58:05.727Z",
+          "attempt": 2,
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1313,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_failed",
+          "requestId": "b88b454e-7fec-476a-9ded-86c84ae2f9bf",
+          "timestamp": "2026-09-09T16:58:05.733Z",
+          "validationAttempt": 2,
+          "provider": "deepseek",
+          "stage": "entity_validation",
+          "internalCode": "ENTITY_VALIDATION_FAILED",
+          "willRegenerate": false,
+          "severity": "critical",
+          "issueCodes": [
+            "protected_entity_mismatch"
+          ],
+          "ruleIds": [],
+          "disposition": "block",
+          "retryReason": "retry_limit_reached",
+          "success": false,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_failed",
+          "requestId": "b88b454e-7fec-476a-9ded-86c84ae2f9bf",
+          "timestamp": "2026-09-09T16:58:05.734Z",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "stage": "entity_validation",
+          "internalCode": "ENTITY_VALIDATION_FAILED",
+          "httpStatus": 422,
+          "providerErrorCode": "",
+          "modelSwitched": false,
+          "success": false,
+          "providerRequestCount": 2,
+          "totalLatencyMs": 2566
+        }
+      ]
+    },
+    "stages": [
+      {
+        "id": 6,
+        "provider": "deepseek",
+        "requestId": "b88b454e-7fec-476a-9ded-86c84ae2f9bf",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "[[VERBA_ENTITY_0]] said she may join us later.",
+          "entityMap": [
+            {
+              "id": 0,
+              "token": "[[VERBA_ENTITY_0]]",
+              "original": "May",
+              "type": "possibleName",
+              "occurrenceCount": 1
+            }
+          ]
+        }
+      },
+      {
+        "id": 6,
+        "provider": "deepseek",
+        "requestId": "b88b454e-7fec-476a-9ded-86c84ae2f9bf",
+        "stage": "model_output",
+        "rawOutput": "{\"englishMeaning\":\"May said that she might join us at a later time.\",\"translation\":\"梅说，她可能晚点加入我们。\"}",
+        "model": "deepseek-v4-flash"
+      },
+      {
+        "id": 6,
+        "provider": "deepseek",
+        "requestId": "b88b454e-7fec-476a-9ded-86c84ae2f9bf",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "梅说，她可能晚点加入我们。"
+      },
+      {
+        "id": 6,
+        "provider": "deepseek",
+        "requestId": "b88b454e-7fec-476a-9ded-86c84ae2f9bf",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "梅说，她可能晚点加入我们",
+          "englishMeaning": "May said that she might join us at a later time."
+        }
+      },
+      {
+        "id": 6,
+        "provider": "deepseek",
+        "requestId": "b88b454e-7fec-476a-9ded-86c84ae2f9bf",
+        "stage": "model_output",
+        "rawOutput": "{\"englishMeaning\":\"May said she may join us later.\",\"translation\":\"梅说她可能稍后加入我们。\"}",
+        "model": "deepseek-v4-flash"
+      },
+      {
+        "id": 6,
+        "provider": "deepseek",
+        "requestId": "b88b454e-7fec-476a-9ded-86c84ae2f9bf",
+        "stage": "entity_restoration",
+        "attempt": 2,
+        "translation": "梅说她可能稍后加入我们。"
+      },
+      {
+        "id": 6,
+        "provider": "deepseek",
+        "requestId": "b88b454e-7fec-476a-9ded-86c84ae2f9bf",
+        "stage": "postprocess",
+        "attempt": 2,
+        "result": {
+          "translation": "梅说她可能稍后加入我们",
+          "englishMeaning": "May said she may join us later."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-ui",
+    "id": 36,
+    "provider": "deepseek",
+    "source": "Keep the username \"She\" unchanged, but translate the rest of her message.",
+    "requestId": "022e545a-671a-4839-94c7-830ab4ce8862",
+    "translation": null,
+    "model": "deepseek-v4-flash",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 1243,
+    "errorCode": "REQUEST_CANCELLED",
+    "diagnostic": {
+      "requestId": "022e545a-671a-4839-94c7-830ab4ce8862",
+      "timestamp": "2026-09-09T16:59:31.680Z",
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "status": "failed",
+      "errorCode": "REQUEST_CANCELLED",
+      "stage": "request_cancelled",
+      "httpStatus": 499,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 0,
+      "totalLatencyMs": 1243,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "022e545a-671a-4839-94c7-830ab4ce8862",
+          "timestamp": "2026-09-09T16:59:32.916Z",
+          "attempt": 1,
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1235,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_stage_failed",
+          "requestId": "022e545a-671a-4839-94c7-830ab4ce8862",
+          "timestamp": "2026-09-09T16:59:32.922Z",
+          "validationAttempt": 1,
+          "provider": "deepseek",
+          "stage": "output_parse",
+          "internalCode": "TRANSLATION_EMPTY",
+          "httpStatus": 422,
+          "providerErrorCode": "",
+          "willRegenerate": true,
+          "severity": "critical",
+          "success": false
+        },
+        {
+          "event": "translation_stage_failed",
+          "requestId": "022e545a-671a-4839-94c7-830ab4ce8862",
+          "timestamp": "2026-09-09T16:59:32.922Z",
+          "validationAttempt": 2,
+          "provider": "deepseek",
+          "stage": "request_cancelled",
+          "internalCode": "REQUEST_CANCELLED",
+          "httpStatus": 499,
+          "providerErrorCode": "",
+          "willRegenerate": false,
+          "severity": "critical",
+          "success": false
+        },
+        {
+          "event": "translation_failed",
+          "requestId": "022e545a-671a-4839-94c7-830ab4ce8862",
+          "timestamp": "2026-09-09T16:59:32.923Z",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "stage": "request_cancelled",
+          "internalCode": "REQUEST_CANCELLED",
+          "httpStatus": 499,
+          "providerErrorCode": "",
+          "modelSwitched": false,
+          "success": false,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 1243
+        }
+      ]
+    },
+    "stages": [
+      {
+        "id": 36,
+        "provider": "deepseek",
+        "requestId": "022e545a-671a-4839-94c7-830ab4ce8862",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "Keep the username \"[[VERBA_ENTITY_0]]\" unchanged, but translate the rest of her message.",
+          "entityMap": [
+            {
+              "id": 0,
+              "token": "[[VERBA_ENTITY_0]]",
+              "original": "She",
+              "type": "literal",
+              "occurrenceCount": 1
+            }
+          ]
+        }
+      },
+      {
+        "id": 36,
+        "provider": "deepseek",
+        "requestId": "022e545a-671a-4839-94c7-830ab4ce8862",
+        "stage": "model_output",
+        "rawOutput": "",
+        "model": "deepseek-v4-flash"
+      }
+    ]
+  },
+  {
+    "run": "revision-independent12",
+    "id": 107,
+    "provider": "gemini",
+    "source": "Not all the teams are ready, so do not publish the plan yet.",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "还没所有团队都准备好，所以先别发布那个计划",
+    "englishMeaning": "Because not every team is prepared, you should refrain from publishing the plan at this time.",
+    "model": "gemini-3.1-flash-lite",
+    "requestId": "990b9d2b-6c21-493b-9d28-216c7a4d11d5",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 5454,
+    "diagnostic": {
+      "requestId": "990b9d2b-6c21-493b-9d28-216c7a4d11d5",
+      "timestamp": "2026-09-09T17:02:29.138Z",
+      "provider": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 0,
+      "totalLatencyMs": 5447,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "990b9d2b-6c21-493b-9d28-216c7a4d11d5",
+          "timestamp": "2026-09-09T17:02:34.577Z",
+          "attempt": 1,
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 5437,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_passed",
+          "requestId": "990b9d2b-6c21-493b-9d28-216c7a4d11d5",
+          "timestamp": "2026-09-09T17:02:34.585Z",
+          "validationAttempt": 1,
+          "provider": "gemini",
+          "stage": "policy_validation",
+          "severity": "pass",
+          "issueCodes": [],
+          "ruleIds": [],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "990b9d2b-6c21-493b-9d28-216c7a4d11d5",
+          "timestamp": "2026-09-09T17:02:34.585Z",
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 5447
+        }
+      ]
+    },
+    "providerStatus": "degraded",
+    "review": {
+      "requestId": "990b9d2b-6c21-493b-9d28-216c7a4d11d5",
+      "translation": "还没所有团队都准备好，所以先别发布那个计划",
+      "reviewer": "AI",
+      "logic": {
+        "pass": true,
+        "reason": "逐句核对人物、动作、否定和条件：部分否定，不变成所有团队都没准备好；暂缓发布。"
+      },
+      "entities": {
+        "pass": true,
+        "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+      },
+      "naturalness": 3,
+      "colloquial": 3,
+      "issues": "还没所有团队都准备好语序生硬，应为还不是所有团队都准备好或还有团队没准备好。",
+      "categories": [
+        "language"
+      ]
+    },
+    "stages": [
+      {
+        "id": 107,
+        "provider": "gemini",
+        "requestId": "990b9d2b-6c21-493b-9d28-216c7a4d11d5",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "Not all the teams are ready, so do not publish the plan yet.",
+          "entityMap": []
+        }
+      },
+      {
+        "id": 107,
+        "provider": "gemini",
+        "requestId": "990b9d2b-6c21-493b-9d28-216c7a4d11d5",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"Because not every team is prepared, you should refrain from publishing the plan at this time.\",\n  \"translation\": \"还没所有团队都准备好，所以先别发布那个计划。\"\n}",
+        "model": "gemini-3.1-flash-lite"
+      },
+      {
+        "id": 107,
+        "provider": "gemini",
+        "requestId": "990b9d2b-6c21-493b-9d28-216c7a4d11d5",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "还没所有团队都准备好，所以先别发布那个计划。"
+      },
+      {
+        "id": 107,
+        "provider": "gemini",
+        "requestId": "990b9d2b-6c21-493b-9d28-216c7a4d11d5",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "还没所有团队都准备好，所以先别发布那个计划",
+          "englishMeaning": "Because not every team is prepared, you should refrain from publishing the plan at this time."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-independent12",
+    "id": 109,
+    "provider": "gemini",
+    "source": "Could you keep me in the loop while I am away?",
+    "status": "failed",
+    "httpStatus": 500,
+    "translation": null,
+    "englishMeaning": null,
+    "model": "gemini-3.1-flash-lite",
+    "requestId": "920c73c9-aec5-49fe-a37c-94863100ca66",
+    "requestCount": 2,
+    "providerHttpRequestCount": 2,
+    "elapsedMs": 2385,
+    "diagnostic": {
+      "requestId": "920c73c9-aec5-49fe-a37c-94863100ca66",
+      "timestamp": "2026-09-09T17:59:43.583Z",
+      "provider": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "status": "failed",
+      "errorCode": "PROVIDER_NETWORK_ERROR",
+      "stage": "provider_request",
+      "httpStatus": 0,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 2,
+      "validationMs": 0,
+      "totalLatencyMs": 1593,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "920c73c9-aec5-49fe-a37c-94863100ca66",
+          "timestamp": "2026-09-09T17:59:44.005Z",
+          "attempt": 1,
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "result": "failed",
+          "stage": "provider_request",
+          "internalCode": "PROVIDER_NETWORK_ERROR",
+          "httpStatus": 0,
+          "providerErrorCode": "",
+          "latencyMs": 420,
+          "modelSwitched": false,
+          "willRetry": true,
+          "retryReason": "PROVIDER_NETWORK_ERROR",
+          "success": false
+        },
+        {
+          "event": "translation_attempt",
+          "requestId": "920c73c9-aec5-49fe-a37c-94863100ca66",
+          "timestamp": "2026-09-09T17:59:44.903Z",
+          "attempt": 2,
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "result": "failed",
+          "stage": "provider_request",
+          "internalCode": "PROVIDER_NETWORK_ERROR",
+          "httpStatus": 0,
+          "providerErrorCode": "",
+          "latencyMs": 87,
+          "modelSwitched": false,
+          "willRetry": false,
+          "retryReason": "",
+          "success": false
+        },
+        {
+          "event": "translation_stage_failed",
+          "requestId": "920c73c9-aec5-49fe-a37c-94863100ca66",
+          "timestamp": "2026-09-09T17:59:45.175Z",
+          "validationAttempt": 1,
+          "provider": "gemini",
+          "stage": "provider_request",
+          "internalCode": "PROVIDER_NETWORK_ERROR",
+          "httpStatus": 0,
+          "providerErrorCode": "",
+          "willRegenerate": false,
+          "severity": "critical",
+          "success": false
+        },
+        {
+          "event": "translation_failed",
+          "requestId": "920c73c9-aec5-49fe-a37c-94863100ca66",
+          "timestamp": "2026-09-09T17:59:45.176Z",
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "stage": "provider_request",
+          "internalCode": "PROVIDER_NETWORK_ERROR",
+          "httpStatus": 0,
+          "providerErrorCode": "",
+          "modelSwitched": false,
+          "success": false,
+          "providerRequestCount": 2,
+          "totalLatencyMs": 1593
+        }
+      ]
+    },
+    "errorCode": "PROVIDER_NETWORK_ERROR",
+    "providerStatus": "degraded",
+    "stages": [
+      {
+        "id": 109,
+        "provider": "gemini",
+        "requestId": "920c73c9-aec5-49fe-a37c-94863100ca66",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "Could you keep me in the loop while I am away?",
+          "entityMap": []
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-independent12",
+    "id": 110,
+    "provider": "gemini",
+    "source": "I may have missed your point. Do you want us to move the appointment?",
+    "status": "failed",
+    "httpStatus": 500,
+    "translation": null,
+    "englishMeaning": null,
+    "model": "gemini-3.1-flash-lite",
+    "requestId": "711785fb-a2cc-4f91-92c3-6be49a45410b",
+    "requestCount": 2,
+    "providerHttpRequestCount": 2,
+    "elapsedMs": 1228,
+    "diagnostic": {
+      "requestId": "711785fb-a2cc-4f91-92c3-6be49a45410b",
+      "timestamp": "2026-09-09T21:07:53.790Z",
+      "provider": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "status": "failed",
+      "errorCode": "PROVIDER_NETWORK_ERROR",
+      "stage": "provider_request",
+      "httpStatus": 0,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 2,
+      "validationMs": 0,
+      "totalLatencyMs": 1118,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "711785fb-a2cc-4f91-92c3-6be49a45410b",
+          "timestamp": "2026-09-09T21:07:53.900Z",
+          "attempt": 1,
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "result": "failed",
+          "stage": "provider_request",
+          "internalCode": "PROVIDER_NETWORK_ERROR",
+          "httpStatus": 0,
+          "providerErrorCode": "",
+          "latencyMs": 68,
+          "modelSwitched": false,
+          "willRetry": true,
+          "retryReason": "PROVIDER_NETWORK_ERROR",
+          "success": false
+        },
+        {
+          "event": "translation_attempt",
+          "requestId": "711785fb-a2cc-4f91-92c3-6be49a45410b",
+          "timestamp": "2026-09-09T21:07:54.852Z",
+          "attempt": 2,
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "result": "failed",
+          "stage": "provider_request",
+          "internalCode": "PROVIDER_NETWORK_ERROR",
+          "httpStatus": 0,
+          "providerErrorCode": "",
+          "latencyMs": 180,
+          "modelSwitched": false,
+          "willRetry": false,
+          "retryReason": "",
+          "success": false
+        },
+        {
+          "event": "translation_stage_failed",
+          "requestId": "711785fb-a2cc-4f91-92c3-6be49a45410b",
+          "timestamp": "2026-09-09T21:07:54.908Z",
+          "validationAttempt": 1,
+          "provider": "gemini",
+          "stage": "provider_request",
+          "internalCode": "PROVIDER_NETWORK_ERROR",
+          "httpStatus": 0,
+          "providerErrorCode": "",
+          "willRegenerate": false,
+          "severity": "critical",
+          "success": false
+        },
+        {
+          "event": "translation_failed",
+          "requestId": "711785fb-a2cc-4f91-92c3-6be49a45410b",
+          "timestamp": "2026-09-09T21:07:54.908Z",
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "stage": "provider_request",
+          "internalCode": "PROVIDER_NETWORK_ERROR",
+          "httpStatus": 0,
+          "providerErrorCode": "",
+          "modelSwitched": false,
+          "success": false,
+          "providerRequestCount": 2,
+          "totalLatencyMs": 1118
+        }
+      ]
+    },
+    "errorCode": "PROVIDER_NETWORK_ERROR",
+    "providerStatus": "degraded",
+    "stages": [
+      {
+        "id": 110,
+        "provider": "gemini",
+        "requestId": "711785fb-a2cc-4f91-92c3-6be49a45410b",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "I may have missed your point. Do you want us to move the appointment?",
+          "entityMap": []
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-independent12",
+    "id": 112,
+    "provider": "gemini",
+    "source": "Keep the account \"They\" as written; she will update its details in May.",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "保持 They 账户原样，对方会在五月更新账户信息",
+    "englishMeaning": "Maintain the account They exactly as it is; They will perform an update to the account details during May.",
+    "model": "gemini-3.1-flash-lite",
+    "requestId": "6fa4c8e8-d36b-435e-98d1-f7e682fa802b",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 2590,
+    "diagnostic": {
+      "requestId": "6fa4c8e8-d36b-435e-98d1-f7e682fa802b",
+      "timestamp": "2026-09-09T21:08:08.897Z",
+      "provider": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 0,
+      "totalLatencyMs": 2163,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "6fa4c8e8-d36b-435e-98d1-f7e682fa802b",
+          "timestamp": "2026-09-09T21:08:10.782Z",
+          "attempt": 1,
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1754,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_passed",
+          "requestId": "6fa4c8e8-d36b-435e-98d1-f7e682fa802b",
+          "timestamp": "2026-09-09T21:08:11.015Z",
+          "validationAttempt": 1,
+          "provider": "gemini",
+          "stage": "policy_validation",
+          "severity": "pass",
+          "issueCodes": [],
+          "ruleIds": [],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "6fa4c8e8-d36b-435e-98d1-f7e682fa802b",
+          "timestamp": "2026-09-09T21:08:11.060Z",
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 2163
+        }
+      ]
+    },
+    "providerStatus": "degraded",
+    "review": {
+      "requestId": "6fa4c8e8-d36b-435e-98d1-f7e682fa802b",
+      "translation": "保持 They 账户原样，对方会在五月更新账户信息",
+      "reviewer": "AI",
+      "logic": {
+        "pass": false,
+        "reason": "明确的人称被弱化，且保持账户原样比保留账户名称的写法范围更宽。"
+      },
+      "entities": {
+        "pass": false,
+        "reason": "she已给出女性信息，却被写成对方。"
+      },
+      "naturalness": 4,
+      "colloquial": 4,
+      "issues": "明确的人称被弱化，且保持账户原样比保留账户名称的写法范围更宽。",
+      "categories": [
+        "semantic",
+        "entity"
+      ]
+    },
+    "stages": [
+      {
+        "id": 112,
+        "provider": "gemini",
+        "requestId": "6fa4c8e8-d36b-435e-98d1-f7e682fa802b",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "Keep the account \"[[VERBA_ENTITY_0]]\" as written; she will update its details in May.",
+          "entityMap": [
+            {
+              "id": 0,
+              "token": "[[VERBA_ENTITY_0]]",
+              "original": "They",
+              "type": "literal",
+              "occurrenceCount": 1
+            }
+          ]
+        }
+      },
+      {
+        "id": 112,
+        "provider": "gemini",
+        "requestId": "6fa4c8e8-d36b-435e-98d1-f7e682fa802b",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"Maintain the account [[VERBA_ENTITY_0]] exactly as it is; [[VERBA_ENTITY_0]] will perform an update to the account details during May.\",\n  \"translation\": \"保持 [[VERBA_ENTITY_0]] 账户原样，对方会在五月更新账户信息。\"\n}",
+        "model": "gemini-3.1-flash-lite"
+      },
+      {
+        "id": 112,
+        "provider": "gemini",
+        "requestId": "6fa4c8e8-d36b-435e-98d1-f7e682fa802b",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "保持 They 账户原样，对方会在五月更新账户信息。"
+      },
+      {
+        "id": 112,
+        "provider": "gemini",
+        "requestId": "6fa4c8e8-d36b-435e-98d1-f7e682fa802b",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "保持 They 账户原样，对方会在五月更新账户信息",
+          "englishMeaning": "Maintain the account They exactly as it is; They will perform an update to the account details during May."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-independent12",
+    "id": 102,
+    "provider": "deepseek",
+    "source": "I borrowed your charger, but Marta returned hers to you.",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "我借了你的充电器，但玛尔塔把她自己的还给你了",
+    "englishMeaning": "I borrowed your charger, and Marta returned her charger to you.",
+    "model": "deepseek-v4-flash",
+    "requestId": "04324878-877c-4f33-9cc8-a3784f757f35",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 1572,
+    "diagnostic": {
+      "requestId": "04324878-877c-4f33-9cc8-a3784f757f35",
+      "timestamp": "2026-09-09T21:08:13.012Z",
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 1,
+      "totalLatencyMs": 1457,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "04324878-877c-4f33-9cc8-a3784f757f35",
+          "timestamp": "2026-09-09T21:08:14.344Z",
+          "attempt": 1,
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1287,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_passed",
+          "requestId": "04324878-877c-4f33-9cc8-a3784f757f35",
+          "timestamp": "2026-09-09T21:08:14.464Z",
+          "validationAttempt": 1,
+          "provider": "deepseek",
+          "stage": "policy_validation",
+          "severity": "pass",
+          "issueCodes": [],
+          "ruleIds": [],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 1
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "04324878-877c-4f33-9cc8-a3784f757f35",
+          "timestamp": "2026-09-09T21:08:14.469Z",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 1457
+        }
+      ]
+    },
+    "providerStatus": "ready",
+    "review": {
+      "requestId": "04324878-877c-4f33-9cc8-a3784f757f35",
+      "translation": "我借了你的充电器，但玛尔塔把她自己的还给你了",
+      "reviewer": "AI",
+      "logic": {
+        "pass": true,
+        "reason": "逐句核对人物、动作、否定和条件：两件物品的所有者和动作方向不同。"
+      },
+      "entities": {
+        "pass": false,
+        "reason": "Marta被音译为玛尔塔。"
+      },
+      "naturalness": 4,
+      "colloquial": 4,
+      "issues": "Marta被音译为玛尔塔。",
+      "categories": [
+        "entity"
+      ]
+    },
+    "stages": [
+      {
+        "id": 102,
+        "provider": "deepseek",
+        "requestId": "04324878-877c-4f33-9cc8-a3784f757f35",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "I borrowed your charger, but Marta returned hers to you.",
+          "entityMap": []
+        }
+      },
+      {
+        "id": 102,
+        "provider": "deepseek",
+        "requestId": "04324878-877c-4f33-9cc8-a3784f757f35",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"I borrowed your charger, and Marta returned her charger to you.\",\n  \"translation\": \"我借了你的充电器，但玛尔塔把她自己的还给你了。\"\n}",
+        "model": "deepseek-v4-flash"
+      },
+      {
+        "id": 102,
+        "provider": "deepseek",
+        "requestId": "04324878-877c-4f33-9cc8-a3784f757f35",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "我借了你的充电器，但玛尔塔把她自己的还给你了。"
+      },
+      {
+        "id": 102,
+        "provider": "deepseek",
+        "requestId": "04324878-877c-4f33-9cc8-a3784f757f35",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "我借了你的充电器，但玛尔塔把她自己的还给你了",
+          "englishMeaning": "I borrowed your charger, and Marta returned her charger to you."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-independent12",
+    "id": 103,
+    "provider": "deepseek",
+    "source": "Could you ask Omar to tell Leah to send the draft to them?",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "你能让Omar告诉Leah把草稿发给他吗",
+    "englishMeaning": "The speaker asks the listener to request that Omar tell Leah to send the draft to Omar.",
+    "model": "deepseek-v4-flash",
+    "requestId": "e4cb34db-dce6-4680-9b45-77ba10719940",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 1292,
+    "diagnostic": {
+      "requestId": "e4cb34db-dce6-4680-9b45-77ba10719940",
+      "timestamp": "2026-09-09T21:08:14.503Z",
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 0,
+      "totalLatencyMs": 1287,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "e4cb34db-dce6-4680-9b45-77ba10719940",
+          "timestamp": "2026-09-09T21:08:15.783Z",
+          "attempt": 1,
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1276,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_passed",
+          "requestId": "e4cb34db-dce6-4680-9b45-77ba10719940",
+          "timestamp": "2026-09-09T21:08:15.790Z",
+          "validationAttempt": 1,
+          "provider": "deepseek",
+          "stage": "policy_validation",
+          "severity": "pass",
+          "issueCodes": [],
+          "ruleIds": [],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "e4cb34db-dce6-4680-9b45-77ba10719940",
+          "timestamp": "2026-09-09T21:08:15.790Z",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 1287
+        }
+      ]
+    },
+    "providerStatus": "ready",
+    "review": {
+      "requestId": "e4cb34db-dce6-4680-9b45-77ba10719940",
+      "translation": "你能让Omar告诉Leah把草稿发给他吗",
+      "reviewer": "AI",
+      "logic": {
+        "pass": false,
+        "reason": "草稿收件人的指代加入男性信息。"
+      },
+      "entities": {
+        "pass": false,
+        "reason": "them无男性限定，译成他擅加性别。"
+      },
+      "naturalness": 4,
+      "colloquial": 4,
+      "issues": "草稿收件人的指代加入男性信息。",
+      "categories": [
+        "semantic",
+        "entity"
+      ]
+    },
+    "stages": [
+      {
+        "id": 103,
+        "provider": "deepseek",
+        "requestId": "e4cb34db-dce6-4680-9b45-77ba10719940",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "Could you ask [[VERBA_ENTITY_0]] to tell [[VERBA_ENTITY_1]] to send the draft to them?",
+          "entityMap": [
+            {
+              "id": 0,
+              "token": "[[VERBA_ENTITY_0]]",
+              "original": "Omar",
+              "type": "possibleName",
+              "occurrenceCount": 1
+            },
+            {
+              "id": 1,
+              "token": "[[VERBA_ENTITY_1]]",
+              "original": "Leah",
+              "type": "possibleName",
+              "occurrenceCount": 1
+            }
+          ]
+        }
+      },
+      {
+        "id": 103,
+        "provider": "deepseek",
+        "requestId": "e4cb34db-dce6-4680-9b45-77ba10719940",
+        "stage": "model_output",
+        "rawOutput": "{\"englishMeaning\": \"The speaker asks the listener to request that Omar tell Leah to send the draft to Omar.\", \"translation\": \"你能让[[VERBA_ENTITY_0]]告诉[[VERBA_ENTITY_1]]把草稿发给他吗？\"}",
+        "model": "deepseek-v4-flash"
+      },
+      {
+        "id": 103,
+        "provider": "deepseek",
+        "requestId": "e4cb34db-dce6-4680-9b45-77ba10719940",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "你能让Omar告诉Leah把草稿发给他吗？"
+      },
+      {
+        "id": 103,
+        "provider": "deepseek",
+        "requestId": "e4cb34db-dce6-4680-9b45-77ba10719940",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "你能让Omar告诉Leah把草稿发给他吗",
+          "englishMeaning": "The speaker asks the listener to request that Omar tell Leah to send the draft to Omar."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-independent12",
+    "id": 108,
+    "provider": "deepseek",
+    "source": "If Rosa has not checked the figures by Friday, ask Ben to call her.",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "如果罗莎到周五还没核对数据，就让Ben给她打电话",
+    "englishMeaning": "The speaker instructs the listener that if Rosa has not reviewed the figures by Friday, the listener should ask Ben to phone Rosa.",
+    "model": "deepseek-v4-flash",
+    "requestId": "2f6e8701-e8dc-4455-a6a1-1c751b1bef67",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 1238,
+    "diagnostic": {
+      "requestId": "2f6e8701-e8dc-4455-a6a1-1c751b1bef67",
+      "timestamp": "2026-09-09T21:08:20.254Z",
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 0,
+      "totalLatencyMs": 1225,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "2f6e8701-e8dc-4455-a6a1-1c751b1bef67",
+          "timestamp": "2026-09-09T21:08:21.474Z",
+          "attempt": 1,
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1219,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_passed",
+          "requestId": "2f6e8701-e8dc-4455-a6a1-1c751b1bef67",
+          "timestamp": "2026-09-09T21:08:21.479Z",
+          "validationAttempt": 1,
+          "provider": "deepseek",
+          "stage": "policy_validation",
+          "severity": "pass",
+          "issueCodes": [],
+          "ruleIds": [],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "2f6e8701-e8dc-4455-a6a1-1c751b1bef67",
+          "timestamp": "2026-09-09T21:08:21.479Z",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 1225
+        }
+      ]
+    },
+    "providerStatus": "ready",
+    "review": {
+      "requestId": "2f6e8701-e8dc-4455-a6a1-1c751b1bef67",
+      "translation": "如果罗莎到周五还没核对数据，就让Ben给她打电话",
+      "reviewer": "AI",
+      "logic": {
+        "pass": true,
+        "reason": "逐句核对人物、动作、否定和条件：条件时点、核对者Rosa、呼叫者Ben与接听者Rosa。"
+      },
+      "entities": {
+        "pass": false,
+        "reason": "Rosa被音译为罗莎；Ben正确保留。"
+      },
+      "naturalness": 4,
+      "colloquial": 4,
+      "issues": "Rosa被音译为罗莎；Ben正确保留。",
+      "categories": [
+        "entity"
+      ]
+    },
+    "stages": [
+      {
+        "id": 108,
+        "provider": "deepseek",
+        "requestId": "2f6e8701-e8dc-4455-a6a1-1c751b1bef67",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "If Rosa has not checked the figures by Friday, ask [[VERBA_ENTITY_0]] to call her.",
+          "entityMap": [
+            {
+              "id": 0,
+              "token": "[[VERBA_ENTITY_0]]",
+              "original": "Ben",
+              "type": "possibleName",
+              "occurrenceCount": 1
+            }
+          ]
+        }
+      },
+      {
+        "id": 108,
+        "provider": "deepseek",
+        "requestId": "2f6e8701-e8dc-4455-a6a1-1c751b1bef67",
+        "stage": "model_output",
+        "rawOutput": "{\"englishMeaning\": \"The speaker instructs the listener that if Rosa has not reviewed the figures by Friday, the listener should ask Ben to phone Rosa.\", \"translation\": \"如果罗莎到周五还没核对数据，就让[[VERBA_ENTITY_0]]给她打电话。\"}",
+        "model": "deepseek-v4-flash"
+      },
+      {
+        "id": 108,
+        "provider": "deepseek",
+        "requestId": "2f6e8701-e8dc-4455-a6a1-1c751b1bef67",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "如果罗莎到周五还没核对数据，就让Ben给她打电话。"
+      },
+      {
+        "id": 108,
+        "provider": "deepseek",
+        "requestId": "2f6e8701-e8dc-4455-a6a1-1c751b1bef67",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "如果罗莎到周五还没核对数据，就让Ben给她打电话",
+          "englishMeaning": "The speaker instructs the listener that if Rosa has not reviewed the figures by Friday, the listener should ask Ben to phone Rosa."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-two-repeats",
+    "id": 2,
+    "provider": "gemini",
+    "source": "They asked us to tell you that the meeting had been canceled.",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "他们让我转告你，会议取消了",
+    "englishMeaning": "They requested that we inform you that the meeting is canceled.",
+    "model": "gemini-3.1-flash-lite",
+    "requestId": "9166d605-c034-455d-9e1d-e17a71e98d05",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 2134,
+    "diagnostic": {
+      "requestId": "9166d605-c034-455d-9e1d-e17a71e98d05",
+      "timestamp": "2026-09-09T21:42:41.395Z",
+      "provider": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 0,
+      "totalLatencyMs": 2126,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "9166d605-c034-455d-9e1d-e17a71e98d05",
+          "timestamp": "2026-09-09T21:42:43.514Z",
+          "attempt": 1,
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 2114,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_warning",
+          "requestId": "9166d605-c034-455d-9e1d-e17a71e98d05",
+          "timestamp": "2026-09-09T21:42:43.520Z",
+          "validationAttempt": 1,
+          "provider": "gemini",
+          "stage": "policy_validation",
+          "severity": "warning",
+          "issueCodes": [
+            "meaning_completion_missing"
+          ],
+          "ruleIds": [
+            "SEM-UNCERTAIN-MEANING-COMPLETION-MISSING"
+          ],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "9166d605-c034-455d-9e1d-e17a71e98d05",
+          "timestamp": "2026-09-09T21:42:43.521Z",
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 2126
+        }
+      ]
+    },
+    "providerStatus": "degraded",
+    "review": {
+      "requestId": "9166d605-c034-455d-9e1d-e17a71e98d05",
+      "translation": "他们让我转告你，会议取消了",
+      "reviewer": "AI",
+      "logic": {
+        "pass": false,
+        "reason": "us被译为我，转告者从我们变为单个说话者。"
+      },
+      "entities": {
+        "pass": false,
+        "reason": "我们变为我。"
+      },
+      "naturalness": 4,
+      "colloquial": 4,
+      "issues": "us被译为我，转告者从我们变为单个说话者。",
+      "categories": [
+        "semantic",
+        "entity"
+      ]
+    },
+    "stages": [
+      {
+        "id": 2,
+        "provider": "gemini",
+        "requestId": "9166d605-c034-455d-9e1d-e17a71e98d05",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "They asked us to tell you that the meeting had been canceled.",
+          "entityMap": []
+        }
+      },
+      {
+        "id": 2,
+        "provider": "gemini",
+        "requestId": "9166d605-c034-455d-9e1d-e17a71e98d05",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"They requested that we inform you that the meeting is canceled.\",\n  \"translation\": \"他们让我转告你，会议取消了。\"\n}",
+        "model": "gemini-3.1-flash-lite"
+      },
+      {
+        "id": 2,
+        "provider": "gemini",
+        "requestId": "9166d605-c034-455d-9e1d-e17a71e98d05",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "他们让我转告你，会议取消了。"
+      },
+      {
+        "id": 2,
+        "provider": "gemini",
+        "requestId": "9166d605-c034-455d-9e1d-e17a71e98d05",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "他们让我转告你，会议取消了",
+          "englishMeaning": "They requested that we inform you that the meeting is canceled."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-two-repeats",
+    "id": 12,
+    "provider": "gemini",
+    "source": "My manager asked your assistant to contact their driver.",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "我经理让您的助理联系一下他（她）的司机",
+    "englishMeaning": "My manager requested that your assistant get in touch with my manager's driver.",
+    "model": "gemini-3.1-flash-lite",
+    "requestId": "8c277a9e-2416-4cb5-b85c-a4600a33f6df",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 1377,
+    "diagnostic": {
+      "requestId": "8c277a9e-2416-4cb5-b85c-a4600a33f6df",
+      "timestamp": "2026-09-09T21:43:11.806Z",
+      "provider": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 0,
+      "totalLatencyMs": 1372,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "8c277a9e-2416-4cb5-b85c-a4600a33f6df",
+          "timestamp": "2026-09-09T21:43:13.173Z",
+          "attempt": 1,
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1366,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_passed",
+          "requestId": "8c277a9e-2416-4cb5-b85c-a4600a33f6df",
+          "timestamp": "2026-09-09T21:43:13.178Z",
+          "validationAttempt": 1,
+          "provider": "gemini",
+          "stage": "policy_validation",
+          "severity": "pass",
+          "issueCodes": [],
+          "ruleIds": [],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "8c277a9e-2416-4cb5-b85c-a4600a33f6df",
+          "timestamp": "2026-09-09T21:43:13.178Z",
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 1372
+        }
+      ]
+    },
+    "providerStatus": "degraded",
+    "review": {
+      "requestId": "8c277a9e-2416-4cb5-b85c-a4600a33f6df",
+      "translation": "我经理让您的助理联系一下他（她）的司机",
+      "reviewer": "AI",
+      "logic": {
+        "pass": true,
+        "reason": "逐句核对人物、动作、否定和条件：经理、助理、司机的所属关系正确。"
+      },
+      "entities": {
+        "pass": true,
+        "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+      },
+      "naturalness": 3,
+      "colloquial": 3,
+      "issues": "他（她）的司机带括号犹疑，不是自然可直接发送的同事表达。",
+      "categories": [
+        "language"
+      ]
+    },
+    "stages": [
+      {
+        "id": 12,
+        "provider": "gemini",
+        "requestId": "8c277a9e-2416-4cb5-b85c-a4600a33f6df",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "My manager asked your assistant to contact their driver.",
+          "entityMap": []
+        }
+      },
+      {
+        "id": 12,
+        "provider": "gemini",
+        "requestId": "8c277a9e-2416-4cb5-b85c-a4600a33f6df",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"My manager requested that your assistant get in touch with my manager's driver.\",\n  \"translation\": \"我经理让您的助理联系一下他（她）的司机。\"\n}",
+        "model": "gemini-3.1-flash-lite"
+      },
+      {
+        "id": 12,
+        "provider": "gemini",
+        "requestId": "8c277a9e-2416-4cb5-b85c-a4600a33f6df",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "我经理让您的助理联系一下他（她）的司机。"
+      },
+      {
+        "id": 12,
+        "provider": "gemini",
+        "requestId": "8c277a9e-2416-4cb5-b85c-a4600a33f6df",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "我经理让您的助理联系一下他（她）的司机",
+          "englishMeaning": "My manager requested that your assistant get in touch with my manager's driver."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-two-repeats",
+    "id": 27,
+    "provider": "gemini",
+    "source": "You don't owe me anything; I owe you NGN 25,000.",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "你不需要付我什么，我欠你 25,000 NGN",
+    "englishMeaning": "The speaker states that the listener has no debt to the speaker, but the speaker has a debt of 25,000 NGN to the listener.",
+    "model": "gemini-3.1-flash-lite",
+    "requestId": "9a35ba41-3f00-48a8-858f-fe411f4f2512",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 1365,
+    "diagnostic": {
+      "requestId": "9a35ba41-3f00-48a8-858f-fe411f4f2512",
+      "timestamp": "2026-09-09T21:44:00.285Z",
+      "provider": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 1,
+      "totalLatencyMs": 1358,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "9a35ba41-3f00-48a8-858f-fe411f4f2512",
+          "timestamp": "2026-09-09T21:44:01.637Z",
+          "attempt": 1,
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1350,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_warning",
+          "requestId": "9a35ba41-3f00-48a8-858f-fe411f4f2512",
+          "timestamp": "2026-09-09T21:44:01.643Z",
+          "validationAttempt": 1,
+          "provider": "gemini",
+          "stage": "policy_validation",
+          "severity": "warning",
+          "issueCodes": [
+            "meaning_negation_missing"
+          ],
+          "ruleIds": [
+            "SEM-UNCERTAIN-MEANING-NEGATION-MISSING"
+          ],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 1
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "9a35ba41-3f00-48a8-858f-fe411f4f2512",
+          "timestamp": "2026-09-09T21:44:01.643Z",
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 1358
+        }
+      ]
+    },
+    "providerStatus": "degraded",
+    "review": {
+      "requestId": "9a35ba41-3f00-48a8-858f-fe411f4f2512",
+      "translation": "你不需要付我什么，我欠你 25,000 NGN",
+      "reviewer": "AI",
+      "logic": {
+        "pass": false,
+        "reason": "不需要付我什么未准确断言没有债务。"
+      },
+      "entities": {
+        "pass": true,
+        "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+      },
+      "naturalness": 4,
+      "colloquial": 4,
+      "issues": "不需要付我什么未准确断言没有债务。",
+      "categories": [
+        "semantic"
+      ]
+    },
+    "stages": [
+      {
+        "id": 27,
+        "provider": "gemini",
+        "requestId": "9a35ba41-3f00-48a8-858f-fe411f4f2512",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "You don't owe me anything; I owe you NGN 25,000.",
+          "entityMap": []
+        }
+      },
+      {
+        "id": 27,
+        "provider": "gemini",
+        "requestId": "9a35ba41-3f00-48a8-858f-fe411f4f2512",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"The speaker states that the listener has no debt to the speaker, but the speaker has a debt of 25,000 NGN to the listener.\",\n  \"translation\": \"你不需要付我什么，我欠你 25,000 NGN。\"\n}",
+        "model": "gemini-3.1-flash-lite"
+      },
+      {
+        "id": 27,
+        "provider": "gemini",
+        "requestId": "9a35ba41-3f00-48a8-858f-fe411f4f2512",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "你不需要付我什么，我欠你 25,000 NGN。"
+      },
+      {
+        "id": 27,
+        "provider": "gemini",
+        "requestId": "9a35ba41-3f00-48a8-858f-fe411f4f2512",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "你不需要付我什么，我欠你 25,000 NGN",
+          "englishMeaning": "The speaker states that the listener has no debt to the speaker, but the speaker has a debt of 25,000 NGN to the listener."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-two-repeats",
+    "id": 34,
+    "provider": "gemini",
+    "source": "Someone from support called me. They said they'd check it for us.",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "刚才有位客服给我打电话，说会帮我们查一下",
+    "englishMeaning": "A person representing support services contacted the speaker by phone. This person stated that they would verify the matter on behalf of the speaker and their team.",
+    "model": "gemini-3.1-flash-lite",
+    "requestId": "59143925-04fa-40bd-9818-2dda3839138b",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 1524,
+    "diagnostic": {
+      "requestId": "59143925-04fa-40bd-9818-2dda3839138b",
+      "timestamp": "2026-09-09T21:44:35.861Z",
+      "provider": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 0,
+      "totalLatencyMs": 1518,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "59143925-04fa-40bd-9818-2dda3839138b",
+          "timestamp": "2026-09-09T21:44:37.373Z",
+          "attempt": 1,
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1511,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_passed",
+          "requestId": "59143925-04fa-40bd-9818-2dda3839138b",
+          "timestamp": "2026-09-09T21:44:37.378Z",
+          "validationAttempt": 1,
+          "provider": "gemini",
+          "stage": "policy_validation",
+          "severity": "pass",
+          "issueCodes": [],
+          "ruleIds": [],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "59143925-04fa-40bd-9818-2dda3839138b",
+          "timestamp": "2026-09-09T21:44:37.379Z",
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 1518
+        }
+      ]
+    },
+    "providerStatus": "degraded",
+    "review": {
+      "requestId": "59143925-04fa-40bd-9818-2dda3839138b",
+      "translation": "刚才有位客服给我打电话，说会帮我们查一下",
+      "reviewer": "AI",
+      "logic": {
+        "pass": false,
+        "reason": "刚才增加了原文没有的近时信息。"
+      },
+      "entities": {
+        "pass": true,
+        "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+      },
+      "naturalness": 4,
+      "colloquial": 4,
+      "issues": "刚才增加了原文没有的近时信息。",
+      "categories": [
+        "semantic"
+      ]
+    },
+    "stages": [
+      {
+        "id": 34,
+        "provider": "gemini",
+        "requestId": "59143925-04fa-40bd-9818-2dda3839138b",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "Someone from support called me. They said they'd check it for us.",
+          "entityMap": []
+        }
+      },
+      {
+        "id": 34,
+        "provider": "gemini",
+        "requestId": "59143925-04fa-40bd-9818-2dda3839138b",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"A person representing support services contacted the speaker by phone. This person stated that they would verify the matter on behalf of the speaker and their team.\",\n  \"translation\": \"刚才有位客服给我打电话，说会帮我们查一下。\"\n}",
+        "model": "gemini-3.1-flash-lite"
+      },
+      {
+        "id": 34,
+        "provider": "gemini",
+        "requestId": "59143925-04fa-40bd-9818-2dda3839138b",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "刚才有位客服给我打电话，说会帮我们查一下。"
+      },
+      {
+        "id": 34,
+        "provider": "gemini",
+        "requestId": "59143925-04fa-40bd-9818-2dda3839138b",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "刚才有位客服给我打电话，说会帮我们查一下",
+          "englishMeaning": "A person representing support services contacted the speaker by phone. This person stated that they would verify the matter on behalf of the speaker and their team."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-two-repeats",
+    "id": 12,
+    "provider": "gemini",
+    "source": "My manager asked your assistant to contact their driver.",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "我经理请你的助理联系一下他的司机",
+    "englishMeaning": "My manager requested that your assistant get in touch with my manager's driver.",
+    "model": "gemini-3.1-flash-lite",
+    "requestId": "8e8bf0d9-50d0-45b0-a75e-b3456bafb5fa",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 1495,
+    "diagnostic": {
+      "requestId": "8e8bf0d9-50d0-45b0-a75e-b3456bafb5fa",
+      "timestamp": "2026-09-09T21:45:31.205Z",
+      "provider": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 0,
+      "totalLatencyMs": 1488,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "8e8bf0d9-50d0-45b0-a75e-b3456bafb5fa",
+          "timestamp": "2026-09-09T21:45:32.688Z",
+          "attempt": 1,
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1482,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_passed",
+          "requestId": "8e8bf0d9-50d0-45b0-a75e-b3456bafb5fa",
+          "timestamp": "2026-09-09T21:45:32.693Z",
+          "validationAttempt": 1,
+          "provider": "gemini",
+          "stage": "policy_validation",
+          "severity": "pass",
+          "issueCodes": [],
+          "ruleIds": [],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "8e8bf0d9-50d0-45b0-a75e-b3456bafb5fa",
+          "timestamp": "2026-09-09T21:45:32.693Z",
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 1488
+        }
+      ]
+    },
+    "providerStatus": "degraded",
+    "review": {
+      "requestId": "8e8bf0d9-50d0-45b0-a75e-b3456bafb5fa",
+      "translation": "我经理请你的助理联系一下他的司机",
+      "reviewer": "AI",
+      "logic": {
+        "pass": false,
+        "reason": "their未指定性别，译成他的司机加入男性信息。"
+      },
+      "entities": {
+        "pass": false,
+        "reason": "他的加入男性信息。"
+      },
+      "naturalness": 4,
+      "colloquial": 4,
+      "issues": "their未指定性别，译成他的司机加入男性信息。",
+      "categories": [
+        "semantic",
+        "entity"
+      ]
+    },
+    "stages": [
+      {
+        "id": 12,
+        "provider": "gemini",
+        "requestId": "8e8bf0d9-50d0-45b0-a75e-b3456bafb5fa",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "My manager asked your assistant to contact their driver.",
+          "entityMap": []
+        }
+      },
+      {
+        "id": 12,
+        "provider": "gemini",
+        "requestId": "8e8bf0d9-50d0-45b0-a75e-b3456bafb5fa",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"My manager requested that your assistant get in touch with my manager's driver.\",\n  \"translation\": \"我经理请你的助理联系一下他的司机。\"\n}",
+        "model": "gemini-3.1-flash-lite"
+      },
+      {
+        "id": 12,
+        "provider": "gemini",
+        "requestId": "8e8bf0d9-50d0-45b0-a75e-b3456bafb5fa",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "我经理请你的助理联系一下他的司机。"
+      },
+      {
+        "id": 12,
+        "provider": "gemini",
+        "requestId": "8e8bf0d9-50d0-45b0-a75e-b3456bafb5fa",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "我经理请你的助理联系一下他的司机",
+          "englishMeaning": "My manager requested that your assistant get in touch with my manager's driver."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-two-repeats",
+    "id": 24,
+    "provider": "gemini",
+    "source": "Unless you tell me otherwise, I'll use the latest version.",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "除非你另有指示，否则我将使用最新版本",
+    "englishMeaning": "If you do not instruct me differently, I will proceed using the most recent version.",
+    "model": "gemini-3.1-flash-lite",
+    "requestId": "72af53ad-25fa-4cfc-acff-53870e2d21f4",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 1409,
+    "diagnostic": {
+      "requestId": "72af53ad-25fa-4cfc-acff-53870e2d21f4",
+      "timestamp": "2026-09-09T21:46:14.847Z",
+      "provider": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 0,
+      "totalLatencyMs": 1403,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "72af53ad-25fa-4cfc-acff-53870e2d21f4",
+          "timestamp": "2026-09-09T21:46:16.244Z",
+          "attempt": 1,
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1396,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_passed",
+          "requestId": "72af53ad-25fa-4cfc-acff-53870e2d21f4",
+          "timestamp": "2026-09-09T21:46:16.250Z",
+          "validationAttempt": 1,
+          "provider": "gemini",
+          "stage": "policy_validation",
+          "severity": "pass",
+          "issueCodes": [],
+          "ruleIds": [],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "72af53ad-25fa-4cfc-acff-53870e2d21f4",
+          "timestamp": "2026-09-09T21:46:16.250Z",
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 1403
+        }
+      ]
+    },
+    "providerStatus": "degraded",
+    "review": {
+      "requestId": "72af53ad-25fa-4cfc-acff-53870e2d21f4",
+      "translation": "除非你另有指示，否则我将使用最新版本",
+      "reviewer": "AI",
+      "logic": {
+        "pass": true,
+        "reason": "逐句核对人物、动作、否定和条件：默认行为及例外条件正确。"
+      },
+      "entities": {
+        "pass": true,
+        "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+      },
+      "naturalness": 4,
+      "colloquial": 3,
+      "issues": "否则我将使用最新版本偏通知/公文语体。",
+      "categories": [
+        "language"
+      ]
+    },
+    "stages": [
+      {
+        "id": 24,
+        "provider": "gemini",
+        "requestId": "72af53ad-25fa-4cfc-acff-53870e2d21f4",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "Unless you tell me otherwise, I'll use the latest version.",
+          "entityMap": []
+        }
+      },
+      {
+        "id": 24,
+        "provider": "gemini",
+        "requestId": "72af53ad-25fa-4cfc-acff-53870e2d21f4",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"If you do not instruct me differently, I will proceed using the most recent version.\",\n  \"translation\": \"除非你另有指示，否则我将使用最新版本。\"\n}",
+        "model": "gemini-3.1-flash-lite"
+      },
+      {
+        "id": 24,
+        "provider": "gemini",
+        "requestId": "72af53ad-25fa-4cfc-acff-53870e2d21f4",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "除非你另有指示，否则我将使用最新版本。"
+      },
+      {
+        "id": 24,
+        "provider": "gemini",
+        "requestId": "72af53ad-25fa-4cfc-acff-53870e2d21f4",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "除非你另有指示，否则我将使用最新版本",
+          "englishMeaning": "If you do not instruct me differently, I will proceed using the most recent version."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-two-repeats",
+    "id": 35,
+    "provider": "deepseek",
+    "source": "When David spoke to Michael, he sounded upset.",
+    "status": "failed",
+    "httpStatus": 422,
+    "translation": null,
+    "englishMeaning": null,
+    "model": "deepseek-v4-flash",
+    "requestId": "e43b57d3-9b6c-4c36-8eff-a61cec9c1b2f",
+    "requestCount": 2,
+    "providerHttpRequestCount": 2,
+    "elapsedMs": 1971,
+    "diagnostic": {
+      "requestId": "e43b57d3-9b6c-4c36-8eff-a61cec9c1b2f",
+      "timestamp": "2026-09-09T21:47:36.826Z",
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "status": "failed",
+      "errorCode": "ENTITY_VALIDATION_FAILED",
+      "stage": "entity_validation",
+      "httpStatus": 422,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 2,
+      "validationMs": 1,
+      "totalLatencyMs": 1968,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "e43b57d3-9b6c-4c36-8eff-a61cec9c1b2f",
+          "timestamp": "2026-09-09T21:47:37.839Z",
+          "attempt": 1,
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1012,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_failed",
+          "requestId": "e43b57d3-9b6c-4c36-8eff-a61cec9c1b2f",
+          "timestamp": "2026-09-09T21:47:37.844Z",
+          "validationAttempt": 1,
+          "provider": "deepseek",
+          "stage": "entity_validation",
+          "internalCode": "ENTITY_VALIDATION_FAILED",
+          "willRegenerate": true,
+          "severity": "critical",
+          "issueCodes": [
+            "protected_entity_mismatch",
+            "protected_entity_mismatch"
+          ],
+          "ruleIds": [],
+          "disposition": "block",
+          "retryReason": "ENTITY_VALIDATION_FAILED",
+          "success": false,
+          "validationMs": 1
+        },
+        {
+          "event": "translation_attempt",
+          "requestId": "e43b57d3-9b6c-4c36-8eff-a61cec9c1b2f",
+          "timestamp": "2026-09-09T21:47:38.789Z",
+          "attempt": 2,
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 945,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_failed",
+          "requestId": "e43b57d3-9b6c-4c36-8eff-a61cec9c1b2f",
+          "timestamp": "2026-09-09T21:47:38.794Z",
+          "validationAttempt": 2,
+          "provider": "deepseek",
+          "stage": "entity_validation",
+          "internalCode": "ENTITY_VALIDATION_FAILED",
+          "willRegenerate": false,
+          "severity": "critical",
+          "issueCodes": [
+            "protected_entity_mismatch",
+            "protected_entity_mismatch"
+          ],
+          "ruleIds": [],
+          "disposition": "block",
+          "retryReason": "retry_limit_reached",
+          "success": false,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_failed",
+          "requestId": "e43b57d3-9b6c-4c36-8eff-a61cec9c1b2f",
+          "timestamp": "2026-09-09T21:47:38.794Z",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "stage": "entity_validation",
+          "internalCode": "ENTITY_VALIDATION_FAILED",
+          "httpStatus": 422,
+          "providerErrorCode": "",
+          "modelSwitched": false,
+          "success": false,
+          "providerRequestCount": 2,
+          "totalLatencyMs": 1968
+        }
+      ]
+    },
+    "errorCode": "ENTITY_VALIDATION_FAILED",
+    "providerStatus": "ready",
+    "stages": [
+      {
+        "id": 35,
+        "provider": "deepseek",
+        "requestId": "e43b57d3-9b6c-4c36-8eff-a61cec9c1b2f",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "When [[VERBA_ENTITY_0]] spoke to [[VERBA_ENTITY_1]], he sounded upset.",
+          "entityMap": [
+            {
+              "id": 0,
+              "token": "[[VERBA_ENTITY_0]]",
+              "original": "David",
+              "type": "possibleName",
+              "occurrenceCount": 1
+            },
+            {
+              "id": 1,
+              "token": "[[VERBA_ENTITY_1]]",
+              "original": "Michael",
+              "type": "possibleName",
+              "occurrenceCount": 1
+            }
+          ]
+        }
+      },
+      {
+        "id": 35,
+        "provider": "deepseek",
+        "requestId": "e43b57d3-9b6c-4c36-8eff-a61cec9c1b2f",
+        "stage": "model_output",
+        "rawOutput": "{\"englishMeaning\": \"When David spoke to Michael, David sounded upset.\", \"translation\": \"大卫跟迈克尔说话时，他听上去很沮丧。\"}",
+        "model": "deepseek-v4-flash"
+      },
+      {
+        "id": 35,
+        "provider": "deepseek",
+        "requestId": "e43b57d3-9b6c-4c36-8eff-a61cec9c1b2f",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "大卫跟迈克尔说话时，他听上去很沮丧。"
+      },
+      {
+        "id": 35,
+        "provider": "deepseek",
+        "requestId": "e43b57d3-9b6c-4c36-8eff-a61cec9c1b2f",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "大卫跟迈克尔说话时，他听上去很沮丧",
+          "englishMeaning": "When David spoke to Michael, David sounded upset."
+        }
+      },
+      {
+        "id": 35,
+        "provider": "deepseek",
+        "requestId": "e43b57d3-9b6c-4c36-8eff-a61cec9c1b2f",
+        "stage": "model_output",
+        "rawOutput": "{\"englishMeaning\": \"David spoke to Michael, and David sounded upset.\", \"translation\": \"当大卫和迈克尔说话时，他听起来很不高兴。\"}",
+        "model": "deepseek-v4-flash"
+      },
+      {
+        "id": 35,
+        "provider": "deepseek",
+        "requestId": "e43b57d3-9b6c-4c36-8eff-a61cec9c1b2f",
+        "stage": "entity_restoration",
+        "attempt": 2,
+        "translation": "当大卫和迈克尔说话时，他听起来很不高兴。"
+      },
+      {
+        "id": 35,
+        "provider": "deepseek",
+        "requestId": "e43b57d3-9b6c-4c36-8eff-a61cec9c1b2f",
+        "stage": "postprocess",
+        "attempt": 2,
+        "result": {
+          "translation": "当大卫和迈克尔说话时，他听起来很不高兴",
+          "englishMeaning": "David spoke to Michael, and David sounded upset."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-two-repeats",
+    "id": 6,
+    "provider": "deepseek",
+    "source": "May said she may join us later.",
+    "status": "failed",
+    "httpStatus": 422,
+    "translation": null,
+    "englishMeaning": null,
+    "model": "deepseek-v4-flash",
+    "requestId": "1161bb65-fb43-4c7e-ad1e-0a6c7773b034",
+    "requestCount": 2,
+    "providerHttpRequestCount": 2,
+    "elapsedMs": 1894,
+    "diagnostic": {
+      "requestId": "1161bb65-fb43-4c7e-ad1e-0a6c7773b034",
+      "timestamp": "2026-09-09T21:47:42.930Z",
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "status": "failed",
+      "errorCode": "ENTITY_VALIDATION_FAILED",
+      "stage": "entity_validation",
+      "httpStatus": 422,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 2,
+      "validationMs": 1,
+      "totalLatencyMs": 1891,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "1161bb65-fb43-4c7e-ad1e-0a6c7773b034",
+          "timestamp": "2026-09-09T21:47:43.875Z",
+          "attempt": 1,
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 944,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_failed",
+          "requestId": "1161bb65-fb43-4c7e-ad1e-0a6c7773b034",
+          "timestamp": "2026-09-09T21:47:43.880Z",
+          "validationAttempt": 1,
+          "provider": "deepseek",
+          "stage": "entity_validation",
+          "internalCode": "ENTITY_VALIDATION_FAILED",
+          "willRegenerate": true,
+          "severity": "critical",
+          "issueCodes": [
+            "protected_entity_mismatch"
+          ],
+          "ruleIds": [],
+          "disposition": "block",
+          "retryReason": "ENTITY_VALIDATION_FAILED",
+          "success": false,
+          "validationMs": 1
+        },
+        {
+          "event": "translation_attempt",
+          "requestId": "1161bb65-fb43-4c7e-ad1e-0a6c7773b034",
+          "timestamp": "2026-09-09T21:47:44.816Z",
+          "attempt": 2,
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 936,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_failed",
+          "requestId": "1161bb65-fb43-4c7e-ad1e-0a6c7773b034",
+          "timestamp": "2026-09-09T21:47:44.821Z",
+          "validationAttempt": 2,
+          "provider": "deepseek",
+          "stage": "entity_validation",
+          "internalCode": "ENTITY_VALIDATION_FAILED",
+          "willRegenerate": false,
+          "severity": "critical",
+          "issueCodes": [
+            "protected_entity_mismatch"
+          ],
+          "ruleIds": [],
+          "disposition": "block",
+          "retryReason": "retry_limit_reached",
+          "success": false,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_failed",
+          "requestId": "1161bb65-fb43-4c7e-ad1e-0a6c7773b034",
+          "timestamp": "2026-09-09T21:47:44.821Z",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "stage": "entity_validation",
+          "internalCode": "ENTITY_VALIDATION_FAILED",
+          "httpStatus": 422,
+          "providerErrorCode": "",
+          "modelSwitched": false,
+          "success": false,
+          "providerRequestCount": 2,
+          "totalLatencyMs": 1891
+        }
+      ]
+    },
+    "errorCode": "ENTITY_VALIDATION_FAILED",
+    "providerStatus": "ready",
+    "stages": [
+      {
+        "id": 6,
+        "provider": "deepseek",
+        "requestId": "1161bb65-fb43-4c7e-ad1e-0a6c7773b034",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "[[VERBA_ENTITY_0]] said she may join us later.",
+          "entityMap": [
+            {
+              "id": 0,
+              "token": "[[VERBA_ENTITY_0]]",
+              "original": "May",
+              "type": "possibleName",
+              "occurrenceCount": 1
+            }
+          ]
+        }
+      },
+      {
+        "id": 6,
+        "provider": "deepseek",
+        "requestId": "1161bb65-fb43-4c7e-ad1e-0a6c7773b034",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"May said that she might join us at a later time.\",\n  \"translation\": \"梅说她可能会晚点加入我们。\"\n}",
+        "model": "deepseek-v4-flash"
+      },
+      {
+        "id": 6,
+        "provider": "deepseek",
+        "requestId": "1161bb65-fb43-4c7e-ad1e-0a6c7773b034",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "梅说她可能会晚点加入我们。"
+      },
+      {
+        "id": 6,
+        "provider": "deepseek",
+        "requestId": "1161bb65-fb43-4c7e-ad1e-0a6c7773b034",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "梅说她可能会晚点加入我们",
+          "englishMeaning": "May said that she might join us at a later time."
+        }
+      },
+      {
+        "id": 6,
+        "provider": "deepseek",
+        "requestId": "1161bb65-fb43-4c7e-ad1e-0a6c7773b034",
+        "stage": "model_output",
+        "rawOutput": "{\"englishMeaning\":\"May said she might join us later.\",\"translation\":\"梅说她稍后可能会加入我们。\"}",
+        "model": "deepseek-v4-flash"
+      },
+      {
+        "id": 6,
+        "provider": "deepseek",
+        "requestId": "1161bb65-fb43-4c7e-ad1e-0a6c7773b034",
+        "stage": "entity_restoration",
+        "attempt": 2,
+        "translation": "梅说她稍后可能会加入我们。"
+      },
+      {
+        "id": 6,
+        "provider": "deepseek",
+        "requestId": "1161bb65-fb43-4c7e-ad1e-0a6c7773b034",
+        "stage": "postprocess",
+        "attempt": 2,
+        "result": {
+          "translation": "梅说她稍后可能会加入我们",
+          "englishMeaning": "May said she might join us later."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-two-repeats",
+    "id": 18,
+    "provider": "deepseek",
+    "source": "None of them has approved the request.",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "他们中没有一个人批准了这个请求",
+    "englishMeaning": "None of the people in the group has approved the request.",
+    "model": "deepseek-v4-flash",
+    "requestId": "ef6f9cfd-f5d2-4727-b68f-ab59db738ebb",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 1109,
+    "diagnostic": {
+      "requestId": "ef6f9cfd-f5d2-4727-b68f-ab59db738ebb",
+      "timestamp": "2026-09-09T21:47:49.411Z",
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 0,
+      "totalLatencyMs": 1105,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "ef6f9cfd-f5d2-4727-b68f-ab59db738ebb",
+          "timestamp": "2026-09-09T21:47:50.511Z",
+          "attempt": 1,
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1100,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_passed",
+          "requestId": "ef6f9cfd-f5d2-4727-b68f-ab59db738ebb",
+          "timestamp": "2026-09-09T21:47:50.516Z",
+          "validationAttempt": 1,
+          "provider": "deepseek",
+          "stage": "policy_validation",
+          "severity": "pass",
+          "issueCodes": [],
+          "ruleIds": [],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "ef6f9cfd-f5d2-4727-b68f-ab59db738ebb",
+          "timestamp": "2026-09-09T21:47:50.516Z",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 1105
+        }
+      ]
+    },
+    "providerStatus": "ready",
+    "review": {
+      "requestId": "ef6f9cfd-f5d2-4727-b68f-ab59db738ebb",
+      "translation": "他们中没有一个人批准了这个请求",
+      "reviewer": "AI",
+      "logic": {
+        "pass": true,
+        "reason": "逐句核对人物、动作、否定和条件：无人批准，不是部分人未批准。"
+      },
+      "entities": {
+        "pass": true,
+        "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+      },
+      "naturalness": 3,
+      "colloquial": 3,
+      "issues": "没有一个人批准了这个请求的否定与了搭配生硬，应为没有一个人批准这个请求。",
+      "categories": [
+        "language"
+      ]
+    },
+    "stages": [
+      {
+        "id": 18,
+        "provider": "deepseek",
+        "requestId": "ef6f9cfd-f5d2-4727-b68f-ab59db738ebb",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "None of them has approved the request.",
+          "entityMap": []
+        }
+      },
+      {
+        "id": 18,
+        "provider": "deepseek",
+        "requestId": "ef6f9cfd-f5d2-4727-b68f-ab59db738ebb",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"None of the people in the group has approved the request.\",\n  \"translation\": \"他们中没有一个人批准了这个请求。\"\n}",
+        "model": "deepseek-v4-flash"
+      },
+      {
+        "id": 18,
+        "provider": "deepseek",
+        "requestId": "ef6f9cfd-f5d2-4727-b68f-ab59db738ebb",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "他们中没有一个人批准了这个请求。"
+      },
+      {
+        "id": 18,
+        "provider": "deepseek",
+        "requestId": "ef6f9cfd-f5d2-4727-b68f-ab59db738ebb",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "他们中没有一个人批准了这个请求",
+          "englishMeaning": "None of the people in the group has approved the request."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-two-repeats",
+    "id": 21,
+    "provider": "deepseek",
+    "source": "Don't send the files until Nana confirms the address.",
+    "status": "failed",
+    "httpStatus": 422,
+    "translation": null,
+    "englishMeaning": null,
+    "model": "deepseek-v4-flash",
+    "requestId": "0f89d873-99fa-4f0f-a59b-68443f3d3bc4",
+    "requestCount": 2,
+    "providerHttpRequestCount": 2,
+    "elapsedMs": 1635,
+    "diagnostic": {
+      "requestId": "0f89d873-99fa-4f0f-a59b-68443f3d3bc4",
+      "timestamp": "2026-09-09T21:47:52.769Z",
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "status": "failed",
+      "errorCode": "ENTITY_VALIDATION_FAILED",
+      "stage": "entity_validation",
+      "httpStatus": 422,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 2,
+      "validationMs": 1,
+      "totalLatencyMs": 1620,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "0f89d873-99fa-4f0f-a59b-68443f3d3bc4",
+          "timestamp": "2026-09-09T21:47:53.550Z",
+          "attempt": 1,
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 781,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_failed",
+          "requestId": "0f89d873-99fa-4f0f-a59b-68443f3d3bc4",
+          "timestamp": "2026-09-09T21:47:53.556Z",
+          "validationAttempt": 1,
+          "provider": "deepseek",
+          "stage": "entity_validation",
+          "internalCode": "ENTITY_VALIDATION_FAILED",
+          "willRegenerate": true,
+          "severity": "critical",
+          "issueCodes": [
+            "protected_entity_mismatch"
+          ],
+          "ruleIds": [],
+          "disposition": "block",
+          "retryReason": "ENTITY_VALIDATION_FAILED",
+          "success": false,
+          "validationMs": 1
+        },
+        {
+          "event": "translation_attempt",
+          "requestId": "0f89d873-99fa-4f0f-a59b-68443f3d3bc4",
+          "timestamp": "2026-09-09T21:47:54.384Z",
+          "attempt": 2,
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 828,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_failed",
+          "requestId": "0f89d873-99fa-4f0f-a59b-68443f3d3bc4",
+          "timestamp": "2026-09-09T21:47:54.389Z",
+          "validationAttempt": 2,
+          "provider": "deepseek",
+          "stage": "entity_validation",
+          "internalCode": "ENTITY_VALIDATION_FAILED",
+          "willRegenerate": false,
+          "severity": "critical",
+          "issueCodes": [
+            "protected_entity_mismatch"
+          ],
+          "ruleIds": [],
+          "disposition": "block",
+          "retryReason": "retry_limit_reached",
+          "success": false,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_failed",
+          "requestId": "0f89d873-99fa-4f0f-a59b-68443f3d3bc4",
+          "timestamp": "2026-09-09T21:47:54.389Z",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "stage": "entity_validation",
+          "internalCode": "ENTITY_VALIDATION_FAILED",
+          "httpStatus": 422,
+          "providerErrorCode": "",
+          "modelSwitched": false,
+          "success": false,
+          "providerRequestCount": 2,
+          "totalLatencyMs": 1620
+        }
+      ]
+    },
+    "errorCode": "ENTITY_VALIDATION_FAILED",
+    "providerStatus": "ready",
+    "stages": [
+      {
+        "id": 21,
+        "provider": "deepseek",
+        "requestId": "0f89d873-99fa-4f0f-a59b-68443f3d3bc4",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "Don't send the files until [[VERBA_ENTITY_0]] confirms the address.",
+          "entityMap": [
+            {
+              "id": 0,
+              "token": "[[VERBA_ENTITY_0]]",
+              "original": "Nana",
+              "type": "possibleName",
+              "occurrenceCount": 1
+            }
+          ]
+        }
+      },
+      {
+        "id": 21,
+        "provider": "deepseek",
+        "requestId": "0f89d873-99fa-4f0f-a59b-68443f3d3bc4",
+        "stage": "model_output",
+        "rawOutput": "{\"englishMeaning\":\"Do not send the files until Nana confirms the address.\",\"translation\":\"在娜娜确认地址之前，不要发送文件。\"}",
+        "model": "deepseek-v4-flash"
+      },
+      {
+        "id": 21,
+        "provider": "deepseek",
+        "requestId": "0f89d873-99fa-4f0f-a59b-68443f3d3bc4",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "在娜娜确认地址之前，不要发送文件。"
+      },
+      {
+        "id": 21,
+        "provider": "deepseek",
+        "requestId": "0f89d873-99fa-4f0f-a59b-68443f3d3bc4",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "在娜娜确认地址之前，不要发送文件",
+          "englishMeaning": "Do not send the files until Nana confirms the address."
+        }
+      },
+      {
+        "id": 21,
+        "provider": "deepseek",
+        "requestId": "0f89d873-99fa-4f0f-a59b-68443f3d3bc4",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"Do not send the files until Nana confirms the address.\",\n  \"translation\": \"在娜娜确认地址之前，不要发送文件。\"\n}",
+        "model": "deepseek-v4-flash"
+      },
+      {
+        "id": 21,
+        "provider": "deepseek",
+        "requestId": "0f89d873-99fa-4f0f-a59b-68443f3d3bc4",
+        "stage": "entity_restoration",
+        "attempt": 2,
+        "translation": "在娜娜确认地址之前，不要发送文件。"
+      },
+      {
+        "id": 21,
+        "provider": "deepseek",
+        "requestId": "0f89d873-99fa-4f0f-a59b-68443f3d3bc4",
+        "stage": "postprocess",
+        "attempt": 2,
+        "result": {
+          "translation": "在娜娜确认地址之前，不要发送文件",
+          "englishMeaning": "Do not send the files until Nana confirms the address."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-independent-repeats",
+    "id": 107,
+    "provider": "gemini",
+    "source": "Not all the teams are ready, so do not publish the plan yet.",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "还没所有团队都准备好，所以先别发布那个计划",
+    "englishMeaning": "Because the set of all teams is not entirely in a state of readiness, the speaker instructs the recipient to delay the publishing of the plan.",
+    "model": "gemini-3.1-flash-lite",
+    "requestId": "e8ae088e-ad63-4cd1-8696-1bdac114a2b7",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 1334,
+    "diagnostic": {
+      "requestId": "e8ae088e-ad63-4cd1-8696-1bdac114a2b7",
+      "timestamp": "2026-09-09T21:48:24.690Z",
+      "provider": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 0,
+      "totalLatencyMs": 1327,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "e8ae088e-ad63-4cd1-8696-1bdac114a2b7",
+          "timestamp": "2026-09-09T21:48:26.012Z",
+          "attempt": 1,
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1319,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_passed",
+          "requestId": "e8ae088e-ad63-4cd1-8696-1bdac114a2b7",
+          "timestamp": "2026-09-09T21:48:26.017Z",
+          "validationAttempt": 1,
+          "provider": "gemini",
+          "stage": "policy_validation",
+          "severity": "pass",
+          "issueCodes": [],
+          "ruleIds": [],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "e8ae088e-ad63-4cd1-8696-1bdac114a2b7",
+          "timestamp": "2026-09-09T21:48:26.017Z",
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 1327
+        }
+      ]
+    },
+    "providerStatus": "degraded",
+    "review": {
+      "requestId": "e8ae088e-ad63-4cd1-8696-1bdac114a2b7",
+      "translation": "还没所有团队都准备好，所以先别发布那个计划",
+      "reviewer": "AI",
+      "logic": {
+        "pass": true,
+        "reason": "逐句核对人物、动作、否定和条件：部分否定，不变成所有团队都没准备好；暂缓发布。"
+      },
+      "entities": {
+        "pass": true,
+        "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+      },
+      "naturalness": 3,
+      "colloquial": 3,
+      "issues": "还没所有团队都准备好语序生硬，应为还不是所有团队都准备好。",
+      "categories": [
+        "language"
+      ]
+    },
+    "stages": [
+      {
+        "id": 107,
+        "provider": "gemini",
+        "requestId": "e8ae088e-ad63-4cd1-8696-1bdac114a2b7",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "Not all the teams are ready, so do not publish the plan yet.",
+          "entityMap": []
+        }
+      },
+      {
+        "id": 107,
+        "provider": "gemini",
+        "requestId": "e8ae088e-ad63-4cd1-8696-1bdac114a2b7",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"Because the set of all teams is not entirely in a state of readiness, the speaker instructs the recipient to delay the publishing of the plan.\",\n  \"translation\": \"还没所有团队都准备好，所以先别发布那个计划。\"\n}",
+        "model": "gemini-3.1-flash-lite"
+      },
+      {
+        "id": 107,
+        "provider": "gemini",
+        "requestId": "e8ae088e-ad63-4cd1-8696-1bdac114a2b7",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "还没所有团队都准备好，所以先别发布那个计划。"
+      },
+      {
+        "id": 107,
+        "provider": "gemini",
+        "requestId": "e8ae088e-ad63-4cd1-8696-1bdac114a2b7",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "还没所有团队都准备好，所以先别发布那个计划",
+          "englishMeaning": "Because the set of all teams is not entirely in a state of readiness, the speaker instructs the recipient to delay the publishing of the plan."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-independent-repeats",
+    "id": 112,
+    "provider": "gemini",
+    "source": "Keep the account \"They\" as written; she will update its details in May.",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "保留They账户现状，对方会在五月份更新账户详情",
+    "englishMeaning": "Keep the account They as is; the person referred to by They will update the account details in May.",
+    "model": "gemini-3.1-flash-lite",
+    "requestId": "fdcc9c38-e30c-4777-a20a-89daa106b172",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 1368,
+    "diagnostic": {
+      "requestId": "fdcc9c38-e30c-4777-a20a-89daa106b172",
+      "timestamp": "2026-09-09T21:48:47.939Z",
+      "provider": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 0,
+      "totalLatencyMs": 1362,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "fdcc9c38-e30c-4777-a20a-89daa106b172",
+          "timestamp": "2026-09-09T21:48:49.296Z",
+          "attempt": 1,
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1356,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_passed",
+          "requestId": "fdcc9c38-e30c-4777-a20a-89daa106b172",
+          "timestamp": "2026-09-09T21:48:49.301Z",
+          "validationAttempt": 1,
+          "provider": "gemini",
+          "stage": "policy_validation",
+          "severity": "pass",
+          "issueCodes": [],
+          "ruleIds": [],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "fdcc9c38-e30c-4777-a20a-89daa106b172",
+          "timestamp": "2026-09-09T21:48:49.301Z",
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 1362
+        }
+      ]
+    },
+    "providerStatus": "degraded",
+    "review": {
+      "requestId": "fdcc9c38-e30c-4777-a20a-89daa106b172",
+      "translation": "保留They账户现状，对方会在五月份更新账户详情",
+      "reviewer": "AI",
+      "logic": {
+        "pass": false,
+        "reason": "保留账户现状范围大于保留名称的写法；she变为对方。"
+      },
+      "entities": {
+        "pass": false,
+        "reason": "她的指代被换成对方。"
+      },
+      "naturalness": 4,
+      "colloquial": 4,
+      "issues": "保留账户现状范围大于保留名称的写法；she变为对方。",
+      "categories": [
+        "semantic",
+        "entity"
+      ]
+    },
+    "stages": [
+      {
+        "id": 112,
+        "provider": "gemini",
+        "requestId": "fdcc9c38-e30c-4777-a20a-89daa106b172",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "Keep the account \"[[VERBA_ENTITY_0]]\" as written; she will update its details in May.",
+          "entityMap": [
+            {
+              "id": 0,
+              "token": "[[VERBA_ENTITY_0]]",
+              "original": "They",
+              "type": "literal",
+              "occurrenceCount": 1
+            }
+          ]
+        }
+      },
+      {
+        "id": 112,
+        "provider": "gemini",
+        "requestId": "fdcc9c38-e30c-4777-a20a-89daa106b172",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"Keep the account [[VERBA_ENTITY_0]] as is; the person referred to by [[VERBA_ENTITY_0]] will update the account details in May.\",\n  \"translation\": \"保留[[VERBA_ENTITY_0]]账户现状，对方会在五月份更新账户详情。\"\n}",
+        "model": "gemini-3.1-flash-lite"
+      },
+      {
+        "id": 112,
+        "provider": "gemini",
+        "requestId": "fdcc9c38-e30c-4777-a20a-89daa106b172",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "保留They账户现状，对方会在五月份更新账户详情。"
+      },
+      {
+        "id": 112,
+        "provider": "gemini",
+        "requestId": "fdcc9c38-e30c-4777-a20a-89daa106b172",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "保留They账户现状，对方会在五月份更新账户详情",
+          "englishMeaning": "Keep the account They as is; the person referred to by They will update the account details in May."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-independent-repeats",
+    "id": 103,
+    "provider": "gemini",
+    "source": "Could you ask Omar to tell Leah to send the draft to them?",
+    "status": "failed",
+    "httpStatus": 422,
+    "translation": null,
+    "englishMeaning": null,
+    "model": "gemini-3.1-flash-lite",
+    "requestId": "ddfbedd6-6a85-4cd1-a6c0-a76b502416b0",
+    "requestCount": 2,
+    "providerHttpRequestCount": 2,
+    "elapsedMs": 2409,
+    "diagnostic": {
+      "requestId": "ddfbedd6-6a85-4cd1-a6c0-a76b502416b0",
+      "timestamp": "2026-09-09T21:48:59.655Z",
+      "provider": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "status": "failed",
+      "errorCode": "ENTITY_VALIDATION_FAILED",
+      "stage": "entity_validation",
+      "httpStatus": 422,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 2,
+      "validationMs": 1,
+      "totalLatencyMs": 2402,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "ddfbedd6-6a85-4cd1-a6c0-a76b502416b0",
+          "timestamp": "2026-09-09T21:49:01.020Z",
+          "attempt": 1,
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1365,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_failed",
+          "requestId": "ddfbedd6-6a85-4cd1-a6c0-a76b502416b0",
+          "timestamp": "2026-09-09T21:49:01.026Z",
+          "validationAttempt": 1,
+          "provider": "gemini",
+          "stage": "entity_validation",
+          "internalCode": "ENTITY_VALIDATION_FAILED",
+          "willRegenerate": true,
+          "severity": "critical",
+          "issueCodes": [
+            "protected_entity_mismatch"
+          ],
+          "ruleIds": [],
+          "disposition": "block",
+          "retryReason": "ENTITY_VALIDATION_FAILED",
+          "success": false,
+          "validationMs": 1
+        },
+        {
+          "event": "translation_attempt",
+          "requestId": "ddfbedd6-6a85-4cd1-a6c0-a76b502416b0",
+          "timestamp": "2026-09-09T21:49:02.050Z",
+          "attempt": 2,
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1024,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_failed",
+          "requestId": "ddfbedd6-6a85-4cd1-a6c0-a76b502416b0",
+          "timestamp": "2026-09-09T21:49:02.057Z",
+          "validationAttempt": 2,
+          "provider": "gemini",
+          "stage": "entity_validation",
+          "internalCode": "ENTITY_VALIDATION_FAILED",
+          "willRegenerate": false,
+          "severity": "critical",
+          "issueCodes": [
+            "protected_entity_mismatch"
+          ],
+          "ruleIds": [],
+          "disposition": "block",
+          "retryReason": "retry_limit_reached",
+          "success": false,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_failed",
+          "requestId": "ddfbedd6-6a85-4cd1-a6c0-a76b502416b0",
+          "timestamp": "2026-09-09T21:49:02.057Z",
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "stage": "entity_validation",
+          "internalCode": "ENTITY_VALIDATION_FAILED",
+          "httpStatus": 422,
+          "providerErrorCode": "",
+          "modelSwitched": false,
+          "success": false,
+          "providerRequestCount": 2,
+          "totalLatencyMs": 2402
+        }
+      ]
+    },
+    "errorCode": "ENTITY_VALIDATION_FAILED",
+    "providerStatus": "degraded",
+    "stages": [
+      {
+        "id": 103,
+        "provider": "gemini",
+        "requestId": "ddfbedd6-6a85-4cd1-a6c0-a76b502416b0",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "Could you ask [[VERBA_ENTITY_0]] to tell [[VERBA_ENTITY_1]] to send the draft to them?",
+          "entityMap": [
+            {
+              "id": 0,
+              "token": "[[VERBA_ENTITY_0]]",
+              "original": "Omar",
+              "type": "possibleName",
+              "occurrenceCount": 1
+            },
+            {
+              "id": 1,
+              "token": "[[VERBA_ENTITY_1]]",
+              "original": "Leah",
+              "type": "possibleName",
+              "occurrenceCount": 1
+            }
+          ]
+        }
+      },
+      {
+        "id": 103,
+        "provider": "gemini",
+        "requestId": "ddfbedd6-6a85-4cd1-a6c0-a76b502416b0",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"The speaker is requesting the listener to ask [[VERBA_ENTITY_0]] to instruct [[VERBA_ENTITY_1]] to send the draft to [[VERBA_ENTITY_0]].\",\n  \"translation\": \"麻烦你请[[VERBA_ENTITY_0]]转告[[VERBA_ENTITY_1]]，把草稿发给[[VERBA_ENTITY_0]]。\"\n}",
+        "model": "gemini-3.1-flash-lite"
+      },
+      {
+        "id": 103,
+        "provider": "gemini",
+        "requestId": "ddfbedd6-6a85-4cd1-a6c0-a76b502416b0",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "麻烦你请Omar转告Leah，把草稿发给Omar。"
+      },
+      {
+        "id": 103,
+        "provider": "gemini",
+        "requestId": "ddfbedd6-6a85-4cd1-a6c0-a76b502416b0",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "麻烦你请Omar转告Leah，把草稿发给Omar",
+          "englishMeaning": "The speaker is requesting the listener to ask Omar to instruct Leah to send the draft to Omar."
+        }
+      },
+      {
+        "id": 103,
+        "provider": "gemini",
+        "requestId": "ddfbedd6-6a85-4cd1-a6c0-a76b502416b0",
+        "stage": "model_output",
+        "rawOutput": "{\"englishMeaning\": \"The speaker is requesting the listener to ask [[VERBA_ENTITY_0]] to instruct [[VERBA_ENTITY_1]] to send the draft to [[VERBA_ENTITY_0]].\", \"translation\": \"麻烦请[[VERBA_ENTITY_0]]转告[[VERBA_ENTITY_1]]，把草稿发给[[VERBA_ENTITY_0]]。\"}",
+        "model": "gemini-3.1-flash-lite"
+      },
+      {
+        "id": 103,
+        "provider": "gemini",
+        "requestId": "ddfbedd6-6a85-4cd1-a6c0-a76b502416b0",
+        "stage": "entity_restoration",
+        "attempt": 2,
+        "translation": "麻烦请Omar转告Leah，把草稿发给Omar。"
+      },
+      {
+        "id": 103,
+        "provider": "gemini",
+        "requestId": "ddfbedd6-6a85-4cd1-a6c0-a76b502416b0",
+        "stage": "postprocess",
+        "attempt": 2,
+        "result": {
+          "translation": "麻烦请Omar转告Leah，把草稿发给Omar",
+          "englishMeaning": "The speaker is requesting the listener to ask Omar to instruct Leah to send the draft to Omar."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-independent-repeats",
+    "id": 107,
+    "provider": "gemini",
+    "source": "Not all the teams are ready, so do not publish the plan yet.",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "还没所有团队都准备好，所以先别发布那个计划",
+    "englishMeaning": "Because not every team is currently prepared, the plan should not be published at this time.",
+    "model": "gemini-3.1-flash-lite",
+    "requestId": "21ca359d-b3b2-4240-b419-34071b4e69b7",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 1377,
+    "diagnostic": {
+      "requestId": "21ca359d-b3b2-4240-b419-34071b4e69b7",
+      "timestamp": "2026-09-09T21:49:06.573Z",
+      "provider": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 0,
+      "totalLatencyMs": 1370,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "21ca359d-b3b2-4240-b419-34071b4e69b7",
+          "timestamp": "2026-09-09T21:49:07.937Z",
+          "attempt": 1,
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1363,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_passed",
+          "requestId": "21ca359d-b3b2-4240-b419-34071b4e69b7",
+          "timestamp": "2026-09-09T21:49:07.943Z",
+          "validationAttempt": 1,
+          "provider": "gemini",
+          "stage": "policy_validation",
+          "severity": "pass",
+          "issueCodes": [],
+          "ruleIds": [],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "21ca359d-b3b2-4240-b419-34071b4e69b7",
+          "timestamp": "2026-09-09T21:49:07.943Z",
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 1370
+        }
+      ]
+    },
+    "providerStatus": "degraded",
+    "review": {
+      "requestId": "21ca359d-b3b2-4240-b419-34071b4e69b7",
+      "translation": "还没所有团队都准备好，所以先别发布那个计划",
+      "reviewer": "AI",
+      "logic": {
+        "pass": true,
+        "reason": "逐句核对人物、动作、否定和条件：部分否定，不变成所有团队都没准备好；暂缓发布。"
+      },
+      "entities": {
+        "pass": true,
+        "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+      },
+      "naturalness": 3,
+      "colloquial": 3,
+      "issues": "还没所有团队都准备好语序生硬，应为还不是所有团队都准备好。",
+      "categories": [
+        "language"
+      ]
+    },
+    "stages": [
+      {
+        "id": 107,
+        "provider": "gemini",
+        "requestId": "21ca359d-b3b2-4240-b419-34071b4e69b7",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "Not all the teams are ready, so do not publish the plan yet.",
+          "entityMap": []
+        }
+      },
+      {
+        "id": 107,
+        "provider": "gemini",
+        "requestId": "21ca359d-b3b2-4240-b419-34071b4e69b7",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"Because not every team is currently prepared, the plan should not be published at this time.\",\n  \"translation\": \"还没所有团队都准备好，所以先别发布那个计划。\"\n}",
+        "model": "gemini-3.1-flash-lite"
+      },
+      {
+        "id": 107,
+        "provider": "gemini",
+        "requestId": "21ca359d-b3b2-4240-b419-34071b4e69b7",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "还没所有团队都准备好，所以先别发布那个计划。"
+      },
+      {
+        "id": 107,
+        "provider": "gemini",
+        "requestId": "21ca359d-b3b2-4240-b419-34071b4e69b7",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "还没所有团队都准备好，所以先别发布那个计划",
+          "englishMeaning": "Because not every team is currently prepared, the plan should not be published at this time."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-independent-repeats",
+    "id": 109,
+    "provider": "gemini",
+    "source": "Could you keep me in the loop while I am away?",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "我不在的时候，请随时告知我相关进展",
+    "englishMeaning": "The speaker requests the addressee to provide them with updates regarding current matters during the speaker's period of absence.",
+    "model": "gemini-3.1-flash-lite",
+    "requestId": "27433f55-e029-4126-b6dd-45f35e0958ae",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 1126,
+    "diagnostic": {
+      "requestId": "27433f55-e029-4126-b6dd-45f35e0958ae",
+      "timestamp": "2026-09-09T21:49:18.421Z",
+      "provider": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 0,
+      "totalLatencyMs": 1120,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "27433f55-e029-4126-b6dd-45f35e0958ae",
+          "timestamp": "2026-09-09T21:49:19.536Z",
+          "attempt": 1,
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1114,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_passed",
+          "requestId": "27433f55-e029-4126-b6dd-45f35e0958ae",
+          "timestamp": "2026-09-09T21:49:19.541Z",
+          "validationAttempt": 1,
+          "provider": "gemini",
+          "stage": "policy_validation",
+          "severity": "pass",
+          "issueCodes": [],
+          "ruleIds": [],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "27433f55-e029-4126-b6dd-45f35e0958ae",
+          "timestamp": "2026-09-09T21:49:19.541Z",
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 1120
+        }
+      ]
+    },
+    "providerStatus": "degraded",
+    "review": {
+      "requestId": "27433f55-e029-4126-b6dd-45f35e0958ae",
+      "translation": "我不在的时候，请随时告知我相关进展",
+      "reviewer": "AI",
+      "logic": {
+        "pass": true,
+        "reason": "逐句核对人物、动作、否定和条件：keep in the loop取告知进展义，不新增承诺或期限。"
+      },
+      "entities": {
+        "pass": true,
+        "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+      },
+      "naturalness": 4,
+      "colloquial": 3,
+      "issues": "请随时告知我相关进展偏书面汇报语体。",
+      "categories": [
+        "language"
+      ]
+    },
+    "stages": [
+      {
+        "id": 109,
+        "provider": "gemini",
+        "requestId": "27433f55-e029-4126-b6dd-45f35e0958ae",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "Could you keep me in the loop while I am away?",
+          "entityMap": []
+        }
+      },
+      {
+        "id": 109,
+        "provider": "gemini",
+        "requestId": "27433f55-e029-4126-b6dd-45f35e0958ae",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"The speaker requests the addressee to provide them with updates regarding current matters during the speaker's period of absence.\",\n  \"translation\": \"我不在的时候，请随时告知我相关进展。\"\n}",
+        "model": "gemini-3.1-flash-lite"
+      },
+      {
+        "id": 109,
+        "provider": "gemini",
+        "requestId": "27433f55-e029-4126-b6dd-45f35e0958ae",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "我不在的时候，请随时告知我相关进展。"
+      },
+      {
+        "id": 109,
+        "provider": "gemini",
+        "requestId": "27433f55-e029-4126-b6dd-45f35e0958ae",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "我不在的时候，请随时告知我相关进展",
+          "englishMeaning": "The speaker requests the addressee to provide them with updates regarding current matters during the speaker's period of absence."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-independent-repeats",
+    "id": 112,
+    "provider": "gemini",
+    "source": "Keep the account \"They\" as written; she will update its details in May.",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "保留账户 They 的原样，对方会在五月份更新其详细信息",
+    "englishMeaning": "Keep the account They as is; the person referred to by the pronoun will update its details in May.",
+    "model": "gemini-3.1-flash-lite",
+    "requestId": "efac6f29-b4ed-45ed-8339-58b15a0cad14",
+    "requestCount": 2,
+    "providerHttpRequestCount": 2,
+    "elapsedMs": 2904,
+    "diagnostic": {
+      "requestId": "efac6f29-b4ed-45ed-8339-58b15a0cad14",
+      "timestamp": "2026-09-09T21:49:30.485Z",
+      "provider": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 2,
+      "validationMs": 0,
+      "totalLatencyMs": 2898,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "efac6f29-b4ed-45ed-8339-58b15a0cad14",
+          "timestamp": "2026-09-09T21:49:32.237Z",
+          "attempt": 1,
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1751,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_failed",
+          "requestId": "efac6f29-b4ed-45ed-8339-58b15a0cad14",
+          "timestamp": "2026-09-09T21:49:32.242Z",
+          "validationAttempt": 1,
+          "provider": "gemini",
+          "stage": "entity_validation",
+          "internalCode": "ENTITY_VALIDATION_FAILED",
+          "willRegenerate": true,
+          "severity": "critical",
+          "issueCodes": [
+            "protected_entity_mismatch"
+          ],
+          "ruleIds": [],
+          "disposition": "block",
+          "retryReason": "ENTITY_VALIDATION_FAILED",
+          "success": false,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_attempt",
+          "requestId": "efac6f29-b4ed-45ed-8339-58b15a0cad14",
+          "timestamp": "2026-09-09T21:49:33.377Z",
+          "attempt": 2,
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1135,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_passed",
+          "requestId": "efac6f29-b4ed-45ed-8339-58b15a0cad14",
+          "timestamp": "2026-09-09T21:49:33.383Z",
+          "validationAttempt": 2,
+          "provider": "gemini",
+          "stage": "policy_validation",
+          "severity": "pass",
+          "issueCodes": [],
+          "ruleIds": [],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "efac6f29-b4ed-45ed-8339-58b15a0cad14",
+          "timestamp": "2026-09-09T21:49:33.383Z",
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 2,
+          "totalLatencyMs": 2898
+        }
+      ]
+    },
+    "providerStatus": "degraded",
+    "review": {
+      "requestId": "efac6f29-b4ed-45ed-8339-58b15a0cad14",
+      "translation": "保留账户 They 的原样，对方会在五月份更新其详细信息",
+      "reviewer": "AI",
+      "logic": {
+        "pass": false,
+        "reason": "保留账户现状范围大于保留名称的写法；she变为对方。"
+      },
+      "entities": {
+        "pass": false,
+        "reason": "她的指代被换成对方。"
+      },
+      "naturalness": 4,
+      "colloquial": 4,
+      "issues": "保留账户现状范围大于保留名称的写法；she变为对方。",
+      "categories": [
+        "semantic",
+        "entity"
+      ]
+    },
+    "stages": [
+      {
+        "id": 112,
+        "provider": "gemini",
+        "requestId": "efac6f29-b4ed-45ed-8339-58b15a0cad14",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "Keep the account \"[[VERBA_ENTITY_0]]\" as written; she will update its details in May.",
+          "entityMap": [
+            {
+              "id": 0,
+              "token": "[[VERBA_ENTITY_0]]",
+              "original": "They",
+              "type": "literal",
+              "occurrenceCount": 1
+            }
+          ]
+        }
+      },
+      {
+        "id": 112,
+        "provider": "gemini",
+        "requestId": "efac6f29-b4ed-45ed-8339-58b15a0cad14",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"Maintain the account [[VERBA_ENTITY_0]] exactly as it is; [[VERBA_ENTITY_0]] will perform an update on the details during May.\",\n  \"translation\": \"[[VERBA_ENTITY_0]] 账户保持现状，[[VERBA_ENTITY_0]] 会在五月更新其详细信息。\"\n}",
+        "model": "gemini-3.1-flash-lite"
+      },
+      {
+        "id": 112,
+        "provider": "gemini",
+        "requestId": "efac6f29-b4ed-45ed-8339-58b15a0cad14",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "They 账户保持现状，They 会在五月更新其详细信息。"
+      },
+      {
+        "id": 112,
+        "provider": "gemini",
+        "requestId": "efac6f29-b4ed-45ed-8339-58b15a0cad14",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "They 账户保持现状，They 会在五月更新其详细信息",
+          "englishMeaning": "Maintain the account They exactly as it is; They will perform an update on the details during May."
+        }
+      },
+      {
+        "id": 112,
+        "provider": "gemini",
+        "requestId": "efac6f29-b4ed-45ed-8339-58b15a0cad14",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"Keep the account [[VERBA_ENTITY_0]] as is; the person referred to by the pronoun will update its details in May.\",\n  \"translation\": \"保留账户 [[VERBA_ENTITY_0]] 的原样，对方会在五月份更新其详细信息。\"\n}",
+        "model": "gemini-3.1-flash-lite"
+      },
+      {
+        "id": 112,
+        "provider": "gemini",
+        "requestId": "efac6f29-b4ed-45ed-8339-58b15a0cad14",
+        "stage": "entity_restoration",
+        "attempt": 2,
+        "translation": "保留账户 They 的原样，对方会在五月份更新其详细信息。"
+      },
+      {
+        "id": 112,
+        "provider": "gemini",
+        "requestId": "efac6f29-b4ed-45ed-8339-58b15a0cad14",
+        "stage": "postprocess",
+        "attempt": 2,
+        "result": {
+          "translation": "保留账户 They 的原样，对方会在五月份更新其详细信息",
+          "englishMeaning": "Keep the account They as is; the person referred to by the pronoun will update its details in May."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-independent-repeats",
+    "id": 102,
+    "provider": "deepseek",
+    "source": "I borrowed your charger, but Marta returned hers to you.",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "我借了你的充电器，但玛尔塔把她自己的还给你了",
+    "englishMeaning": "I borrowed your charger, and Marta returned her charger to you.",
+    "model": "deepseek-v4-flash",
+    "requestId": "8718c18c-3581-490d-904f-1928bb7ea1b3",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 1772,
+    "diagnostic": {
+      "requestId": "8718c18c-3581-490d-904f-1928bb7ea1b3",
+      "timestamp": "2026-09-09T21:49:33.389Z",
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 0,
+      "totalLatencyMs": 1768,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "8718c18c-3581-490d-904f-1928bb7ea1b3",
+          "timestamp": "2026-09-09T21:49:35.151Z",
+          "attempt": 1,
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1761,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_passed",
+          "requestId": "8718c18c-3581-490d-904f-1928bb7ea1b3",
+          "timestamp": "2026-09-09T21:49:35.157Z",
+          "validationAttempt": 1,
+          "provider": "deepseek",
+          "stage": "policy_validation",
+          "severity": "pass",
+          "issueCodes": [],
+          "ruleIds": [],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "8718c18c-3581-490d-904f-1928bb7ea1b3",
+          "timestamp": "2026-09-09T21:49:35.157Z",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 1768
+        }
+      ]
+    },
+    "providerStatus": "ready",
+    "review": {
+      "requestId": "8718c18c-3581-490d-904f-1928bb7ea1b3",
+      "translation": "我借了你的充电器，但玛尔塔把她自己的还给你了",
+      "reviewer": "AI",
+      "logic": {
+        "pass": true,
+        "reason": "逐句核对人物、动作、否定和条件：两件物品的所有者和动作方向不同。"
+      },
+      "entities": {
+        "pass": false,
+        "reason": "Marta被音译，姓名未原样保留。"
+      },
+      "naturalness": 4,
+      "colloquial": 4,
+      "issues": "Marta被音译，姓名未原样保留。",
+      "categories": [
+        "entity"
+      ]
+    },
+    "stages": [
+      {
+        "id": 102,
+        "provider": "deepseek",
+        "requestId": "8718c18c-3581-490d-904f-1928bb7ea1b3",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "I borrowed your charger, but Marta returned hers to you.",
+          "entityMap": []
+        }
+      },
+      {
+        "id": 102,
+        "provider": "deepseek",
+        "requestId": "8718c18c-3581-490d-904f-1928bb7ea1b3",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"I borrowed your charger, and Marta returned her charger to you.\",\n  \"translation\": \"我借了你的充电器，但玛尔塔把她自己的还给你了。\"\n}",
+        "model": "deepseek-v4-flash"
+      },
+      {
+        "id": 102,
+        "provider": "deepseek",
+        "requestId": "8718c18c-3581-490d-904f-1928bb7ea1b3",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "我借了你的充电器，但玛尔塔把她自己的还给你了。"
+      },
+      {
+        "id": 102,
+        "provider": "deepseek",
+        "requestId": "8718c18c-3581-490d-904f-1928bb7ea1b3",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "我借了你的充电器，但玛尔塔把她自己的还给你了",
+          "englishMeaning": "I borrowed your charger, and Marta returned her charger to you."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-independent-repeats",
+    "id": 108,
+    "provider": "deepseek",
+    "source": "If Rosa has not checked the figures by Friday, ask Ben to call her.",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "如果罗莎到周五还没核对数字，就让Ben给她打电话",
+    "englishMeaning": "If Rosa has not checked the figures by Friday, then the listener is to ask Ben to call Rosa.",
+    "model": "deepseek-v4-flash",
+    "requestId": "691c6760-b082-49f4-8526-3cb0fa8770dc",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 1042,
+    "diagnostic": {
+      "requestId": "691c6760-b082-49f4-8526-3cb0fa8770dc",
+      "timestamp": "2026-09-09T21:49:37.083Z",
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 0,
+      "totalLatencyMs": 1037,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "691c6760-b082-49f4-8526-3cb0fa8770dc",
+          "timestamp": "2026-09-09T21:49:38.114Z",
+          "attempt": 1,
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1030,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_passed",
+          "requestId": "691c6760-b082-49f4-8526-3cb0fa8770dc",
+          "timestamp": "2026-09-09T21:49:38.119Z",
+          "validationAttempt": 1,
+          "provider": "deepseek",
+          "stage": "policy_validation",
+          "severity": "pass",
+          "issueCodes": [],
+          "ruleIds": [],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "691c6760-b082-49f4-8526-3cb0fa8770dc",
+          "timestamp": "2026-09-09T21:49:38.120Z",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 1037
+        }
+      ]
+    },
+    "providerStatus": "ready",
+    "review": {
+      "requestId": "691c6760-b082-49f4-8526-3cb0fa8770dc",
+      "translation": "如果罗莎到周五还没核对数字，就让Ben给她打电话",
+      "reviewer": "AI",
+      "logic": {
+        "pass": true,
+        "reason": "逐句核对人物、动作、否定和条件：条件时点、核对者Rosa、呼叫者Ben与接听者Rosa。"
+      },
+      "entities": {
+        "pass": false,
+        "reason": "Rosa被音译为罗莎。"
+      },
+      "naturalness": 4,
+      "colloquial": 4,
+      "issues": "Rosa被音译为罗莎。",
+      "categories": [
+        "entity"
+      ]
+    },
+    "stages": [
+      {
+        "id": 108,
+        "provider": "deepseek",
+        "requestId": "691c6760-b082-49f4-8526-3cb0fa8770dc",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "If Rosa has not checked the figures by Friday, ask [[VERBA_ENTITY_0]] to call her.",
+          "entityMap": [
+            {
+              "id": 0,
+              "token": "[[VERBA_ENTITY_0]]",
+              "original": "Ben",
+              "type": "possibleName",
+              "occurrenceCount": 1
+            }
+          ]
+        }
+      },
+      {
+        "id": 108,
+        "provider": "deepseek",
+        "requestId": "691c6760-b082-49f4-8526-3cb0fa8770dc",
+        "stage": "model_output",
+        "rawOutput": "{\"englishMeaning\": \"If Rosa has not checked the figures by Friday, then the listener is to ask Ben to call Rosa.\", \"translation\": \"如果罗莎到周五还没核对数字，就让[[VERBA_ENTITY_0]]给她打电话。\"}",
+        "model": "deepseek-v4-flash"
+      },
+      {
+        "id": 108,
+        "provider": "deepseek",
+        "requestId": "691c6760-b082-49f4-8526-3cb0fa8770dc",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "如果罗莎到周五还没核对数字，就让Ben给她打电话。"
+      },
+      {
+        "id": 108,
+        "provider": "deepseek",
+        "requestId": "691c6760-b082-49f4-8526-3cb0fa8770dc",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "如果罗莎到周五还没核对数字，就让Ben给她打电话",
+          "englishMeaning": "If Rosa has not checked the figures by Friday, then the listener is to ask Ben to call Rosa."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-independent-repeats",
+    "id": 102,
+    "provider": "deepseek",
+    "source": "I borrowed your charger, but Marta returned hers to you.",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "我借了你的充电器，但玛塔把她的还给你了",
+    "englishMeaning": "I borrowed your charger, but Marta returned her charger to you.",
+    "model": "deepseek-v4-flash",
+    "requestId": "e3c54dbd-809a-48f0-97b2-bbf4885b0eda",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 1007,
+    "diagnostic": {
+      "requestId": "e3c54dbd-809a-48f0-97b2-bbf4885b0eda",
+      "timestamp": "2026-09-09T21:49:43.344Z",
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 0,
+      "totalLatencyMs": 1002,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "e3c54dbd-809a-48f0-97b2-bbf4885b0eda",
+          "timestamp": "2026-09-09T21:49:44.340Z",
+          "attempt": 1,
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 995,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_passed",
+          "requestId": "e3c54dbd-809a-48f0-97b2-bbf4885b0eda",
+          "timestamp": "2026-09-09T21:49:44.346Z",
+          "validationAttempt": 1,
+          "provider": "deepseek",
+          "stage": "policy_validation",
+          "severity": "pass",
+          "issueCodes": [],
+          "ruleIds": [],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "e3c54dbd-809a-48f0-97b2-bbf4885b0eda",
+          "timestamp": "2026-09-09T21:49:44.346Z",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 1002
+        }
+      ]
+    },
+    "providerStatus": "ready",
+    "review": {
+      "requestId": "e3c54dbd-809a-48f0-97b2-bbf4885b0eda",
+      "translation": "我借了你的充电器，但玛塔把她的还给你了",
+      "reviewer": "AI",
+      "logic": {
+        "pass": true,
+        "reason": "逐句核对人物、动作、否定和条件：两件物品的所有者和动作方向不同。"
+      },
+      "entities": {
+        "pass": false,
+        "reason": "Marta被音译，姓名未原样保留。"
+      },
+      "naturalness": 4,
+      "colloquial": 4,
+      "issues": "Marta被音译，姓名未原样保留。",
+      "categories": [
+        "entity"
+      ]
+    },
+    "stages": [
+      {
+        "id": 102,
+        "provider": "deepseek",
+        "requestId": "e3c54dbd-809a-48f0-97b2-bbf4885b0eda",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "I borrowed your charger, but Marta returned hers to you.",
+          "entityMap": []
+        }
+      },
+      {
+        "id": 102,
+        "provider": "deepseek",
+        "requestId": "e3c54dbd-809a-48f0-97b2-bbf4885b0eda",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"I borrowed your charger, but Marta returned her charger to you.\",\n  \"translation\": \"我借了你的充电器，但玛塔把她的还给你了。\"\n}",
+        "model": "deepseek-v4-flash"
+      },
+      {
+        "id": 102,
+        "provider": "deepseek",
+        "requestId": "e3c54dbd-809a-48f0-97b2-bbf4885b0eda",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "我借了你的充电器，但玛塔把她的还给你了。"
+      },
+      {
+        "id": 102,
+        "provider": "deepseek",
+        "requestId": "e3c54dbd-809a-48f0-97b2-bbf4885b0eda",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "我借了你的充电器，但玛塔把她的还给你了",
+          "englishMeaning": "I borrowed your charger, but Marta returned her charger to you."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-independent-repeats",
+    "id": 108,
+    "provider": "deepseek",
+    "source": "If Rosa has not checked the figures by Friday, ask Ben to call her.",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "如果罗莎到周五还没核对数字，就让Ben给她打个电话",
+    "englishMeaning": "If Rosa has not checked the figures by Friday, instruct Ben to call Rosa.",
+    "model": "deepseek-v4-flash",
+    "requestId": "a0363d29-e059-45fe-84f8-ce0ff4501a68",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 1148,
+    "diagnostic": {
+      "requestId": "a0363d29-e059-45fe-84f8-ce0ff4501a68",
+      "timestamp": "2026-09-09T21:49:46.249Z",
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 0,
+      "totalLatencyMs": 1133,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "a0363d29-e059-45fe-84f8-ce0ff4501a68",
+          "timestamp": "2026-09-09T21:49:47.376Z",
+          "attempt": 1,
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1126,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_passed",
+          "requestId": "a0363d29-e059-45fe-84f8-ce0ff4501a68",
+          "timestamp": "2026-09-09T21:49:47.382Z",
+          "validationAttempt": 1,
+          "provider": "deepseek",
+          "stage": "policy_validation",
+          "severity": "pass",
+          "issueCodes": [],
+          "ruleIds": [],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 0
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "a0363d29-e059-45fe-84f8-ce0ff4501a68",
+          "timestamp": "2026-09-09T21:49:47.382Z",
+          "provider": "deepseek",
+          "model": "deepseek-v4-flash",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 1133
+        }
+      ]
+    },
+    "providerStatus": "ready",
+    "review": {
+      "requestId": "a0363d29-e059-45fe-84f8-ce0ff4501a68",
+      "translation": "如果罗莎到周五还没核对数字，就让Ben给她打个电话",
+      "reviewer": "AI",
+      "logic": {
+        "pass": true,
+        "reason": "逐句核对人物、动作、否定和条件：条件时点、核对者Rosa、呼叫者Ben与接听者Rosa。"
+      },
+      "entities": {
+        "pass": false,
+        "reason": "Rosa被音译为罗莎。"
+      },
+      "naturalness": 4,
+      "colloquial": 4,
+      "issues": "Rosa被音译为罗莎。",
+      "categories": [
+        "entity"
+      ]
+    },
+    "stages": [
+      {
+        "id": 108,
+        "provider": "deepseek",
+        "requestId": "a0363d29-e059-45fe-84f8-ce0ff4501a68",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "If Rosa has not checked the figures by Friday, ask [[VERBA_ENTITY_0]] to call her.",
+          "entityMap": [
+            {
+              "id": 0,
+              "token": "[[VERBA_ENTITY_0]]",
+              "original": "Ben",
+              "type": "possibleName",
+              "occurrenceCount": 1
+            }
+          ]
+        }
+      },
+      {
+        "id": 108,
+        "provider": "deepseek",
+        "requestId": "a0363d29-e059-45fe-84f8-ce0ff4501a68",
+        "stage": "model_output",
+        "rawOutput": "{\"englishMeaning\": \"If Rosa has not checked the figures by Friday, instruct [[VERBA_ENTITY_0]] to call Rosa.\", \"translation\": \"如果罗莎到周五还没核对数字，就让[[VERBA_ENTITY_0]]给她打个电话。\"}",
+        "model": "deepseek-v4-flash"
+      },
+      {
+        "id": 108,
+        "provider": "deepseek",
+        "requestId": "a0363d29-e059-45fe-84f8-ce0ff4501a68",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "如果罗莎到周五还没核对数字，就让Ben给她打个电话。"
+      },
+      {
+        "id": 108,
+        "provider": "deepseek",
+        "requestId": "a0363d29-e059-45fe-84f8-ce0ff4501a68",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "如果罗莎到周五还没核对数字，就让Ben给她打个电话",
+          "englishMeaning": "If Rosa has not checked the figures by Friday, instruct Ben to call Rosa."
+        }
+      }
+    ]
+  },
+  {
+    "run": "revision-numeric-final",
+    "id": 27,
+    "provider": "gemini",
+    "source": "You don't owe me anything; I owe you NGN 25,000.",
+    "status": "needs_review",
+    "httpStatus": 200,
+    "translation": "你不需要付我钱，我欠你25,000 NGN",
+    "englishMeaning": "The speaker informs the recipient that the recipient does not have a debt to the speaker, and the speaker owes the recipient 25,000 NGN.",
+    "model": "gemini-3.1-flash-lite",
+    "requestId": "ef6cd373-8b29-41c4-ae30-c5318111ca22",
+    "requestCount": 1,
+    "providerHttpRequestCount": 1,
+    "elapsedMs": 1181,
+    "diagnostic": {
+      "requestId": "ef6cd373-8b29-41c4-ae30-c5318111ca22",
+      "timestamp": "2026-09-09T21:50:04.401Z",
+      "provider": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "status": "success",
+      "errorCode": "",
+      "stage": "complete",
+      "httpStatus": 200,
+      "providerErrorCode": "",
+      "modelSwitched": false,
+      "attemptCount": 1,
+      "validationMs": 2,
+      "totalLatencyMs": 1169,
+      "events": [
+        {
+          "event": "translation_attempt",
+          "requestId": "ef6cd373-8b29-41c4-ae30-c5318111ca22",
+          "timestamp": "2026-09-09T21:50:05.560Z",
+          "attempt": 1,
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "result": "success",
+          "stage": "provider_request",
+          "httpStatus": 200,
+          "providerErrorCode": "",
+          "latencyMs": 1152,
+          "modelSwitched": false,
+          "willRetry": false,
+          "success": true
+        },
+        {
+          "event": "translation_validation_passed",
+          "requestId": "ef6cd373-8b29-41c4-ae30-c5318111ca22",
+          "timestamp": "2026-09-09T21:50:05.570Z",
+          "validationAttempt": 1,
+          "provider": "gemini",
+          "stage": "policy_validation",
+          "severity": "pass",
+          "issueCodes": [],
+          "ruleIds": [],
+          "disposition": "allow",
+          "success": true,
+          "validationMs": 2
+        },
+        {
+          "event": "translation_complete",
+          "requestId": "ef6cd373-8b29-41c4-ae30-c5318111ca22",
+          "timestamp": "2026-09-09T21:50:05.570Z",
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "stage": "complete",
+          "success": true,
+          "providerRequestCount": 1,
+          "totalLatencyMs": 1169
+        }
+      ]
+    },
+    "providerStatus": "degraded",
+    "review": {
+      "requestId": "ef6cd373-8b29-41c4-ae30-c5318111ca22",
+      "translation": "你不需要付我钱，我欠你25,000 NGN",
+      "reviewer": "AI",
+      "logic": {
+        "pass": false,
+        "reason": "不需要付我钱没有准确保留不欠钱的事实。"
+      },
+      "entities": {
+        "pass": true,
+        "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+      },
+      "naturalness": 4,
+      "colloquial": 4,
+      "issues": "不需要付我钱没有准确保留不欠钱的事实。",
+      "categories": [
+        "semantic"
+      ]
+    },
+    "stages": [
+      {
+        "id": 27,
+        "provider": "gemini",
+        "requestId": "ef6cd373-8b29-41c4-ae30-c5318111ca22",
+        "stage": "entity_protection",
+        "protectedInput": {
+          "text": "You don't owe me anything; I owe you NGN 25,000.",
+          "entityMap": []
+        }
+      },
+      {
+        "id": 27,
+        "provider": "gemini",
+        "requestId": "ef6cd373-8b29-41c4-ae30-c5318111ca22",
+        "stage": "model_output",
+        "rawOutput": "{\n  \"englishMeaning\": \"The speaker informs the recipient that the recipient does not have a debt to the speaker, and the speaker owes the recipient 25,000 NGN.\",\n  \"translation\": \"你不需要付我钱，我欠你25,000 NGN。\"\n}",
+        "model": "gemini-3.1-flash-lite"
+      },
+      {
+        "id": 27,
+        "provider": "gemini",
+        "requestId": "ef6cd373-8b29-41c4-ae30-c5318111ca22",
+        "stage": "entity_restoration",
+        "attempt": 1,
+        "translation": "你不需要付我钱，我欠你25,000 NGN。"
+      },
+      {
+        "id": 27,
+        "provider": "gemini",
+        "requestId": "ef6cd373-8b29-41c4-ae30-c5318111ca22",
+        "stage": "postprocess",
+        "attempt": 1,
+        "result": {
+          "translation": "你不需要付我钱，我欠你25,000 NGN",
+          "englishMeaning": "The speaker informs the recipient that the recipient does not have a debt to the speaker, and the speaker owes the recipient 25,000 NGN."
+        }
+      }
+    ]
+  }
+]

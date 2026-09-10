@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en-US">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Verba — 职场双语表达</title>
@@ -26,9 +26,9 @@
     <main>
       <header class="topbar"><div><p class="eyebrow">WORKSPACE / 01</p><h1 data-i18n="workspaceTranslate">翻译工作台</h1></div><div class="top-actions"><button class="api-settings-button" id="openSettings">⌘ <span data-i18n="apiSettings">API 设置</span></button><button class="interface-language" id="interfaceLanguage">EN</button><button class="icon-button">♧</button><button class="help-button">？ <span data-i18n="help">帮助中心</span></button></div></header>
       <section class="hero"><div class="hero-copy"><span class="pulse"></span><span data-i18n="madeFor">为真实协作而生</span></div><h2 data-i18n="heroTitle">听起来，就像你本来就会说。</h2><p data-i18n="heroDescription">不只是逐字翻译。Verba 读懂职场语境，帮你用恰当的方式与全球同事沟通。</p></section>
-      <section class="mode-section"><div class="section-heading"><div><p class="eyebrow" data-i18n="chooseStyle">选择表达方式</p><h3 data-i18n="whereUsed">这段话会用在哪里？</h3></div><span class="mode-tip" data-i18n="modeTip">不同场景，不同表达</span></div><div class="mode-grid"><button class="mode-card active" data-mode="email"><span class="mode-icon email-icon">✉</span><span class="mode-title" data-i18n="emailMode">专业邮件</span><span class="mode-desc" data-i18n="emailDesc">专业 · 简洁 · 得体</span><span class="selected">✓</span></button><button class="mode-card" data-mode="chat"><span class="mode-icon chat-icon">☏</span><span class="mode-title" data-i18n="chatMode">同事协作</span><span class="mode-desc" data-i18n="chatDesc">自然 · 随和 · 地道</span><span class="selected">✓</span></button></div></section>
+      <section class="mode-section"><div class="section-heading"><div><p class="eyebrow" data-i18n="chooseStyle">选择表达方式</p><h3 data-i18n="whereUsed">这段话会用在哪里？</h3></div><span class="mode-tip" data-i18n="modeTip">不同场景，不同表达</span></div><div class="mode-grid"><button class="mode-card" data-mode="email"><span class="mode-icon email-icon">✉</span><span class="mode-title" data-i18n="emailMode">专业邮件</span><span class="mode-desc" data-i18n="emailDesc">专业 · 简洁 · 得体</span><span class="selected">✓</span></button><button class="mode-card active" data-mode="chat"><span class="mode-icon chat-icon">☏</span><span class="mode-title" data-i18n="chatMode">同事协作</span><span class="mode-desc" data-i18n="chatDesc">自然 · 随和 · 地道</span><span class="selected">✓</span></button></div></section>
       <section class="translator-card">
-        <div class="language-row"><button class="language active" id="sourceLanguage">中文 <span>⌄</span></button><button class="swap" id="swapLanguages">⇄</button><button class="language" id="targetLanguage">English <span>⌄</span></button><div class="context-badge"><span></span><b id="modeName">专业邮件</b><em id="modeSub">Professional & concise</em></div></div>
+        <div class="language-row"><button class="language active" id="sourceLanguage">English <span>⌄</span></button><button class="swap" id="swapLanguages">⇄</button><button class="language" id="targetLanguage">Chinese <span>⌄</span></button><div class="context-badge"><span></span><b id="modeName">Team chat</b><em id="modeSub">Natural & collaborative</em></div></div>
         <div class="translation-panes">
           <div class="pane source-pane"><textarea id="sourceText" maxlength="1000" placeholder=""></textarea><div class="pane-footer"><span id="counter">0 / 1000</span><div><button class="small-action" id="clearText" data-i18n="clear">清空</button><button class="small-action">⌘ V <span data-i18n="paste">粘贴</span></button></div></div></div>
           <div class="divider"></div>
@@ -63,7 +63,15 @@
     <section class="settings-panel history-panel" role="dialog" aria-modal="true" aria-labelledby="historyTitle"><div class="settings-header"><div><p class="eyebrow">WORKSPACE</p><h2 id="historyTitle">历史记录</h2></div><button class="close-settings" id="closeHistory" aria-label="Close">×</button></div><div class="settings-section"><input class="api-key-input" id="historySearch" type="search" placeholder="搜索原文、译文、语言或场景" /><div class="history-list" id="historyList"></div></div></section>
   </div>
   <div class="settings-overlay" id="appSettingsOverlay" hidden>
-    <section class="settings-panel" role="dialog" aria-modal="true" aria-labelledby="appSettingsTitle"><div class="settings-header"><div><p class="eyebrow">VERBA</p><h2 id="appSettingsTitle">设置</h2></div><button class="close-settings" id="closeAppSettings" aria-label="Close">×</button></div><div class="settings-section"><h3>应用更新</h3><p id="updateStatus">尚未检查更新。</p><button class="save-settings" id="checkUpdates">检查更新</button><button class="save-settings" id="installUpdate" hidden>重启并安装更新</button></div></section>
+    <section class="settings-panel" role="dialog" aria-modal="true" aria-labelledby="appSettingsTitle">
+      <div class="settings-header"><div><p class="eyebrow" id="appVersion">VERBA</p><h2 id="appSettingsTitle" data-i18n="nav.settings">设置</h2></div><button class="close-settings" id="closeAppSettings" aria-label="Close">×</button></div>
+      <div class="settings-section"><h3 data-i18n="updates.title">应用更新</h3><p id="updateStatus">尚未检查更新。</p><button class="save-settings" id="checkUpdates" data-i18n="updates.check">检查更新</button><button class="save-settings" id="installUpdate" data-i18n="updates.install" hidden>重启并安装更新</button></div>
+      <div class="settings-section diagnostic-section">
+        <div class="diagnostic-heading"><div><h3 data-i18n="diagnostics.title">翻译诊断</h3><p data-i18n="diagnostics.description">查看最近一次翻译使用的服务商、模型和失败阶段，不包含 API 密钥或完整原文。</p></div><button class="model-refresh" id="refreshDiagnostics" data-i18n="diagnostics.refresh">刷新</button></div>
+        <dl class="diagnostic-summary" id="diagnosticSummary"></dl>
+        <details class="diagnostic-attempts" id="diagnosticAttempts"><summary data-i18n="diagnostics.attempts">执行记录</summary><div id="diagnosticAttemptList"></div></details>
+      </div>
+    </section>
   </div>
   <div class="toast" id="toast"></div><script src="ui-feedback.js"></script><script src="i18n.js"></script><script src="app.js"></script><script src="api-keys.js"></script><script src="model-settings.js"></script><script src="desktop-features.js"></script>
 <script src="app-interactions.js"></script></body>

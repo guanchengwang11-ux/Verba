@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "provider": "deepseek",
+    "requestId": "66c7a29d-3498-48e0-bb57-3080824234fd",
+    "translation": "她说他已经把我们的地址发给他们了",
+    "method": "CUA actual browser UI: entered source, clicked translate, read visible AX text; final screenshot visually checked",
+    "direction": "enToZh",
+    "mode": "chat"
+  },
+  {
+    "id": 2,
+    "provider": "deepseek",
+    "requestId": "57d22bf0-948e-4991-9122-9896c67c7ae8",
+    "translation": "他们让我们告诉你，会议已经取消了",
+    "method": "CUA actual browser UI: entered source, clicked translate, read visible AX text; final screenshot visually checked",
+    "direction": "enToZh",
+    "mode": "chat"
+  },
+  {
+    "id": 5,
+    "provider": "deepseek",
+    "requestId": "474ba636-d93d-4f4d-a396-4aba74a6a5e8",
+    "translation": "Nana请求David帮忙处理Sarah的报告",
+    "method": "CUA actual browser UI: entered source, clicked translate, read visible AX text; final screenshot visually checked",
+    "direction": "enToZh",
+    "mode": "chat"
+  },
+  {
+    "id": 6,
+    "provider": "deepseek",
+    "requestId": "b81c55fb-4ec9-43b7-97c3-332d6ea59cd1",
+    "translation": "May说她可能晚点加入我们",
+    "method": "CUA actual browser UI: entered source, clicked translate, read visible AX text; final screenshot visually checked",
+    "direction": "enToZh",
+    "mode": "chat"
+  },
+  {
+    "id": 7,
+    "provider": "deepseek",
+    "requestId": "93ae38d6-d61f-4a76-b4a2-7e4068485dcd",
+    "translation": "Will 说明天会发",
+    "method": "CUA actual browser UI: entered source, clicked translate, read visible AX text; final screenshot visually checked",
+    "direction": "enToZh",
+    "mode": "chat"
+  },
+  {
+    "id": 8,
+    "provider": "deepseek",
+    "requestId": "48afc2b8-fbe5-400a-ba16-b44fbf4e5a98",
+    "translation": "你能问下May她能不能加入我们吗",
+    "method": "CUA actual browser UI: entered source, clicked translate, read visible AX text; final screenshot visually checked",
+    "direction": "enToZh",
+    "mode": "chat"
+  },
+  {
+    "id": 36,
+    "provider": "deepseek",
+    "requestId": "c1f518a9-a42e-432d-8849-ec175fc614eb",
+    "translation": "把用户名 She 保持不变，翻译她消息的其余部分",
+    "method": "CUA actual browser UI: entered source, clicked translate, read visible AX text; final screenshot visually checked",
+    "direction": "enToZh",
+    "mode": "chat"
+  }
+]

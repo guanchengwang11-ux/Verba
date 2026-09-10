@@ -1,0 +1,35 @@
+[
+  {
+    "requestId": "8f8c245e-bbfc-4ae2-aa7c-a1288c62db3f",
+    "translation": "她说他已经把我们的地址发给他们了",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "她转述；他已经发送；接收者是他们；地址属于我们。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "She、he、them、our分别按她、他、他们、我们的含义处理。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "8f8c245e-bbfc-4ae2-aa7c-a1288c62db3f",
+    "translation": "她说他已经把我们的地址发给他们了。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "她转述；他已经发送；接收者是他们；地址属于我们。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "She、he、them、our分别按她、他、他们、我们的含义处理。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  }
+]

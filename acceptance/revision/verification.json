@@ -1,0 +1,18 @@
+{
+  "date": "2026-09-09T21:55:07.170Z",
+  "unitTests": {
+    "passed": 66,
+    "failed": 0
+  },
+  "credentialScan": {
+    "passed": true,
+    "files": 179
+  },
+  "reviewedDeliveredOutputs": 269,
+  "reviewedGeneratedCandidates": 297,
+  "actualCandidateReplays": 3,
+  "replayExternalCalls": 0,
+  "qualityGate": "NOT_PASSED",
+  "released": false,
+  "deployed": false
+}

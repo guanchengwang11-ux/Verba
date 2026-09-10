@@ -1,0 +1,670 @@
+[
+  {
+    "requestId": "452a282f-bd10-488f-ac90-15aa14e76f24",
+    "translation": "我的经理要求您的助理联系他（她）的司机",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：经理、助理、司机的所属关系正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 3,
+    "colloquial": 3,
+    "issues": "他（她）的司机显得犹疑；their可为单数，不机械判所属错误。",
+    "categories": [
+      "language"
+    ]
+  },
+  {
+    "requestId": "452a282f-bd10-488f-ac90-15aa14e76f24",
+    "translation": "我的经理要求您的助理联系他（她）的司机。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：经理、助理、司机的所属关系正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 3,
+    "colloquial": 3,
+    "issues": "他（她）的司机显得犹疑；their可为单数，不机械判所属错误。",
+    "categories": [
+      "language"
+    ],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "ff3faa64-a879-4133-95c8-52fd704b6bcf",
+    "translation": "你不需要今天回复，但请在明天的会议前阅读它",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：不用回复不等于禁止回复；阅读有截止时间。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 3,
+    "colloquial": 3,
+    "issues": "会议前阅读它生硬。",
+    "categories": [
+      "language"
+    ]
+  },
+  {
+    "requestId": "ff3faa64-a879-4133-95c8-52fd704b6bcf",
+    "translation": "你不需要今天回复，但请在明天的会议前阅读它。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：不用回复不等于禁止回复；阅读有截止时间。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 3,
+    "colloquial": 3,
+    "issues": "会议前阅读它生硬。",
+    "categories": [
+      "language"
+    ],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "6efc2a10-92e6-445b-aa5e-bde20f261591",
+    "translation": "她不是不肯帮忙，只是需要更多时间",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：不能译成拒绝帮助。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "6efc2a10-92e6-445b-aa5e-bde20f261591",
+    "translation": "她不是不肯帮忙，只是需要更多时间。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：不能译成拒绝帮助。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "a3df22dd-9caf-4b7a-a890-d68ea734371a",
+    "translation": "在Nana确认地址之前，请勿发送这些文件",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：确认在前，发送在后。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 3,
+    "issues": "请勿发送偏告示语体。",
+    "categories": [
+      "language"
+    ]
+  },
+  {
+    "requestId": "a3df22dd-9caf-4b7a-a890-d68ea734371a",
+    "translation": "在Nana确认地址之前，请勿发送这些文件。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：确认在前，发送在后。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 3,
+    "issues": "请勿发送偏告示语体。",
+    "categories": [
+      "language"
+    ],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "90f23430-8914-4e55-aa54-feb78acf1a69",
+    "translation": "除非你另有交代，否则我将使用最新版本",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：默认行为及例外条件正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 3,
+    "issues": "否则我将使用偏公文。",
+    "categories": [
+      "language"
+    ]
+  },
+  {
+    "requestId": "90f23430-8914-4e55-aa54-feb78acf1a69",
+    "translation": "除非你另有交代，否则我将使用最新版本。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：默认行为及例外条件正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 3,
+    "issues": "否则我将使用偏公文。",
+    "categories": [
+      "language"
+    ],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "e5bcdd9e-233d-440d-b843-ea2bcbe7fbc8",
+    "translation": "你不需要付我任何东西；我欠你 NGN 25,000",
+    "reviewer": "AI",
+    "logic": {
+      "pass": false,
+      "reason": "不需要付我任何东西没有保留不欠债的事实。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "不需要付我任何东西没有保留不欠债的事实。",
+    "categories": [
+      "semantic"
+    ]
+  },
+  {
+    "requestId": "e5bcdd9e-233d-440d-b843-ea2bcbe7fbc8",
+    "translation": "你不需要付我任何东西；我欠你 NGN 25,000。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": false,
+      "reason": "不需要付我任何东西没有保留不欠债的事实。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "不需要付我任何东西没有保留不欠债的事实。",
+    "categories": [
+      "semantic"
+    ],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "dbaa67b1-69c9-415a-9af4-caa4cd8ac719",
+    "translation": "我不确定是否理解了您的意思。您是说我们要等一等吗",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：follow指理解；保留疑问语气。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "dbaa67b1-69c9-415a-9af4-caa4cd8ac719",
+    "translation": "我不确定是否理解了您的意思。您是说我们要等一等吗？",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：follow指理解；保留疑问语气。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "f38bdf37-b619-4567-8dee-ceef2a66b3b9",
+    "translation": "客服部有人给我打了电话。对方说会帮我们核查一下",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：They指某一位客服；不强加性别，不误判为多人。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "f38bdf37-b619-4567-8dee-ceef2a66b3b9",
+    "translation": "客服部有人给我打了电话。对方说会帮我们核查一下。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：They指某一位客服；不强加性别，不误判为多人。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "fc73eb1b-fa0f-4d04-b392-6231c4ed4f71",
+    "translation": "David 和 Michael 谈话时，听起来很不高兴",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：原文he指向不明，不擅自将其明确为某个人；upset不夸大为暴怒。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "自然省略可接受；英文解释指定David，解释收窄。",
+    "categories": []
+  },
+  {
+    "requestId": "fc73eb1b-fa0f-4d04-b392-6231c4ed4f71",
+    "translation": "David 和 Michael 谈话时，听起来很不高兴。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：原文he指向不明，不擅自将其明确为某个人；upset不夸大为暴怒。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "自然省略可接受；英文解释指定David，解释收窄。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "174da7cb-21f7-4188-a05f-294ba67e3054",
+    "translation": "我的经理让你的助手联系他们的司机",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：经理、助理、司机的所属关系正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "中文关系可接受；英文解释限定经理拥有司机，原文未唯一指定。",
+    "categories": []
+  },
+  {
+    "requestId": "174da7cb-21f7-4188-a05f-294ba67e3054",
+    "translation": "我的经理让你的助手联系他们的司机。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：经理、助理、司机的所属关系正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "中文关系可接受；英文解释限定经理拥有司机，原文未唯一指定。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "47e0a077-8859-4bb1-86e4-3da0a16a08d3",
+    "translation": "今天不必回复，但请在明天的会议前读一下",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：不用回复不等于禁止回复；阅读有截止时间。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "47e0a077-8859-4bb1-86e4-3da0a16a08d3",
+    "translation": "今天不必回复，但请在明天的会议前读一下。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：不用回复不等于禁止回复；阅读有截止时间。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "d116a777-c50d-4735-b962-7d2ff932b795",
+    "translation": "她不是不肯帮忙，只是需要更多时间",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：不能译成拒绝帮助。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "d116a777-c50d-4735-b962-7d2ff932b795",
+    "translation": "她不是不肯帮忙，只是需要更多时间。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：不能译成拒绝帮助。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "a71d39ca-3e8f-47e5-96f3-fe3ba0862957",
+    "translation": "在Nana确认地址之前，不要发送文件",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：确认在前，发送在后。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "a71d39ca-3e8f-47e5-96f3-fe3ba0862957",
+    "translation": "在Nana确认地址之前，不要发送文件。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：确认在前，发送在后。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "ddd61bc7-f8a7-413a-a659-eab8c6471229",
+    "translation": "除非你另有指示，否则我就用最新版本",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：默认行为及例外条件正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "ddd61bc7-f8a7-413a-a659-eab8c6471229",
+    "translation": "除非你另有指示，否则我就用最新版本。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：默认行为及例外条件正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "3ab351d4-b568-4d99-8c16-46f389d25afd",
+    "translation": "你不欠我任何东西；是我欠你 25,000NGN",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：债务方向和金额正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "3ab351d4-b568-4d99-8c16-46f389d25afd",
+    "translation": "你不欠我任何东西；是我欠你25,000奈拉。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：债务方向和金额正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "25,000奈拉正确；本地币种占位符要求导致误拦截。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "3ab351d4-b568-4d99-8c16-46f389d25afd",
+    "translation": "你不欠我任何东西；是我欠你 25,000NGN。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：债务方向和金额正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 2
+  },
+  {
+    "requestId": "c70c9488-9936-454a-9aba-2311634fc333",
+    "translation": "我不太明白。你是说我们应该等等吗",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：follow指理解；保留疑问语气。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "c70c9488-9936-454a-9aba-2311634fc333",
+    "translation": "我不太明白。你是说我们应该等等吗？",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：follow指理解；保留疑问语气。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "8675cfb5-6483-42bd-afa9-6c45d90e90dc",
+    "translation": "支持那边有人给我打了电话，说会帮我们查一下",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：They指某一位客服；不强加性别，不误判为多人。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "8675cfb5-6483-42bd-afa9-6c45d90e90dc",
+    "translation": "支持那边有人给我打了电话，说会帮我们查一下。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：They指某一位客服；不强加性别，不误判为多人。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "78102dc2-8485-4d84-99c9-01509a615dff",
+    "translation": "当David和Michael说话时，他听起来很不高兴",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：原文he指向不明，不擅自将其明确为某个人；upset不夸大为暴怒。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "中文他保留歧义；英文解释指定David，解释收窄。",
+    "categories": []
+  },
+  {
+    "requestId": "78102dc2-8485-4d84-99c9-01509a615dff",
+    "translation": "当David和Michael说话时，他听起来很不高兴。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：原文he指向不明，不擅自将其明确为某个人；upset不夸大为暴怒。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "中文他保留歧义；英文解释指定David，解释收窄。",
+    "categories": [],
+    "candidateAttempt": 1
+  }
+]

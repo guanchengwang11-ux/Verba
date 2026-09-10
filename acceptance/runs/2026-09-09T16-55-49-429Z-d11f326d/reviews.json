@@ -1,0 +1,292 @@
+[
+  {
+    "requestId": "3b14076f-805a-48c2-aa37-01aa27af7307",
+    "translation": "她说他已经把我们的地址发给他们了",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：She必须翻译；转述与收发关系正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "3b14076f-805a-48c2-aa37-01aa27af7307",
+    "translation": "她说他已经把我们的地址发给他们了。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：She必须翻译；转述与收发关系正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "1e0e46b0-50b2-41bf-870e-4bde994e39fc",
+    "translation": "他们让我们告诉你，会议取消了",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：They必须翻译；我们负责转告，你接收消息。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "1e0e46b0-50b2-41bf-870e-4bde994e39fc",
+    "translation": "他们让我们告诉你，会议取消了。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：They必须翻译；我们负责转告，你接收消息。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "fda05508-842f-4835-add7-c60ca81c785d",
+    "translation": "Nana 请 David 帮助 Sarah 处理她的报告",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：三个人名保留；报告属于Sarah。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "fda05508-842f-4835-add7-c60ca81c785d",
+    "translation": "Nana 请 David 帮助 Sarah 处理她的报告。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：三个人名保留；报告属于Sarah。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "b88b454e-7fec-476a-9ded-86c84ae2f9bf",
+    "translation": "梅说，她可能晚点加入我们。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：May是姓名；may是“可能”，不能译成确定参加。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "May被音译为梅，正常阻断。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "May被音译为梅，正常阻断。",
+    "categories": [
+      "entity"
+    ],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "b88b454e-7fec-476a-9ded-86c84ae2f9bf",
+    "translation": "梅说她可能稍后加入我们。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：May是姓名；may是“可能”，不能译成确定参加。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "重试仍音译May，错误界面已观察。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "重试仍音译May，错误界面已观察。",
+    "categories": [
+      "entity"
+    ],
+    "candidateAttempt": 2
+  },
+  {
+    "requestId": "59ddf55b-0acd-4b14-a6db-9b5f0813acff",
+    "translation": "Will说他明天会发",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：Will是姓名；will正常翻译；不能凭空指定接收人。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "59ddf55b-0acd-4b14-a6db-9b5f0813acff",
+    "translation": "威尔说他明天会发。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：Will是姓名；will正常翻译；不能凭空指定接收人。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "Will被音译为威尔。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "Will被音译为威尔。",
+    "categories": [
+      "entity"
+    ],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "59ddf55b-0acd-4b14-a6db-9b5f0813acff",
+    "translation": "Will说他明天会发。\n",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：Will是姓名；will正常翻译；不能凭空指定接收人。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 2
+  },
+  {
+    "requestId": "07930338-01a6-4275-b45e-5079c5ae14fc",
+    "translation": "你会问May能不能加入我们吗",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：句首Will不是姓名；May是姓名。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "07930338-01a6-4275-b45e-5079c5ae14fc",
+    "translation": "你能问问梅要不要一起来吗？",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：句首Will不是姓名；May是姓名。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "May被音译为梅。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "May被音译为梅。",
+    "categories": [
+      "entity"
+    ],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "07930338-01a6-4275-b45e-5079c5ae14fc",
+    "translation": "你会问May能不能加入我们吗？",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：句首Will不是姓名；May是姓名。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 2
+  },
+  {
+    "requestId": "c6060415-5ed1-48d6-a48c-62a9e2116a0c",
+    "translation": "保留用户名\"She\"不变，但翻译她消息的其余部分",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：引号里的She是明确要求保留的用户名；her正常翻译。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "c6060415-5ed1-48d6-a48c-62a9e2116a0c",
+    "translation": "保留用户名\"She\"不变，但翻译她消息的其余部分。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：引号里的She是明确要求保留的用户名；her正常翻译。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  }
+]

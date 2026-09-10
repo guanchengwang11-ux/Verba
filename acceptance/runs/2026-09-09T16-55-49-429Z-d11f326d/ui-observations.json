@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "provider": "deepseek",
+    "requestId": "3b14076f-805a-48c2-aa37-01aa27af7307",
+    "translation": "她说他已经把我们的地址发给他们了",
+    "displayText": "她说他已经把我们的地址发给他们了",
+    "observed": true,
+    "success": true
+  },
+  {
+    "id": 2,
+    "provider": "deepseek",
+    "requestId": "1e0e46b0-50b2-41bf-870e-4bde994e39fc",
+    "translation": "他们让我们告诉你，会议取消了",
+    "displayText": "他们让我们告诉你，会议取消了",
+    "observed": true,
+    "success": true
+  },
+  {
+    "id": 5,
+    "provider": "deepseek",
+    "requestId": "fda05508-842f-4835-add7-c60ca81c785d",
+    "translation": "Nana 请 David 帮助 Sarah 处理她的报告",
+    "displayText": "Nana 请 David 帮助 Sarah 处理她的报告",
+    "observed": true,
+    "success": true
+  },
+  {
+    "id": 6,
+    "provider": "deepseek",
+    "requestId": "b88b454e-7fec-476a-9ded-86c84ae2f9bf",
+    "translation": null,
+    "displayText": "翻译结果未通过专有名词保护校验，请重试。",
+    "observed": true,
+    "success": false
+  },
+  {
+    "id": 7,
+    "provider": "deepseek",
+    "requestId": "59ddf55b-0acd-4b14-a6db-9b5f0813acff",
+    "translation": "Will说他明天会发",
+    "displayText": "Will说他明天会发",
+    "observed": true,
+    "success": true
+  },
+  {
+    "id": 8,
+    "provider": "deepseek",
+    "requestId": "07930338-01a6-4275-b45e-5079c5ae14fc",
+    "translation": "你会问May能不能加入我们吗",
+    "displayText": "你会问May能不能加入我们吗",
+    "observed": true,
+    "success": true
+  },
+  {
+    "id": 36,
+    "provider": "deepseek",
+    "requestId": "c6060415-5ed1-48d6-a48c-62a9e2116a0c",
+    "translation": "保留用户名\"She\"不变，但翻译她消息的其余部分",
+    "displayText": "保留用户名\"She\"不变，但翻译她消息的其余部分",
+    "observed": true,
+    "success": true
+  }
+]

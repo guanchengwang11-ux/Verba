@@ -12,3 +12,4 @@ model-state.json
 updater.log
 .DS_Store
 Thumbs.db
+acceptance/startup-smoke-profile/

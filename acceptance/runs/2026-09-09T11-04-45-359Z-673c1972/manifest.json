@@ -1,0 +1,30 @@
+{
+  "runId": "2026-09-09T11-04-45-359Z-673c1972",
+  "label": "singular-reference-regression",
+  "startedAt": "2026-09-09T11:04:45.364Z",
+  "direction": "enToZh",
+  "mode": "chat",
+  "ids": [
+    34,
+    34,
+    34
+  ],
+  "providers": [
+    "deepseek"
+  ],
+  "hashes": {
+    "server.mjs": "250438845dbeadf88f481874d586418253cac8a7a8017f043b1a3fb66f75efe2",
+    "entity-protection.mjs": "00d163181eafe650d26b35acfcfe0c1fb45477c446a79a3eb12d45a31d1a0ceb",
+    "translation-policy.mjs": "f48f366005f4d7e87743dd0c6ba8ef89de76486ef54500d0936e5941fe4f0bc6",
+    "translation-output.mjs": "ace571baf564a8708cd801021ae5623a9054b6b8b5b60219cd93fd841403f74f",
+    "semantic-role-protection.mjs": "7093e0a9bbf46f1d3cce872a65af809e3a682262c3c62e993dcadb3649686789",
+    "factual-constraint-protection.mjs": "9ad8486bcaf44ce396f8051531df375b0042183333c831ddafbbd528366675b2",
+    "model-manager.mjs": "3a00a56e35467a95cad6367f1009570da4979be24adbde3eaad80de2e5353c71",
+    "model-policy.json": "4dcfd05703bd52922760e2cf7eb101bbb96bce4adc6c0640ea882eccdbceca76",
+    "app.js": "34af99a3a77f36891d186fc63818e4beabbbdf4d061a2af98d0daa00b65e8c82",
+    "acceptance/cases.json": "c778eee629f862f394e6d8688ae9dfdc3c591589cd483b0f1d556a04d4135d3c",
+    "scripts/translation-acceptance.mjs": "d8840bf7057b16f65d54227187a7d9a22a8100a8071c3b23f0946818627caddc",
+    "providers/deepseek-provider.mjs": "56a811cc9fa25c8e146c9c22fe9c38e10db2170530be7cf2159668563ec3e4ea"
+  },
+  "review": "Pending explicit AI semantic and language review. Transport success is not quality acceptance."
+}

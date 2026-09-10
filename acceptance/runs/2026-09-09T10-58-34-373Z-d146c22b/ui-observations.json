@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "provider": "gemini",
+    "requestId": "db47f9e8-8021-476a-883f-5ba0df4f3afe",
+    "translation": "她说他已经把我们的地址发给他们了",
+    "method": "CUA AX observation recorded for cases 01,02,05"
+  },
+  {
+    "id": 2,
+    "provider": "gemini",
+    "requestId": "d6e25715-9aa6-4800-b20b-b937b008c1ce",
+    "translation": "他们让我们通知你，会议已经取消了",
+    "method": "CUA AX observation recorded for cases 01,02,05"
+  },
+  {
+    "id": 5,
+    "provider": "gemini",
+    "requestId": "9a549421-b135-4355-9886-ed6bc673fc00",
+    "translation": "Nana 找 David 帮忙处理 Sarah 的报告",
+    "method": "CUA AX observation recorded for cases 01,02,05"
+  }
+]

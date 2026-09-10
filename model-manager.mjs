@@ -4,6 +4,11 @@ import { fileURLToPath } from "node:url";
 import openaiProvider from "./providers/openai-provider.mjs";
 import geminiProvider from "./providers/gemini-provider.mjs";
 import deepseekProvider from "./providers/deepseek-provider.mjs";
+import {
+  createTranslationError,
+  normalizeTranslationError,
+  TRANSLATION_ERROR_CODES
+} from "./translation-diagnostics.mjs";
 
 const providers = { openai: openaiProvider, gemini: geminiProvider, deepseek: deepseekProvider };
 const providerKeys = { openai: "OPENAI_API_KEY", gemini: "GEMINI_API_KEY", deepseek: "DEEPSEEK_API_KEY" };
@@ -23,8 +28,14 @@ function createState() {
   return { version: 1, providers: Object.fromEntries(providerIds.map((provider) => [provider, createProviderState()])) };
 }
 
-function sleep(milliseconds) {
-  return new Promise((resolve) => setTimeout(resolve, milliseconds));
+function sleep(milliseconds, signal) {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(resolve, milliseconds);
+    signal?.addEventListener("abort", () => {
+      clearTimeout(timer);
+      reject(createTranslationError(TRANSLATION_ERROR_CODES.REQUEST_CANCELLED, { message: "The translation request was cancelled.", status: 499, stage: "request_cancelled" }));
+    }, { once: true });
+  });
 }
 
 function errorWithStatus(message, status, code = "") {
@@ -240,50 +251,129 @@ export class ModelManager {
       .slice(0, translationModelLimit);
   }
 
-  async translate({ provider, text, instructions }) {
+  async translate({ provider, text, instructions, diagnostics, signal }) {
     if (!this.loaded) await this.initialize();
-    await this.ensureReady(provider);
+    try {
+      await this.ensureReady(provider);
+    } catch (error) {
+      const normalized = normalizeTranslationError(error, { provider, stage: "model_selection" });
+      diagnostics?.record({
+        event: "translation_stage_failed",
+        stage: "model_selection",
+        internalCode: normalized.internalCode,
+        httpStatus: normalized.status,
+        providerErrorCode: normalized.providerErrorCode,
+        success: false
+      });
+      throw normalized;
+    }
     const state = this.state.providers[provider];
     const apiKey = this.getApiKey(provider);
     const candidates = this.orderedTranslationModels(provider);
     let lastError;
-    for (const model of candidates) {
+    for (let modelIndex = 0; modelIndex < candidates.length; modelIndex += 1) {
+      const model = candidates[modelIndex];
       try {
-        const result = await this.translateWithRetry(provider, apiKey, model, text, instructions);
+        const result = await this.translateWithRetry(provider, apiKey, model, text, instructions, { diagnostics, modelSwitched: modelIndex > 0, hasFallback: modelIndex < candidates.length - 1, allowSameModelRetry: modelIndex === candidates.length - 1, signal });
         state.lastKnownGoodModel = model;
         state.primaryModel = model;
         state.modelHealth[model] = { ...(state.modelHealth[model] || {}), status: "healthy", checkedAt: new Date().toISOString(), latencyMs: result.latencyMs, failureCount: 0 };
         state.lastError = "";
         await this.persist();
-        console.info(JSON.stringify({ event: "translation", provider, model, latencyMs: result.latencyMs, usage: normalizedUsage(result.usage), success: true }));
-        return result;
+        if (!diagnostics) console.info(JSON.stringify({ event: "translation", provider, model, latencyMs: result.latencyMs, usage: normalizedUsage(result.usage), success: true }));
+        return { ...result, model };
       } catch (error) {
-        lastError = error;
-        if (error.status === 401 || error.status === 403) {
-          console.info(JSON.stringify({ event: "translation", provider, model, success: false, status: error.status }));
-          throw errorWithStatus("The API key is invalid or does not have permission to use this provider.", error.status);
+        lastError = normalizeTranslationError(error, { provider, model, stage: "provider_request" });
+        if (lastError.status === 401 || lastError.status === 403) {
+          throw createTranslationError(TRANSLATION_ERROR_CODES.PROVIDER_UNAVAILABLE, {
+            message: "The API key is invalid or does not have permission to use this provider.",
+            status: lastError.status,
+            providerErrorCode: lastError.providerErrorCode,
+            provider,
+            model,
+            stage: "provider_authentication",
+            cause: lastError
+          });
         }
+        if (lastError.internalCode === TRANSLATION_ERROR_CODES.REQUEST_CANCELLED || lastError.stage === "attempt_budget") throw lastError;
         state.failureCount[model] = (state.failureCount[model] || 0) + 1;
         state.modelHealth[model] = { ...(state.modelHealth[model] || {}), status: "unhealthy", checkedAt: new Date().toISOString(), failureCount: state.failureCount[model] };
-        if (isInvalidModelError(error)) state.unavailableUntil[model] = Date.now() + unavailableDurationMs;
-        console.info(JSON.stringify({ event: "translation", provider, model, success: false, status: error.status || 0, retryNextModel: true }));
+        if (lastError.internalCode === TRANSLATION_ERROR_CODES.MODEL_NOT_FOUND || isInvalidModelError(lastError)) state.unavailableUntil[model] = Date.now() + unavailableDurationMs;
+        if (!diagnostics) console.info(JSON.stringify({ event: "translation", provider, model, success: false, status: lastError.status || 0, retryNextModel: modelIndex < candidates.length - 1 }));
       }
     }
     state.status = "degraded";
     state.lastError = "All verified translation models failed. Run model detection and try again.";
     await this.persist();
-    throw errorWithStatus(state.lastError, lastError?.status || 503);
+    throw lastError || createTranslationError(TRANSLATION_ERROR_CODES.MODEL_NOT_FOUND, {
+      message: state.lastError,
+      status: 503,
+      provider,
+      stage: "model_selection"
+    });
   }
 
-  async translateWithRetry(provider, apiKey, model, text, instructions) {
+  async translateWithRetry(provider, apiKey, model, text, instructions, { diagnostics, modelSwitched = false, hasFallback = false, allowSameModelRetry = true, signal } = {}) {
     let lastError;
-    for (let attempt = 0; attempt < 3; attempt += 1) {
+    for (let retryIndex = 0; retryIndex < 2; retryIndex += 1) {
+      if (signal?.aborted) throw createTranslationError(TRANSLATION_ERROR_CODES.REQUEST_CANCELLED, { message: "The translation request was cancelled.", status: 499, provider, model, stage: "request_cancelled" });
+      const attempt = diagnostics?.nextAttempt() || retryIndex + 1;
+      const startedAt = Date.now();
+      const controller = new AbortController();
+      let timedOut = false;
+      const onAbort = () => controller.abort();
+      signal?.addEventListener("abort", onAbort, { once: true });
+      const remainingMs = diagnostics?.remainingMs() || 30000;
+      const timer = setTimeout(() => { timedOut = true; controller.abort(); }, Math.max(1, remainingMs));
       try {
-        return await this.adapters[provider].translate(apiKey, model, text, instructions);
+        const result = await this.adapters[provider].translate(apiKey, model, text, instructions, { signal: controller.signal });
+        diagnostics?.record({
+          event: "translation_attempt",
+          attempt,
+          provider,
+          model,
+          result: "success",
+          stage: "provider_request",
+          httpStatus: result.httpStatus || 200,
+          providerErrorCode: "",
+          latencyMs: result.latencyMs || Date.now() - startedAt,
+          modelSwitched: modelSwitched && retryIndex === 0,
+          willRetry: false,
+          success: true
+        });
+        return result;
       } catch (error) {
-        lastError = error;
-        if (!isTransientError(error) || attempt === 2) throw error;
-        await sleep((attempt + 1) * 1000);
+        if (signal?.aborted) {
+          lastError = createTranslationError(TRANSLATION_ERROR_CODES.REQUEST_CANCELLED, { message: "The translation request was cancelled.", status: 499, provider, model, stage: "request_cancelled", cause: error });
+        } else if (timedOut) {
+          lastError = createTranslationError(TRANSLATION_ERROR_CODES.PROVIDER_NETWORK_ERROR, { message: "The provider request exceeded the translation timeout budget.", status: 504, providerErrorCode: "REQUEST_TIMEOUT", provider, model, stage: "provider_request", cause: error });
+        } else {
+          lastError = normalizeTranslationError(error, { provider, model, stage: "provider_request" });
+        }
+        const retryableSameModel = lastError.internalCode === TRANSLATION_ERROR_CODES.PROVIDER_NETWORK_ERROR || [502, 503, 504].includes(lastError.status);
+        const willRetry = retryableSameModel && allowSameModelRetry && retryIndex === 0 && (diagnostics?.canAttempt() ?? true) && !signal?.aborted;
+        const canFallback = hasFallback && ![401, 403].includes(lastError.status) && lastError.internalCode !== TRANSLATION_ERROR_CODES.REQUEST_CANCELLED;
+        diagnostics?.record({
+          event: "translation_attempt",
+          attempt,
+          provider,
+          model,
+          result: "failed",
+          stage: "provider_request",
+          internalCode: lastError.internalCode,
+          httpStatus: lastError.status,
+          providerErrorCode: lastError.providerErrorCode,
+          latencyMs: Date.now() - startedAt,
+          modelSwitched: modelSwitched && retryIndex === 0,
+          willRetry,
+          retryReason: willRetry ? lastError.internalCode : canFallback ? "model_fallback" : "",
+          success: false
+        });
+        if (!willRetry) throw lastError;
+        await sleep(Math.min(750, diagnostics?.remainingMs() || 750), signal);
+      } finally {
+        clearTimeout(timer);
+        signal?.removeEventListener("abort", onAbort);
       }
     }
     throw lastError;

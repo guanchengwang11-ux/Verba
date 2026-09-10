@@ -1,0 +1,9 @@
+{
+  "version": "1.1.1",
+  "sourceFilesMatched": 37,
+  "secretScanPassed": true,
+  "installer": "F:\\1. translator\\dist\\Verba-Setup-1.1.1.exe",
+  "bytes": 93943195,
+  "sha256": "6ff5b0a8cc44bfb43ac4e4e71da874ab1284c264ffb6566d18ce529060299be3",
+  "published": false
+}

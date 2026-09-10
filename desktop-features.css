@@ -12,3 +12,14 @@
 .history-restore { margin-left: auto; background: #eff8f1; border-color: #b9ddc5; }
 .history-action:hover, .history-restore:hover { border-color: #66ae88; }
 .history-empty { color: #87938a; font-size: 12px; padding: 24px 0; text-align: center; }
+.diagnostic-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.diagnostic-heading p { max-width: 470px; }
+.diagnostic-summary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 16px 0 0; }
+.diagnostic-summary div { min-width: 0; padding: 10px; border-radius: 8px; background: #f6faf7; }
+.diagnostic-summary dt { color: #829087; font-size: 9px; }
+.diagnostic-summary dd { overflow-wrap: anywhere; margin: 4px 0 0; color: #284238; font: 700 10px "DM Mono", monospace; }
+.diagnostic-attempts { margin-top: 12px; color: #526058; font-size: 11px; }
+.diagnostic-attempts summary { cursor: pointer; font-weight: 700; }
+.diagnostic-attempt { margin-top: 7px; padding: 8px 10px; border-left: 3px solid #c7ddcf; border-radius: 6px; background: #f8faf8; color: #536159; font: 10px "DM Mono", monospace; line-height: 1.55; }
+.diagnostic-attempt.is-error { border-left-color: #cf6b63; background: #fff7f6; }
+@media (max-width: 620px) { .diagnostic-summary { grid-template-columns: 1fr; } .diagnostic-heading { display: block; } .diagnostic-heading button { margin-top: 10px; } }

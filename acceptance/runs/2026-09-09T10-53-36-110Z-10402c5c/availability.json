@@ -1,0 +1,56 @@
+{
+  "keys": {
+    "openai": true,
+    "gemini": true,
+    "deepseek": true
+  },
+  "models": {
+    "openai": {
+      "provider": "openai",
+      "status": "quota_error",
+      "primaryModel": "",
+      "fallbackModels": [],
+      "lastKnownGoodModel": "",
+      "manualOverride": "",
+      "modelStatus": "not_selected",
+      "lastDetectedAt": "2026-09-09T10:50:22.899Z",
+      "lastHealthCheckAt": "2026-09-09T10:50:25.898Z",
+      "cacheUntil": "2026-09-10T10:50:22.899Z",
+      "lastError": "Provider quota or rate limit was reached.",
+      "automatic": true,
+      "allowHighCost": false
+    },
+    "gemini": {
+      "provider": "gemini",
+      "status": "ready",
+      "primaryModel": "gemini-3.5-flash-lite",
+      "fallbackModels": [
+        "gemini-3.1-flash-lite"
+      ],
+      "lastKnownGoodModel": "gemini-3.5-flash-lite",
+      "manualOverride": "",
+      "modelStatus": "healthy",
+      "lastDetectedAt": "2026-09-07T16:22:50.032Z",
+      "lastHealthCheckAt": "2026-09-07T16:22:54.400Z",
+      "cacheUntil": "2026-09-08T16:22:50.032Z",
+      "lastError": "",
+      "automatic": true,
+      "allowHighCost": false
+    },
+    "deepseek": {
+      "provider": "deepseek",
+      "status": "ready",
+      "primaryModel": "deepseek-v4-flash",
+      "fallbackModels": [],
+      "lastKnownGoodModel": "deepseek-v4-flash",
+      "manualOverride": "",
+      "modelStatus": "healthy",
+      "lastDetectedAt": "2026-07-30T16:20:50.117Z",
+      "lastHealthCheckAt": "2026-07-30T16:20:51.506Z",
+      "cacheUntil": "2026-07-31T16:20:50.117Z",
+      "lastError": "",
+      "automatic": true,
+      "allowHighCost": true
+    }
+  }
+}

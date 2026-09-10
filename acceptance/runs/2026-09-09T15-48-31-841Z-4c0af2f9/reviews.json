@@ -1,0 +1,233 @@
+[
+  {
+    "requestId": "66c7a29d-3498-48e0-bb57-3080824234fd",
+    "translation": "她说他已经把我们的地址发给他们了",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "她转述；他已经发送；接收者是他们；地址属于我们。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "She、he、them、our分别按她、他、他们、我们的含义处理。"
+    },
+    "naturalness": 5,
+    "colloquial": 5,
+    "issues": "中文自然，符合普通同事聊天表达。"
+  },
+  {
+    "requestId": "66c7a29d-3498-48e0-bb57-3080824234fd",
+    "translation": "她说他已经把我们的地址发给他们了。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "她转述；他已经发送；接收者是他们；地址属于我们。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "She、he、them、our分别按她、他、他们、我们的含义处理。"
+    },
+    "naturalness": 5,
+    "colloquial": 5,
+    "issues": "中文自然，符合普通同事聊天表达。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "57d22bf0-948e-4991-9122-9896c67c7ae8",
+    "translation": "他们让我们告诉你，会议已经取消了",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "他们提出要求，我们负责转告，你接收会议已取消的消息。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "They为普通代词；us与you对应我们与你。"
+    },
+    "naturalness": 5,
+    "colloquial": 5,
+    "issues": "中文自然，符合普通同事聊天表达。"
+  },
+  {
+    "requestId": "57d22bf0-948e-4991-9122-9896c67c7ae8",
+    "translation": "他们让我们告诉你，会议已经取消了。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "他们提出要求，我们负责转告，你接收会议已取消的消息。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "They为普通代词；us与you对应我们与你。"
+    },
+    "naturalness": 5,
+    "colloquial": 5,
+    "issues": "中文自然，符合普通同事聊天表达。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "474ba636-d93d-4f4d-a396-4aba74a6a5e8",
+    "translation": "Nana请求David帮忙处理Sarah的报告",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "Nana提出要求，David帮助Sarah，报告归Sarah；未写成任务已经完成。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "Nana、David、Sarah保留英文；报告指向Sarah。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义准确，略有可润色的书面措辞。"
+  },
+  {
+    "requestId": "474ba636-d93d-4f4d-a396-4aba74a6a5e8",
+    "translation": "Nana请求David帮忙处理Sarah的报告。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "Nana提出要求，David帮助Sarah，报告归Sarah；未写成任务已经完成。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "Nana、David、Sarah保留英文；报告指向Sarah。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义准确，略有可润色的书面措辞。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "b81c55fb-4ec9-43b7-97c3-332d6ea59cd1",
+    "translation": "May说她可能晚点加入我们",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "姓名May发言；参加只是可能，时间是晚些时候。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "May是英文姓名；小写may是可能性，不是姓名。"
+    },
+    "naturalness": 5,
+    "colloquial": 5,
+    "issues": "中文自然，符合普通同事聊天表达。"
+  },
+  {
+    "requestId": "b81c55fb-4ec9-43b7-97c3-332d6ea59cd1",
+    "translation": "May说她可能晚点加入我们。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "姓名May发言；参加只是可能，时间是晚些时候。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "May是英文姓名；小写may是可能性，不是姓名。"
+    },
+    "naturalness": 5,
+    "colloquial": 5,
+    "issues": "中文自然，符合普通同事聊天表达。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "93ae38d6-d61f-4a76-b4a2-7e4068485dcd",
+    "translation": "Will 说明天会发",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "Will发言并说明明天会发送，没有增加具体接收人。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "姓名Will保留；普通will译出将来含义。"
+    },
+    "naturalness": 5,
+    "colloquial": 5,
+    "issues": "中文自然，符合普通同事聊天表达。"
+  },
+  {
+    "requestId": "93ae38d6-d61f-4a76-b4a2-7e4068485dcd",
+    "translation": "Will 说明天会发。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "Will发言并说明明天会发送，没有增加具体接收人。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "姓名Will保留；普通will译出将来含义。"
+    },
+    "naturalness": 5,
+    "colloquial": 5,
+    "issues": "中文自然，符合普通同事聊天表达。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "48afc2b8-fbe5-400a-ba16-b44fbf4e5a98",
+    "translation": "你能问下May她能不能加入我们吗",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "请求听者去问May是否能一起参加，询问和参加两层动作保留。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "句首Will按请求语气处理；May保留为姓名。"
+    },
+    "naturalness": 5,
+    "colloquial": 5,
+    "issues": "中文自然，符合普通同事聊天表达。"
+  },
+  {
+    "requestId": "48afc2b8-fbe5-400a-ba16-b44fbf4e5a98",
+    "translation": "你能问下May她能不能加入我们吗？",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "请求听者去问May是否能一起参加，询问和参加两层动作保留。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "句首Will按请求语气处理；May保留为姓名。"
+    },
+    "naturalness": 5,
+    "colloquial": 5,
+    "issues": "中文自然，符合普通同事聊天表达。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "c1f518a9-a42e-432d-8849-ec175fc614eb",
+    "translation": "把用户名 She 保持不变，翻译她消息的其余部分",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "翻译整条指令本身；保留用户名，翻译消息其余部分，而不是执行或捏造另一条消息。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "用户名She保留；her按她翻译，没有把She当成被称呼者。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义准确，略有可润色的书面措辞。"
+  },
+  {
+    "requestId": "c1f518a9-a42e-432d-8849-ec175fc614eb",
+    "translation": "把用户名 She 保持不变，翻译她消息的其余部分。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "翻译整条指令本身；保留用户名，翻译消息其余部分，而不是执行或捏造另一条消息。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "用户名She保留；her按她翻译，没有把She当成被称呼者。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义准确，略有可润色的书面措辞。",
+    "candidateAttempt": 1
+  }
+]

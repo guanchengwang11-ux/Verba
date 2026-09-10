@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "version": "1.1.1",
+  "view": {
+    "title": "Verba 1.1.1",
+    "version": "Verba 1.1.1",
+    "diagnostics": true,
+    "settings": true
+  },
+  "health": {
+    "status": "ok"
+  },
+  "diagnosticStatus": 200,
+  "emptyIsolatedConfiguration": true,
+  "source": "packaged app.asar in Electron; isolated profile and ephemeral port; no model calls"
+}

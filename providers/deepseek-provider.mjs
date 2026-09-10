@@ -38,17 +38,18 @@ export default {
     const data = await response.json().catch(() => ({}));
     if (!response.ok) throw providerError(response, data);
     verifyJsonOutput(data);
-    return { latencyMs: Date.now() - startedAt, usage: data.usage || null };
+    return { latencyMs: Date.now() - startedAt, usage: data.usage || null, httpStatus: response.status };
   },
-  async translate(apiKey, model, text, instructions) {
+  async translate(apiKey, model, text, instructions, { signal } = {}) {
     const startedAt = Date.now();
     const response = await fetch("https://api.deepseek.com/chat/completions", {
       method: "POST",
+      signal,
       headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
       body: JSON.stringify(requestBody(model, [{ role: "system", content: instructions }, { role: "user", content: text }], 700))
     });
     const data = await response.json().catch(() => ({}));
     if (!response.ok) throw providerError(response, data);
-    return { rawOutput: data.choices?.[0]?.message?.content || "", usage: data.usage || null, latencyMs: Date.now() - startedAt };
+    return { rawOutput: data.choices?.[0]?.message?.content || "", usage: data.usage || null, latencyMs: Date.now() - startedAt, httpStatus: response.status };
   }
 };

@@ -1,0 +1,218 @@
+[
+  {
+    "id": 1,
+    "source": "She said that he had already sent them our address.",
+    "reference": "她说，他已经把我们的地址发给他们了。",
+    "focus": "She必须翻译；转述与收发关系正确。"
+  },
+  {
+    "id": 2,
+    "source": "They asked us to tell you that the meeting had been canceled.",
+    "reference": "他们让我们转告你，会议已经取消了。",
+    "focus": "They必须翻译；我们负责转告，你接收消息。"
+  },
+  {
+    "id": 3,
+    "source": "He said you could send it to me directly.",
+    "reference": "他说，你可以直接发给我。",
+    "focus": "他转述，你发送，我接收。"
+  },
+  {
+    "id": 4,
+    "source": "We haven't told her yet because we're waiting for your confirmation.",
+    "reference": "我们还没告诉她，因为还在等你确认。",
+    "focus": "尚未告知；等待的是你的确认。"
+  },
+  {
+    "id": 5,
+    "source": "Nana asked David to help Sarah with her report.",
+    "reference": "Nana让David帮Sarah处理她的报告。",
+    "focus": "三个人名保留；报告属于Sarah。"
+  },
+  {
+    "id": 6,
+    "source": "May said she may join us later.",
+    "reference": "May说她晚点可能会加入我们。",
+    "focus": "May是姓名；may是“可能”，不能译成确定参加。"
+  },
+  {
+    "id": 7,
+    "source": "Will said he will send it tomorrow.",
+    "reference": "Will说他明天会发过来。",
+    "focus": "Will是姓名；will正常翻译；不能凭空指定接收人。"
+  },
+  {
+    "id": 8,
+    "source": "Will you ask May if she can join us?",
+    "reference": "你能问问May能不能一起参加吗？",
+    "focus": "句首Will不是姓名；May是姓名。"
+  },
+  {
+    "id": 9,
+    "source": "I gave her your number, but I didn't give you hers.",
+    "reference": "我把你的号码给她了，但没把她的号码给你。",
+    "focus": "两个号码的归属不能颠倒。"
+  },
+  {
+    "id": 10,
+    "source": "You told me to contact him, but he told me to contact you.",
+    "reference": "你让我联系他，他却让我联系你。",
+    "focus": "两次要求及联系对象不同。"
+  },
+  {
+    "id": 11,
+    "source": "Please ask him to remind her to reply to us.",
+    "reference": "麻烦你让他提醒她，给我们回个消息。",
+    "focus": "你→他→她→我们，关系完整。"
+  },
+  {
+    "id": 12,
+    "source": "My manager asked your assistant to contact their driver.",
+    "reference": "我的经理让你的助理联系他们的司机。",
+    "focus": "经理、助理、司机的所属关系正确。"
+  },
+  {
+    "id": 13,
+    "source": "She filled out the form herself, but I submitted it for her.",
+    "reference": "表是她自己填的，我帮她提交了。",
+    "focus": "填写者是她，提交者是我。"
+  },
+  {
+    "id": 14,
+    "source": "The documents were sent to David by Sarah, not by me.",
+    "reference": "文件是Sarah发给David的，不是我发的。",
+    "focus": "被动转主动后方向正确。"
+  },
+  {
+    "id": 15,
+    "source": "I didn't ask you to cancel the order; I asked you to hold off on payment.",
+    "reference": "我不是让你取消订单，是让你先别付款。",
+    "focus": "不取消订单，暂缓付款。"
+  },
+  {
+    "id": 16,
+    "source": "You don't have to reply today, but please read it before tomorrow's meeting.",
+    "reference": "你不用今天回复，但请在明天开会前看一下。",
+    "focus": "不用回复不等于禁止回复；阅读有截止时间。"
+  },
+  {
+    "id": 17,
+    "source": "Not everyone has received the update.",
+    "reference": "还有人没收到更新通知。",
+    "focus": "不是所有人都没收到。"
+  },
+  {
+    "id": 18,
+    "source": "None of them has approved the request.",
+    "reference": "他们还没有一个人批准这项申请。",
+    "focus": "无人批准，不是部分人未批准。"
+  },
+  {
+    "id": 19,
+    "source": "I only asked him to check the amount, not to approve the payment.",
+    "reference": "我只是让他核对金额，没让他批准付款。",
+    "focus": "核对不等于批准。"
+  },
+  {
+    "id": 20,
+    "source": "She isn't refusing to help; she just needs more time.",
+    "reference": "她不是不愿意帮忙，只是还需要一点时间。",
+    "focus": "不能译成拒绝帮助。"
+  },
+  {
+    "id": 21,
+    "source": "Don't send the files until Nana confirms the address.",
+    "reference": "等Nana确认地址后，再发文件。",
+    "focus": "确认在前，发送在后。"
+  },
+  {
+    "id": 22,
+    "source": "If he hasn't replied by noon, ask her to call him.",
+    "reference": "如果到中午他还没回复，就让她给他打个电话。",
+    "focus": "条件成立才采取行动；她打给他。"
+  },
+  {
+    "id": 23,
+    "source": "Even if they agree, we still need your approval.",
+    "reference": "就算他们同意了，也还是需要你批准。",
+    "focus": "他们同意不能替代你的批准。"
+  },
+  {
+    "id": 24,
+    "source": "Unless you tell me otherwise, I'll use the latest version.",
+    "reference": "如果你没有其他要求，我就用最新版。",
+    "focus": "默认行为及例外条件正确。"
+  },
+  {
+    "id": 25,
+    "source": "By the time I called her, she had already spoken to you.",
+    "reference": "我给她打电话时，她已经跟你聊过了。",
+    "focus": "她与你沟通在前，我打电话在后。"
+  },
+  {
+    "id": 26,
+    "source": "He might send it today, but he hasn't promised.",
+    "reference": "他今天可能会发，但还没答应一定会发。",
+    "focus": "可能性不能变成承诺。"
+  },
+  {
+    "id": 27,
+    "source": "You don't owe me anything; I owe you NGN 25,000.",
+    "reference": "你不欠我钱，是我欠你25,000奈拉。",
+    "focus": "债务方向和金额正确。"
+  },
+  {
+    "id": 28,
+    "source": "We paid them USD 1,250.50, but they refunded only USD 1,205.50.",
+    "reference": "我们付给他们1,250.50美元，但他们只退了1,205.50美元。",
+    "focus": "付款和退款方向、两个金额准确。"
+  },
+  {
+    "id": 29,
+    "source": "Each of the three employees should receive NGN 20,000, making NGN 60,000 in total.",
+    "reference": "三名员工每人应领20,000奈拉，总共60,000奈拉。",
+    "focus": "每人与总额区分准确。"
+  },
+  {
+    "id": 30,
+    "source": "David has twice as many orders as I do, but only half as many as Sarah.",
+    "reference": "David的订单数是我的两倍，但只有Sarah的一半。",
+    "focus": "两组比较关系准确，不添加具体订单数。"
+  },
+  {
+    "id": 31,
+    "source": "Could you give me a heads-up before you change the schedule?",
+    "reference": "你改时间安排之前，能先跟我说一声吗？",
+    "focus": "heads-up自然翻译，不逐字直译。"
+  },
+  {
+    "id": 32,
+    "source": "I'm not sure I follow. Are you saying we should wait?",
+    "reference": "我有点没听明白。你的意思是我们应该再等等吗？",
+    "focus": "follow指理解；保留疑问语气。"
+  },
+  {
+    "id": 33,
+    "source": "No rush—just send it over when you get a chance.",
+    "reference": "不着急，你有空的时候发给我就行。",
+    "focus": "不增加催促、截止时间或过度正式措辞。"
+  },
+  {
+    "id": 34,
+    "source": "Someone from support called me. They said they'd check it for us.",
+    "reference": "有位客服给我打了电话，说会帮我们查一下。",
+    "focus": "They指某一位客服；不强加性别，不误判为多人。"
+  },
+  {
+    "id": 35,
+    "source": "When David spoke to Michael, he sounded upset.",
+    "reference": "David和Michael说话时，他听起来有些不高兴。",
+    "focus": "原文he指向不明，不擅自将其明确为某个人；upset不夸大为暴怒。"
+  },
+  {
+    "id": 36,
+    "source": "Keep the username \"She\" unchanged, but translate the rest of her message.",
+    "reference": "用户名“She”保持不变，但她消息里的其他内容要翻译。",
+    "focus": "引号里的She是明确要求保留的用户名；her正常翻译。"
+  }
+]

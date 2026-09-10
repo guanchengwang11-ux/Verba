@@ -4,16 +4,17 @@ import { protectEntities } from "../entity-protection.mjs";
 import { buildInstructions } from "../server.mjs";
 import { TEAM_CHAT_FORBIDDEN_TERMS, executeTranslationPolicy, validateTranslationPolicy } from "../translation-policy.mjs";
 import { analyzeSemanticConstraints } from "../semantic-role-protection.mjs";
+import { createTranslationDiagnosticSession, TRANSLATION_ERROR_CODES } from "../translation-diagnostics.mjs";
 
 test("Team chat prompt defines neutral workplace chat without changing email style", () => {
   const chat = buildInstructions({ direction: "enToZh", mode: "chat", glossary: [] });
   const email = buildInstructions({ direction: "enToZh", mode: "email", glossary: [] });
   assert.match(chat, /mildly polite/);
-  assert.match(chat, /Teams, Slack, Lark/);
-  assert.match(chat, /姐们儿/);
-  assert.match(chat, /Do not add emoji/);
+  assert.match(chat, /everyday workplace chat/);
+  assert.match(chat, /ownership, action direction and reference/);
+  assert.match(chat, /englishMeaning FIRST, then translation/);
   assert.match(email, /polished workplace email: professional, concise, courteous, and direct/);
-  assert.doesNotMatch(email, /姐们儿/);
+  assert.doesNotMatch(email, /everyday workplace chat/);
 });
 
 test("removes preserve-exactly glossary entries from translation mappings", () => {
@@ -130,14 +131,33 @@ test("throws after one retry if placeholders remain missing", async () => {
       calls += 1;
       return { translation: "娜娜询问大卫。", englishMeaning: "Nana asked David." };
     }
-  }), (error) => error.status === 422);
+  }), (error) => error.status === 422 && error.internalCode === TRANSLATION_ERROR_CODES.ENTITY_VALIDATION_FAILED);
   assert.equal(calls, 2);
 });
 
-test("rejects added regional slang only in Team chat", () => {
+test("stops after one semantic regeneration and reports the semantic stage", async () => {
+  const sourceText = "Could you please ask David to check this?";
+  const protectedInput = protectEntities(sourceText);
+  const semanticConstraints = analyzeSemanticConstraints({ originalText: sourceText, protectedText: protectedInput.text, direction: "enToZh", entityMap: protectedInput.entityMap });
+  let calls = 0;
+  await assert.rejects(executeTranslationPolicy({
+    sourceText,
+    mode: "chat",
+    entityMap: protectedInput.entityMap,
+    semanticConstraints,
+    generate: async () => {
+      calls += 1;
+      return { translation: "[[VERBA_ENTITY_0]]，麻烦看下这个。", englishMeaning: "[[VERBA_ENTITY_0]], please check this." };
+    }
+  }), (error) => error.internalCode === TRANSLATION_ERROR_CODES.SEMANTIC_VALIDATION_FAILED && error.stage === "semantic_validation");
+  assert.equal(calls, 2);
+});
+
+test("flags added regional slang as a non-blocking Team chat warning", () => {
   for (const forbidden of TEAM_CHAT_FORBIDDEN_TERMS) {
     const result = validateTranslationPolicy({ translation: `麻烦${forbidden}看下`, sourceText: "please check this", mode: "chat", entityMap: [] });
-    assert.ok(result.styleViolations.includes(forbidden), `expected ${forbidden} to be rejected`);
+    assert.ok(result.styleViolations.includes(forbidden), `expected ${forbidden} to be flagged`);
+    assert.equal(result.valid, true);
   }
   const email = validateTranslationPolicy({ translation: "姐们儿", sourceText: "colleague", mode: "email", entityMap: [] });
   assert.equal(email.valid, true);
@@ -147,4 +167,96 @@ test("requires a leading name to remain a direct addressee", () => {
   const { entityMap } = protectEntities("Nana pls check this transaction");
   const validation = validateTranslationPolicy({ translation: "麻烦 Nana 帮忙看下这笔交易", sourceText: "Nana pls check this transaction", mode: "chat", entityMap });
   assert.deepEqual(validation.styleViolations, ["direct-address:Nana"]);
+  assert.equal(validation.valid, true);
+  assert.deepEqual(validation.warnings, ["direct-address:Nana"]);
+});
+
+test("accepts ordinary Chinese equivalents of later today without a false semantic rejection", async () => {
+  const sourceText = "I would be traveling later today";
+  const protectedInput = protectEntities(sourceText);
+  const semanticConstraints = analyzeSemanticConstraints({ originalText: sourceText, protectedText: protectedInput.text, direction: "enToZh", entityMap: protectedInput.entityMap });
+  for (const phrase of ["稍后", "晚些时候", "晚一点"]) {
+    let calls = 0;
+    const result = await executeTranslationPolicy({
+      sourceText,
+      mode: "chat",
+      entityMap: protectedInput.entityMap,
+      semanticConstraints,
+      generate: async () => {
+        calls += 1;
+        return { translation: `我今天${phrase}会出行。`, englishMeaning: "I would be traveling later today." };
+      }
+    });
+    assert.equal(result.translation, `我今天${phrase}会出行`);
+    assert.equal(calls, 1);
+  }
+});
+
+test("returns warning-only translations without a second provider call", async () => {
+  const sourceText = "I asked David to contact Nana";
+  const protectedInput = protectEntities(sourceText);
+  const semanticConstraints = analyzeSemanticConstraints({ originalText: sourceText, protectedText: protectedInput.text, direction: "enToZh", entityMap: protectedInput.entityMap });
+  let calls = 0;
+  const diagnostics = createTranslationDiagnosticSession("gemini");
+  const result = await executeTranslationPolicy({
+    sourceText,
+    mode: "chat",
+    entityMap: protectedInput.entityMap,
+    semanticConstraints,
+    diagnostics,
+    generate: async () => {
+      calls += 1;
+      return { translation: "让[[VERBA_ENTITY_0]]联系[[VERBA_ENTITY_1]]", englishMeaning: "I asked [[VERBA_ENTITY_0]] to contact [[VERBA_ENTITY_1]]" };
+    }
+  });
+  assert.equal(result.translation, "让David联系Nana");
+  assert.equal(calls, 1);
+  const warning = diagnostics.summary().events.find((event) => event.event === "translation_validation_warning");
+  assert.equal(warning.disposition, "allow");
+  assert.ok(warning.ruleIds.some((rule) => rule.includes("SPEAKER-ROLE-MISSING")));
+});
+
+test("retries a changed amount once with a targeted blocking rule", async () => {
+  const sourceText = "Send 100 USDT";
+  const protectedInput = protectEntities(sourceText);
+  const semanticConstraints = analyzeSemanticConstraints({ originalText: sourceText, protectedText: protectedInput.text, direction: "enToZh", entityMap: protectedInput.entityMap });
+  const calls = [];
+  const diagnostics = createTranslationDiagnosticSession("gemini");
+  const result = await executeTranslationPolicy({
+    sourceText,
+    mode: "chat",
+    entityMap: protectedInput.entityMap,
+    semanticConstraints,
+    diagnostics,
+    generate: async ({ attempt, correctionInstruction }) => {
+      calls.push(correctionInstruction);
+      return attempt === 0
+        ? { translation: "发送200 USDT", englishMeaning: "Send 200 USDT" }
+        : { translation: "发送100 USDT", englishMeaning: "Send 100 USDT" };
+    }
+  });
+  assert.equal(result.translation, "发送100 USDT");
+  assert.equal(calls.length, 2);
+  assert.match(calls[1], /currency_or_amount_changed/);
+  const blocked = diagnostics.summary().events.find((event) => event.event === "translation_validation_failed");
+  assert.equal(blocked.disposition, "block");
+  assert.deepEqual(blocked.ruleIds, ["FACT-CURRENCY-001"]);
+});
+
+test("never returns a persistently changed amount after the repair limit", async () => {
+  const sourceText = "Send 100 USDT";
+  const protectedInput = protectEntities(sourceText);
+  const semanticConstraints = analyzeSemanticConstraints({ originalText: sourceText, protectedText: protectedInput.text, direction: "enToZh", entityMap: protectedInput.entityMap });
+  let calls = 0;
+  await assert.rejects(executeTranslationPolicy({
+    sourceText,
+    mode: "chat",
+    entityMap: protectedInput.entityMap,
+    semanticConstraints,
+    generate: async () => {
+      calls += 1;
+      return { translation: "发送200 USDT", englishMeaning: "Send 200 USDT" };
+    }
+  }), (error) => error.internalCode === TRANSLATION_ERROR_CODES.SEMANTIC_VALIDATION_FAILED);
+  assert.equal(calls, 2);
 });

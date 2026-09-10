@@ -1,0 +1,129 @@
+[
+  {
+    "directory": "2026-09-09T10-50-15-452Z-f0a2bbd7",
+    "label": "before-fix",
+    "counts": {
+      "未测/无可交付译文": 2,
+      "未达标": 4
+    },
+    "fullCoverage": false,
+    "results": 6
+  },
+  {
+    "directory": "2026-09-09T10-53-36-110Z-10402c5c",
+    "label": "full-after-fix",
+    "counts": {
+      "未测/无可交付译文": 44,
+      "通过": 48,
+      "未达标": 16
+    },
+    "fullCoverage": false,
+    "results": 108
+  },
+  {
+    "directory": "2026-09-09T10-54-39-777Z-72008485",
+    "label": "ui-verification",
+    "counts": {},
+    "fullCoverage": false,
+    "results": 0
+  },
+  {
+    "directory": "2026-09-09T10-58-10-372Z-940b5c99",
+    "label": "full-retest",
+    "counts": {
+      "未测/无可交付译文": 57,
+      "通过": 47,
+      "未达标": 4
+    },
+    "fullCoverage": false,
+    "results": 108
+  },
+  {
+    "directory": "2026-09-09T10-58-34-373Z-d146c22b",
+    "label": "ui-final",
+    "counts": {
+      "通过": 3
+    },
+    "fullCoverage": false,
+    "results": 3
+  },
+  {
+    "directory": "2026-09-09T11-02-21-465Z-35437bdb",
+    "label": "focused-retest",
+    "counts": {
+      "通过": 24,
+      "未达标": 7,
+      "未测/无可交付译文": 1
+    },
+    "fullCoverage": false,
+    "results": 32
+  },
+  {
+    "directory": "2026-09-09T11-04-45-359Z-673c1972",
+    "label": "singular-reference-regression",
+    "counts": {
+      "未达标": 3
+    },
+    "fullCoverage": false,
+    "results": 3
+  },
+  {
+    "directory": "2026-09-09T11-05-55-829Z-3b8ba79a",
+    "label": "final-full",
+    "counts": {
+      "未测/无可交付译文": 38,
+      "通过": 61,
+      "未达标": 9
+    },
+    "fullCoverage": false,
+    "results": 108
+  },
+  {
+    "directory": "2026-09-09T11-06-09-565Z-c004b649",
+    "label": "final-ui",
+    "counts": {
+      "通过": 1
+    },
+    "fullCoverage": false,
+    "results": 1
+  },
+  {
+    "directory": "2026-09-09T15-48-31-841Z-4c0af2f9",
+    "label": "ui-completion",
+    "counts": {
+      "通过": 7
+    },
+    "fullCoverage": false,
+    "results": 7
+  },
+  {
+    "directory": "2026-09-09T15-48-31-845Z-d3bc47b1",
+    "label": "two-extra-repetitions",
+    "counts": {
+      "通过": 61,
+      "未达标": 19
+    },
+    "fullCoverage": false,
+    "results": 80
+  },
+  {
+    "directory": "2026-09-09T15-58-38-465Z-de7baced",
+    "label": "currency-spacing-regression",
+    "counts": {
+      "未达标": 1,
+      "通过": 4,
+      "未测/无可交付译文": 1
+    },
+    "fullCoverage": false,
+    "results": 6
+  },
+  {
+    "directory": "2026-09-09T16-01-43-195Z-ddd57b4c",
+    "label": "numeric-final-regression",
+    "counts": {
+      "通过": 10
+    },
+    "fullCoverage": false,
+    "results": 10
+  }
+]

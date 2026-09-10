@@ -1,8 +1,8 @@
 const outputSchema = {
   type: "object",
   properties: {
-    translation: { type: "string" },
-    englishMeaning: { type: "string" }
+    englishMeaning: { type: "string" },
+    translation: { type: "string" }
   },
   required: ["translation", "englishMeaning"],
   additionalProperties: false
@@ -51,12 +51,13 @@ export default {
     const data = await response.json().catch(() => ({}));
     if (!response.ok) throw providerError(response, data);
     verifyJsonOutput(data.output_text);
-    return { latencyMs: Date.now() - startedAt, usage: data.usage || null };
+    return { latencyMs: Date.now() - startedAt, usage: data.usage || null, httpStatus: response.status };
   },
-  async translate(apiKey, model, text, instructions) {
+  async translate(apiKey, model, text, instructions, { signal } = {}) {
     const startedAt = Date.now();
     const response = await fetch("https://api.openai.com/v1/responses", {
       method: "POST",
+      signal,
       headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
       body: JSON.stringify({
         model,
@@ -69,6 +70,6 @@ export default {
     });
     const data = await response.json().catch(() => ({}));
     if (!response.ok) throw providerError(response, data);
-    return { rawOutput: data.output_text, usage: data.usage || null, latencyMs: Date.now() - startedAt };
+    return { rawOutput: data.output_text, usage: data.usage || null, latencyMs: Date.now() - startedAt, httpStatus: response.status };
   }
 };

@@ -1,11 +1,16 @@
 import { sanitizeTranslationOutput } from "./translation-output.mjs";
 import { findEntityRestorationIssues, restoreEntities } from "./entity-protection.mjs";
-import { validateSemanticRoles } from "./semantic-role-protection.mjs";
+import { evaluateSemanticRoles } from "./semantic-role-protection.mjs";
+import {
+  createTranslationError,
+  normalizeTranslationError,
+  TRANSLATION_ERROR_CODES
+} from "./translation-diagnostics.mjs";
 
-export const TEAM_CHAT_STYLE_INSTRUCTIONS = `Write like a normal colleague communicating in Teams, Slack, Lark, or a workplace WhatsApp group. Keep the message natural, concise, mildly polite, and workplace-neutral. It should not sound like a formal email, customer-service script, close-friend joke, or regional dialect.
-For Chinese, prefer ordinary expressions such as 麻烦, 帮忙, 看下, 确认下, 辛苦, 方便的话, and 有空的话 when they fit the source intent. Avoid stiff expressions such as 烦请, 敬请, 劳烦您, and 请您务必. Never introduce slang, regional speech, internet jargon, excessive familiarity, or intimate forms of address such as 姐们儿, 哥们儿, 老铁, 宝, 亲, 老哥, 姐, 哥, or 兄弟. Do not use 瞅, 啥, 咋, 整一下, 搞一下, 嘞, 呗, 嗷, 哈哈, or similar expressions unless the source explicitly contains that meaning and preserving it is intentional.
-Do not add emoji, exclamation marks, filler particles, pet names, personal relationships, or information absent from the source. Do not call someone 老板 unless the source explicitly says boss. A name or protected placeholder at the beginning of a request is the person being addressed directly: keep it at the beginning followed by a natural comma, and never rewrite it as "ask [name] to..." or "让/麻烦 [name]...". Keep one-sentence messages compact where possible. For English, use natural neutral workplace phrasing such as "Could you help check..." rather than overly formal wording such as "Could you kindly assist in reviewing..." or overly casual wording such as "take a quick look at this thing".
-Style examples: "pls check this transaction" should read like "麻烦帮忙看下这笔交易"; "can you check this for me" like "麻烦帮我看下这个"; "please confirm if this is okay" like "麻烦确认下这个是否可以"; "are you free now" like "你现在方便吗"; and "can you send it to me later" like "方便的话晚点发我一下". Preserve placeholders in these patterns exactly.`;
+export const TEAM_CHAT_STYLE_INSTRUCTIONS = `Use clear, everyday workplace chat language: concise, neutral and mildly polite, without sounding like a formal notice or a customer-service script. Translate idioms by their communicative meaning, not their individual words.
+For Chinese, rebuild the sentence in natural spoken Chinese rather than copying English clause order and every pronoun. Use ordinary verbs and short clauses. Omit redundant subjects or objects only when ownership, action direction and reference remain intact. Grammatical particles and light conversational wording are allowed when they do not add facts, urgency, familiarity or emotion. Keep the source's degree of firmness and uncertainty: politeness must not make a requirement optional. Do not add courtesy formulas, slang, dialect, pet names or emoji absent from the source.
+Keep an actual direct addressee distinct from a third-person subject or an intermediary in a request. For English, use normal colleague-to-colleague phrasing.`;
+
 
 export const TEAM_CHAT_FORBIDDEN_TERMS = [
   "姐们儿", "哥们儿", "老铁", "瞅一眼", "瞅", "咋", "啥", "整一下", "搞一下", "嘞", "呗", "嗷", "哈哈", "啊姐", "老哥"
@@ -16,10 +21,19 @@ function escapeRegExp(value) {
 }
 
 export function finalizeProtectedTranslation(parsed, entityMap) {
-  return {
-    translation: sanitizeTranslationOutput(restoreEntities(parsed.translation, entityMap)),
-    englishMeaning: restoreEntities(parsed.englishMeaning, entityMap).trim()
-  };
+  try {
+    return {
+      translation: restoreEntities(sanitizeTranslationOutput(parsed.translation), entityMap),
+      englishMeaning: restoreEntities(parsed.englishMeaning, entityMap).trim()
+    };
+  } catch (error) {
+    throw createTranslationError(TRANSLATION_ERROR_CODES.ENTITY_RESTORE_FAILED, {
+      message: "Protected entities could not be restored.",
+      status: 422,
+      stage: "entity_restore",
+      cause: error
+    });
+  }
 }
 
 export function findTeamChatStyleViolations(translation, sourceText) {
@@ -45,13 +59,33 @@ function findDirectAddressee(sourceText, entityMap) {
 
 export function validateTranslationPolicy({ translation, englishMeaning = "", sourceText, mode, entityMap, semanticConstraints }) {
   const entityIssues = findEntityRestorationIssues(translation, entityMap);
-  const semanticIssues = validateSemanticRoles({ translation, englishMeaning, constraints: semanticConstraints });
+  const semanticEvaluation = evaluateSemanticRoles({ translation, englishMeaning, constraints: semanticConstraints });
+  const semanticIssues = semanticEvaluation.findings.map((finding) => finding.code);
+  const semanticBlockingIssues = semanticEvaluation.blocking.map((finding) => finding.code);
+  const semanticWarnings = semanticEvaluation.warnings.map((finding) => finding.code);
   const styleViolations = mode === "chat" ? findTeamChatStyleViolations(translation, sourceText) : [];
   const directAddressee = mode === "chat" ? findDirectAddressee(sourceText, entityMap) : "";
   if (directAddressee && !new RegExp(`^${escapeRegExp(directAddressee)}[，,]`, "u").test(translation.trimStart())) {
     styleViolations.push(`direct-address:${directAddressee}`);
   }
-  return { valid: entityIssues.length === 0 && semanticIssues.length === 0 && styleViolations.length === 0, entityIssues, semanticIssues, styleViolations };
+  const warnings = [...semanticWarnings, ...styleViolations];
+  const criticalStyleViolations = [];
+  const criticalIssues = [
+    ...entityIssues.map((issue) => `entity:${issue.original || "placeholder"}`),
+    ...semanticBlockingIssues.map((issue) => `semantic:${issue}`)
+  ];
+  return {
+    valid: criticalIssues.length === 0,
+    entityIssues,
+    semanticIssues,
+    semanticEvaluation,
+    semanticBlockingIssues,
+    semanticWarnings,
+    styleViolations,
+    criticalStyleViolations,
+    criticalIssues,
+    warnings
+  };
 }
 
 export function buildPolicyCorrectionInstruction(validation) {
@@ -59,7 +93,7 @@ export function buildPolicyCorrectionInstruction(validation) {
   const affectedEntities = validation.entityIssues.filter((issue) => issue.original).map((issue) => issue.original);
   if (affectedEntities.length) issues.push(`Restore these protected entities exactly once per source occurrence: ${affectedEntities.join(", ")}.`);
   if (validation.entityIssues.some((issue) => issue.placeholderLeak)) issues.push("Do not expose or alter any VERBA_ENTITY placeholder.");
-  if (validation.semanticIssues.length) issues.push(`Restore the original semantic roles and factual constraints. Fix: ${validation.semanticIssues.join(", ")}.`);
+  if (validation.semanticBlockingIssues.length) issues.push(`Restore the original semantic roles and factual constraints. Fix only these blocking rules: ${validation.semanticBlockingIssues.join(", ")}.`);
   const directAddresses = validation.styleViolations.filter((item) => item.startsWith("direct-address:")).map((item) => item.slice("direct-address:".length));
   const inappropriateExpressions = validation.styleViolations.filter((item) => !item.startsWith("direct-address:"));
   if (directAddresses.length) issues.push(`Keep ${directAddresses.join(", ")} as the direct addressee at the beginning, followed by a comma; do not turn the message into a request to someone else.`);
@@ -67,23 +101,93 @@ export function buildPolicyCorrectionInstruction(validation) {
   return `Correct the previous translation. ${issues.join(" ")} Return a fresh JSON response that follows every original instruction.`;
 }
 
-export async function executeTranslationPolicy({ sourceText, mode, entityMap, semanticConstraints, generate }) {
+function validationErrorCode(validation) {
+  if (validation.entityIssues.length) return TRANSLATION_ERROR_CODES.ENTITY_VALIDATION_FAILED;
+  if (validation.semanticBlockingIssues.length) return TRANSLATION_ERROR_CODES.SEMANTIC_VALIDATION_FAILED;
+  return TRANSLATION_ERROR_CODES.MODEL_OUTPUT_INVALID;
+}
+
+function canRegenerateAfter(error) {
+  return [
+    TRANSLATION_ERROR_CODES.JSON_PARSE_FAILED,
+    TRANSLATION_ERROR_CODES.MODEL_OUTPUT_INVALID,
+    TRANSLATION_ERROR_CODES.TRANSLATION_EMPTY,
+    TRANSLATION_ERROR_CODES.ENTITY_RESTORE_FAILED
+  ].includes(error.internalCode);
+}
+
+export async function executeTranslationPolicy({ sourceText, mode, entityMap, semanticConstraints, generate, diagnostics, observe }) {
   let validation;
+  let generationError;
   for (let attempt = 0; attempt < 2; attempt += 1) {
-    const correctionInstruction = attempt === 1 ? buildPolicyCorrectionInstruction(validation) : "";
-    const parsed = await generate({ attempt, correctionInstruction });
-    const result = finalizeProtectedTranslation(parsed, entityMap);
+    const correctionInstruction = attempt === 1
+      ? validation ? buildPolicyCorrectionInstruction(validation) : "The previous response was empty or invalid. Return complete JSON with both required string fields and preserve every placeholder exactly."
+      : "";
+    let parsed;
+    let result;
+    try {
+      parsed = await generate({ attempt, correctionInstruction });
+      observe?.("parsed_output", { attempt: attempt + 1, parsed });
+      observe?.("entity_restoration", { attempt: attempt + 1, translation: restoreEntities(parsed.translation, entityMap) });
+      result = finalizeProtectedTranslation(parsed, entityMap);
+      observe?.("postprocess", { attempt: attempt + 1, result });
+    } catch (error) {
+      generationError = normalizeTranslationError(error, { stage: error?.stage || "output_validation" });
+      const willRegenerate = attempt === 0 && canRegenerateAfter(generationError);
+      diagnostics?.record({
+        event: "translation_stage_failed",
+        validationAttempt: attempt + 1,
+        stage: generationError.stage,
+        internalCode: generationError.internalCode,
+        httpStatus: generationError.status,
+        providerErrorCode: generationError.providerErrorCode,
+        willRegenerate,
+        severity: "critical",
+        success: false
+      });
+      if (willRegenerate) continue;
+      throw generationError;
+    }
+    const validationStartedAt = Date.now();
     validation = validateTranslationPolicy({ translation: result.translation, englishMeaning: result.englishMeaning, sourceText, mode, entityMap, semanticConstraints });
-    if (validation.valid) return result;
-    console.info(JSON.stringify({
-      event: "translation_policy_validation_failed",
-      attempt: attempt + 1,
-      entityIssueCount: validation.entityIssues.length,
-      semanticIssues: validation.semanticIssues,
-      styleIssueCount: validation.styleViolations.length
-    }));
+    const validationMs = Date.now() - validationStartedAt;
+    if (validation.valid) {
+      diagnostics?.record({
+        event: validation.warnings.length ? "translation_validation_warning" : "translation_validation_passed",
+        validationAttempt: attempt + 1,
+        stage: "policy_validation",
+        severity: validation.warnings.length ? "warning" : "pass",
+        disposition: "allow",
+        validationMs,
+        issueCodes: validation.warnings.map((issue) => issue.startsWith("direct-address:") ? "direct_addressee_format" : issue),
+        ruleIds: validation.semanticEvaluation.warnings.map((finding) => finding.ruleId),
+        success: true
+      });
+      return result;
+    }
+    const internalCode = validationErrorCode(validation);
+    diagnostics?.record({
+      event: "translation_validation_failed",
+      validationAttempt: attempt + 1,
+      stage: internalCode === TRANSLATION_ERROR_CODES.ENTITY_VALIDATION_FAILED ? "entity_validation" : internalCode === TRANSLATION_ERROR_CODES.SEMANTIC_VALIDATION_FAILED ? "semantic_validation" : "style_validation",
+      internalCode,
+      willRegenerate: attempt === 0,
+      severity: "critical",
+      disposition: "block",
+      retryReason: attempt === 0 ? internalCode : "retry_limit_reached",
+      validationMs,
+      issueCodes: [
+        ...validation.entityIssues.map((issue) => issue.placeholderLeak ? "placeholder_leak" : "protected_entity_mismatch"),
+        ...validation.semanticBlockingIssues
+      ],
+      ruleIds: validation.semanticEvaluation.blocking.map((finding) => finding.ruleId),
+      success: false
+    });
   }
-  const error = new Error("The translation did not preserve required terms or workplace tone. Please try again.");
-  error.status = 422;
-  throw error;
+  const code = validation ? validationErrorCode(validation) : generationError?.internalCode || TRANSLATION_ERROR_CODES.UNKNOWN_ERROR;
+  throw createTranslationError(code, {
+    message: "The translation did not pass critical output validation.",
+    status: 422,
+    stage: code === TRANSLATION_ERROR_CODES.ENTITY_VALIDATION_FAILED ? "entity_validation" : code === TRANSLATION_ERROR_CODES.SEMANTIC_VALIDATION_FAILED ? "semantic_validation" : "output_validation"
+  });
 }

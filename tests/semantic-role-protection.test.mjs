@@ -4,6 +4,7 @@ import { protectEntities } from "../entity-protection.mjs";
 import {
   analyzeSemanticConstraints,
   buildSemanticConstraintInstruction,
+  evaluateSemanticRoles,
   validateSemanticRoles
 } from "../semantic-role-protection.mjs";
 
@@ -86,4 +87,41 @@ test("builds a high-priority semantic instruction with hidden entity tokens", ()
   assert.match(instruction, /asking the listener to ask \[\[VERBA_ENTITY_0\]\]/i);
   assert.match(instruction, /Do not turn it into a direct request/i);
   assert.match(instruction, /englishMeaning field must independently restate/i);
+});
+
+test("treats missing lexical evidence as uncertain warnings", () => {
+  const later = analyze("I would be traveling later today").constraints;
+  const laterResult = evaluateSemanticRoles({ translation: "我今天晚一点出发", englishMeaning: "I would travel later today", constraints: later });
+  assert.equal(laterResult.outcome, "warning");
+  assert.ok(laterResult.warnings.some((item) => item.code === "time_later_missing"));
+
+  const omittedSubject = analyze("I asked David to contact Nana").constraints;
+  const subjectResult = evaluateSemanticRoles({ translation: "让David联系Nana", englishMeaning: "I asked David to contact Nana", constraints: omittedSubject });
+  assert.equal(subjectResult.outcome, "warning");
+  assert.ok(subjectResult.warnings.some((item) => item.code === "speaker_role_missing"));
+});
+
+test("allows natural order and polite paraphrases when roles remain intact", () => {
+  const { constraints } = analyze("Could you please ask David to check this?");
+  for (const translation of ["麻烦你请David看下这个", "方便的话，请David帮忙确认一下这个"]) {
+    const result = evaluateSemanticRoles({ translation, englishMeaning: "You are asking the listener to ask David to check this", constraints });
+    assert.notEqual(result.outcome, "block", translation);
+  }
+});
+
+test("blocks explicit polarity, time-direction, modality, completion, and role reversals", () => {
+  const negative = analyze("Don't ask David to check this").constraints;
+  assert.ok(evaluateSemanticRoles({ translation: "让David检查这个", englishMeaning: "Ask David to check this", constraints: negative }).blocking.some((item) => item.code === "negation_reversed"));
+
+  const later = analyze("Ask David to check this later").constraints;
+  assert.ok(evaluateSemanticRoles({ translation: "让David之前检查这个", englishMeaning: "Ask David to check this before", constraints: later }).blocking.some((item) => item.code === "time_direction_reversed"));
+
+  const relation = analyze("Nana asked David to check this").constraints;
+  assert.ok(evaluateSemanticRoles({ translation: "David让Nana检查这个", englishMeaning: "David asked Nana to check this", constraints: relation }).blocking.some((item) => item.code === "actor_target_reversed"));
+
+  const possibility = analyze("David may need to check this").constraints;
+  assert.ok(evaluateSemanticRoles({ translation: "David必须检查这个", englishMeaning: "David must check this", constraints: possibility }).blocking.some((item) => item.code === "possibility_strengthened"));
+
+  const completed = analyze("David has already checked this").constraints;
+  assert.ok(evaluateSemanticRoles({ translation: "让David检查这个", englishMeaning: "Ask David to check this", constraints: completed }).blocking.some((item) => item.code === "completion_reversed_to_request"));
 });

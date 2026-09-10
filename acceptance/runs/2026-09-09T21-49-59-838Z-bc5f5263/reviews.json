@@ -1,0 +1,356 @@
+[
+  {
+    "requestId": "ef6cd373-8b29-41c4-ae30-c5318111ca22",
+    "translation": "你不需要付我钱，我欠你25,000 NGN",
+    "reviewer": "AI",
+    "logic": {
+      "pass": false,
+      "reason": "不需要付我钱没有准确保留不欠钱的事实。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "不需要付我钱没有准确保留不欠钱的事实。",
+    "categories": [
+      "semantic"
+    ]
+  },
+  {
+    "requestId": "ef6cd373-8b29-41c4-ae30-c5318111ca22",
+    "translation": "你不需要付我钱，我欠你25,000 NGN。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": false,
+      "reason": "不需要付我钱没有准确保留不欠钱的事实。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "不需要付我钱没有准确保留不欠钱的事实。",
+    "categories": [
+      "semantic"
+    ],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "ea3c54e4-5ced-4757-bf74-be0e6a86d2da",
+    "translation": "我们付了他们 1,250.50 美元，但他们只退回了 1,205.50 美元",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：付款和退款方向、两个金额准确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "ea3c54e4-5ced-4757-bf74-be0e6a86d2da",
+    "translation": "我们付了他们 1,250.50 美元，但他们只退回了 1,205.50 美元。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：付款和退款方向、两个金额准确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "a54f9799-cd23-42eb-b831-78b9a55578e3",
+    "translation": "三名员工每人应收到 20,000 奈拉，总计 60,000 奈拉",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：每人与总额区分准确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "a54f9799-cd23-42eb-b831-78b9a55578e3",
+    "translation": "三名员工每人应收到 20,000 奈拉，总计 60,000 奈拉。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：每人与总额区分准确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "5d7b4873-b455-4c8d-8d12-3af34cc8b603",
+    "translation": "你不欠我什么，是我欠你 25,000 NGN",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：债务方向和金额正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "5d7b4873-b455-4c8d-8d12-3af34cc8b603",
+    "translation": "你不欠我什么，是我欠你 25,000 NGN。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：债务方向和金额正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "32a47037-0384-48a7-9259-e8e38e42d861",
+    "translation": "三名员工每人应收到 20,000 NGN，总计 60,000 NGN",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：每人与总额区分准确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "32a47037-0384-48a7-9259-e8e38e42d861",
+    "translation": "三名员工每人应收到 20,000 NGN，总计 60,000 NGN。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：每人与总额区分准确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "4fe27575-e8bf-442a-b824-6569fa6d94d7",
+    "translation": "你不欠我任何东西；我欠你25,000奈拉",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：债务方向和金额正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "4fe27575-e8bf-442a-b824-6569fa6d94d7",
+    "translation": "你不欠我任何东西；我欠你25,000奈拉。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：债务方向和金额正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "62e2391f-dd0e-406c-b458-473dc5258027",
+    "translation": "我们付了他们1250.50美元，但他们只退了1205.50美元",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：付款和退款方向、两个金额准确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "62e2391f-dd0e-406c-b458-473dc5258027",
+    "translation": "我们付了他们1250.50美元，但他们只退了1205.50美元。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：付款和退款方向、两个金额准确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "16163f9d-f60f-4bdd-94d0-a6d55ebf2d30",
+    "translation": "三名员工每人应获得20,000奈拉，总计60,000奈拉",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：每人与总额区分准确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "16163f9d-f60f-4bdd-94d0-a6d55ebf2d30",
+    "translation": "三名员工每人应获得20,000奈拉，总计60,000奈拉。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：每人与总额区分准确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "139274ee-4b07-4c16-9232-b479550d43c2",
+    "translation": "你不欠我什么；是我欠你25,000奈拉",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：债务方向和金额正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "139274ee-4b07-4c16-9232-b479550d43c2",
+    "translation": "你不欠我什么；是我欠你25,000奈拉。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：债务方向和金额正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "fe47b87c-bdc4-4e6e-86c0-a409b16d34bc",
+    "translation": "这三名员工每人应得 20,000 奈拉，总计 60,000 奈拉",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：每人与总额区分准确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": []
+  },
+  {
+    "requestId": "fe47b87c-bdc4-4e6e-86c0-a409b16d34bc",
+    "translation": "这三名员工每人应得 20,000 奈拉，总计 60,000 奈拉。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐句核对人物、动作、否定和条件：每人与总额区分准确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "本次人物及所有者关系与原文相符；可接受的省略和同义表达不机械判错。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "无实质错误，表达可用于同事协作。",
+    "categories": [],
+    "candidateAttempt": 1
+  }
+]

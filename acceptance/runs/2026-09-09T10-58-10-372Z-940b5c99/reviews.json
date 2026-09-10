@@ -1,0 +1,1685 @@
+[
+  {
+    "requestId": "d65cf907-5fe3-4010-a92e-401d888db469",
+    "translation": "她说他已经把我们的地址发给他们了",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "她转述；他已经发送；接收者是他们；地址属于我们。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "She、he、them、our分别按她、他、他们、我们的含义处理。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "84093e52-cd77-47de-84f3-52fcee06e5de",
+    "translation": "他们让我们通知你，会议已经取消了",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "他们提出要求，我们负责转告，你接收会议已取消的消息。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "They为普通代词；us与you对应我们与你。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "552736f9-fe3c-4f9c-8f14-5c7547bdc4a9",
+    "translation": "他说你可以直接发给我",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "他转述许可，你发送，我接收；直接发送的关系保留。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "He、you、me按他、你、我处理，没有误作姓名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "a30d4c03-50d9-46cb-ad4d-581e2c5a74ac",
+    "translation": "我们还没告诉她，因为在等你的确认",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "尚未告诉她；原因是等待你的确认。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "we、her、your的指代及所属关系保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "8b27c330-8619-4762-8bed-0ded8784365b",
+    "translation": "Nana 请 David 帮忙处理 Sarah 的报告",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "Nana提出要求，David帮助Sarah，报告归Sarah；未写成任务已经完成。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "Nana、David、Sarah保留英文；报告指向Sarah。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "300884e2-4c34-4ed2-ba35-2bab687ff95e",
+    "translation": "May 说她可能稍后加入我们",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "姓名May发言；参加只是可能，时间是晚些时候。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "May是英文姓名；小写may是可能性，不是姓名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "00192395-c261-44e7-9548-82d104cf90f8",
+    "translation": "Will 说他明天会发过来",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "Will发言并说明明天会发送，没有增加具体接收人。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "姓名Will保留；普通will译出将来含义。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "463f53c2-5187-47d2-bb49-fe48afd0a389",
+    "translation": "麻烦问下 May 她方便加入我们吗",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "请求听者去问May是否能一起参加，询问和参加两层动作保留。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "句首Will按请求语气处理；May保留为姓名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "39d5a830-549f-4e5a-9623-cb776eef9087",
+    "translation": "我把你的号码给她了，但我没有把她的号码给你",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "我给她的是你的号码；没给你的是她的号码。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "your与hers两个号码归属分别保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "28d04804-8b8a-4797-8557-fbe1ef409c11",
+    "translation": "你让我联系他，但他让我联系你",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "你要求我联系他，他要求我联系你，两次联系对象没有颠倒。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "you、me、him在两次要求中的角色分别正确。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "0abb5ec0-5ac5-4d12-9c68-16587862a92a",
+    "translation": "麻烦让他提醒她回复我们",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "听者让他提醒她，再由她回复我们，中间人完整。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "他、她、我们各有角色，未丢失中间参与者。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "a11d6860-f9fb-4d10-8203-51bbf4336e49",
+    "translation": "我的主管让我助理联系了他们的司机",
+    "reviewer": "AI",
+    "logic": {
+      "pass": false,
+      "reason": "把“你的助理”译成“我助理”，且“联系了”增加已完成含义。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "助理归属从听者改为说话者。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "助理归属从听者改为说话者。"
+  },
+  {
+    "requestId": "91b823fa-5d5d-4e5e-bfc6-6617611c6109",
+    "translation": "表格是她自己填的，但我替她提交了",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "她独自填表，我替她提交，两项动作主体区分清楚。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "herself译为她自己；for her译为替她或帮她。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "e6488aca-e152-4884-b34b-4337045cea6a",
+    "translation": "文件是 Sarah 发给 David 的，不是我发的",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "Sarah发送，David接收；否认发送者是我。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "Sarah和David原样保留；me按我翻译。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "b8ff71b9-05be-4030-abda-31cd51f8ce90",
+    "translation": "我没有让你取消订单，我是让你先暂停付款",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "否定取消订单的要求，肯定暂缓付款的要求，两个动作区分清楚。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "I与you的要求关系保留，没有把否定对象换人。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "d6c33b8d-a3b9-4d09-8a0f-c8de81d8693d",
+    "translation": "她说他已经把我们的地址发给他们了",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "她转述；他已经发送；接收者是他们；地址属于我们。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "She、he、them、our分别按她、他、他们、我们的含义处理。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "a046877f-0106-412f-8582-84fa2788eba2",
+    "translation": "他们让我们告诉你会议已经取消了",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "他们提出要求，我们负责转告，你接收会议已取消的消息。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "They为普通代词；us与you对应我们与你。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "8e565058-de48-4d34-bf6b-c597d2dd7e6e",
+    "translation": "他说你可以直接发给我",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "他转述许可，你发送，我接收；直接发送的关系保留。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "He、you、me按他、你、我处理，没有误作姓名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "3098a02a-a27a-47af-bb61-e3e862952e89",
+    "translation": "我们还没告诉她，因为我们在等你的确认",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "尚未告诉她；原因是等待你的确认。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "we、her、your的指代及所属关系保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "49b45ef9-5279-4741-900e-157195fe3385",
+    "translation": "Nana请David帮忙看下Sarah的报告",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "Nana提出要求，David帮助Sarah，报告归Sarah；未写成任务已经完成。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "Nana、David、Sarah保留英文；报告指向Sarah。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "ba119354-9823-41dc-9baf-8d93e7074711",
+    "translation": "May说她可能会晚点加入我们",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "姓名May发言；参加只是可能，时间是晚些时候。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "May是英文姓名；小写may是可能性，不是姓名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "1950185c-5142-4484-b8d3-f45de4426ab9",
+    "translation": "Will 说他明天会发",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "Will发言并说明明天会发送，没有增加具体接收人。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "姓名Will保留；普通will译出将来含义。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "91f661bf-0cfa-4712-a541-720028b168c7",
+    "translation": "你能问下May她能不能加入我们吗",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "请求听者去问May是否能一起参加，询问和参加两层动作保留。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "句首Will按请求语气处理；May保留为姓名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "790e6112-c449-4543-ad07-4bba6a1f5d00",
+    "translation": "我把你的号码给她了，但没把她的给你",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "我给她的是你的号码；没给你的是她的号码。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "your与hers两个号码归属分别保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "cb7b0136-c48f-4860-9d7a-2ee2022ab8c4",
+    "translation": "你让我联系他，但他让我联系你",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "你要求我联系他，他要求我联系你，两次联系对象没有颠倒。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "you、me、him在两次要求中的角色分别正确。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "af8b5976-13a7-4dec-9147-4298fef25c53",
+    "translation": "麻烦让他提醒她回复我们",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "听者让他提醒她，再由她回复我们，中间人完整。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "他、她、我们各有角色，未丢失中间参与者。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "40019ef6-fc75-425a-9ba5-f36e270033ec",
+    "translation": "我的经理让你的助理联系他们的司机",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "经理属于我，助理属于听者，司机属于他们，要求联系的方向保留。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "my、your、their的所有关系保持。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "8c4c0083-911e-4a18-a70f-3781bf13c53b",
+    "translation": "表格是她自己填的，但我帮她提交了",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "她独自填表，我替她提交，两项动作主体区分清楚。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "herself译为她自己；for her译为替她或帮她。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "153326ed-a3b0-4637-b8d8-fadd3b93bd43",
+    "translation": "文件是 Sarah 发给 David 的，不是我发的",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "Sarah发送，David接收；否认发送者是我。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "Sarah和David原样保留；me按我翻译。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "4ab1ae81-f72c-40bc-89ae-6e32f20fa1f2",
+    "translation": "我没让你取消订单；我是让你先别付款",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "否定取消订单的要求，肯定暂缓付款的要求，两个动作区分清楚。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "I与you的要求关系保留，没有把否定对象换人。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "14aee66b-ef78-485c-be56-170676f8ea4b",
+    "translation": "你今天不用回复，但请在明天的会议之前看一下",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "今天回复不是必须；阅读须在明天会议前，不是禁止回复。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "you为听者，没有新增人物。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "0b063377-d8bd-493b-b1a0-b2a6861ae995",
+    "translation": "不是每个人都收到了更新",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "部分人没有收到更新，不是所有人都没有收到。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "everyone为量化人群表达，没有误作姓名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "a70fb94a-c541-409e-b31d-b00cb0c341c9",
+    "translation": "他们中没有一个人批准这个请求",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "全体均未批准，明确无人批准申请。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "none of them保留全称否定，没有误作人名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "c00bebd2-422d-4060-a8a2-6d58ffd62a7f",
+    "translation": "我只是让他看了下金额，不是让他批准付款",
+    "reviewer": "AI",
+    "logic": {
+      "pass": false,
+      "reason": "“让他看了下金额”断定核对已发生，原文仅说提出要求。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "I为要求者、him为执行核对者，关系正确。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "“让他看了下金额”断定核对已发生，原文仅说提出要求。"
+  },
+  {
+    "requestId": "1cce1e40-e604-4423-82dd-82bf17d42a0b",
+    "translation": "她不是不愿意帮忙，只是需要更多时间",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "她并未拒绝帮忙，只需要更多时间。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "She为普通代词，没有误保留英文。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "5a47a050-7f5b-41d1-9c0e-2beca0cf3e3e",
+    "translation": "在 Nana 确认地址之前，不要发送文件",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "确认地址在前、发送文件在后；未确认前不发送。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "Nana保留英文，作为确认地址者。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "7f9a01fc-df3e-4c9b-9495-e7921729903d",
+    "translation": "如果他到中午还没回复，麻烦让她打电话给他",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "到中午还未回复才采取行动；让她给他打电话。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "he是待回复者、her是拨号者、him是电话接收者。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "aa6844f5-d736-4156-9216-dda8e18c6ede",
+    "translation": "即使他们同意，我们仍然需要你的批准",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "他们同意不能取代你的批准。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "他们与听者是两方，批准权限未合并。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "3ccee5bb-caa9-4ad8-b661-b048764e1347",
+    "translation": "除非你另有说明，我会用最新版本",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "默认用最新版，但听者给出不同指示时例外。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "you为给出不同指示的人，I为使用版本的人。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "9d51325f-5745-4fbe-8f5c-8cb9d7cc9f84",
+    "translation": "在我给她打电话之前，她已经跟你谈过了",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "她和你交谈在前，我给她打电话在后。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "I、her、you的前后两次沟通关系正确。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "3097fa83-9a64-4839-9b76-4d11fd8720d5",
+    "translation": "他今天可能会发，但他没有承诺",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "今天发送仅为可能，不是已经作出承诺。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "He按普通代词翻译，没有凭空指定姓名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "5b319282-bf8e-4e46-bdee-d30369e67a32",
+    "translation": "你不欠我什么；是我欠你 NGN 25,000",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "你不欠我；我欠你25000奈拉，方向和金额正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "you与I的债权债务关系没有颠倒。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "5bc04fa1-57ea-4b44-b28e-544c28c1beb1",
+    "translation": "我们付给他们USD 1,250.50，但他们只退了USD 1,205.50",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "我们付款给他们1250.50美元，他们退款1205.50美元，金额与动作区分正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "we与them/they分别是付款方和退款方。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "f13b54a0-bbdf-4f07-ba3f-31910b2dd07e",
+    "translation": "三名员工每人应收到 NGN 20,000，总计 NGN 60,000",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "三名员工，每人20000奈拉，共60000奈拉，每人与总额区分正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "人数与每人的分配没有改变，未新增姓名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "c2897cc5-e553-4f56-861d-75ff65804284",
+    "translation": "David的订单数量是我的两倍，但只有Sarah的一半",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "David是我的两倍、Sarah的一半，没有添加具体订单数。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "David、Sarah保留英文，I为另一比较对象。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "a1126414-0221-4361-9b6e-db6ef0cdce50",
+    "translation": "改时间表之前能提前说一声吗",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "改安排前先告知我，保留预告含义，没有逐字翻译习语。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "you是更改安排者、me是接收预告者。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "3b4d5676-9608-4295-8228-2d7aaf3afd75",
+    "translation": "我不太确定我是否理解了。你是说我们应该等吗",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "表达尚未理解，并询问是否应该等待，疑问语气保留。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "I与we分别表示说话者及所谈群体，未新增人。"
+    },
+    "naturalness": 3,
+    "colloquial": 3,
+    "issues": "“我不太确定我是否理解了”按英文句法套译，冗长生硬。"
+  },
+  {
+    "requestId": "b65319b0-1266-482c-a57f-7bb49b73c660",
+    "translation": "不急，有空的时候发过来就行",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "不催促，在有空时发送，没有添加截止时间。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "省略听者主语符合中文语境，发送关系仍清楚。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "605a3231-12f8-4653-8c5d-1d8cde90f37a",
+    "translation": "支持部门有人给我打了电话。他们说会帮我们查一下",
+    "reviewer": "AI",
+    "logic": {
+      "pass": false,
+      "reason": "一位支持人员被后句“他们”复数化。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "一位支持人员被后句“他们”复数化。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "一位支持人员被后句“他们”复数化。"
+  },
+  {
+    "requestId": "7bdc2015-e3a3-4d71-b4b2-90cd8fdd6526",
+    "translation": "当David和Michael说话时，他听起来很不高兴",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "David与Michael交谈；不高兴的he保持未明确归属，不添加背景。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "两个姓名保留，he未明确改写成某个姓名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "1c4eb9ef-9b95-4a88-b320-0bc1a0e2e29c",
+    "translation": "把用户名“She”保留不变，但翻译她消息的其余部分",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "翻译整条指令本身；保留用户名，翻译消息其余部分，而不是执行或捏造另一条消息。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "用户名She保留；her按她翻译，没有把She当成被称呼者。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。"
+  },
+  {
+    "requestId": "d65cf907-5fe3-4010-a92e-401d888db469",
+    "translation": "她说他已经把我们的地址发给他们了。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "她转述；他已经发送；接收者是他们；地址属于我们。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "She、he、them、our分别按她、他、他们、我们的含义处理。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "84093e52-cd77-47de-84f3-52fcee06e5de",
+    "translation": "他们让我们通知你，会议已经取消了。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "他们提出要求，我们负责转告，你接收会议已取消的消息。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "They为普通代词；us与you对应我们与你。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "552736f9-fe3c-4f9c-8f14-5c7547bdc4a9",
+    "translation": "他说你可以直接发给我。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "他转述许可，你发送，我接收；直接发送的关系保留。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "He、you、me按他、你、我处理，没有误作姓名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "a30d4c03-50d9-46cb-ad4d-581e2c5a74ac",
+    "translation": "我们还没告诉她，因为在等你的确认。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "尚未告诉她；原因是等待你的确认。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "we、her、your的指代及所属关系保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "8b27c330-8619-4762-8bed-0ded8784365b",
+    "translation": "Nana 请 David 帮忙处理 Sarah 的报告。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "Nana提出要求，David帮助Sarah，报告归Sarah；未写成任务已经完成。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "Nana、David、Sarah保留英文；报告指向Sarah。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "300884e2-4c34-4ed2-ba35-2bab687ff95e",
+    "translation": "May 说她可能稍后加入我们。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "姓名May发言；参加只是可能，时间是晚些时候。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "May是英文姓名；小写may是可能性，不是姓名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "00192395-c261-44e7-9548-82d104cf90f8",
+    "translation": "Will 说他明天会发过来。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "Will发言并说明明天会发送，没有增加具体接收人。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "姓名Will保留；普通will译出将来含义。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "463f53c2-5187-47d2-bb49-fe48afd0a389",
+    "translation": "麻烦问下 May 她方便加入我们吗？",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "请求听者去问May是否能一起参加，询问和参加两层动作保留。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "句首Will按请求语气处理；May保留为姓名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "39d5a830-549f-4e5a-9623-cb776eef9087",
+    "translation": "我把你的号码给她了，但我没有把她的号码给你。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "我给她的是你的号码；没给你的是她的号码。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "your与hers两个号码归属分别保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "28d04804-8b8a-4797-8557-fbe1ef409c11",
+    "translation": "你让我联系他，但他让我联系你。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "你要求我联系他，他要求我联系你，两次联系对象没有颠倒。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "you、me、him在两次要求中的角色分别正确。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "0abb5ec0-5ac5-4d12-9c68-16587862a92a",
+    "translation": "麻烦让他提醒她回复我们。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "听者让他提醒她，再由她回复我们，中间人完整。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "他、她、我们各有角色，未丢失中间参与者。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "a11d6860-f9fb-4d10-8203-51bbf4336e49",
+    "translation": "我的主管让我助理联系了他们的司机。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": false,
+      "reason": "把“你的助理”译成“我助理”，且“联系了”增加已完成含义。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "助理归属从听者改为说话者。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "助理归属从听者改为说话者。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "91b823fa-5d5d-4e5e-bfc6-6617611c6109",
+    "translation": "表格是她自己填的，但我替她提交了。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "她独自填表，我替她提交，两项动作主体区分清楚。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "herself译为她自己；for her译为替她或帮她。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "e6488aca-e152-4884-b34b-4337045cea6a",
+    "translation": "文件是 Sarah 发给 David 的，不是我发的。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "Sarah发送，David接收；否认发送者是我。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "Sarah和David原样保留；me按我翻译。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "b8ff71b9-05be-4030-abda-31cd51f8ce90",
+    "translation": "我没有让你取消订单，我是让你先暂停付款。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "否定取消订单的要求，肯定暂缓付款的要求，两个动作区分清楚。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "I与you的要求关系保留，没有把否定对象换人。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "d6c33b8d-a3b9-4d09-8a0f-c8de81d8693d",
+    "translation": "她说他已经把我们的地址发给他们了。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "她转述；他已经发送；接收者是他们；地址属于我们。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "She、he、them、our分别按她、他、他们、我们的含义处理。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "a046877f-0106-412f-8582-84fa2788eba2",
+    "translation": "他们让我们告诉你会议已经取消了。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "他们提出要求，我们负责转告，你接收会议已取消的消息。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "They为普通代词；us与you对应我们与你。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "8e565058-de48-4d34-bf6b-c597d2dd7e6e",
+    "translation": "他说你可以直接发给我。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "他转述许可，你发送，我接收；直接发送的关系保留。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "He、you、me按他、你、我处理，没有误作姓名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "3098a02a-a27a-47af-bb61-e3e862952e89",
+    "translation": "我们还没告诉她，因为我们在等你的确认。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "尚未告诉她；原因是等待你的确认。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "we、her、your的指代及所属关系保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "49b45ef9-5279-4741-900e-157195fe3385",
+    "translation": "Nana请David帮忙看下Sarah的报告。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "Nana提出要求，David帮助Sarah，报告归Sarah；未写成任务已经完成。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "Nana、David、Sarah保留英文；报告指向Sarah。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "ba119354-9823-41dc-9baf-8d93e7074711",
+    "translation": "May说她可能会晚点加入我们。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "姓名May发言；参加只是可能，时间是晚些时候。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "May是英文姓名；小写may是可能性，不是姓名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "1950185c-5142-4484-b8d3-f45de4426ab9",
+    "translation": "Will 说他明天会发。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "Will发言并说明明天会发送，没有增加具体接收人。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "姓名Will保留；普通will译出将来含义。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "91f661bf-0cfa-4712-a541-720028b168c7",
+    "translation": "你能问下May她能不能加入我们吗？",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "请求听者去问May是否能一起参加，询问和参加两层动作保留。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "句首Will按请求语气处理；May保留为姓名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "790e6112-c449-4543-ad07-4bba6a1f5d00",
+    "translation": "我把你的号码给她了，但没把她的给你。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "我给她的是你的号码；没给你的是她的号码。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "your与hers两个号码归属分别保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "cb7b0136-c48f-4860-9d7a-2ee2022ab8c4",
+    "translation": "你让我联系他，但他让我联系你。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "你要求我联系他，他要求我联系你，两次联系对象没有颠倒。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "you、me、him在两次要求中的角色分别正确。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "af8b5976-13a7-4dec-9147-4298fef25c53",
+    "translation": "麻烦让他提醒她回复我们。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "听者让他提醒她，再由她回复我们，中间人完整。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "他、她、我们各有角色，未丢失中间参与者。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "40019ef6-fc75-425a-9ba5-f36e270033ec",
+    "translation": "我的经理让你的助理联系他们的司机。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "经理属于我，助理属于听者，司机属于他们，要求联系的方向保留。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "my、your、their的所有关系保持。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "8c4c0083-911e-4a18-a70f-3781bf13c53b",
+    "translation": "表格是她自己填的，但我帮她提交了。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "她独自填表，我替她提交，两项动作主体区分清楚。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "herself译为她自己；for her译为替她或帮她。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "153326ed-a3b0-4637-b8d8-fadd3b93bd43",
+    "translation": "文件是 Sarah 发给 David 的，不是我发的。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "Sarah发送，David接收；否认发送者是我。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "Sarah和David原样保留；me按我翻译。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "4ab1ae81-f72c-40bc-89ae-6e32f20fa1f2",
+    "translation": "我没让你取消订单；我是让你先别付款。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "否定取消订单的要求，肯定暂缓付款的要求，两个动作区分清楚。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "I与you的要求关系保留，没有把否定对象换人。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "14aee66b-ef78-485c-be56-170676f8ea4b",
+    "translation": "你今天不用回复，但请在明天的会议之前看一下。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "今天回复不是必须；阅读须在明天会议前，不是禁止回复。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "you为听者，没有新增人物。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "0b063377-d8bd-493b-b1a0-b2a6861ae995",
+    "translation": "不是每个人都收到了更新。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "部分人没有收到更新，不是所有人都没有收到。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "everyone为量化人群表达，没有误作姓名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "a70fb94a-c541-409e-b31d-b00cb0c341c9",
+    "translation": "他们中没有一个人批准这个请求。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "全体均未批准，明确无人批准申请。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "none of them保留全称否定，没有误作人名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "c00bebd2-422d-4060-a8a2-6d58ffd62a7f",
+    "translation": "我只是让他看了下金额，不是让他批准付款。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": false,
+      "reason": "“让他看了下金额”断定核对已发生，原文仅说提出要求。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "I为要求者、him为执行核对者，关系正确。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "“让他看了下金额”断定核对已发生，原文仅说提出要求。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "1cce1e40-e604-4423-82dd-82bf17d42a0b",
+    "translation": "她不是不愿意帮忙，只是需要更多时间。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "她并未拒绝帮忙，只需要更多时间。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "She为普通代词，没有误保留英文。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "5a47a050-7f5b-41d1-9c0e-2beca0cf3e3e",
+    "translation": "在 Nana 确认地址之前，不要发送文件。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "确认地址在前、发送文件在后；未确认前不发送。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "Nana保留英文，作为确认地址者。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "7f9a01fc-df3e-4c9b-9495-e7921729903d",
+    "translation": "如果他到中午还没回复，麻烦让她打电话给他。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "到中午还未回复才采取行动；让她给他打电话。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "he是待回复者、her是拨号者、him是电话接收者。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "aa6844f5-d736-4156-9216-dda8e18c6ede",
+    "translation": "即使他们同意，我们仍然需要你的批准。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "他们同意不能取代你的批准。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "他们与听者是两方，批准权限未合并。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "3ccee5bb-caa9-4ad8-b661-b048764e1347",
+    "translation": "除非你另有说明，我会用最新版本。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "默认用最新版，但听者给出不同指示时例外。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "you为给出不同指示的人，I为使用版本的人。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "9d51325f-5745-4fbe-8f5c-8cb9d7cc9f84",
+    "translation": "在我给她打电话之前，她已经跟你谈过了。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "她和你交谈在前，我给她打电话在后。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "I、her、you的前后两次沟通关系正确。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "3097fa83-9a64-4839-9b76-4d11fd8720d5",
+    "translation": "他今天可能会发，但他没有承诺。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "今天发送仅为可能，不是已经作出承诺。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "He按普通代词翻译，没有凭空指定姓名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "5b319282-bf8e-4e46-bdee-d30369e67a32",
+    "translation": "你不欠我什么；是我欠你 NGN 25,000。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "你不欠我；我欠你25000奈拉，方向和金额正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "you与I的债权债务关系没有颠倒。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "5bc04fa1-57ea-4b44-b28e-544c28c1beb1",
+    "translation": "我们付给他们USD 1,250.50，但他们只退了USD 1,205.50。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "我们付款给他们1250.50美元，他们退款1205.50美元，金额与动作区分正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "we与them/they分别是付款方和退款方。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "f13b54a0-bbdf-4f07-ba3f-31910b2dd07e",
+    "translation": "三名员工每人应收到 NGN 20,000，总计 NGN 60,000。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "三名员工，每人20000奈拉，共60000奈拉，每人与总额区分正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "人数与每人的分配没有改变，未新增姓名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "c2897cc5-e553-4f56-861d-75ff65804284",
+    "translation": "David的订单数量是我的两倍，但只有Sarah的一半。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "David是我的两倍、Sarah的一半，没有添加具体订单数。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "David、Sarah保留英文，I为另一比较对象。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "a1126414-0221-4361-9b6e-db6ef0cdce50",
+    "translation": "改时间表之前能提前说一声吗？",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "改安排前先告知我，保留预告含义，没有逐字翻译习语。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "you是更改安排者、me是接收预告者。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "3b4d5676-9608-4295-8228-2d7aaf3afd75",
+    "translation": "我不太确定我是否理解了。你是说我们应该等吗？",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "表达尚未理解，并询问是否应该等待，疑问语气保留。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "I与we分别表示说话者及所谈群体，未新增人。"
+    },
+    "naturalness": 3,
+    "colloquial": 3,
+    "issues": "“我不太确定我是否理解了”按英文句法套译，冗长生硬。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "b65319b0-1266-482c-a57f-7bb49b73c660",
+    "translation": "不急，有空的时候发过来就行。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "不催促，在有空时发送，没有添加截止时间。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "省略听者主语符合中文语境，发送关系仍清楚。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "605a3231-12f8-4653-8c5d-1d8cde90f37a",
+    "translation": "支持部门有人给我打了电话。他们说会帮我们查一下。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": false,
+      "reason": "一位支持人员被后句“他们”复数化。"
+    },
+    "entities": {
+      "pass": false,
+      "reason": "一位支持人员被后句“他们”复数化。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "一位支持人员被后句“他们”复数化。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "7bdc2015-e3a3-4d71-b4b2-90cd8fdd6526",
+    "translation": "当David和Michael说话时，他听起来很不高兴。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "David与Michael交谈；不高兴的he保持未明确归属，不添加背景。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "两个姓名保留，he未明确改写成某个姓名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "1c4eb9ef-9b95-4a88-b320-0bc1a0e2e29c",
+    "translation": "把用户名“She”保留不变，但翻译她消息的其余部分。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "翻译整条指令本身；保留用户名，翻译消息其余部分，而不是执行或捏造另一条消息。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "用户名She保留；her按她翻译，没有把She当成被称呼者。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "含义清楚；整体自然，仍有轻微口语润色空间。",
+    "candidateAttempt": 1
+  }
+]

@@ -1,0 +1,33 @@
+{
+  "runId": "2026-09-09T10-50-15-452Z-f0a2bbd7",
+  "label": "before-fix",
+  "startedAt": "2026-09-09T10:50:15.457Z",
+  "direction": "enToZh",
+  "mode": "chat",
+  "ids": [
+    1,
+    2
+  ],
+  "providers": [
+    "openai",
+    "gemini",
+    "deepseek"
+  ],
+  "hashes": {
+    "server.mjs": "74ad093abe671a0fea48fb5b5e1e545ff899130ad785d3a91d5a1f0decf38e20",
+    "entity-protection.mjs": "7e8c445c478fb81ca99188b9626be9ea5c0b3909dd0330713d2ac57f163b99c8",
+    "translation-policy.mjs": "027c7eeb07a0928165527f5ba34bcf8e18d1a7f9184965ed5e923f13a76ce755",
+    "translation-output.mjs": "0ec81b4756eb1383fe880128c7ba9905ab6dea21d70862dcf8698d5918bdaacf",
+    "semantic-role-protection.mjs": "b2d65fe6e587c23b5417b96d568e77d7876e8533686277b5dd0665a6f535c9bd",
+    "factual-constraint-protection.mjs": "a6e067a735345e9e467229267ec01ab688831527bacd92b2cd5fa01ef7a69543",
+    "model-manager.mjs": "3a00a56e35467a95cad6367f1009570da4979be24adbde3eaad80de2e5353c71",
+    "model-policy.json": "4dcfd05703bd52922760e2cf7eb101bbb96bce4adc6c0640ea882eccdbceca76",
+    "app.js": "34af99a3a77f36891d186fc63818e4beabbbdf4d061a2af98d0daa00b65e8c82",
+    "acceptance/cases.json": "c778eee629f862f394e6d8688ae9dfdc3c591589cd483b0f1d556a04d4135d3c",
+    "scripts/translation-acceptance.mjs": "94ec89044a7597de46903a07a4d1ad13d9ba912940c6c036932e9a7aa876fe0e",
+    "providers/openai-provider.mjs": "c44d5bca5510c4525d99545b12e080c554e794b4c81118a6751927179f640de7",
+    "providers/gemini-provider.mjs": "b1373284001654e44abb95bab20d28d469c690f734772360ac0e74a59c2a540d",
+    "providers/deepseek-provider.mjs": "56a811cc9fa25c8e146c9c22fe9c38e10db2170530be7cf2159668563ec3e4ea"
+  },
+  "review": "Pending explicit AI semantic and language review. Transport success is not quality acceptance."
+}

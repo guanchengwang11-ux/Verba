@@ -1,0 +1,201 @@
+[
+  {
+    "requestId": "ba4daafc-a4ec-4df1-9569-204739be6cb9",
+    "translation": "你不需要给我什么，我欠你 NGN 25,000",
+    "reviewer": "AI",
+    "logic": {
+      "pass": false,
+      "reason": "“不需要给我什么”未保留“不欠我”这一债务事实。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "you与I的债权债务关系没有颠倒。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "“不需要给我什么”未保留“不欠我”这一债务事实。"
+  },
+  {
+    "requestId": "ba4daafc-a4ec-4df1-9569-204739be6cb9",
+    "translation": "你不需要给我什么，我欠你 NGN 25,000。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": false,
+      "reason": "“不需要给我什么”未保留“不欠我”这一债务事实。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "you与I的债权债务关系没有颠倒。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "“不需要给我什么”未保留“不欠我”这一债务事实。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "736e9072-e06a-46bd-bcb8-a135e0105e0b",
+    "translation": "我们付给他们 USD 1,250.50，但他们只退回了 USD 1,205.50",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "我们付款给他们1250.50美元，他们退款1205.50美元，金额与动作区分正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "we与them/they分别是付款方和退款方。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "金额和人物方向保持，币种代码未改动。"
+  },
+  {
+    "requestId": "736e9072-e06a-46bd-bcb8-a135e0105e0b",
+    "translation": "我们付给他们 USD 1,250.50，但他们只退回了 USD 1,205.50。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "我们付款给他们1250.50美元，他们退款1205.50美元，金额与动作区分正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "we与them/they分别是付款方和退款方。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "金额和人物方向保持，币种代码未改动。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "7b8d4bd7-c75f-4890-88db-ec5517a99116",
+    "translation": "三名员工每人应收到 NGN 20,000，总计 NGN 60,000",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "三名员工，每人20000奈拉，共60000奈拉，每人与总额区分正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "人数与每人的分配没有改变，未新增姓名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "金额和人物方向保持，币种代码未改动。"
+  },
+  {
+    "requestId": "7b8d4bd7-c75f-4890-88db-ec5517a99116",
+    "translation": "三名员工每人应收到 NGN 20,000，总计 NGN 60,000。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "三名员工，每人20000奈拉，共60000奈拉，每人与总额区分正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "人数与每人的分配没有改变，未新增姓名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "金额和人物方向保持，币种代码未改动。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "9c30e52d-14ad-4e54-8608-692a3f151df4",
+    "translation": "你不欠我什么，我欠你 NGN 25,000",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "你不欠我；我欠你25000奈拉，方向和金额正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "you与I的债权债务关系没有颠倒。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "金额和人物方向保持，币种代码未改动。"
+  },
+  {
+    "requestId": "9c30e52d-14ad-4e54-8608-692a3f151df4",
+    "translation": "你不欠我什么，我欠你 NGN 25,000。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "你不欠我；我欠你25000奈拉，方向和金额正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "you与I的债权债务关系没有颠倒。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "金额和人物方向保持，币种代码未改动。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "c8917f70-ec45-4b48-b401-23b806e06e24",
+    "translation": "我们付了他们 USD 1,250.50，但他们只退了 USD 1,205.50",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "我们付款给他们1250.50美元，他们退款1205.50美元，金额与动作区分正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "we与them/they分别是付款方和退款方。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "金额和人物方向保持，币种代码未改动。"
+  },
+  {
+    "requestId": "c8917f70-ec45-4b48-b401-23b806e06e24",
+    "translation": "我们付了他们 USD 1,250.50，但他们只退了 USD 1,205.50。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "我们付款给他们1250.50美元，他们退款1205.50美元，金额与动作区分正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "we与them/they分别是付款方和退款方。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "金额和人物方向保持，币种代码未改动。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "a516b45a-0995-4357-9261-e639f8badcce",
+    "translation": "这三位员工每人应得NGN20,000，总计NGN60,000。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "三名员工，每人20000奈拉，共60000奈拉，每人与总额区分正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "人数与每人的分配没有改变，未新增姓名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "此候选人数、每人金额、总额均正确；旧量词提取未识别“三位”而误拦截。",
+    "candidateAttempt": 1
+  },
+  {
+    "requestId": "a516b45a-0995-4357-9261-e639f8badcce",
+    "translation": "三位员工每人应得 NGN 20,000，总计 NGN 60,000。",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "三名员工，每人20000奈拉，共60000奈拉，每人与总额区分正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "人数与每人的分配没有改变，未新增姓名。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "issues": "此候选人数、每人金额、总额均正确；旧量词提取未识别“三位”而误拦截。",
+    "candidateAttempt": 2
+  }
+]

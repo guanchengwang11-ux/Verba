@@ -1,0 +1,1052 @@
+[
+  {
+    "requestId": "7f85e1df-6d08-4c76-8da7-720e560c5222",
+    "translation": "她说他已经把我们的地址发给他们了",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "a09a6b70-61c6-4e4b-b6c0-76dffcc74c66",
+    "translation": "他们让我们通知你，会议已经取消了",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "20b1d1a5-a2a2-48ac-bdba-aa82f142e94f",
+    "translation": "Nana 请 David 帮 Sarah 处理一下报告",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "af932a6d-5e2e-4081-ab1e-a3c63e542222",
+    "translation": "May说她可能稍后会加入我们",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "1920fdfe-72cb-4f7e-a61c-62b50f6ca7de",
+    "translation": "能麻烦你问一下 May 看她能不能加入我们吗",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "294b7616-260c-4b65-862e-0b0c2e2aa14f",
+    "translation": "我的经理让你助理去联系一下他的司机",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "36c22f96-c24f-448e-9d72-3d6759a5a7a6",
+    "translation": "她不是不肯帮忙，只是需要更多时间",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "92ffb3a7-0b70-4834-93ee-33629acd6a3e",
+    "translation": "Nana确认地址之前，先别发送这些文件",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "1acd211a-3687-4a36-ae5e-15d7563b3924",
+    "translation": "如果他中午前还没回复，请让对方给他打个电话",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "ef6729e1-e436-40ed-a4c1-59b5ff3fad0a",
+    "translation": "你不需要付我钱，我欠你25,000奈拉",
+    "reviewer": "AI",
+    "logic": {
+      "pass": false,
+      "reason": "不需要付钱不等于不存在欠款；金额和第二分句方向正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": "模型原始中文已经改变债务事实；本地仅去除句末标点。"
+  },
+  {
+    "requestId": "d1bf0c68-7909-4979-af61-a09a3115c2e2",
+    "translation": "我们付了他们 1,250.50 美元，但他们只退回了 1,205.50 美元",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "443835fc-543b-4fc3-87e5-2be1c328b939",
+    "translation": "三名员工每人应收到 20,000 奈拉，总计 60,000 奈拉",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "046a3465-a907-48e4-8924-87864a508974",
+    "translation": "David的订单量是我的两倍，但只有Sarah的一半",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "e02c791c-b4b2-46de-be15-02497a96b992",
+    "translation": "支持部门的人给我打了电话，说会帮我们查一下",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "03c76172-9c54-40d0-b9aa-5d61526d1524",
+    "translation": "David 跟 Michael 说话时，听起来不太高兴",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "4248f234-64ea-4072-996f-856549726b88",
+    "translation": "她说他已经把我们的地址发给他们了",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "af04fde4-e519-479b-afae-21a58fb4095d",
+    "translation": "他们让我们跟你说，会议取消了",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "caf337e0-c72d-4ce1-b311-6aa0b30d95b2",
+    "translation": "Nana让David帮Sarah弄她的报告",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "9e6a8f9d-0bd1-42ae-aa98-56e3dcde95cb",
+    "translation": "May说她可能晚点加入我们",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "ea4d84d3-de2e-49bb-a6ae-620c75e73f60",
+    "translation": "你能不能问一下May，看她能不能来跟我们一起",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "793275a3-f694-47fc-b60a-81f82ea3903c",
+    "translation": "我经理让你助理去联系他们的司机",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "577e8b86-bf09-4792-a1bb-24be0038c224",
+    "translation": "她不是不肯帮忙，只是需要多点时间",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "b1275ae4-04f4-4ac4-bafe-a6c336dc87e1",
+    "translation": "在Nana确认地址之前，先别发文件",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "b0e52d70-1324-4b48-ad73-1ee910142617",
+    "translation": "如果他中午前还没回，就让她给他打个电话",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "f23db37c-3a6f-4700-9f74-79b266d86753",
+    "translation": "你不欠我什么，是我欠你 25,000 奈拉",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "6101c74d-829a-4ca0-8b3d-3c02be40667a",
+    "translation": "我们付了他们1250.50美元，但他们只退了1205.50美元",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "0d401389-8c67-4e79-b6b2-70c4a0850400",
+    "translation": "三名员工每人应发20,000奈拉，总共就是60,000奈拉",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "5af69fad-32c5-44f4-bc40-3b39748f1874",
+    "translation": "David的订单是我的两倍，但只有Sarah的一半",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "b405d8c4-51ec-42e6-be86-5d08a661567f",
+    "translation": "客服那边有个人给我打了电话，说会帮我们看一下",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "1b0fbdf1-c2f5-42b7-9551-ff7c57cd6297",
+    "translation": "David跟Michael说话的时候，听着有点不高兴",
+    "reviewer": "AI",
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "7f85e1df-6d08-4c76-8da7-720e560c5222",
+    "translation": "她说他已经把我们的地址发给他们了。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "a09a6b70-61c6-4e4b-b6c0-76dffcc74c66",
+    "translation": "他们让我们通知你，会议已经取消了。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "20b1d1a5-a2a2-48ac-bdba-aa82f142e94f",
+    "translation": "Nana 请 David 帮 Sarah 处理一下报告。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "af932a6d-5e2e-4081-ab1e-a3c63e542222",
+    "translation": "May说她可能稍后会加入我们。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "1920fdfe-72cb-4f7e-a61c-62b50f6ca7de",
+    "translation": "能麻烦你问一下 May 看她能不能加入我们吗？",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "294b7616-260c-4b65-862e-0b0c2e2aa14f",
+    "translation": "我的经理让你助理去联系一下他的司机。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "36c22f96-c24f-448e-9d72-3d6759a5a7a6",
+    "translation": "她不是不肯帮忙，只是需要更多时间。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "92ffb3a7-0b70-4834-93ee-33629acd6a3e",
+    "translation": "Nana确认地址之前，先别发送这些文件。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "1acd211a-3687-4a36-ae5e-15d7563b3924",
+    "translation": "如果他中午前还没回复，请让对方给他打个电话。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "ef6729e1-e436-40ed-a4c1-59b5ff3fad0a",
+    "translation": "你不需要付我钱，我欠你25,000奈拉。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": false,
+      "reason": "不需要付钱不等于不存在欠款；金额和第二分句方向正确。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": "模型原始中文已经改变债务事实；本地仅去除句末标点。"
+  },
+  {
+    "requestId": "d1bf0c68-7909-4979-af61-a09a3115c2e2",
+    "translation": "我们付了他们 1,250.50 美元，但他们只退回了 1,205.50 美元。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "443835fc-543b-4fc3-87e5-2be1c328b939",
+    "translation": "三名员工每人应收到 20,000 奈拉，总计 60,000 奈拉。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "046a3465-a907-48e4-8924-87864a508974",
+    "translation": "David的订单量是我的两倍，但只有Sarah的一半。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "e02c791c-b4b2-46de-be15-02497a96b992",
+    "translation": "支持部门的人给我打了电话，说会帮我们查一下。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "03c76172-9c54-40d0-b9aa-5d61526d1524",
+    "translation": "David 跟 Michael 说话时，听起来不太高兴。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "4248f234-64ea-4072-996f-856549726b88",
+    "translation": "她说他已经把我们的地址发给他们了。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "af04fde4-e519-479b-afae-21a58fb4095d",
+    "translation": "他们让我们跟你说，会议取消了。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "caf337e0-c72d-4ce1-b311-6aa0b30d95b2",
+    "translation": "Nana让David帮Sarah弄她的报告。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "9e6a8f9d-0bd1-42ae-aa98-56e3dcde95cb",
+    "translation": "May说她可能晚点加入我们。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "ea4d84d3-de2e-49bb-a6ae-620c75e73f60",
+    "translation": "你能不能问一下May，看她能不能来跟我们一起？",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "793275a3-f694-47fc-b60a-81f82ea3903c",
+    "translation": "我经理让你助理去联系他们的司机。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "577e8b86-bf09-4792-a1bb-24be0038c224",
+    "translation": "她不是不肯帮忙，只是需要多点时间。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "b1275ae4-04f4-4ac4-bafe-a6c336dc87e1",
+    "translation": "在Nana确认地址之前，先别发文件。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "b0e52d70-1324-4b48-ad73-1ee910142617",
+    "translation": "如果他中午前还没回，就让她给他打个电话。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "f23db37c-3a6f-4700-9f74-79b266d86753",
+    "translation": "你不欠我什么，是我欠你 25,000 奈拉。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "6101c74d-829a-4ca0-8b3d-3c02be40667a",
+    "translation": "我们付了他们1250.50美元，但他们只退了1205.50美元。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "0d401389-8c67-4e79-b6b2-70c4a0850400",
+    "translation": "三名员工每人应发20,000奈拉，总共就是60,000奈拉。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "5af69fad-32c5-44f4-bc40-3b39748f1874",
+    "translation": "David的订单是我的两倍，但只有Sarah的一半。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "b405d8c4-51ec-42e6-be86-5d08a661567f",
+    "translation": "客服那边有个人给我打了电话，说会帮我们看一下。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  },
+  {
+    "requestId": "1b0fbdf1-c2f5-42b7-9551-ff7c57cd6297",
+    "translation": "David跟Michael说话的时候，听着有点不高兴。",
+    "reviewer": "AI",
+    "candidateAttempt": 1,
+    "logic": {
+      "pass": true,
+      "reason": "逐条对照原文，人物行动、条件、否定及金额无明确矛盾；允许合理省略和歧义读法。"
+    },
+    "entities": {
+      "pass": true,
+      "reason": "英文姓名按原样保留；普通代词未被当作英文姓名保留。"
+    },
+    "naturalness": 4,
+    "colloquial": 4,
+    "understandable": true,
+    "issues": ""
+  }
+]

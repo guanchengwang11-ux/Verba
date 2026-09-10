@@ -1,11 +1,11 @@
 const outputSchema = {
   type: "OBJECT",
   properties: {
-    translation: { type: "STRING" },
-    englishMeaning: { type: "STRING" }
+    englishMeaning: { type: "STRING" },
+    translation: { type: "STRING" }
   },
   required: ["translation", "englishMeaning"],
-  propertyOrdering: ["translation", "englishMeaning"]
+  propertyOrdering: ["englishMeaning", "translation"]
 };
 
 function providerError(response, data) {
@@ -54,17 +54,18 @@ export default {
     const data = await response.json().catch(() => ({}));
     if (!response.ok) throw providerError(response, data);
     verifyJsonOutput(data);
-    return { latencyMs: Date.now() - startedAt, usage: data.usageMetadata || null };
+    return { latencyMs: Date.now() - startedAt, usage: data.usageMetadata || null, httpStatus: response.status };
   },
-  async translate(apiKey, model, text, instructions) {
+  async translate(apiKey, model, text, instructions, { signal } = {}) {
     const startedAt = Date.now();
     const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
       method: "POST",
+      signal,
       headers: { "x-goog-api-key": apiKey, "Content-Type": "application/json" },
       body: JSON.stringify(requestBody(text, instructions, 700))
     });
     const data = await response.json().catch(() => ({}));
     if (!response.ok) throw providerError(response, data);
-    return { rawOutput: data.candidates?.[0]?.content?.parts?.map((part) => part.text || "").join("") || "", usage: data.usageMetadata || null, latencyMs: Date.now() - startedAt };
+    return { rawOutput: data.candidates?.[0]?.content?.parts?.map((part) => part.text || "").join("") || "", usage: data.usageMetadata || null, latencyMs: Date.now() - startedAt, httpStatus: response.status };
   }
 };

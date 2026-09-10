@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "phase": "second",
+  "initial": {
+    "locale": "en-US",
+    "html": "en-US",
+    "mode": "chat",
+    "source": "English ⌄",
+    "target": "Chinese ⌄",
+    "toggle": "Chinese",
+    "version": "Verba 1.1.2"
+  },
+  "manual": {
+    "locale": "zh-CN",
+    "html": "zh-CN",
+    "mode": "email",
+    "source": "中文 ⌄",
+    "target": "English ⌄",
+    "toggle": "English",
+    "version": "Verba 1.1.2"
+  },
+  "requestMode": "email",
+  "requestDirection": "zhToEn",
+  "modelCalls": 0
+}

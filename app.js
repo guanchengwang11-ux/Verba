@@ -1,7 +1,7 @@
 window.VerbaI18n.ready.then(() => {
   const i18n = window.VerbaI18n;
-  let currentMode = "email";
-  let direction = "zhToEn";
+  let currentMode = "chat";
+  let direction = "enToZh";
   let provider = localStorage.getItem("verba-provider") || "openai";
   const source = document.querySelector("#sourceText");
   const result = document.querySelector("#translatedText");
@@ -12,11 +12,13 @@ window.VerbaI18n.ready.then(() => {
   const settingsOverlay = document.querySelector("#settingsOverlay");
   const glossaryOverlay = document.querySelector("#glossaryOverlay");
   const glossaryRows = document.querySelector("#glossaryRows");
+  let activeTranslationRequest = 0;
+  let translationController = null;
   window.VerbaCurrentProvider = () => provider;
 
   const t = (key, values) => i18n.t(key, values);
   function updateCounter() { counter.textContent = `${source.value.length} / 1000`; }
-  function updateMode() { document.querySelector("#modeName").textContent = currentMode === "email" ? t("studio.email") : t("studio.chat"); document.querySelector("#modeSub").textContent = currentMode === "email" ? t("studio.professionalTone") : t("studio.collaborativeTone"); }
+  function updateMode() { document.querySelectorAll(".mode-card").forEach(card => card.classList.toggle("active", card.dataset.mode === currentMode)); document.querySelector("#modeName").textContent = currentMode === "email" ? t("studio.email") : t("studio.chat"); document.querySelector("#modeSub").textContent = currentMode === "email" ? t("studio.professionalTone") : t("studio.collaborativeTone"); }
   function updateLanguages() { document.querySelector("#sourceLanguage").innerHTML = `${direction === "zhToEn" ? t("studio.sourceChinese") : t("studio.sourceEnglish")} <span>⌄</span>`; document.querySelector("#targetLanguage").innerHTML = `${direction === "zhToEn" ? t("studio.sourceEnglish") : t("studio.sourceChinese")} <span>⌄</span>`; }
   function resetResult() { result.classList.remove("translation-error"); result.textContent = source.value.trim() ? "" : t("studio.empty"); meaning.textContent = ""; toneNote.textContent = ""; }
   function updateDynamicText() { source.placeholder = t("studio.placeholder"); document.querySelector("#interfaceLanguage").textContent = i18n.locale === "zh-CN" ? t("studio.sourceEnglish") : t("studio.sourceChinese"); updateMode(); updateLanguages(); if (!result.classList.contains("translation-error") && !meaning.textContent && !source.value.trim()) resetResult(); }
@@ -31,16 +33,25 @@ window.VerbaI18n.ready.then(() => {
   async function requestTranslation() {
     const text = source.value.trim();
     if (!text) return resetResult();
+    translationController?.abort();
+    const requestNumber = ++activeTranslationRequest;
+    const controller = new AbortController();
+    translationController = controller;
     const requestId = globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random()}`;
     window.VerbaUi.setButtonState(translateButton, "loading"); result.classList.remove("translation-error"); result.textContent = t("studio.waiting"); meaning.textContent = "";
     try {
-      const response = await fetch("/api/translate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text, mode: currentMode, direction, provider, glossary: getGlossary() }) });
+      const response = await fetch("/api/translate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text, mode: currentMode, direction, provider, glossary: getGlossary() }), signal: controller.signal });
       const data = await response.json();
-      if (!response.ok) throw new Error(i18n.error(data.errorCode));
+      if (requestNumber !== activeTranslationRequest) return;
+      if (!response.ok) {
+        document.dispatchEvent(new CustomEvent("verba:translation-diagnostic-updated", { detail: data.diagnostic || null }));
+        throw new Error(i18n.error(data.errorCode || data.diagnosticCode));
+      }
       result.textContent = data.translation; meaning.textContent = data.englishMeaning; toneNote.textContent = currentMode === "email" ? t("studio.emailDescription") : t("studio.chatDescription");
+      document.dispatchEvent(new CustomEvent("verba:translation-diagnostic-updated"));
       if (data.translation) document.dispatchEvent(new CustomEvent("verba:translation-complete", { detail: { source: text, translation: data.translation, englishMeaning: data.englishMeaning, direction, mode: currentMode, provider, requestId } }));
-    } catch (error) { result.classList.add("translation-error"); result.textContent = error.message || i18n.error("TRANSLATION_FAILED"); window.VerbaUi.showFeedback(result.textContent, "error"); }
-    finally { window.VerbaUi.setButtonState(translateButton); }
+    } catch (error) { if (controller.signal.aborted || requestNumber !== activeTranslationRequest) return; result.classList.add("translation-error"); result.textContent = error.message || i18n.error("TRANSLATION_FAILED"); window.VerbaUi.showFeedback(result.textContent, "error"); }
+    finally { if (requestNumber === activeTranslationRequest) { translationController = null; window.VerbaUi.setButtonState(translateButton); } }
   }
   document.querySelectorAll(".mode-card").forEach((card) => card.addEventListener("click", () => { currentMode = card.dataset.mode; document.querySelectorAll(".mode-card").forEach((item) => item.classList.toggle("active", item === card)); updateMode(); }));
   document.querySelector("#interfaceLanguage").addEventListener("click", () => i18n.setLocale(i18n.locale === "zh-CN" ? "en-US" : "zh-CN"));
@@ -50,7 +61,7 @@ window.VerbaI18n.ready.then(() => {
   document.querySelectorAll(".provider-option").forEach((button) => button.addEventListener("click", () => { provider = button.dataset.provider; refreshProviderUi(); window.dispatchEvent(new Event("verba:provider-changed")); }));
   document.querySelector("#saveSettings").addEventListener("click", () => { localStorage.setItem("verba-provider", provider); window.VerbaUi.showFeedback(t("api.useProvider"), "success"); closeAllOverlays(); });
   document.querySelector("#addTerm").addEventListener("click", () => createGlossaryRow()); document.querySelector("#saveGlossary").addEventListener("click", () => { localStorage.setItem("verba-glossary", JSON.stringify(getGlossary())); closeAllOverlays(); });
-  source.addEventListener("input", () => { updateCounter(); resetResult(); }); document.querySelector("#translateButton").addEventListener("click", requestTranslation); document.querySelector("#clearText").addEventListener("click", () => { source.value = ""; updateCounter(); resetResult(); source.focus(); });
+  source.addEventListener("input", () => { translationController?.abort(); activeTranslationRequest += 1; translationController = null; window.VerbaUi.setButtonState(translateButton); updateCounter(); resetResult(); }); document.querySelector("#translateButton").addEventListener("click", requestTranslation); document.querySelector("#clearText").addEventListener("click", () => { source.value = ""; updateCounter(); resetResult(); source.focus(); });
   document.addEventListener("keydown", (event) => { if ((event.metaKey || event.ctrlKey) && event.key === "Enter") requestTranslation(); if (event.key === "Escape") closeAllOverlays(); });
   window.addEventListener("verba:locale-changed", updateDynamicText); updateCounter(); updateDynamicText();
 });

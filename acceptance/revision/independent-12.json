@@ -1,0 +1,74 @@
+[
+  {
+    "id": 101,
+    "source": "A courier emailed Priya. They asked her to leave the parcel with me.",
+    "reference": "有位快递员给Priya发了邮件，请她把包裹放在我这里。",
+    "focus": "一名快递员的they中性单数；her回指Priya；我接收包裹。"
+  },
+  {
+    "id": 102,
+    "source": "I borrowed your charger, but Marta returned hers to you.",
+    "reference": "我借了你的充电器，但Marta把她的充电器还给了你。",
+    "focus": "两件物品的所有者和动作方向不同。"
+  },
+  {
+    "id": 103,
+    "source": "Could you ask Omar to tell Leah to send the draft to them?",
+    "reference": "你能让Omar转告Leah，把草稿发给他们吗？",
+    "focus": "你→Omar→Leah→他们的完整委托链。"
+  },
+  {
+    "id": 104,
+    "source": "The refund went to Lina, not to me, even though I made the payment.",
+    "reference": "虽然是我付的钱，但退款给了Lina，不是给我的。",
+    "focus": "付款者我、退款收款者Lina；否定不倒置。"
+  },
+  {
+    "id": 105,
+    "source": "You owe the supplier EUR 80; I do not owe the supplier anything.",
+    "reference": "你欠供应商80欧元，我不欠供应商钱。",
+    "focus": "不同债务人和相同债权人；明确无债务。"
+  },
+  {
+    "id": 106,
+    "source": "The four interns should get GBP 15 each, for a total of GBP 60.",
+    "reference": "四名实习生每人应拿15英镑，总共60英镑。",
+    "focus": "人数、每人、总计与币种。"
+  },
+  {
+    "id": 107,
+    "source": "Not all the teams are ready, so do not publish the plan yet.",
+    "reference": "还有团队没准备好，所以先别发布计划。",
+    "focus": "部分否定，不变成所有团队都没准备好；暂缓发布。"
+  },
+  {
+    "id": 108,
+    "source": "If Rosa has not checked the figures by Friday, ask Ben to call her.",
+    "reference": "如果到周五Rosa还没核对数字，就让Ben给她打电话。",
+    "focus": "条件时点、核对者Rosa、呼叫者Ben与接听者Rosa。"
+  },
+  {
+    "id": 109,
+    "source": "Could you keep me in the loop while I am away?",
+    "reference": "我不在的时候，能随时让我了解进展吗？",
+    "focus": "keep in the loop取告知进展义，不新增承诺或期限。"
+  },
+  {
+    "id": 110,
+    "source": "I may have missed your point. Do you want us to move the appointment?",
+    "reference": "我可能没明白你的意思。你是想让我们改预约时间吗？",
+    "focus": "不确定理解加澄清疑问；未确认改期。"
+  },
+  {
+    "id": 111,
+    "source": "When Alex called Jordan, they sounded worried.",
+    "reference": "Alex给Jordan打电话时，听起来有些担心。",
+    "focus": "they指向未唯一确定，不根据姓名臆测性别；可用“那个人”或保留中性指代，不指定姓名。"
+  },
+  {
+    "id": 112,
+    "source": "Keep the account \"They\" as written; she will update its details in May.",
+    "reference": "账户名“They”保持原样，她会在五月更新账户信息。",
+    "focus": "They是字面账户名，she普通代词，its为账户，May为月份。"
+  }
+]

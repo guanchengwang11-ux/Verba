@@ -1,0 +1,33 @@
+{
+  "kind": "Replay of saved actual model candidates through current local policy; not a new model quality run",
+  "results": [
+    {
+      "originalRun": "2026-09-09T16-53-28-734Z-27fb37ac",
+      "requestId": "6b2a8314-1af5-4640-aea2-68131c58d2b5",
+      "source": "Each of the three employees should receive NGN 20,000, making NGN 60,000 in total.",
+      "originalCandidate": "每位员工应获得2万奈拉，三人共6万奈拉。",
+      "accepted": "每位员工应获得2万奈拉，三人共6万奈拉",
+      "localGenerateCalls": 1,
+      "externalCalls": 0
+    },
+    {
+      "originalRun": "2026-09-09T21-42-30-847Z-8deeaaeb",
+      "requestId": "6a6f8d71-797b-43e3-9f0e-c3ac5ea3a445",
+      "source": "You don't owe me anything; I owe you NGN 25,000.",
+      "originalCandidate": "你不欠我什么；是我欠你2万5千奈拉。",
+      "accepted": "你不欠我什么；是我欠你2万5千奈拉",
+      "localGenerateCalls": 1,
+      "externalCalls": 0
+    },
+    {
+      "originalRun": "2026-09-09T21-42-30-847Z-8deeaaeb",
+      "requestId": "0b38148d-fcba-4d17-813b-b4f8d9f8c1a3",
+      "source": "Each of the three employees should receive NGN 20,000, making NGN 60,000 in total.",
+      "originalCandidate": "这三名员工每人应得2万奈拉，总计6万奈拉。",
+      "accepted": "这三名员工每人应得2万奈拉，总计6万奈拉",
+      "localGenerateCalls": 1,
+      "externalCalls": 0
+    }
+  ],
+  "verifiedAt": "2026-09-09T21:55:07.037Z"
+}
