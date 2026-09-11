@@ -1,0 +1,190 @@
+[
+  {
+    "id": 3,
+    "attempt": 1,
+    "source": "我通过银行转入了2万5千奈拉，但账户只增加了2,500奈拉。请核查剩余的22,500奈拉去了哪里。",
+    "translation": "I transferred 25,000 Naira via bank, but my account balance only increased by 2,500 Naira. Please investigate the status of the remaining 22,500 Naira.",
+    "shouldBlock": false
+  },
+  {
+    "id": 3,
+    "attempt": 2,
+    "source": "我通过银行转入了2万5千奈拉，但账户只增加了2,500奈拉。请核查剩余的22,500奈拉去了哪里。",
+    "translation": "I transferred 25,000 Naira via bank, but my account balance only increased by 2,500 Naira. Please verify the whereabouts of the remaining 22,500 Naira.",
+    "shouldBlock": false
+  },
+  {
+    "id": 8,
+    "attempt": 1,
+    "source": "我的付款币种是CAD，金额为300加元，但交易记录显示成了300美元。请核查币种是否标错，不要再次扣款。",
+    "translation": "My payment currency is CAD for an amount of 300 CAD, but the transaction record shows 300 USD. Please verify if the currency was labeled incorrectly, and please do not initiate any further deductions.",
+    "shouldBlock": false
+  },
+  {
+    "id": 8,
+    "attempt": 2,
+    "source": "我的付款币种是CAD，金额为300加元，但交易记录显示成了300美元。请核查币种是否标错，不要再次扣款。",
+    "translation": "My payment currency is CAD for an amount of 300 CAD, yet the transaction record displays 300 USD. Please verify if the currency is incorrect and ensure no further charges are made.",
+    "shouldBlock": false
+  },
+  {
+    "id": 15,
+    "attempt": 1,
+    "source": "页面写着最低提现金额为10 USDT。我申请的正好是10 USDT，不是低于10 USDT，为什么仍提示金额不足？",
+    "translation": "The website indicates a minimum withdrawal amount of 10 USDT. I requested exactly 10 USDT, which is not less than the required minimum; could you please explain why the system is prompting that the amount is insufficient?",
+    "shouldBlock": false
+  },
+  {
+    "id": 15,
+    "attempt": 2,
+    "source": "页面写着最低提现金额为10 USDT。我申请的正好是10 USDT，不是低于10 USDT，为什么仍提示金额不足？",
+    "translation": "The page states that the minimum withdrawal amount is 10 USDT. I requested exactly 10 USDT, which is not below the 10 USDT threshold; why am I still receiving a notification that the amount is insufficient?",
+    "shouldBlock": false
+  },
+  {
+    "id": 21,
+    "attempt": 1,
+    "source": "我的资产数量应为0.025 BTC，但页面显示0.0025 BTC，只有正确数量的十分之一。请核查是否存在小数位错误。",
+    "translation": "My asset balance should be 0.025 BTC; however, the page currently displays 0.0025 BTC, which is only one-tenth of the correct amount. Please investigate whether there is an error regarding the decimal placement.",
+    "shouldBlock": false
+  },
+  {
+    "id": 21,
+    "attempt": 2,
+    "source": "我的资产数量应为0.025 BTC，但页面显示0.0025 BTC，只有正确数量的十分之一。请核查是否存在小数位错误。",
+    "translation": "My asset balance should be 0.025 BTC, but the page shows 0.0025 BTC, which is only one-tenth of the correct amount. Please check if there is a decimal place error.",
+    "shouldBlock": false
+  },
+  {
+    "id": 32,
+    "attempt": 1,
+    "source": "我已经支付了开仓手续费，但账单里又有一笔5 USDT的资金费用。我想了解两者的区别，并不是认定这5 USDT属于重复扣费。",
+    "translation": "I have already paid the position opening fee, but there is an additional 5 USDT funding fee listed in my statement. I would like to clarify the difference between the two charges; I am not claiming that this 5 USDT is a duplicate deduction.",
+    "shouldBlock": false
+  },
+  {
+    "id": 32,
+    "attempt": 2,
+    "source": "我已经支付了开仓手续费，但账单里又有一笔5 USDT的资金费用。我想了解两者的区别，并不是认定这5 USDT属于重复扣费。",
+    "translation": "I have paid the opening fee, but there is an additional 5 USDT funding fee listed in my statement. I would like to understand the difference between the two charges; I am not implying that this 5 USDT is a duplicate deduction.",
+    "shouldBlock": false
+  },
+  {
+    "id": 46,
+    "attempt": 1,
+    "source": "请提供2026年8月1日至8月31日的交易明细，包含这两天的记录，不需要9月份的数据。",
+    "translation": "Please provide the transaction details from August 1 to August 31, 2026, including records for both these days; September data is not required.",
+    "shouldBlock": false
+  },
+  {
+    "id": 46,
+    "attempt": 2,
+    "source": "请提供2026年8月1日至8月31日的交易明细，包含这两天的记录，不需要9月份的数据。",
+    "translation": "Please provide the transaction details for the period from August 1 to August 31, 2026, including records for both of those days; data for September is not required.",
+    "shouldBlock": false
+  },
+  {
+    "id": 57,
+    "attempt": 1,
+    "source": "我能登登录，也能看余额，就是提不了现，请不要把我的帐户写成完全不能使用。",
+    "translation": "I am able to log in and view my balance, but I am unable to make withdrawals. Please ensure that my account is not restricted from all functionality.",
+    "shouldBlock": true
+  },
+  {
+    "id": 60,
+    "attempt": 1,
+    "source": "我借了平台两千五USDT，已经还了一千，还欠一千五本金，利西麻烦另外列出来。",
+    "translation": "I have borrowed 2,500 USDT from the platform and have already repaid 1,000 USDT. The remaining principal balance is 1,500 USDT. Could you please list the interest charges separately?",
+    "shouldBlock": false
+  },
+  {
+    "id": 60,
+    "attempt": 2,
+    "source": "我借了平台两千五USDT，已经还了一千，还欠一千五本金，利西麻烦另外列出来。",
+    "translation": "I borrowed 2,500 USDT from the platform and have already repaid 1,000. I still owe a principal balance of 1,500. Could you please list the interest separately?",
+    "shouldBlock": false
+  },
+  {
+    "id": 63,
+    "attempt": 1,
+    "source": "手序费写的是0.1%，我交易2,000 USDT应该扣2 USDT，不是20 USDT，是不是多扣了18？",
+    "translation": "The service fee is stated as 0.1%. For a transaction of 2,000 USDT, the fee should be 2 USDT, not 20 USDT. Was an extra 18 USDT deducted?",
+    "shouldBlock": false
+  },
+  {
+    "id": 63,
+    "attempt": 2,
+    "source": "手序费写的是0.1%，我交易2,000 USDT应该扣2 USDT，不是20 USDT，是不是多扣了18？",
+    "translation": "The stated service fee is 0.1%. For my 2,000 USDT transaction, the fee should have been 2 USDT, not 20 USDT. Was an extra 18 USDT deducted?",
+    "shouldBlock": false
+  },
+  {
+    "id": 68,
+    "attempt": 1,
+    "source": "我这笔钱转出去了，现在想把它退追回来，请帮我处理。",
+    "translation": "I have already transferred these funds and would like to request a recall. Please assist me with this process.",
+    "shouldBlock": true
+  },
+  {
+    "id": 69,
+    "attempt": 1,
+    "source": "我提现1,000 USDT，扣2 USDT手续费，应到账998 USDT，实际到账990 USDT，所以少了18 USDT，请核查。",
+    "translation": "I initiated a withdrawal of 1,000 USDT with a 2 USDT transaction fee, which should have resulted in a receipt of 998 USDT. Since I only received 990 USDT, there is an 8 USDT discrepancy that I would like you to investigate.",
+    "shouldBlock": true
+  },
+  {
+    "id": 69,
+    "attempt": 2,
+    "source": "我提现1,000 USDT，扣2 USDT手续费，应到账998 USDT，实际到账990 USDT，所以少了18 USDT，请核查。",
+    "translation": "I initiated a withdrawal of 1,000 USDT. After deducting the 2 USDT service fee, the expected amount is 998 USDT. However, I only received 990 USDT, leaving a discrepancy of 18 USDT. Please investigate this matter.",
+    "shouldBlock": false
+  },
+  {
+    "id": 55,
+    "group": "old-controls",
+    "attempt": 1,
+    "source": "这三笔里100美元的是我付的，另外两笔各200美元不是我弄的，请查那两笔就行。",
+    "translation": "Of the three transactions, I paid for the 100 USD one. The other two transactions of 200 USD each were not made by me; please investigate those two.",
+    "shouldBlock": false
+  },
+  {
+    "id": 55,
+    "group": "old-controls",
+    "attempt": 2,
+    "source": "这三笔里100美元的是我付的，另外两笔各200美元不是我弄的，请查那两笔就行。",
+    "translation": "Of these three transactions, I paid for the one for 100 USD. The other two, which are 200 USD each, were not made by me. Please investigate only those two.",
+    "shouldBlock": false
+  },
+  {
+    "id": 60,
+    "group": "old-controls",
+    "attempt": 1,
+    "source": "我借了平台两千五USDT，已经还了一千，还欠一千五本金，利息麻烦另外列出来。",
+    "translation": "I borrowed 2,500 USDT from the platform. Having already repaid 1,000 USDT, I still have an outstanding principal balance of 1,500 USDT. Please provide a separate breakdown for the interest.",
+    "shouldBlock": false
+  },
+  {
+    "id": 60,
+    "group": "old-controls",
+    "attempt": 2,
+    "source": "我借了平台两千五USDT，已经还了一千，还欠一千五本金，利息麻烦另外列出来。",
+    "translation": "I borrowed 2,500 USDT from the platform and have already repaid 1,000 USDT. I still owe a principal of 1,500 USDT; please provide a separate breakdown for the interest.",
+    "shouldBlock": false
+  },
+  {
+    "id": 63,
+    "group": "old-controls",
+    "attempt": 1,
+    "source": "手续费写的是0.1%，我交易2,000 USDT应该扣2 USDT，不是20 USDT，是不是多扣了18？",
+    "translation": "The service fee is stated as 0.1%. For my 2,000 USDT transaction, the fee should be 2 USDT, not 20 USDT. Did you deduct an extra 18 USDT?",
+    "shouldBlock": false
+  },
+  {
+    "id": 63,
+    "group": "old-controls",
+    "attempt": 2,
+    "source": "手续费写的是0.1%，我交易2,000 USDT应该扣2 USDT，不是20 USDT，是不是多扣了18？",
+    "translation": "The transaction fee is stated as 0.1%. For a trade of 2,000 USDT, the fee should be 2 USDT, rather than 20 USDT. Was an additional 18 USDT deducted?",
+    "shouldBlock": false
+  }
+]

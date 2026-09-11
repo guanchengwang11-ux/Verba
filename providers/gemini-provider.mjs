@@ -1,3 +1,4 @@
+import {usesEmailSchema,geminiEmailSchema} from './email-schema.mjs';
 const outputSchema = {
   type: "OBJECT",
   properties: {
@@ -19,7 +20,7 @@ function requestBody(text, instructions, maxOutputTokens) {
   return {
     systemInstruction: { parts: [{ text: instructions }] },
     contents: [{ role: "user", parts: [{ text }] }],
-    generationConfig: { responseMimeType: "application/json", responseSchema: outputSchema, maxOutputTokens }
+    generationConfig: { responseMimeType: "application/json", responseSchema: usesEmailSchema(instructions)?geminiEmailSchema:outputSchema, maxOutputTokens: usesEmailSchema(instructions)?1600:maxOutputTokens }
   };
 }
 

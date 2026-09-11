@@ -1,4 +1,5 @@
 import { createServer } from "node:http";
+import {isCustomerEmail,protectEmail,emailInstructions,executeEmail,EMAIL_STRATEGY} from './email-strategy.mjs';
 import { readFile, writeFile } from "node:fs/promises";
 import { extname, join, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -71,7 +72,8 @@ export function normalizeHistoryItem(item) {
   const provider = ["openai", "gemini", "deepseek"].includes(item.provider) ? item.provider : "";
   return {
     source: item.source.trim(),
-    translation: sanitizeTranslationOutput(item.translation),
+    translation: item.strategyVersion===EMAIL_STRATEGY?item.translation.trim():sanitizeTranslationOutput(item.translation),
+    ...(item.strategyVersion===EMAIL_STRATEGY?{strategyVersion:item.strategyVersion,status:item.status||'translated',sourceNotes:Array.isArray(item.sourceNotes)?item.sourceNotes.filter(n=>typeof n.message==='string'&&typeof n.sourceQuote==='string').slice(0,10):[]}:{}),
     englishMeaning: item.englishMeaning.trim(),
     requestId: typeof item.requestId === "string" ? item.requestId : "",
     direction,
@@ -89,6 +91,8 @@ function isRecentDuplicate(entry, item, now) {
     && entry.requestId === item.requestId
     && entry.source === item.source
     && entry.translation === item.translation
+    && entry.mode === item.mode
+    && entry.strategyVersion === item.strategyVersion
     && entry.sourceLanguage === item.sourceLanguage
     && entry.targetLanguage === item.targetLanguage;
 }
@@ -157,8 +161,16 @@ async function translate(body, { signal } = {}) {
   const cancelDiagnostics = () => diagnostics.cancel();
   signal?.addEventListener("abort", cancelDiagnostics, { once: true });
   try {
-    const protectedInput = protectEntities(body.text, body.glossary);
+    const protectedInput = isCustomerEmail(body)?protectEmail(body.text,body.glossary):protectEntities(body.text, body.glossary);
     observe("entity_protection", { protectedInput });
+    if(isCustomerEmail(body)){
+      const instructions=emailInstructions(body,protectedInput.entityMap);
+      const result=await executeEmail({sourceText:body.text,entityMap:protectedInput.entityMap,diagnostics,observe,generate:async({correctionInstruction})=>{
+        const response=await modelManager.translate({provider,text:protectedInput.text,instructions:instructions+'\n'+correctionInstruction,diagnostics,signal});
+        observe('model_output',{rawOutput:response.rawOutput,model:diagnostics.model});return response.rawOutput;
+      }});
+      diagnostics.complete();observe('complete',{result,diagnostic:diagnostics.summary()});return result;
+    }
     const semanticConstraints = analyzeSemanticConstraints({ originalText: body.text, protectedText: protectedInput.text, direction: body.direction, entityMap: protectedInput.entityMap });
     const baseInstructions = buildInstructions(body, protectedInput.entityMap, semanticConstraints);
     const result = await executeTranslationPolicy({
@@ -195,6 +207,7 @@ async function translate(body, { signal } = {}) {
 }
 
 export function buildInstructions(body, entityMap = [], semanticConstraints = null) {
+  if(isCustomerEmail(body))return emailInstructions(body,entityMap);
   const sourceLanguage = body.direction === "zhToEn" ? "Chinese" : "English";
   const targetLanguage = body.direction === "zhToEn" ? "English" : "Chinese";
   const glossary = (body.glossary || []).filter((entry) => !isPreserveExactlyGlossaryEntry(entry)).map((entry) => `${entry.source} => ${entry.target}`).join("\n");
@@ -251,7 +264,7 @@ async function handleRequest(request, response) {
     for await (const chunk of request) rawBody += chunk;
     try {
       const item = JSON.parse(rawBody);
-      if (![item.source, item.translation, item.englishMeaning].every((value) => typeof value === "string" && value.trim().length > 0 && value.length <= 2000)) return sendJson(response, 400, { error: "Invalid history item." });
+      if (![item.source, item.translation, item.englishMeaning].every((value) => typeof value === "string" && value.length <= 8000) || !item.source.trim() || (!item.translation.trim() && !(item.strategyVersion===EMAIL_STRATEGY&&['clarification_required','review_required'].includes(item.status)))) return sendJson(response, 400, { error: "Invalid history item." });
       if (item.direction && !["zhToEn", "enToZh"].includes(item.direction)) return sendJson(response, 400, { error: "Invalid history direction." });
       if (item.mode && !["email", "chat"].includes(item.mode)) return sendJson(response, 400, { error: "Invalid history mode." });
       if (item.provider && !["openai", "gemini", "deepseek"].includes(item.provider)) return sendJson(response, 400, { error: "Invalid history provider." });

@@ -1,0 +1,31 @@
+/* Text bodies share typography and geometry; notes remain outside the body row. */
+.translation-panes { grid-template-columns:minmax(0,1fr) 1px minmax(0,1fr); }
+.translation-panes .pane { min-width:0; }
+.source-pane textarea, .translated-text {
+  font:500 15px/1.8 Manrope,"Noto Sans SC",sans-serif;
+  padding:0; white-space:pre-wrap; overflow-wrap:anywhere;
+}
+.source-pane textarea {
+  display:block; height:var(--source-body-height,172px); min-height:172px;
+  max-height:none; overflow:hidden; resize:none; flex:none;
+  margin:var(--body-offset,28px) 0 12px;
+}
+.translated-text { margin-top:17px; min-height:var(--result-body-height,172px); }
+.pane-footer, .result-footer { flex-wrap:wrap; gap:8px; }
+#sourceNotes { overflow-wrap:anywhere; }
+@media(max-width:620px) {
+  .source-pane textarea { margin-top:0; min-height:120px; }
+  .translated-text { min-height:120px; }
+  .context-badge { min-width:0; flex-wrap:wrap; }
+  .language-row { height:auto; min-height:69px; flex-wrap:wrap; padding-block:12px; }
+}
+/* The compact-sidebar stylesheet previously overrode the mobile widths. */
+@media(max-width:850px) {
+  .sidebar { width:62px; padding:20px 8px; }
+  main { margin-left:62px; width:calc(100% - 62px); }
+  .sidebar .nav-link { font-size:0; padding:10px; }
+  .sidebar .nav-link > span:last-child { display:none; }
+  .sidebar .new-chat { font-size:0; padding:0; text-align:center; }
+  .sidebar .new-chat > span:last-child { display:none; }
+}
+@media(max-width:620px) { .mode-tip { display:none; } }

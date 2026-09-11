@@ -1,3 +1,4 @@
+import {usesEmailSchema} from './email-schema.mjs';
 function providerError(response, data) {
   const error = new Error(data?.error?.message || "DeepSeek could not complete the request.");
   error.status = response.status;
@@ -46,7 +47,7 @@ export default {
       method: "POST",
       signal,
       headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-      body: JSON.stringify(requestBody(model, [{ role: "system", content: instructions }, { role: "user", content: text }], 700))
+      body: JSON.stringify(requestBody(model, [{ role: "system", content: instructions }, { role: "user", content: text }], usesEmailSchema(instructions)?1600:700))
     });
     const data = await response.json().catch(() => ({}));
     if (!response.ok) throw providerError(response, data);

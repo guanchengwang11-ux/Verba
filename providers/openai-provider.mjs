@@ -1,3 +1,4 @@
+import {usesEmailSchema,emailSchema} from './email-schema.mjs';
 const outputSchema = {
   type: "object",
   properties: {
@@ -64,8 +65,8 @@ export default {
         store: false,
         instructions,
         input: text,
-        max_output_tokens: 700,
-        text: { format: { type: "json_schema", name: "workplace_translation", strict: true, schema: outputSchema } }
+        max_output_tokens: usesEmailSchema(instructions)?1600:700,
+        text: { format: { type: "json_schema", name: "workplace_translation", strict: true, schema: usesEmailSchema(instructions)?emailSchema:outputSchema } }
       })
     });
     const data = await response.json().catch(() => ({}));
