@@ -3,6 +3,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import openaiProvider from "./providers/openai-provider.mjs";
 import geminiProvider from "./providers/gemini-provider.mjs";
+import groqProvider, { groqError } from './providers/groq-provider.mjs';
 import deepseekProvider from "./providers/deepseek-provider.mjs";
 import {
   createTranslationError,
@@ -10,8 +11,8 @@ import {
   TRANSLATION_ERROR_CODES
 } from "./translation-diagnostics.mjs";
 
-const providers = { openai: openaiProvider, gemini: geminiProvider, deepseek: deepseekProvider };
-const providerKeys = { openai: "OPENAI_API_KEY", gemini: "GEMINI_API_KEY", deepseek: "DEEPSEEK_API_KEY" };
+const providers = { openai: openaiProvider, gemini: geminiProvider, deepseek: deepseekProvider, groq: groqProvider };
+const providerKeys = { openai: "OPENAI_API_KEY", gemini: "GEMINI_API_KEY", deepseek: "DEEPSEEK_API_KEY", groq: "GROQ_API_KEY" };
 const providerIds = Object.keys(providers);
 const cacheDurationMs = 24 * 60 * 60 * 1000;
 const unavailableDurationMs = 60 * 60 * 1000;
@@ -99,6 +100,7 @@ export class ModelManager {
   getStatus(provider) {
     const summarize = (item) => ({
       provider: item.provider,
+      ...(item.provider === "groq" ? { models: item.models.filter(m => this.adapters.groq.supportsTextGeneration(m)), selectedModel: item.manualOverride || item.selectedModel || "", errorCode: item.errorCode || "" } : {}),
       status: item.status,
       primaryModel: item.primaryModel,
       fallbackModels: item.fallbackModels,
@@ -171,6 +173,7 @@ export class ModelManager {
 
   async refresh(provider, { force = false } = {}) {
     if (!this.loaded) await this.initialize();
+    if (provider === "groq") return this.refreshGroq({ force });
     if (!this.adapters[provider]) throw errorWithStatus("Unknown provider.", 400);
     const state = this.state.providers[provider];
     const apiKey = this.getApiKey(provider);
@@ -232,9 +235,45 @@ export class ModelManager {
     return this.getStatus(provider);
   }
 
+  async refreshGroq({ force = false } = {}) {
+    const state = this.state.providers.groq;
+    const apiKey = this.getApiKey('groq');
+    if (!force && state.status === 'ready' && Date.parse(state.cacheUntil) > Date.now()) return this.getStatus('groq');
+    const selected = state.manualOverride || state.selectedModel || 'openai/gpt-oss-20b';
+    state.selectedModel = selected;
+    state.primaryModel = ''; state.lastKnownGoodModel = ''; state.fallbackModels = [];
+    try {
+      if (!apiKey) throw groqError(401);
+      state.models = await this.adapters.groq.discoverModels(apiKey);
+      state.lastDetectedAt = new Date().toISOString();
+      if (!state.models.includes(selected) || !this.adapters.groq.supportsTextGeneration(selected)) throw groqError(404);
+      await this.adapters.groq.healthCheck(apiKey, selected);
+      state.primaryModel = selected; state.lastKnownGoodModel = selected;
+      state.modelHealth[selected] = { status: 'healthy' };
+      state.status = 'ready'; state.lastError = ''; state.errorCode = '';
+      state.cacheUntil = new Date(Date.now() + cacheDurationMs).toISOString();
+    } catch (error) {
+      const failure = normalizeTranslationError(error, { provider: 'groq' });
+      state.errorCode = failure.internalCode;
+      state.lastError = failure.message;
+      state.status = !apiKey ? 'missing_key' : failure.status === 401 || failure.status === 403 ? 'key_error' : failure.internalCode === 'PROVIDER_RATE_LIMIT' ? 'rate_limited' : failure.status === 429 ? 'quota_error' : 'no_compatible_model';
+    }
+    state.lastHealthCheckAt = new Date().toISOString();
+    await this.persist();
+    return this.getStatus('groq');
+  }
+
   async ensureReady(provider) {
     const state = this.state.providers[provider];
     if (!state) throw errorWithStatus("Unknown provider.", 400);
+    if (provider === 'groq') {
+      if (!this.getApiKey(provider)) throw groqError(401);
+      const model = state.manualOverride || state.selectedModel || 'openai/gpt-oss-20b';
+      if (!this.adapters.groq.supportsTextGeneration(model)) throw groqError(404);
+      // No discovery/health calls inside translation: the one selected model uses the existing budget.
+      state.selectedModel = model;
+      return;
+    }
     const usable = state.lastKnownGoodModel || state.primaryModel;
     if (usable) return;
     await this.refresh(provider);
@@ -245,6 +284,7 @@ export class ModelManager {
 
   orderedTranslationModels(provider) {
     const state = this.state.providers[provider];
+    if (provider === 'groq') return [state.manualOverride || state.selectedModel || 'openai/gpt-oss-20b'];
     return [...new Set([state.lastKnownGoodModel, state.primaryModel, ...state.fallbackModels])]
       .filter(Boolean)
       .filter((model) => !state.unavailableUntil[model] || state.unavailableUntil[model] <= Date.now())
@@ -279,11 +319,13 @@ export class ModelManager {
         state.primaryModel = model;
         state.modelHealth[model] = { ...(state.modelHealth[model] || {}), status: "healthy", checkedAt: new Date().toISOString(), latencyMs: result.latencyMs, failureCount: 0 };
         state.lastError = "";
+        if (provider === "groq") { state.errorCode = ""; state.status = "ready"; }
         await this.persist();
         if (!diagnostics) console.info(JSON.stringify({ event: "translation", provider, model, latencyMs: result.latencyMs, usage: normalizedUsage(result.usage), success: true }));
         return { ...result, model };
       } catch (error) {
         lastError = normalizeTranslationError(error, { provider, model, stage: "provider_request" });
+        if (provider === "groq") { state.status = "degraded"; state.lastError = lastError.message; state.errorCode = lastError.internalCode; await this.persist(); throw lastError; }
         if (lastError.status === 401 || lastError.status === 403) {
           throw createTranslationError(TRANSLATION_ERROR_CODES.PROVIDER_UNAVAILABLE, {
             message: "The API key is invalid or does not have permission to use this provider.",
