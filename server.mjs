@@ -1,5 +1,7 @@
 import { createServer } from "node:http";
 import {isCustomerEmail,protectEmail,emailInstructions,executeEmail,EMAIL_STRATEGY} from './email-strategy.mjs';
+import { glossaryInstruction } from './glossary.mjs';
+import { attachFinalTranslationCheck } from './translation-final-check.mjs';
 import { readFile, writeFile } from "node:fs/promises";
 import { extname, join, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -76,6 +78,9 @@ export function normalizeHistoryItem(item) {
     translation: item.strategyVersion===EMAIL_STRATEGY?item.translation.trim():sanitizeTranslationOutput(item.translation),
     ...(item.strategyVersion===EMAIL_STRATEGY?{strategyVersion:item.strategyVersion,status:item.status||'translated',sourceNotes:Array.isArray(item.sourceNotes)?item.sourceNotes.filter(n=>typeof n.message==='string'&&typeof n.sourceQuote==='string').slice(0,10):[]}:{}),
     englishMeaning: item.englishMeaning.trim(),
+    ...(item.translationReview?.version === 'local-critical-check/v1' && Array.isArray(item.translationReview.issues) ? {
+      translationReview: {version:'local-critical-check/v1',status:'retry_recommended',issues:item.translationReview.issues.filter(issue => ['glossary_target_missing','participant_direction_reversed'].includes(issue?.code)).slice(0,50).map(issue => ({code:issue.code,...(issue.code==='glossary_target_missing'?{sourceTerm:String(issue.sourceTerm||'').slice(0,120),requiredTarget:String(issue.requiredTarget||'').slice(0,120)}:{})}))}
+    } : {}),
     requestId: typeof item.requestId === "string" ? item.requestId : "",
     direction,
     mode,
@@ -179,7 +184,8 @@ async function translate(body, { signal } = {}) {
         const response=await modelManager.translate({provider,text:protectedInput.text,instructions:instructions+'\n'+correctionInstruction,diagnostics,signal});
         observe('model_output',{rawOutput:response.rawOutput,model:diagnostics.model});return response.rawOutput;
       }});
-      diagnostics.complete();observe('complete',{result,diagnostic:diagnostics.summary()});return result;
+      const checked=attachFinalTranslationCheck(body,result,protectedInput,diagnostics);
+      diagnostics.complete();observe('complete',{result:checked,diagnostic:diagnostics.summary()});return checked;
     }
     const semanticConstraints = analyzeSemanticConstraints({ originalText: body.text, protectedText: protectedInput.text, direction: body.direction, entityMap: protectedInput.entityMap });
     const baseInstructions = buildInstructions(body, protectedInput.entityMap, semanticConstraints);
@@ -197,9 +203,10 @@ async function translate(body, { signal } = {}) {
         return parseTranslationOutput(response.rawOutput, providerName, { sanitize: false });
       }
     });
+    const checked = attachFinalTranslationCheck(body,result,protectedInput,diagnostics,semanticConstraints);
     diagnostics.complete();
-    observe("complete", { result, diagnostic: diagnostics.summary() });
-    return result;
+    observe("complete", { result:checked, diagnostic: diagnostics.summary() });
+    return checked;
   } catch (error) {
     const diagnosable = error?.internalCode ? error : createTranslationError(TRANSLATION_ERROR_CODES.LOCAL_SERVER_ERROR, {
       message: "The local translation pipeline failed.",
@@ -220,7 +227,7 @@ export function buildInstructions(body, entityMap = [], semanticConstraints = nu
   if(isCustomerEmail(body))return emailInstructions(body,entityMap);
   const sourceLanguage = body.direction === "zhToEn" ? "Chinese" : "English";
   const targetLanguage = body.direction === "zhToEn" ? "English" : "Chinese";
-  const glossary = (body.glossary || []).filter((entry) => !isPreserveExactlyGlossaryEntry(entry)).map((entry) => `${entry.source} => ${entry.target}`).join("\n");
+  const glossary = glossaryInstruction(body.text || '', (body.glossary || []).filter((entry) => !isPreserveExactlyGlossaryEntry(entry)));
   const protectedInstruction = buildEntityProtectionInstruction(entityMap);
   const semanticInstruction = buildSemanticConstraintInstruction(semanticConstraints);
   return `You are Verba, a workplace translator. Translate from ${sourceLanguage} to ${targetLanguage}.
@@ -232,7 +239,7 @@ Recognize names from context and keep their original spelling; ordinary pronouns
 ${styleInstructions[body.mode] || styleInstructions.email}
 ${protectedInstruction}
 ${semanticInstruction}
-${glossary ? `Mandatory glossary (whole terms in context):\n${glossary}` : ""}
+${glossary}
 ${body.direction === "enToZh" ? "中文成稿要求：忠实转达事实与说话意图。按整个事件理解谁让谁做什么、东西属于谁、钱是谁欠谁，事实上的否定不能改成可做可不做。前文是一个人，后文回指时用‘对方’或自然承接，不把这一个人变成一群人，也不猜性别。中文可以合理省略和使用语气助词，但不能省去委托链上的中间人。" : ""}
 ${body.direction === "enToZh" && body.mode === "chat" ? "中文用于同事聊天：用平实、简短、顺口的现代口语，不用公文腔或逐字照搬英文。特别注意理解、预告等习语的实际意思；把话说清楚即可，不额外敬称、不添客套、不为了显得自然而改变要求的力度。" : ""}
 Return only a JSON object with englishMeaning FIRST, then translation. englishMeaning is a brief literal statement of the source meaning with its actors, ownership and reference links intact. Then express that same meaning naturally in the target language. Do not emit reasoning, commentary, alternatives or an answer to the source message.`;

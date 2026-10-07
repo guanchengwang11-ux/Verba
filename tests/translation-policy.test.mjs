@@ -23,9 +23,9 @@ test("removes preserve-exactly glossary entries from translation mappings", () =
     { source: "transaction", target: "交易" }
   ];
   const { entityMap } = protectEntities("Nana checks the transaction", glossary);
-  const instructions = buildInstructions({ direction: "enToZh", mode: "chat", glossary }, entityMap);
+  const instructions = buildInstructions({ text: "Nana checks the transaction", direction: "enToZh", mode: "chat", glossary }, entityMap);
   assert.doesNotMatch(instructions, /Nana => Do not translate/);
-  assert.match(instructions, /transaction => 交易/);
+  assert.match(instructions, /"source":"transaction","target":"交易"/);
 });
 
 async function translateWithMockedProvider(sourceText, translatedTemplate, mode = "chat", direction = "enToZh") {

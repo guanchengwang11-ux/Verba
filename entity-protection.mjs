@@ -1,4 +1,5 @@
 import { extractCurrencies } from "./factual-constraint-protection.mjs";
+import { activeGlossary, glossaryOccurrences } from './glossary.mjs';
 
 const commonCapitalizedWords = new Set([
   "A", "An", "Are", "As", "Ask", "At", "Can", "Check", "Confirm", "Contact", "Could", "Do", "Does", "Don", "English", "For", "Friday", "From", "Good", "Have", "Hello", "Hey", "Hi", "How", "I", "If", "In", "Is", "It", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Let", "Monday", "My", "Need", "No", "On", "Our", "Please", "Remind", "Review", "Saturday", "Send", "Share", "Sunday", "Tell", "Thanks", "Thank", "That", "The", "This", "Thursday", "To", "Tuesday", "Update", "Want", "Wednesday", "We", "What", "When", "Where", "Which", "Who", "Why", "Will", "Would", "Yes", "You", "Your"
@@ -61,19 +62,6 @@ function addRange(ranges, candidate) {
   ranges.push(candidate);
 }
 
-function glossaryOccurrences(text, value) {
-  const matches = [];
-  let start = 0;
-  while (start <= text.length - value.length) {
-    const index = text.indexOf(value, start);
-    if (index < 0) break;
-    // Latin glossary entries match whole terms, not fragments of another word.
-    if (!(/[A-Za-z0-9_]/u.test(value[0]) && /[A-Za-z0-9_]/u.test(text[index - 1] || "")) && !(/[A-Za-z0-9_]/u.test(value.at(-1)) && /[A-Za-z0-9_]/u.test(text[index + value.length] || ""))) matches.push({ start: index, end: index + value.length });
-    start = index + value.length;
-  }
-  return matches;
-}
-
 export function isPreserveExactlyGlossaryEntry(entry) {
   if (!entry || typeof entry.source !== "string" || !entry.source.trim()) return false;
   const source = entry.source.trim();
@@ -88,11 +76,12 @@ export function detectEntities(text, glossary = []) {
   // validator compares normalized currency/value pairs, allowing local names.
   // Explicit glossary/literal spans above ordinary patterns still take priority.
   const currencyRanges = extractCurrencies(source);
+  const translatedGlossaryRanges = activeGlossary(source, glossary).filter(entry => !isPreserveExactlyGlossaryEntry(entry)).flatMap(entry => entry.occurrences);
 
   for (const entry of glossary.filter(isPreserveExactlyGlossaryEntry)) {
     const value = entry.source.trim();
     for (const occurrence of glossaryOccurrences(source, value)) {
-      addRange(ranges, { ...occurrence, value, type: "glossary", priority: 0 });
+      addRange(ranges, { ...occurrence, type: "glossary", priority: 0 });
     }
   }
 
@@ -108,6 +97,9 @@ export function detectEntities(text, glossary = []) {
     for (const match of source.matchAll(pattern.regex)) {
       const value = pattern.trimTrailingPunctuation ? match[0].replace(/[.,!?;:，。！？；：、…]+$/u, "") : match[0];
       if (!value || (pattern.filter && !pattern.filter(value, match.index, source))) continue;
+      // An explicit translation entry overrides inferred names/acronyms; keep
+      // that source wording readable for the model instead of making it opaque.
+      if (translatedGlossaryRanges.some(range => match.index < range.end && range.start < match.index + value.length)) continue;
       if (["acronym", "identifier"].includes(pattern.type) && currencyRanges.some(range => match.index >= range.start && match.index + value.length <= range.end)) continue;
       addRange(ranges, { value, start: match.index, end: match.index + value.length, type: pattern.type, priority: patternIndex + 1 });
     }
@@ -160,23 +152,26 @@ export function restoreEntities(text, entityMap) {
   return restored;
 }
 
-function countOccurrences(text, value) {
-  if (!value) return 0;
-  let count = 0;
-  let start = 0;
-  while (start <= text.length - value.length) {
-    const index = text.indexOf(value, start);
-    if (index < 0) break;
-    count += 1;
-    start = index + value.length;
-  }
-  return count;
-}
-
 export function findEntityRestorationIssues(text, entityMap) {
   const output = String(text ?? "");
+  const currencyRanges = extractCurrencies(output);
+  const claimed = [];
+  const counts = new Map();
+  // One output span belongs to one entity. Match longer values first so USDT
+  // inside $USDT and short IDs inside transaction hashes are not counted twice.
+  // Latin boundaries distinguish ID from UID/TXID while allowing David的.
+  for (const entity of [...entityMap].sort((left, right) => right.original.length - left.original.length)) {
+    const matches = glossaryOccurrences(output, entity.original, { ignoreCase: false }).filter(span =>
+      !claimed.some(range => overlaps(range, span)) &&
+      // Currency amounts were deliberately left visible in the source. A UID
+      // of 1234 must not also claim the same digits in $1234.50 or 1234美元.
+      !(entity.type === "identifier" && /^\d+$/u.test(entity.original) && currencyRanges.some(range => overlaps(range, span)))
+    );
+    counts.set(entity, matches.length);
+    claimed.push(...matches);
+  }
   const issues = entityMap.flatMap((entity) => {
-    const actualCount = countOccurrences(output, entity.original);
+    const actualCount = counts.get(entity) || 0;
     return actualCount === entity.occurrenceCount ? [] : [{ original: entity.original, expectedCount: entity.occurrenceCount, actualCount }];
   });
   if (/VERBA(?:\\?[_-]|\s)*ENTITY/iu.test(output)) issues.push({ original: "", expectedCount: 0, actualCount: 0, placeholderLeak: true });

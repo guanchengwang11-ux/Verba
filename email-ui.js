@@ -6,12 +6,13 @@ window.VerbaI18n.ready.then(()=>{
   const list=document.createElement('div');notes.append(status,title,list);pane.insertBefore(notes,document.querySelector('.result-footer'));
   const confidence=document.querySelector('.confidence'),meaning=document.querySelector('#meaningCheck');
   const label=document.querySelector('[data-i18n="translationLabel"]');
-  let email=false;
-  function mode(mode,direction){email=mode==='email'&&direction==='zhToEn';confidence.hidden=email;meaning.hidden=email;if(email){label.removeAttribute('data-i18n');label.textContent='Translation';}else{label.setAttribute('data-i18n','translationLabel');label.textContent=VerbaI18n.t('translationLabel');}}
+  let email=false,review=false;
+  function mode(mode,direction){email=mode==='email'&&direction==='zhToEn';confidence.hidden=email||review;meaning.hidden=email;if(email){label.removeAttribute('data-i18n');label.textContent='Translation';}else{label.setAttribute('data-i18n','translationLabel');label.textContent=VerbaI18n.t('translationLabel');}}
   function render(data={}){
+    review=Boolean(data.translationReview?.issues?.length)||data.status==='failed';confidence.hidden=email||review;
     list.replaceChildren();notes.hidden=!data.sourceNotes?.length;status.textContent=data.status==='clarification_required'?'Clarification needed':data.status==='review_required'?'Translation needs review':'Source requires attention';
     for(const n of data.sourceNotes||[]){const p=document.createElement('p');p.textContent=n.message;list.append(p);if(n.sourceQuote){const q=document.createElement('small');q.textContent=n.sourceQuote;list.append(q);}}
-    document.querySelector('#copyText').disabled=['clarification_required','review_required'].includes(data.status);
+    document.querySelector('#copyText').disabled=['clarification_required','review_required','failed'].includes(data.status);
   }
   window.VerbaEmailView={mode,render};
 });
