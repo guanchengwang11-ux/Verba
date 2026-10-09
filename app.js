@@ -1,6 +1,6 @@
 window.VerbaI18n.ready.then(() => {
   const i18n = window.VerbaI18n;
-  let currentMode = "chat";
+  let currentMode = "neutral";
   let direction = "enToZh";
   let provider = localStorage.getItem("verba-provider") || "openai";
   const source = document.querySelector("#sourceText");
@@ -17,8 +17,21 @@ window.VerbaI18n.ready.then(() => {
   window.VerbaCurrentProvider = () => provider;
 
   const t = (key, values) => i18n.t(key, values);
+  const modeKeys = {
+    neutral: { name: "studio.neutral", tone: "studio.neutralTone", description: "studio.neutralDescription" },
+    email: { name: "studio.email", tone: "studio.professionalTone", description: "studio.emailDescription" },
+    chat: { name: "studio.chat", tone: "studio.collaborativeTone", description: "studio.chatDescription" }
+  };
   function updateCounter() { counter.textContent = `${source.value.length} / 1000`; }
-  function updateMode() { window.VerbaEmailView?.mode(currentMode,direction); document.querySelectorAll(".mode-card").forEach(card => card.classList.toggle("active", card.dataset.mode === currentMode)); document.querySelector("#modeName").textContent = currentMode === "email" ? t("studio.email") : t("studio.chat"); document.querySelector("#modeSub").textContent = currentMode === "email" ? t("studio.professionalTone") : t("studio.collaborativeTone"); }
+  function updateMode() {
+    window.VerbaEmailView?.mode(currentMode,direction);
+    document.querySelectorAll(".mode-card").forEach(card => card.classList.toggle("active", card.dataset.mode === currentMode));
+    document.querySelector("#modeName").textContent = t(modeKeys[currentMode].name);
+    document.querySelector("#modeSub").textContent = t(modeKeys[currentMode].tone);
+    const toneLabel = document.querySelector('.confidence span');
+    toneLabel.dataset.i18n = currentMode === "neutral" ? "studio.balancedTone" : "nativeTone";
+    toneLabel.textContent = t(toneLabel.dataset.i18n);
+  }
   function updateLanguages() { window.VerbaEmailView?.mode(currentMode,direction); document.querySelector("#sourceLanguage").innerHTML = `${direction === "zhToEn" ? t("studio.sourceChinese") : t("studio.sourceEnglish")} <span>⌄</span>`; document.querySelector("#targetLanguage").innerHTML = `${direction === "zhToEn" ? t("studio.sourceEnglish") : t("studio.sourceChinese")} <span>⌄</span>`; }
   function resetResult() { window.VerbaUi.setButtonState(translateButton); window.VerbaEmailView?.render(); window.VerbaTranslationReview?.render(); result.classList.remove("translation-error"); result.textContent = source.value.trim() ? "" : t("studio.empty"); meaning.textContent = ""; toneNote.textContent = ""; }
   function updateDynamicText() { source.placeholder = t("studio.placeholder"); document.querySelector("#interfaceLanguage").textContent = i18n.locale === "zh-CN" ? t("studio.sourceEnglish") : t("studio.sourceChinese"); updateMode(); updateLanguages(); if (!result.classList.contains("translation-error") && !meaning.textContent && !source.value.trim()) resetResult(); }
@@ -48,7 +61,7 @@ window.VerbaI18n.ready.then(() => {
         document.dispatchEvent(new CustomEvent("verba:translation-diagnostic-updated", { detail: data.diagnostic || null }));
         throw new Error(data.diagnostic?.provider === "groq" && data.errorCode === "PROVIDER_RATE_LIMIT" ? i18n.t("api.groqRateLimit") : (data.diagnostic?.provider === "groq" ? "Groq: " : "") + i18n.error(data.errorCode || data.diagnosticCode));
       }
-      result.textContent = data.translation; meaning.textContent = data.englishMeaning; toneNote.textContent = currentMode === "email" ? t("studio.emailDescription") : t("studio.chatDescription");
+      result.textContent = data.translation; meaning.textContent = data.englishMeaning; toneNote.textContent = t(modeKeys[currentMode].description);
       window.VerbaEmailView?.render(data); window.VerbaTranslationReview?.render(data);
       if(data.strategyVersion)toneNote.textContent='Faithful translation · limited automated checks';
       document.dispatchEvent(new CustomEvent("verba:translation-diagnostic-updated"));
@@ -66,5 +79,5 @@ window.VerbaI18n.ready.then(() => {
   document.querySelector("#addTerm").addEventListener("click", () => createGlossaryRow()); document.querySelector("#saveGlossary").addEventListener("click", () => { localStorage.setItem("verba-glossary", JSON.stringify(getGlossary())); closeAllOverlays(); });
   source.addEventListener("input", () => { translationController?.abort(); activeTranslationRequest += 1; translationController = null; window.VerbaUi.setButtonState(translateButton); updateCounter(); resetResult(); }); document.querySelector("#translateButton").addEventListener("click", requestTranslation); document.querySelector("#clearText").addEventListener("click", () => { source.value = ""; source.dispatchEvent(new Event("input",{bubbles:true})); source.focus(); });
   document.addEventListener("keydown", (event) => { if ((event.metaKey || event.ctrlKey) && event.key === "Enter") requestTranslation(); if (event.key === "Escape") closeAllOverlays(); });
-  document.addEventListener("verba:restore-history", ({detail:item}) => { translationController?.abort(); activeTranslationRequest++; resetResult(); currentMode=item.mode; direction=item.direction; source.value=item.source; updateCounter(); updateDynamicText(); result.textContent=item.translation; meaning.textContent=item.englishMeaning; window.VerbaEmailView?.render(item); window.VerbaTranslationReview?.render(item); }); window.addEventListener("verba:locale-changed", updateDynamicText); loadGlossary(); updateCounter(); updateDynamicText();
+  document.addEventListener("verba:restore-history", ({detail:item}) => { translationController?.abort(); activeTranslationRequest++; resetResult(); currentMode=modeKeys[item.mode]?item.mode:"email"; direction=item.direction; source.value=item.source; updateCounter(); updateDynamicText(); result.textContent=item.translation; meaning.textContent=item.englishMeaning; toneNote.textContent=item.strategyVersion?'Faithful translation · limited automated checks':t(modeKeys[currentMode].description); window.VerbaEmailView?.render(item); window.VerbaTranslationReview?.render(item); }); window.addEventListener("verba:locale-changed", updateDynamicText); loadGlossary(); updateCounter(); updateDynamicText();
 });

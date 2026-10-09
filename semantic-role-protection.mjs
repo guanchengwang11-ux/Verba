@@ -115,7 +115,12 @@ export function analyzeSemanticConstraints({ originalText, protectedText, direct
       : /\bshould\b/iu.test(source) ? "recommendation" : "";
   const negative = Boolean(relationFrame?.negative || /\b(?:don't|doesn't|didn't|do\s+not|does\s+not|did\s+not|never|not|none|nobody|no\s+one)\b/iu.test(source));
   const completed = /\b(?:has|have|had)\s+(?:already\s+)?[a-z]+(?:ed|en)\b/iu.test(source) || /\balready\b/iu.test(source);
-  const factualConstraints = analyzeFactualConstraints(source);
+  // A global perfect-aspect match cannot establish which clause a request
+  // belongs to. Only block this reversal for one affirmative source statement.
+  const singleCompletedStatement = completed && !negative && !/\b(?:no|neither|without)\b/iu.test(source)
+    && !/[\r\n;!?]|\.(?!\d)(?=\s*\S)/u.test(source)
+    && !/\b(?:please|could\s+you|can\s+you|would\s+you|will\s+you)\b/iu.test(source);
+  const factualConstraints = analyzeFactualConstraints(source,{entityMap});
   // Narrow, explicit singular-person introduction followed by a report. Do not
   // guess coreference when the first clause introduces other possible actors.
   const singularReport = /(?:^|[.!?]\s+)(?:Someone|Somebody|A\s+(?:person|colleague|coworker|customer|representative))\s+(?:from\s+[^,.!?]+?\s+)?(?:called|phoned|contacted|messaged|emailed|texted)\s+(?:me|us|you)\.\s+They\s+said\b/iu.test(source);
@@ -127,6 +132,7 @@ export function analyzeSemanticConstraints({ originalText, protectedText, direct
     timeMarkers,
     modality,
     completed,
+    singleCompletedStatement,
     factualConstraints,
     singularReport,
     hasConstraints: Boolean(relationFrame || condition || negative || timeMarkers.length || modality || completed || factualConstraints.hasFacts || singularReport)
@@ -247,7 +253,7 @@ function validateCommonFeatures(text, constraints, language, prefix = "") {
   if (!prefix && constraints.modality === "obligation" && (isChinese ? /可能|也许|可以考虑/u : /\b(?:may|might|perhaps)\b/iu).test(output)) issues.push("obligation_weakened");
   if (constraints.modality === "recommendation" && !(isChinese ? /应该|最好|建议/u : /\bshould|ought\s+to\b/iu).test(output)) issues.push(`${prefix}recommendation_missing`);
   if (constraints.completed && !(isChinese ? /已经|已|过|了/u : /\b(?:already|has|have|had)\b/iu).test(output)) issues.push(`${prefix}completion_missing`);
-  if (!prefix && constraints.completed && !constraints.negative && (isChinese ? /(?:^|[，。；])\s*(?:请(?!求)|让|麻烦)/u : /^(?:please|ask|tell)\b/iu).test(output) && !(isChinese ? /已经|已|过|了/u : /\b(?:already|has|have|had)\b/iu).test(output)) issues.push("completion_reversed_to_request");
+  if (!prefix && constraints.singleCompletedStatement && (isChinese ? /(?:^|[，。；])\s*(?:请(?!求)|让|麻烦)/u : /^(?:please|ask|tell)\b/iu).test(output) && !(isChinese ? /已经|已|过|了/u : /\b(?:already|has|have|had)\b/iu).test(output)) issues.push("completion_reversed_to_request");
   return issues;
 }
 

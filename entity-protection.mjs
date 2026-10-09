@@ -1,4 +1,4 @@
-import { extractCurrencies } from "./factual-constraint-protection.mjs";
+import { extractCurrencies, extractDates } from "./factual-constraint-protection.mjs";
 import { activeGlossary, glossaryOccurrences } from './glossary.mjs';
 
 const commonCapitalizedWords = new Set([
@@ -75,7 +75,7 @@ export function detectEntities(text, glossary = []) {
   // Currency amounts are semantic facts, not opaque identifiers. The factual
   // validator compares normalized currency/value pairs, allowing local names.
   // Explicit glossary/literal spans above ordinary patterns still take priority.
-  const currencyRanges = extractCurrencies(source);
+  const currencyRanges = [...extractCurrencies(source),...extractDates(source)];
   const translatedGlossaryRanges = activeGlossary(source, glossary).filter(entry => !isPreserveExactlyGlossaryEntry(entry)).flatMap(entry => entry.occurrences);
 
   for (const entry of glossary.filter(isPreserveExactlyGlossaryEntry)) {

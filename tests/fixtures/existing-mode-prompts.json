@@ -1,0 +1,38 @@
+[
+  {
+    "body": {
+      "mode": "chat",
+      "direction": "enToZh",
+      "text": "Please check the deposit of 560 USDT.",
+      "glossary": []
+    },
+    "sha256": "35060e451b5564cdb12e9ea51dbbdc4c54681abebed30616e3a5fd848b496a19"
+  },
+  {
+    "body": {
+      "mode": "chat",
+      "direction": "zhToEn",
+      "text": "请核实这笔560 USDT入金。",
+      "glossary": []
+    },
+    "sha256": "9b974793f74511c38c43afdb2ad9f45ff5f442a71cb6bc6d17a5e2c6a69a78d5"
+  },
+  {
+    "body": {
+      "mode": "email",
+      "direction": "enToZh",
+      "text": "Please check the deposit of 560 USDT.",
+      "glossary": []
+    },
+    "sha256": "583703b39ad7ee5c67faec58edac2caca015fc244c2acd1dd52916a969c9a89e"
+  },
+  {
+    "body": {
+      "mode": "email",
+      "direction": "zhToEn",
+      "text": "请核实这笔560 USDT入金。",
+      "glossary": []
+    },
+    "sha256": "3be05dda400ab46bb76a342e6573c192ff72a0d9db581f5d6bc10b3713123abc"
+  }
+]

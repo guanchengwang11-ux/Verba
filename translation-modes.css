@@ -1,0 +1,11 @@
+.mode-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); }
+.mode-card { min-width:0; padding-right:30px; }
+.neutral-icon { background:var(--mint); color:var(--green); }
+@media(max-width:1000px) {
+  .mode-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .mode-card[data-mode="neutral"] { grid-column:1/-1; }
+}
+@media(max-width:620px) {
+  .mode-grid { grid-template-columns:1fr; }
+  .mode-card { margin-bottom:0; }
+}

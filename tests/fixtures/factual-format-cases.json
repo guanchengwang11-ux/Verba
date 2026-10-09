@@ -1,0 +1,290 @@
+[
+  {
+    "id": "reported-first-candidate",
+    "text": "UID: 142998877\n\n1. The total asset value on HTX is approximately 589 USDT, including over 560 USDT in the Rewards Hub.\n2. The client wants to withdraw over 560 USDT from the Rewards Hub to their HTX account but has not initiated a withdrawal.\n3. Please verify the withdrawal eligibility and available options for the Rewards Hub funds, and clarify how the client can transfer the funds to their HTX account.",
+    "translation": "UID: 142998877。1. HTX 上的总资产价值约为 589 USDT，其中包括奖励中心内的 560多 USDT。2. 客户希望将奖励中心内的 560多 USDT 提取到其 HTX 账户，但尚未发起提现。3. 请核实奖励中心资金的提现资格及可用选项，并明确客户如何将资金划转至其 HTX 账户",
+    "shouldBlock": false
+  },
+  {
+    "id": "suffix-over",
+    "text": "Withdraw over 560 USDT.",
+    "translation": "提取560多USDT",
+    "shouldBlock": false
+  },
+  {
+    "id": "suffix-remainder",
+    "text": "There is more than 560 USDT.",
+    "translation": "余额有560余USDT",
+    "shouldBlock": false
+  },
+  {
+    "id": "classifier-coins",
+    "text": "Send 100 USDT.",
+    "translation": "发送100枚USDT",
+    "shouldBlock": false
+  },
+  {
+    "id": "list-newline",
+    "text": "1. Check 589 USDT\n2. Check 560 USDT",
+    "translation": "1.核实589USDT。\n2.核实560USDT",
+    "shouldBlock": false
+  },
+  {
+    "id": "bullet-format",
+    "text": "1. Send 100 USDT\n2. Send 200 USDT",
+    "translation": "发送100USDT和200USDT",
+    "shouldBlock": false
+  },
+  {
+    "id": "prefix-format",
+    "text": "USDT 100.50",
+    "translation": "100.5 USDT",
+    "shouldBlock": false
+  },
+  {
+    "id": "known-vs-typo",
+    "text": "589 USTD and 560 USTD",
+    "translation": "589 USTD和560 USTD",
+    "shouldBlock": false
+  },
+  {
+    "id": "unknown-std",
+    "text": "589 STD and 560 STD",
+    "translation": "589 STD和560 STD",
+    "shouldBlock": false
+  },
+  {
+    "id": "usd-symbol",
+    "text": "Send $1,250.50.",
+    "translation": "发送1,250.50美元",
+    "shouldBlock": false
+  },
+  {
+    "id": "eur-symbol",
+    "text": "Send €25.50.",
+    "translation": "发送25.5欧元",
+    "shouldBlock": false
+  },
+  {
+    "id": "gbp-symbol",
+    "text": "Send £25.50.",
+    "translation": "发送25.5英镑",
+    "shouldBlock": false
+  },
+  {
+    "id": "ngn-name",
+    "text": "Send NGN 25,000.",
+    "translation": "发送25,000 Naira",
+    "shouldBlock": false
+  },
+  {
+    "id": "cad-name",
+    "text": "Send CAD 100.",
+    "translation": "发送100加元",
+    "shouldBlock": false
+  },
+  {
+    "id": "cad-english-name",
+    "text": "请核实100加元。",
+    "translation": "Please check 100 Canadian dollars.",
+    "shouldBlock": false
+  },
+  {
+    "id": "us-english-name",
+    "text": "Send 100 USD.",
+    "translation": "Send 100 US dollars.",
+    "shouldBlock": false
+  },
+  {
+    "id": "negative-before-symbol",
+    "text": "The loss is -$100.",
+    "translation": "亏损为-100美元",
+    "shouldBlock": false
+  },
+  {
+    "id": "negative-after-symbol",
+    "text": "The loss is $-100.",
+    "translation": "亏损为-100美元",
+    "shouldBlock": false
+  },
+  {
+    "id": "tiny-decimal",
+    "text": "Send 0.000000000000000001 USDT.",
+    "translation": "发送0.000000000000000001USDT",
+    "shouldBlock": false
+  },
+  {
+    "id": "leading-decimal",
+    "text": "Send .5 USDT.",
+    "translation": "发送0.50 USDT",
+    "shouldBlock": false
+  },
+  {
+    "id": "large-exact-decimal",
+    "text": "Send 9007199254740993.01 USDT.",
+    "translation": "发送9007199254740993.010 USDT",
+    "shouldBlock": false
+  },
+  {
+    "id": "mixed-scales",
+    "text": "Pay NGN 25,000.",
+    "translation": "付2万5千奈拉",
+    "shouldBlock": false
+  },
+  {
+    "id": "colloquial-scales",
+    "text": "Pay USD 2500.",
+    "translation": "付两千五美元",
+    "shouldBlock": false
+  },
+  {
+    "id": "chinese-full-decimal",
+    "text": "Send 2500.50 USDT.",
+    "translation": "发送两千五百点五USDT",
+    "shouldBlock": false
+  },
+  {
+    "id": "fraction",
+    "text": "Use one-tenth of the 100 USDT.",
+    "translation": "使用这100USDT的十分之一",
+    "shouldBlock": false
+  },
+  {
+    "id": "repeated-unit",
+    "text": "Check 10 USDT; it is still 10 USDT.",
+    "translation": "核实10USDT，仍是10",
+    "shouldBlock": false
+  },
+  {
+    "id": "account-money-collision",
+    "text": "UID: 1234\nBalance: $1234.50",
+    "translation": "UID:1234，余额1234.50美元",
+    "shouldBlock": false
+  },
+  {
+    "id": "literal-currency-url",
+    "text": "Keep https://example.test/USD100 unchanged.",
+    "translation": "保留https://example.test/USD100不变",
+    "shouldBlock": false
+  },
+  {
+    "id": "multi-currency",
+    "text": "Send 100 USD and 200 USDT.",
+    "translation": "发送100美元和200USDT",
+    "shouldBlock": false
+  },
+  {
+    "id": "formatted-date",
+    "text": "Send 100 USDT on 2026-10-09.",
+    "translation": "请于2026年10月9日发送100USDT",
+    "shouldBlock": false
+  },
+  {
+    "id": "shared-date-range",
+    "text": "Use it from October 9, 2026 to October 11, 2026.",
+    "translation": "在2026年10月9日至11日期间使用",
+    "shouldBlock": false
+  },
+  {
+    "id": "ticker-and-currency",
+    "text": "Use $USDT as the label; send 100 USDT.",
+    "translation": "使用$USDT作为标签，发送100USDT",
+    "shouldBlock": false
+  },
+  {
+    "id": "changed-total",
+    "text": "UID: 142998877\n\n1. The total asset value on HTX is approximately 589 USDT, including over 560 USDT in the Rewards Hub.\n2. The client wants to withdraw over 560 USDT from the Rewards Hub to their HTX account but has not initiated a withdrawal.\n3. Please verify the withdrawal eligibility and available options for the Rewards Hub funds, and clarify how the client can transfer the funds to their HTX account.",
+    "translation": "UID:142998877。1.HTX总资产约588USDT，Rewards Hub内有560多USDT。2.客户想从Rewards Hub提现560多USDT至HTX账户，但尚未发起提现。3.请核实提现资格和可用选项，并说明如何转到HTX账户。",
+    "shouldBlock": true
+  },
+  {
+    "id": "changed-lower-amount",
+    "text": "Withdraw over 560 USDT.",
+    "translation": "提取650多USDT",
+    "shouldBlock": true
+  },
+  {
+    "id": "currency-replacement",
+    "text": "Send 100 USDT.",
+    "translation": "发送100美元",
+    "shouldBlock": true
+  },
+  {
+    "id": "mixed-currency-replacement",
+    "text": "Send 100 USD and 200 USDT.",
+    "translation": "发送100USDT和200美元",
+    "shouldBlock": true
+  },
+  {
+    "id": "tiny-change",
+    "text": "Send 0.000000000000000001 USDT.",
+    "translation": "发送0.000000000000000002USDT",
+    "shouldBlock": true
+  },
+  {
+    "id": "large-change",
+    "text": "Send 9007199254740993.01 USDT.",
+    "translation": "发送9007199254740992.01USDT",
+    "shouldBlock": true
+  },
+  {
+    "id": "negative-flipped",
+    "text": "The loss is -$100.",
+    "translation": "亏损为100美元",
+    "shouldBlock": true
+  },
+  {
+    "id": "plain-negative-flipped",
+    "text": "The loss is -100.",
+    "translation": "亏损为100",
+    "shouldBlock": true
+  },
+  {
+    "id": "quantity-changed",
+    "text": "Send three files.",
+    "translation": "发送四份文件",
+    "shouldBlock": true
+  },
+  {
+    "id": "fraction-changed",
+    "text": "Use one-tenth of the 100 USDT.",
+    "translation": "使用这100USDT的二分之一",
+    "shouldBlock": true
+  },
+  {
+    "id": "date-changed",
+    "text": "Send 100 USDT on 2026-10-09.",
+    "translation": "请在2026-10-10发送100USDT",
+    "shouldBlock": true
+  },
+  {
+    "id": "uid-damaged",
+    "text": "UID: 12345678\nBalance: $100",
+    "translation": "UID:12345679，余额100美元",
+    "shouldBlock": true
+  },
+  {
+    "id": "typo-not-autocorrected",
+    "text": "Send 100 USTD.",
+    "translation": "发送100 USDT",
+    "shouldBlock": true
+  },
+  {
+    "id": "amount-dropped",
+    "text": "Send 100 USDT.",
+    "translation": "请发送资金",
+    "shouldBlock": true
+  },
+  {
+    "id": "small-decimal-change",
+    "text": "Send 1.01 USDT.",
+    "translation": "发送1.02 USDT",
+    "shouldBlock": true
+  },
+  {
+    "id": "cad-replacement",
+    "text": "Send 100 CAD.",
+    "translation": "发送100美元",
+    "shouldBlock": true
+  }
+]

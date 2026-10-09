@@ -10,6 +10,7 @@ import { modelManager } from "./model-manager.mjs";
 import { parseTranslationOutput, sanitizeTranslationOutput } from "./translation-output.mjs";
 import {
   TEAM_CHAT_STYLE_INSTRUCTIONS,
+  NEUTRAL_STYLE_INSTRUCTIONS,
   executeTranslationPolicy,
 } from "./translation-policy.mjs";
 import { buildEntityProtectionInstruction, isPreserveExactlyGlossaryEntry, protectEntities } from "./entity-protection.mjs";
@@ -71,7 +72,7 @@ function historyLanguageLabels(direction) {
 
 export function normalizeHistoryItem(item) {
   const direction = item.direction === "enToZh" ? "enToZh" : "zhToEn";
-  const mode = item.mode === "chat" ? "chat" : "email";
+  const mode = ["neutral", "chat", "email"].includes(item.mode) ? item.mode : "email";
   const provider = ["openai", "gemini", "deepseek", "groq"].includes(item.provider) ? item.provider : "";
   return {
     source: item.source.trim(),
@@ -118,7 +119,8 @@ async function saveHistoryItem(item) {
 
 function historySearchText(entry) {
   const directionTerms = entry.direction === "enToZh" ? "English 中文 English Chinese" : "中文 English Chinese English";
-  const modeTerms = entry.mode === "chat" ? "chat team colleague 同事 协作 自然" : "email professional 邮件 专业";
+  const modeTerms = entry.mode === "neutral" ? "neutral communication balanced polite professional 中性 沟通 礼貌 专业"
+    : entry.mode === "chat" ? "chat team colleague 同事 协作 自然" : "email professional 邮件 专业";
   return [entry.source, entry.translation, entry.englishMeaning, entry.sourceLanguage, entry.targetLanguage, entry.sourceLanguageLabel, entry.targetLanguageLabel, entry.direction, entry.mode, entry.provider, directionTerms, modeTerms].filter(Boolean).join("\n").toLowerCase();
 }
 
@@ -152,6 +154,7 @@ async function saveApiKeys(keys) {
 }
 
 const styleInstructions = {
+  neutral: NEUTRAL_STYLE_INSTRUCTIONS,
   email: "Write as a polished workplace email: professional, concise, courteous, and direct.",
   chat: TEAM_CHAT_STYLE_INSTRUCTIONS
 };
@@ -283,7 +286,7 @@ async function handleRequest(request, response) {
       const item = JSON.parse(rawBody);
       if (![item.source, item.translation, item.englishMeaning].every((value) => typeof value === "string" && value.length <= 8000) || !item.source.trim() || (!item.translation.trim() && !(item.strategyVersion===EMAIL_STRATEGY&&['clarification_required','review_required'].includes(item.status)))) return sendJson(response, 400, { error: "Invalid history item." });
       if (item.direction && !["zhToEn", "enToZh"].includes(item.direction)) return sendJson(response, 400, { error: "Invalid history direction." });
-      if (item.mode && !["email", "chat"].includes(item.mode)) return sendJson(response, 400, { error: "Invalid history mode." });
+      if (item.mode && !["neutral", "email", "chat"].includes(item.mode)) return sendJson(response, 400, { error: "Invalid history mode." });
       if (item.provider && !["openai", "gemini", "deepseek", "groq"].includes(item.provider)) return sendJson(response, 400, { error: "Invalid history provider." });
       if (item.requestId && (typeof item.requestId !== "string" || item.requestId.length > 120)) return sendJson(response, 400, { error: "Invalid history request ID." });
       const saved = await saveHistoryItem(item);
@@ -313,7 +316,7 @@ async function handleRequest(request, response) {
     for await (const chunk of request) rawBody += chunk;
     try {
       const body = JSON.parse(rawBody);
-      if (!body.text?.trim() || body.text.length > 1000 || !["email", "chat"].includes(body.mode) || !["zhToEn", "enToZh"].includes(body.direction) || !["openai", "gemini", "deepseek", "groq"].includes(body.provider || "openai") || !Array.isArray(body.glossary || []) || (body.glossary || []).some((entry) => !entry?.source || (!entry?.target && entry?.preserveExactly !== true) || entry.source.length > 120 || (entry.target || "").length > 120)) {
+      if (!body.text?.trim() || body.text.length > 1000 || !["neutral", "email", "chat"].includes(body.mode) || !["zhToEn", "enToZh"].includes(body.direction) || !["openai", "gemini", "deepseek", "groq"].includes(body.provider || "openai") || !Array.isArray(body.glossary || []) || (body.glossary || []).some((entry) => !entry?.source || (!entry?.target && entry?.preserveExactly !== true) || entry.source.length > 120 || (entry.target || "").length > 120)) {
         return sendJson(response, 400, { error: "Please provide text (up to 1000 characters), a valid mode, and a valid language direction." });
       }
       return sendJson(response, 200, await translate(body, { signal: controller.signal }));
