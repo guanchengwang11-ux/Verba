@@ -1,4 +1,4 @@
-import {usesEmailSchema,emailSchema} from './email-schema.mjs';
+import {usesEmailSchema,emailSchema,translationTokenBudget} from './email-schema.mjs';
 const outputSchema = {
   type: "object",
   properties: {
@@ -54,7 +54,7 @@ export default {
     verifyJsonOutput(data.output_text);
     return { latencyMs: Date.now() - startedAt, usage: data.usage || null, httpStatus: response.status };
   },
-  async translate(apiKey, model, text, instructions, { signal } = {}) {
+  async translate(apiKey, model, text, instructions, { signal,maxOutputTokens } = {}) {
     const startedAt = Date.now();
     const response = await fetch("https://api.openai.com/v1/responses", {
       method: "POST",
@@ -65,7 +65,7 @@ export default {
         store: false,
         instructions,
         input: text,
-        max_output_tokens: usesEmailSchema(instructions)?1600:700,
+        max_output_tokens: translationTokenBudget(instructions,maxOutputTokens),
         text: { format: { type: "json_schema", name: "workplace_translation", strict: true, schema: usesEmailSchema(instructions)?emailSchema:outputSchema } }
       })
     });

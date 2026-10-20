@@ -1,6 +1,7 @@
 import { createServer } from "node:http";
 import {isCustomerEmail,protectEmail,emailInstructions,executeEmail,EMAIL_STRATEGY} from './email-strategy.mjs';
 import { glossaryInstruction } from './glossary.mjs';
+import {prepareTranslationLayout,finishTranslationLayout} from './translation-layout.mjs';
 import { attachFinalTranslationCheck } from './translation-final-check.mjs';
 import { readFile, writeFile } from "node:fs/promises";
 import { extname, join, normalize } from "node:path";
@@ -13,7 +14,7 @@ import {
   NEUTRAL_STYLE_INSTRUCTIONS,
   executeTranslationPolicy,
 } from "./translation-policy.mjs";
-import { buildEntityProtectionInstruction, isPreserveExactlyGlossaryEntry, protectEntities } from "./entity-protection.mjs";
+import { buildEntityProtectionInstruction, isPreserveExactlyGlossaryEntry, protectEntities, restoreEntities } from "./entity-protection.mjs";
 import { analyzeSemanticConstraints, buildSemanticConstraintInstruction } from "./semantic-role-protection.mjs";
 import {
   configureTranslationDiagnostics,
@@ -75,8 +76,9 @@ export function normalizeHistoryItem(item) {
   const mode = ["neutral", "chat", "email"].includes(item.mode) ? item.mode : "email";
   const provider = ["openai", "gemini", "deepseek", "groq"].includes(item.provider) ? item.provider : "";
   return {
-    source: item.source.trim(),
-    translation: item.strategyVersion===EMAIL_STRATEGY?item.translation.trim():sanitizeTranslationOutput(item.translation),
+    source: item.preserveLayout===true?item.source:item.source.trim(),
+    translation: item.preserveLayout===true?item.translation:item.strategyVersion===EMAIL_STRATEGY?item.translation.trim():sanitizeTranslationOutput(item.translation),
+    ...(typeof item.preserveLayout==='boolean'?{preserveLayout:item.preserveLayout,layoutStatus:['preserved','unmatched','off'].includes(item.layoutStatus)?item.layoutStatus:'off'}:{}),
     ...(item.strategyVersion===EMAIL_STRATEGY?{strategyVersion:item.strategyVersion,status:item.status||'translated',sourceNotes:Array.isArray(item.sourceNotes)?item.sourceNotes.filter(n=>typeof n.message==='string'&&typeof n.sourceQuote==='string').slice(0,10):[]}:{}),
     englishMeaning: item.englishMeaning.trim(),
     ...(item.translationReview?.version === 'local-critical-check/v1' && Array.isArray(item.translationReview.issues) ? {
@@ -181,17 +183,30 @@ async function translate(body, { signal } = {}) {
   try {
     const protectedInput = isCustomerEmail(body)?protectEmail(body.text,body.glossary):protectEntities(body.text, body.glossary);
     observe("entity_protection", { protectedInput });
+    const layout=prepareTranslationLayout(body.text,protectedInput.text,body.preserveLayout===true,body.direction==='zhToEn'?'English':'Simplified Chinese');
+    let layoutCandidate;
+    const maxOutputTokens=layout.markers.length?Math.min(16384,(isCustomerEmail(body)?1600:700)+layout.markers.length*32):undefined;
+    const formatRaw=raw=>{
+      if(!layout.enabled)return raw;
+      try{
+        const parsed=JSON.parse(String(raw).trim().replace(/^```(?:json)?\s*/iu,'').replace(/\s*```$/u,''));
+        if(typeof parsed.translation!=='string')return raw;
+        layoutCandidate=finishTranslationLayout(parsed,layout);
+        return JSON.stringify(layoutCandidate);
+      }catch{return raw;}
+    };
+    const finish=result=>!layout.enabled?(body.preserveLayout===false?{...result,layoutStatus:'off'}:result):{...result,...(result.translation&&layoutCandidate?{translation:restoreEntities(layoutCandidate.translation,protectedInput.entityMap)}:{}),layoutStatus:result.translation?layoutCandidate?.layoutStatus||'unmatched':'off'};
     if(isCustomerEmail(body)){
-      const instructions=emailInstructions(body,protectedInput.entityMap);
+      const instructions=emailInstructions(body,protectedInput.entityMap)+(layout.instruction?'\n'+layout.instruction:'');
       const result=await executeEmail({sourceText:body.text,entityMap:protectedInput.entityMap,diagnostics,observe,generate:async({correctionInstruction})=>{
-        const response=await modelManager.translate({provider,text:protectedInput.text,instructions:instructions+'\n'+correctionInstruction,diagnostics,signal});
-        observe('model_output',{rawOutput:response.rawOutput,model:diagnostics.model});return response.rawOutput;
+        const response=await modelManager.translate({provider,text:layout.text,instructions:instructions+'\n'+correctionInstruction,diagnostics,signal,maxOutputTokens});
+        observe('model_output',{rawOutput:response.rawOutput,model:diagnostics.model});return formatRaw(response.rawOutput);
       }});
-      const checked=attachFinalTranslationCheck(body,result,protectedInput,diagnostics);
+      const checked=attachFinalTranslationCheck(body,finish(result),protectedInput,diagnostics);
       diagnostics.complete();observe('complete',{result:checked,diagnostic:diagnostics.summary()});return checked;
     }
     const semanticConstraints = analyzeSemanticConstraints({ originalText: body.text, protectedText: protectedInput.text, direction: body.direction, entityMap: protectedInput.entityMap });
-    const baseInstructions = buildInstructions(body, protectedInput.entityMap, semanticConstraints);
+    const baseInstructions = buildInstructions(body, protectedInput.entityMap, semanticConstraints)+(layout.instruction?'\n'+layout.instruction:'');
     const result = await executeTranslationPolicy({
       sourceText: body.text,
       mode: body.mode,
@@ -201,12 +216,12 @@ async function translate(body, { signal } = {}) {
       observe,
       generate: async ({ correctionInstruction }) => {
         const instructions = correctionInstruction ? `${baseInstructions} ${correctionInstruction}` : baseInstructions;
-        const response = await modelManager.translate({ provider, text: protectedInput.text, instructions, diagnostics, signal });
+        const response = await modelManager.translate({ provider, text: layout.text, instructions, diagnostics, signal,maxOutputTokens });
         observe("model_output", { rawOutput: response.rawOutput, model: diagnostics.model });
-        return parseTranslationOutput(response.rawOutput, providerName, { sanitize: false });
+        return parseTranslationOutput(formatRaw(response.rawOutput), providerName, { sanitize: false });
       }
     });
-    const checked = attachFinalTranslationCheck(body,result,protectedInput,diagnostics,semanticConstraints);
+    const checked = attachFinalTranslationCheck(body,finish(result),protectedInput,diagnostics,semanticConstraints);
     diagnostics.complete();
     observe("complete", { result:checked, diagnostic: diagnostics.summary() });
     return checked;
@@ -270,8 +285,10 @@ async function handleRequest(request, response) {
       if (!['openai', 'gemini', 'deepseek', 'groq'].includes(body.provider)) return sendJson(response, 400, { error: "Unknown provider." });
       if (body.action === "refresh") return sendJson(response, 200, { models: await modelManager.refresh(body.provider, { force: true }) });
       if (body.action === "override") return sendJson(response, 200, { models: await modelManager.setManualOverride(body.provider, body.model, { allowHighCost: body.allowHighCost }) });
+      if (body.action === 'select' && body.provider === 'gemini') return sendJson(response,200,{models:await modelManager.selectGeminiModel(body.model)});
+      if (body.action === 'select' && body.provider === 'groq') return sendJson(response,200,{models:await modelManager.selectGroqModel(body.model)});
       return sendJson(response, 400, { error: "Unsupported model action." });
-    } catch (error) { return sendJson(response, error.status || 400, { error: error.message || "Unable to update model settings." }); }
+    } catch (error) { return sendJson(response, error.status || 400, { error: error.message || "Unable to update model settings.",errorCode:error.internalCode||'INVALID_REQUEST' }); }
   }
   if (request.method === "GET" && url.pathname === "/api/history") {
     const search = url.searchParams.get("q")?.trim().toLowerCase() || "";
@@ -319,6 +336,7 @@ async function handleRequest(request, response) {
       if (!body.text?.trim() || body.text.length > 1000 || !["neutral", "email", "chat"].includes(body.mode) || !["zhToEn", "enToZh"].includes(body.direction) || !["openai", "gemini", "deepseek", "groq"].includes(body.provider || "openai") || !Array.isArray(body.glossary || []) || (body.glossary || []).some((entry) => !entry?.source || (!entry?.target && entry?.preserveExactly !== true) || entry.source.length > 120 || (entry.target || "").length > 120)) {
         return sendJson(response, 400, { error: "Please provide text (up to 1000 characters), a valid mode, and a valid language direction." });
       }
+      if(body.preserveLayout!==undefined&&typeof body.preserveLayout!=='boolean')return sendJson(response,400,{errorCode:'INVALID_REQUEST'});
       return sendJson(response, 200, await translate(body, { signal: controller.signal }));
     } catch (error) {
       return sendJson(response, error.status || 500, {

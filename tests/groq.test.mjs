@@ -48,7 +48,7 @@ test('Groq full HTTP pipeline, four routes, isolation, persistence, connection f
   let saved = await api('/api/config',{keys:{groq:'synthetic-groq-key',openai:'',gemini:'',deepseek:''}});
   assert.equal(saved.status,200); assert.deepEqual(saved.data.keys,{openai:true,gemini:true,deepseek:true,groq:true});
   assert.deepEqual(saved.data.models.groq.models,GROQ_TEXT_MODELS);
-  assert.equal(saved.data.models.groq.primaryModel,'openai/gpt-oss-20b');
+  assert.equal(saved.data.models.groq.primaryModel,'openai/gpt-oss-120b');
   assert.equal(JSON.stringify(modelManager.state.providers.openai),before);
   assert.equal(process.env.OPENAI_API_KEY,'synthetic-old-key');
   delete process.env.GROQ_API_KEY;
@@ -58,7 +58,7 @@ test('Groq full HTTP pipeline, four routes, isolation, persistence, connection f
   await new Promise(r=>second.close(r));
   assert.equal(process.env.GROQ_API_KEY,'synthetic-groq-key','Saved key reloads from isolated configuration');
   const reopened = new ModelManager({configurationDirectory:dir}); await reopened.initialize();
-  assert.equal(reopened.getStatus().groq.primaryModel,'openai/gpt-oss-20b');
+  assert.equal(reopened.getStatus().groq.primaryModel,'openai/gpt-oss-120b');
   assert.equal(reopened.getStatus().openai.manualOverride,'legacy-model');
   for (const mode of ['chat','email']) for (const direction of ['enToZh','zhToEn']) {
     const text = direction === 'enToZh' ? 'I paid David 50 USD.' : '我向David转了50美元。';
@@ -78,7 +78,7 @@ test('Groq full HTTP pipeline, four routes, isolation, persistence, connection f
     const history=await api('/api/history',{source:text,...result.data,mode,direction,provider:'groq'});
     assert.equal(history.data.item.provider,'groq');
     const diagnostic=(await api('/api/diagnostics')).data.diagnostic;
-    assert.equal(diagnostic.provider,'groq'); assert.equal(diagnostic.model,'openai/gpt-oss-20b');
+    assert.equal(diagnostic.provider,'groq'); assert.equal(diagnostic.model,'openai/gpt-oss-120b');
   }
   answer={translation:'Expected 998 USDT, received 990 USDT, a stated shortfall of 18 USDT.',englishMeaning:'Customer states a shortfall of 18 USDT.',sourceNotes:[],status:'translated'};
   const noted=await api('/api/translate',{text:'应到账998 USDT，实际到账990 USDT，所以少了18 USDT。',mode:'email',direction:'zhToEn',provider:'groq'});

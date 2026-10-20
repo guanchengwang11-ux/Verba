@@ -1,3 +1,4 @@
 export const usesEmailSchema=instructions=>instructions.startsWith('Strategy customer-email-zh-en/v1.');
+export const translationTokenBudget=(instructions,requested)=>Math.max(usesEmailSchema(instructions)?1600:700,Math.min(16384,Number.isFinite(requested)?requested:0));
 export const emailSchema={type:'object',properties:{englishMeaning:{type:'string'},translation:{type:'string'},sourceNotes:{type:'array',items:{type:'object',properties:{kind:{type:'string',enum:['conflict','ambiguity','clarification']},sourceQuote:{type:'string'},message:{type:'string'}},required:['kind','sourceQuote','message'],additionalProperties:false}},status:{type:'string',enum:['translated','clarification_required']}},required:['englishMeaning','translation','sourceNotes','status'],additionalProperties:false};
 export const geminiEmailSchema=JSON.parse(JSON.stringify(emailSchema,(key,value)=>key==='additionalProperties'?undefined:key==='type'?value.toUpperCase():value));

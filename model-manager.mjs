@@ -5,6 +5,8 @@ import openaiProvider from "./providers/openai-provider.mjs";
 import geminiProvider from "./providers/gemini-provider.mjs";
 import groqProvider, { groqError } from './providers/groq-provider.mjs';
 import deepseekProvider from "./providers/deepseek-provider.mjs";
+import {geminiCatalogEntry,geminiModelChoices,GEMINI_CATALOG_CHECKED_AT,GEMINI_CATALOG_SOURCES} from './gemini-model-catalog.mjs';
+import {GROQ_FREE_MODELS,groqModelChoices,GROQ_CATALOG_SOURCES} from './groq-model-catalog.mjs';
 import {
   createTranslationError,
   normalizeTranslationError,
@@ -70,6 +72,8 @@ export class ModelManager {
     this.state = createState();
     this.policy = null;
     this.loaded = false;
+    this.geminiSelectionRevision = 0;
+    this.groqSelectionRevision = 0;
   }
 
   get statePath() { return join(this.configurationDirectory, "model-state.json"); }
@@ -83,6 +87,12 @@ export class ModelManager {
       this.state = { ...createState(), ...saved, providers: Object.fromEntries(providerIds.map((provider) => [provider, { ...createProviderState(), ...(saved.providers?.[provider] || {}) }])) };
     } catch (error) {
       if (error.code !== "ENOENT") throw error;
+    }
+    const groq=this.state.providers.groq;
+    const recommended=groqModelChoices(groq.models,groq.modelHealth)[0]?.id;
+    if(!groq.manualOverride&&recommended&&groq.selectedModel!==recommended){
+      groq.selectedModel=recommended;groq.primaryModel=groq.modelHealth[recommended]?.status==='healthy'?recommended:'';
+      groq.lastKnownGoodModel=groq.primaryModel;groq.status=groq.primaryModel?'ready':'not_checked';
     }
     this.loaded = true;
     return this.getStatus();
@@ -100,7 +110,8 @@ export class ModelManager {
   getStatus(provider) {
     const summarize = (item) => ({
       provider: item.provider,
-      ...(item.provider === "groq" ? { models: item.models.filter(m => this.adapters.groq.supportsTextGeneration(m)), selectedModel: item.manualOverride || item.selectedModel || "", errorCode: item.errorCode || "" } : {}),
+      ...(item.provider === "groq" ? { models: item.models.filter(m => this.adapters.groq.supportsTextGeneration(m)),modelChoices:groqModelChoices(item.models,item.modelHealth),selectedModel:item.manualOverride||item.selectedModel||GROQ_FREE_MODELS[0],catalogCheckedAt:'2026-10-20',catalogSources:GROQ_CATALOG_SOURCES,errorCode: item.errorCode || "" } : {}),
+      ...(item.provider === 'gemini' ? {modelChoices:geminiModelChoices(item.models,item.modelHealth),selectedModel:item.manualOverride||item.primaryModel||'',selectionErrorCode:item.selectionErrorCode||'',catalogCheckedAt:GEMINI_CATALOG_CHECKED_AT,catalogSources:GEMINI_CATALOG_SOURCES} : {}),
       status: item.status,
       primaryModel: item.primaryModel,
       fallbackModels: item.fallbackModels,
@@ -134,6 +145,7 @@ export class ModelManager {
   }
 
   isAllowed(provider, model, state) {
+    if (provider === 'gemini') return Boolean(geminiCatalogEntry(model)) && this.adapters.gemini.supportsTextGeneration(model);
     if (!this.adapters[provider].supportsTextGeneration(model)) return false;
     if ((this.policy.blockedModels || []).some((name) => model === name || model.startsWith(`${name}-`))) return false;
     if ((this.policy.deprecatedModels || []).some((name) => model === name || model.startsWith(`${name}-`))) return false;
@@ -141,6 +153,7 @@ export class ModelManager {
   }
 
   rankModels(provider, models, state) {
+    if (provider === 'gemini') return geminiModelChoices(models,state.modelHealth).map(m=>m.id).filter(id=>this.isAllowed(provider,id,state));
     const tierWeight = { low: 0, medium: 1, unknown: 2, high: 3 };
     const now = Date.now();
     return [...new Set(models)]
@@ -158,6 +171,7 @@ export class ModelManager {
   }
 
   async setManualOverride(provider, model, { allowHighCost } = {}) {
+    if (provider === 'gemini') return this.selectGeminiModel(model);
     if (!this.state.providers[provider]) throw errorWithStatus("Unknown provider.", 400);
     const state = this.state.providers[provider];
     state.manualOverride = String(model || "").trim();
@@ -174,6 +188,7 @@ export class ModelManager {
   async refresh(provider, { force = false } = {}) {
     if (!this.loaded) await this.initialize();
     if (provider === "groq") return this.refreshGroq({ force });
+    if (provider === 'gemini') return this.refreshGemini({force});
     if (!this.adapters[provider]) throw errorWithStatus("Unknown provider.", 400);
     const state = this.state.providers[provider];
     const apiKey = this.getApiKey(provider);
@@ -235,24 +250,109 @@ export class ModelManager {
     return this.getStatus(provider);
   }
 
+  geminiFailure(state, error) {
+    const failure=[401,403].includes(error.status)?createTranslationError(error.status===401?'INVALID_API_KEY':'PERMISSION_DENIED',{status:error.status,provider:'gemini',stage:'model_selection'}):normalizeTranslationError(error,{provider:'gemini',stage:'model_selection'});
+    state.selectionErrorCode=failure.internalCode;
+    state.status=error.status===401||error.status===403?'key_error':error.status===429?'quota_error':failure.internalCode==='PROVIDER_NETWORK_ERROR'?'cache_only':'no_compatible_model';
+    state.lastError=error.status===401||error.status===403?'Google rejected the API key or account permission.':error.status===429?'Google quota or rate limit reached.':'Google could not verify the selected free-tier model. Check models again.';
+    return failure;
+  }
+
+  async probeGemini(model) {
+    const state=this.state.providers.gemini,started=Date.now();
+    try {
+      const result=await this.adapters.gemini.healthCheck(this.getApiKey('gemini'),model);
+      const checkedAt=new Date().toISOString();
+      state.modelHealth[model]={status:'healthy',checkedAt,probeCheckedAt:checkedAt,probeLatencyMs:result.latencyMs||Date.now()-started,latencyMs:result.latencyMs||Date.now()-started,failureCount:0};
+      delete state.unavailableUntil[model];
+      return {model,ok:true};
+    } catch(error) {
+      const failure=normalizeTranslationError(error,{provider:'gemini',model,stage:'model_selection'});
+      state.modelHealth[model]={...state.modelHealth[model],status:'unhealthy',checkedAt:new Date().toISOString(),httpStatus:error.status||failure.status,errorCode:failure.internalCode};
+      if(isInvalidModelError(error))state.unavailableUntil[model]=Date.now()+unavailableDurationMs;
+      return {model,ok:false,error};
+    }
+  }
+
+  async refreshGemini({force=false}={}) {
+    const state=this.state.providers.gemini,revision=this.geminiSelectionRevision;
+    if(!this.getApiKey('gemini')){state.status='missing_key';state.lastError='API key is not configured.';state.selectionErrorCode='INVALID_API_KEY';await this.persist();return this.getStatus('gemini');}
+    if(!force&&Date.parse(state.cacheUntil)>Date.now()&&state.status==='ready'&&this.isAllowed('gemini',state.manualOverride||state.primaryModel,state))return this.getStatus('gemini');
+    try {
+      const discovered=await this.adapters.gemini.discoverModels(this.getApiKey('gemini'));
+      if(revision!==this.geminiSelectionRevision)return this.getStatus('gemini');
+      state.models=discovered;
+      state.lastDetectedAt=new Date().toISOString();state.cacheUntil=new Date(Date.now()+cacheDurationMs).toISOString();
+    } catch(error) {if(revision!==this.geminiSelectionRevision)return this.getStatus('gemini');this.geminiFailure(state,error);await this.persist();return this.getStatus('gemini');}
+    if(revision!==this.geminiSelectionRevision)return this.getStatus('gemini');
+    const manual=state.manualOverride;
+    if(manual&&(!state.models.includes(manual)||!this.isAllowed('gemini',manual,state))){
+      state.primaryModel='';state.fallbackModels=[];state.status='manual_override_invalid';state.selectionErrorCode='MODEL_NOT_FOUND';state.lastError='The saved Google model is not an available stable free-tier text model. Choose another model.';await this.persist();return this.getStatus('gemini');
+    }
+    // A refresh is bounded to three comparable probes. Remaining discovered
+    // eligible models are explicitly untested until selected, never fabricated.
+    const ranked=geminiModelChoices(state.models,{},{}).map(m=>m.id);
+    state.candidates=manual?[manual]:ranked;
+    const results=await Promise.all(state.candidates.slice(0,healthCheckLimit).map(id=>this.probeGemini(id)));
+    if(revision!==this.geminiSelectionRevision)return this.getStatus('gemini');
+    const verified=geminiModelChoices(state.models,state.modelHealth).filter(m=>m.health==='healthy').map(m=>m.id);
+    state.primaryModel=manual?(results[0]?.ok?manual:''):(verified[0]||'');
+    state.fallbackModels=manual?[]:verified.filter(id=>id!==state.primaryModel).slice(0,translationModelLimit-1);
+    if(state.primaryModel){state.lastKnownGoodModel=state.primaryModel;state.status='ready';state.selectionErrorCode='';state.lastError='';}
+    else this.geminiFailure(state,results.find(r=>r.error)?.error||errorWithStatus('No compatible Google model',404));
+    state.lastHealthCheckAt=new Date().toISOString();await this.persist();return this.getStatus('gemini');
+  }
+
+  async selectGeminiModel(model) {
+    if(!this.loaded)await this.initialize();
+    if(typeof model!=='string'||model.length>120)throw errorWithStatus('Invalid Google model selection.',400);
+    const selected=model.trim(),state=this.state.providers.gemini;
+    if(selected&&(!geminiCatalogEntry(selected)||!state.models.includes(selected)))throw createTranslationError(TRANSLATION_ERROR_CODES.MODEL_NOT_FOUND,{status:400,provider:'gemini',message:'Choose a detected stable Google text model with official free-tier support.',stage:'model_selection'});
+    this.geminiSelectionRevision++;
+    state.manualOverride=selected;state.allowHighCost=false;state.primaryModel='';state.fallbackModels=[];state.selectionErrorCode='';
+    await this.persist();
+    if(!selected)return this.refreshGemini({force:false});
+    if(!this.getApiKey('gemini')){state.status='missing_key';state.selectionErrorCode='INVALID_API_KEY';state.lastError='API key is not configured.';await this.persist();return this.getStatus('gemini');}
+    const checked=state.modelHealth[selected];
+    const result=checked?.status==='healthy'&&Date.now()-Date.parse(checked.checkedAt)<cacheDurationMs?{ok:true}:await this.probeGemini(selected);
+    if(state.manualOverride!==selected)return this.getStatus('gemini');
+    if(result.ok){state.primaryModel=selected;state.lastKnownGoodModel=selected;state.status='ready';state.lastError='';}
+    else this.geminiFailure(state,result.error);
+    state.lastHealthCheckAt=new Date().toISOString();await this.persist();return this.getStatus('gemini');
+  }
+
   async refreshGroq({ force = false } = {}) {
     const state = this.state.providers.groq;
+    const revision=this.groqSelectionRevision;
     const apiKey = this.getApiKey('groq');
     if (!force && state.status === 'ready' && Date.parse(state.cacheUntil) > Date.now()) return this.getStatus('groq');
-    const selected = state.manualOverride || state.selectedModel || 'openai/gpt-oss-20b';
+    let selected = state.manualOverride || state.selectedModel || GROQ_FREE_MODELS[0];
     state.selectedModel = selected;
     state.primaryModel = ''; state.lastKnownGoodModel = ''; state.fallbackModels = [];
     try {
       if (!apiKey) throw groqError(401);
-      state.models = await this.adapters.groq.discoverModels(apiKey);
+      const discovered=await this.adapters.groq.discoverModels(apiKey);
+      if(revision!==this.groqSelectionRevision)return this.getStatus('groq');
+      state.models=discovered;
+      if(!state.manualOverride)selected=GROQ_FREE_MODELS.find(id=>state.models.includes(id))||selected;
+      state.selectedModel=selected;
       state.lastDetectedAt = new Date().toISOString();
       if (!state.models.includes(selected) || !this.adapters.groq.supportsTextGeneration(selected)) throw groqError(404);
-      await this.adapters.groq.healthCheck(apiKey, selected);
+      const candidates=state.manualOverride?[selected]:GROQ_FREE_MODELS.filter(id=>state.models.includes(id));
+      const checked=await Promise.all(candidates.map(async model=>{
+        try {const health=await this.adapters.groq.healthCheck(apiKey,model);return {model,ok:true,health};}
+        catch(error){return {model,ok:false,error};}
+      }));
+      if(revision!==this.groqSelectionRevision)return this.getStatus('groq');
+      for(const result of checked)state.modelHealth[result.model]={...state.modelHealth[result.model],status:result.ok?'healthy':'unhealthy',checkedAt:new Date().toISOString(),...(result.ok?{probeLatencyMs:result.health.latencyMs||null}:{httpStatus:result.error.status||0,errorCode:result.error.internalCode})};
+      const available=checked.find(result=>result.ok);
+      if(!available)throw checked[0]?.error||groqError(404);
+      selected=available.model;state.selectedModel=selected;
       state.primaryModel = selected; state.lastKnownGoodModel = selected;
-      state.modelHealth[selected] = { status: 'healthy' };
       state.status = 'ready'; state.lastError = ''; state.errorCode = '';
       state.cacheUntil = new Date(Date.now() + cacheDurationMs).toISOString();
     } catch (error) {
+      if(revision!==this.groqSelectionRevision)return this.getStatus('groq');
       const failure = normalizeTranslationError(error, { provider: 'groq' });
       state.errorCode = failure.internalCode;
       state.lastError = failure.message;
@@ -263,12 +363,32 @@ export class ModelManager {
     return this.getStatus('groq');
   }
 
+  async selectGroqModel(model){
+    if(typeof model!=='string'||model.length>120)throw errorWithStatus('Invalid Groq model.',400);
+    const state=this.state.providers.groq,selected=model.trim();
+    if(selected&&(!GROQ_FREE_MODELS.includes(selected)||!state.models.includes(selected)))throw groqError(404);
+    this.groqSelectionRevision++;
+    state.manualOverride=selected;state.selectedModel=selected||GROQ_FREE_MODELS.find(id=>state.models.includes(id))||GROQ_FREE_MODELS[0];
+    await this.persist();return this.refreshGroq({force:true});
+  }
+
   async ensureReady(provider) {
     const state = this.state.providers[provider];
     if (!state) throw errorWithStatus("Unknown provider.", 400);
+    if(provider==='gemini'){
+      if(!this.getApiKey('gemini'))throw createTranslationError(TRANSLATION_ERROR_CODES.INVALID_API_KEY,{status:401,provider,message:'Google API key is not configured.',stage:'model_selection'});
+      if(state.manualOverride){
+        if(!this.isAllowed(provider,state.manualOverride,state)||state.models.length&&!state.models.includes(state.manualOverride))throw createTranslationError(TRANSLATION_ERROR_CODES.MODEL_NOT_FOUND,{status:404,provider,model:state.manualOverride,message:'The selected Google model is unavailable. Choose another free-tier model.',stage:'model_selection'});
+        return;
+      }
+      if(this.orderedTranslationModels(provider).length)return;
+      await this.refreshGemini();
+      if(!this.orderedTranslationModels(provider).length)throw createTranslationError(state.selectionErrorCode||TRANSLATION_ERROR_CODES.MODEL_NOT_FOUND,{status:state.status==='quota_error'?429:503,provider,message:state.lastError||'No available Google free-tier text model.',stage:'model_selection'});
+      return;
+    }
     if (provider === 'groq') {
       if (!this.getApiKey(provider)) throw groqError(401);
-      const model = state.manualOverride || state.selectedModel || 'openai/gpt-oss-20b';
+      const model = state.manualOverride || state.selectedModel || GROQ_FREE_MODELS[0];
       if (!this.adapters.groq.supportsTextGeneration(model)) throw groqError(404);
       // No discovery/health calls inside translation: the one selected model uses the existing budget.
       state.selectedModel = model;
@@ -284,14 +404,17 @@ export class ModelManager {
 
   orderedTranslationModels(provider) {
     const state = this.state.providers[provider];
-    if (provider === 'groq') return [state.manualOverride || state.selectedModel || 'openai/gpt-oss-20b'];
+    if(provider==='gemini')return (state.manualOverride?[state.manualOverride]:[...new Set([state.primaryModel,state.lastKnownGoodModel,...state.fallbackModels])])
+      .filter(id=>id&&this.isAllowed(provider,id,state)&&(!state.models.length||state.models.includes(id)))
+      .filter(id=>state.manualOverride||!state.unavailableUntil[id]||state.unavailableUntil[id]<=Date.now()).slice(0,translationModelLimit);
+    if (provider === 'groq') return [state.manualOverride || state.selectedModel || GROQ_FREE_MODELS[0]];
     return [...new Set([state.lastKnownGoodModel, state.primaryModel, ...state.fallbackModels])]
       .filter(Boolean)
       .filter((model) => !state.unavailableUntil[model] || state.unavailableUntil[model] <= Date.now())
       .slice(0, translationModelLimit);
   }
 
-  async translate({ provider, text, instructions, diagnostics, signal }) {
+  async translate({ provider, text, instructions, diagnostics, signal, maxOutputTokens }) {
     if (!this.loaded) await this.initialize();
     try {
       await this.ensureReady(provider);
@@ -314,10 +437,11 @@ export class ModelManager {
     for (let modelIndex = 0; modelIndex < candidates.length; modelIndex += 1) {
       const model = candidates[modelIndex];
       try {
-        const result = await this.translateWithRetry(provider, apiKey, model, text, instructions, { diagnostics, modelSwitched: modelIndex > 0, hasFallback: modelIndex < candidates.length - 1, allowSameModelRetry: modelIndex === candidates.length - 1, signal });
+        const result = await this.translateWithRetry(provider, apiKey, model, text, instructions, { diagnostics, modelSwitched: modelIndex > 0, hasFallback: modelIndex < candidates.length - 1, allowSameModelRetry: modelIndex === candidates.length - 1, signal,maxOutputTokens });
         state.lastKnownGoodModel = model;
         state.primaryModel = model;
         state.modelHealth[model] = { ...(state.modelHealth[model] || {}), status: "healthy", checkedAt: new Date().toISOString(), latencyMs: result.latencyMs, failureCount: 0 };
+        if(provider==='gemini'){state.selectionErrorCode='';state.status='ready';}
         state.lastError = "";
         if (provider === "groq") { state.errorCode = ""; state.status = "ready"; }
         await this.persist();
@@ -325,9 +449,22 @@ export class ModelManager {
         return { ...result, model };
       } catch (error) {
         lastError = normalizeTranslationError(error, { provider, model, stage: "provider_request" });
-        if (provider === "groq") { state.status = "degraded"; state.lastError = lastError.message; state.errorCode = lastError.internalCode; await this.persist(); throw lastError; }
+        if (provider === "groq") {
+          state.failureCount[model] = (state.failureCount[model] || 0) + 1;
+          state.modelHealth[model] = { ...(state.modelHealth[model] || {}), status: "unhealthy", checkedAt: new Date().toISOString(), httpStatus: lastError.status, errorCode: lastError.internalCode, failureCount: state.failureCount[model] };
+          state.status = [401, 403].includes(lastError.status) ? "key_error" : lastError.status === 429 ? lastError.internalCode === "PROVIDER_RATE_LIMIT" ? "rate_limited" : "quota_error" : "degraded";
+          state.lastError = lastError.message; state.errorCode = lastError.internalCode;
+          await this.persist(); throw lastError;
+        }
         if (lastError.status === 401 || lastError.status === 403) {
-          throw createTranslationError(TRANSLATION_ERROR_CODES.PROVIDER_UNAVAILABLE, {
+          if (provider === "gemini") {
+            state.failureCount[model] = (state.failureCount[model] || 0) + 1;
+            state.modelHealth[model] = { ...(state.modelHealth[model] || {}), status: "unhealthy", checkedAt: new Date().toISOString(), httpStatus: lastError.status, errorCode: lastError.internalCode, failureCount: state.failureCount[model] };
+            state.status = "key_error"; state.selectionErrorCode = lastError.internalCode;
+            state.lastError = "Google rejected the API key or account permission.";
+            await this.persist();
+          }
+          throw createTranslationError(provider==='gemini'?(lastError.status===401?'INVALID_API_KEY':'PERMISSION_DENIED'):TRANSLATION_ERROR_CODES.PROVIDER_UNAVAILABLE, {
             message: "The API key is invalid or does not have permission to use this provider.",
             status: lastError.status,
             providerErrorCode: lastError.providerErrorCode,
@@ -340,12 +477,13 @@ export class ModelManager {
         if (lastError.internalCode === TRANSLATION_ERROR_CODES.REQUEST_CANCELLED || lastError.stage === "attempt_budget") throw lastError;
         state.failureCount[model] = (state.failureCount[model] || 0) + 1;
         state.modelHealth[model] = { ...(state.modelHealth[model] || {}), status: "unhealthy", checkedAt: new Date().toISOString(), failureCount: state.failureCount[model] };
+        if(provider==='gemini'){state.modelHealth[model].httpStatus=lastError.status;state.modelHealth[model].errorCode=lastError.internalCode;state.selectionErrorCode=lastError.internalCode;}
         if (lastError.internalCode === TRANSLATION_ERROR_CODES.MODEL_NOT_FOUND || isInvalidModelError(lastError)) state.unavailableUntil[model] = Date.now() + unavailableDurationMs;
         if (!diagnostics) console.info(JSON.stringify({ event: "translation", provider, model, success: false, status: lastError.status || 0, retryNextModel: modelIndex < candidates.length - 1 }));
       }
     }
-    state.status = "degraded";
-    state.lastError = "All verified translation models failed. Run model detection and try again.";
+    state.status = provider === "gemini" && lastError?.status === 429 ? lastError.internalCode === "PROVIDER_RATE_LIMIT" ? "rate_limited" : "quota_error" : "degraded";
+    state.lastError = provider === "gemini" && lastError?.status === 429 ? "Google quota or rate limit reached." : "All verified translation models failed. Run model detection and try again.";
     await this.persist();
     throw lastError || createTranslationError(TRANSLATION_ERROR_CODES.MODEL_NOT_FOUND, {
       message: state.lastError,
@@ -355,7 +493,7 @@ export class ModelManager {
     });
   }
 
-  async translateWithRetry(provider, apiKey, model, text, instructions, { diagnostics, modelSwitched = false, hasFallback = false, allowSameModelRetry = true, signal } = {}) {
+  async translateWithRetry(provider, apiKey, model, text, instructions, { diagnostics, modelSwitched = false, hasFallback = false, allowSameModelRetry = true, signal,maxOutputTokens } = {}) {
     let lastError;
     for (let retryIndex = 0; retryIndex < 2; retryIndex += 1) {
       if (signal?.aborted) throw createTranslationError(TRANSLATION_ERROR_CODES.REQUEST_CANCELLED, { message: "The translation request was cancelled.", status: 499, provider, model, stage: "request_cancelled" });
@@ -368,7 +506,7 @@ export class ModelManager {
       const remainingMs = diagnostics?.remainingMs() || 30000;
       const timer = setTimeout(() => { timedOut = true; controller.abort(); }, Math.max(1, remainingMs));
       try {
-        const result = await this.adapters[provider].translate(apiKey, model, text, instructions, { signal: controller.signal });
+        const result = await this.adapters[provider].translate(apiKey, model, text, instructions, { signal: controller.signal,maxOutputTokens });
         diagnostics?.record({
           event: "translation_attempt",
           attempt,
@@ -389,6 +527,8 @@ export class ModelManager {
           lastError = createTranslationError(TRANSLATION_ERROR_CODES.REQUEST_CANCELLED, { message: "The translation request was cancelled.", status: 499, provider, model, stage: "request_cancelled", cause: error });
         } else if (timedOut) {
           lastError = createTranslationError(TRANSLATION_ERROR_CODES.PROVIDER_NETWORK_ERROR, { message: "The provider request exceeded the translation timeout budget.", status: 504, providerErrorCode: "REQUEST_TIMEOUT", provider, model, stage: "provider_request", cause: error });
+        } else if(provider==='gemini'&&[400,401,403].includes(error.status)) {
+          lastError=normalizeTranslationError(createTranslationError(error.internalCode||({400:'PROVIDER_PARAMETER_ERROR',401:'INVALID_API_KEY',403:'PERMISSION_DENIED'}[error.status]),{status:error.status,provider,model,stage:'provider_request'}));
         } else {
           lastError = normalizeTranslationError(error, { provider, model, stage: "provider_request" });
         }

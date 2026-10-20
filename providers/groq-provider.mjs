@@ -1,4 +1,4 @@
-import { emailSchema, usesEmailSchema } from './email-schema.mjs';
+import { emailSchema, usesEmailSchema, translationTokenBudget } from './email-schema.mjs';
 import { createTranslationError } from '../translation-diagnostics.mjs';
 
 const base = 'https://api.groq.com/openai/v1';
@@ -30,10 +30,10 @@ async function request(path, apiKey, body, signal) {
   if (!response.ok) throw groqError(response.status, data);
   return data;
 }
-export function groqRequestBody(model, text, instructions) {
+export function groqRequestBody(model, text, instructions,maxOutputTokens) {
   const structured = model.startsWith('openai/gpt-oss-');
   return { model, messages: [{ role: 'system', content: instructions }, { role: 'user', content: text }], stream: false,
-    max_completion_tokens: structured ? 4096 : usesEmailSchema(instructions) ? 1600 : 700,
+    max_completion_tokens: Math.max(structured?4096:0,translationTokenBudget(instructions,maxOutputTokens)),
     ...(structured ? { reasoning_effort: 'low' } : {}),
     response_format: structured ? { type: 'json_schema', json_schema: { name: 'translation', strict: true, schema: usesEmailSchema(instructions) ? emailSchema : schema } } : { type: 'json_object' } };
 }
@@ -51,9 +51,9 @@ const provider = {
     if (!parsed?.translation || typeof parsed.englishMeaning !== 'string') throw createTranslationError('MODEL_OUTPUT_INVALID', { message: 'Groq: connection succeeded but the model returned invalid translation JSON.', status: 422, provider: 'groq' });
     return { latencyMs: Date.now() - start };
   },
-  async translate(apiKey, model, text, instructions, { signal } = {}) {
+  async translate(apiKey, model, text, instructions, { signal,maxOutputTokens } = {}) {
     const start = Date.now();
-    const data = await request('/chat/completions', apiKey, groqRequestBody(model, text, instructions), signal);
+    const data = await request('/chat/completions', apiKey, groqRequestBody(model, text, instructions,maxOutputTokens), signal);
     if (data.model && data.model !== model) throw createTranslationError('MODEL_OUTPUT_INVALID', { message: 'Groq: response model differs from the selected model.', status: 422, provider: 'groq' });
     if (data.choices?.[0]?.finish_reason === 'length') throw createTranslationError('MODEL_OUTPUT_INVALID', { message: 'Groq: response exceeded the output budget.', status: 422, provider: 'groq' });
     return { rawOutput: data.choices?.[0]?.message?.content || '', usage: data.usage, latencyMs: Date.now() - start, httpStatus: 200 };

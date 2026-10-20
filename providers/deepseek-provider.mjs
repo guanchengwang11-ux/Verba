@@ -1,4 +1,4 @@
-import {usesEmailSchema} from './email-schema.mjs';
+import {usesEmailSchema,translationTokenBudget} from './email-schema.mjs';
 function providerError(response, data) {
   const error = new Error(data?.error?.message || "DeepSeek could not complete the request.");
   error.status = response.status;
@@ -41,13 +41,13 @@ export default {
     verifyJsonOutput(data);
     return { latencyMs: Date.now() - startedAt, usage: data.usage || null, httpStatus: response.status };
   },
-  async translate(apiKey, model, text, instructions, { signal } = {}) {
+  async translate(apiKey, model, text, instructions, { signal,maxOutputTokens } = {}) {
     const startedAt = Date.now();
     const response = await fetch("https://api.deepseek.com/chat/completions", {
       method: "POST",
       signal,
       headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-      body: JSON.stringify(requestBody(model, [{ role: "system", content: instructions }, { role: "user", content: text }], usesEmailSchema(instructions)?1600:700))
+      body: JSON.stringify(requestBody(model, [{ role: "system", content: instructions }, { role: "user", content: text }], translationTokenBudget(instructions,maxOutputTokens)))
     });
     const data = await response.json().catch(() => ({}));
     if (!response.ok) throw providerError(response, data);
