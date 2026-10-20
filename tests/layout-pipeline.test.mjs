@@ -27,7 +27,7 @@ test('layout survives shared translation validation, copy data and history acros
     calls.length=0;const response=await api('/api/translate',current);
     assert.equal(response.status,200,JSON.stringify(response.data));assert.equal(calls.length,1);
     assert.equal(response.data.layoutStatus,'preserved');
-    assert.equal(response.data.translation,direction==='zhToEn'?'  Hello David.\r\n\r\n\tPlease check 50 USDT.\r\nThank you.\r\n':'  你好David。\r\n\r\n\t请核实50 USDT。\r\n谢谢。\r\n');
+    assert.equal(response.data.translation,direction==='zhToEn'?'  Hello David\r\n\r\n\tPlease check 50 USDT\r\nThank you\r\n':'  你好David\r\n\r\n\t请核实50 USDT\r\n谢谢\r\n');
     assert.doesNotMatch(JSON.stringify(response.data),/VERBA_LAYOUT|VERBA_ENTITY/);
     assert.ok(calls[0].maxOutputTokens>(mode==='email'&&direction==='zhToEn'?1600:700));
     const item=await api('/api/history',{source:current.text,...response.data,mode,direction,provider,preserveLayout:true});

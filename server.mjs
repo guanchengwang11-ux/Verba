@@ -2,6 +2,7 @@ import { createServer } from "node:http";
 import {isCustomerEmail,protectEmail,emailInstructions,executeEmail,EMAIL_STRATEGY} from './email-strategy.mjs';
 import { glossaryInstruction } from './glossary.mjs';
 import {prepareTranslationLayout,finishTranslationLayout} from './translation-layout.mjs';
+import {formatTranslationPunctuation,PUNCTUATION_STYLE} from './translation-punctuation.mjs';
 import { attachFinalTranslationCheck } from './translation-final-check.mjs';
 import { readFile, writeFile } from "node:fs/promises";
 import { extname, join, normalize } from "node:path";
@@ -77,7 +78,8 @@ export function normalizeHistoryItem(item) {
   const provider = ["openai", "gemini", "deepseek", "groq"].includes(item.provider) ? item.provider : "";
   return {
     source: item.preserveLayout===true?item.source:item.source.trim(),
-    translation: item.preserveLayout===true?item.translation:item.strategyVersion===EMAIL_STRATEGY?item.translation.trim():sanitizeTranslationOutput(item.translation),
+    translation: item.punctuationStyle===PUNCTUATION_STYLE||item.preserveLayout===true?item.translation:item.strategyVersion===EMAIL_STRATEGY?item.translation.trim():sanitizeTranslationOutput(item.translation),
+    ...(item.punctuationStyle===PUNCTUATION_STYLE?{punctuationStyle:PUNCTUATION_STYLE}:{}),
     ...(typeof item.preserveLayout==='boolean'?{preserveLayout:item.preserveLayout,layoutStatus:['preserved','unmatched','off'].includes(item.layoutStatus)?item.layoutStatus:'off'}:{}),
     ...(item.strategyVersion===EMAIL_STRATEGY?{strategyVersion:item.strategyVersion,status:item.status||'translated',sourceNotes:Array.isArray(item.sourceNotes)?item.sourceNotes.filter(n=>typeof n.message==='string'&&typeof n.sourceQuote==='string').slice(0,10):[]}:{}),
     englishMeaning: item.englishMeaning.trim(),
@@ -187,15 +189,18 @@ async function translate(body, { signal } = {}) {
     let layoutCandidate;
     const maxOutputTokens=layout.markers.length?Math.min(16384,(isCustomerEmail(body)?1600:700)+layout.markers.length*32):undefined;
     const formatRaw=raw=>{
-      if(!layout.enabled)return raw;
       try{
         const parsed=JSON.parse(String(raw).trim().replace(/^```(?:json)?\s*/iu,'').replace(/\s*```$/u,''));
         if(typeof parsed.translation!=='string')return raw;
-        layoutCandidate=finishTranslationLayout(parsed,layout);
-        return JSON.stringify(layoutCandidate);
+        layoutCandidate=layout.enabled?finishTranslationLayout(parsed,layout):parsed;
+        return layout.enabled?JSON.stringify(layoutCandidate):raw;
       }catch{return raw;}
     };
-    const finish=result=>!layout.enabled?(body.preserveLayout===false?{...result,layoutStatus:'off'}:result):{...result,...(result.translation&&layoutCandidate?{translation:restoreEntities(layoutCandidate.translation,protectedInput.entityMap)}:{}),layoutStatus:result.translation?layoutCandidate?.layoutStatus||'unmatched':'off'};
+    const finish=result=>{
+      const translation=result.translation?restoreEntities(layoutCandidate?.translation??result.translation,protectedInput.entityMap):result.translation;
+      return {...result,translation:formatTranslationPunctuation(translation,{sourceText:body.text,direction:body.direction,glossary:body.glossary,entityMap:protectedInput.entityMap}),punctuationStyle:PUNCTUATION_STYLE,
+        ...(layout.enabled?{layoutStatus:result.translation?layoutCandidate?.layoutStatus||'unmatched':'off'}:body.preserveLayout===false?{layoutStatus:'off'}:{})};
+    };
     if(isCustomerEmail(body)){
       const instructions=emailInstructions(body,protectedInput.entityMap)+(layout.instruction?'\n'+layout.instruction:'');
       const result=await executeEmail({sourceText:body.text,entityMap:protectedInput.entityMap,diagnostics,observe,generate:async({correctionInstruction})=>{

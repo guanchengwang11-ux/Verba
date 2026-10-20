@@ -72,7 +72,7 @@ window.VerbaI18n.ready.then(() => {
       window.VerbaEmailView?.render(data); window.VerbaTranslationReview?.render(data); renderLayoutStatus(data.layoutStatus);
       if(data.strategyVersion)toneNote.textContent='Faithful translation · limited automated checks';
       document.dispatchEvent(new CustomEvent("verba:translation-diagnostic-updated"));
-      if (data.translation||data.sourceNotes?.length) document.dispatchEvent(new CustomEvent("verba:translation-complete", { detail: { source: text, translation: data.translation, englishMeaning: data.englishMeaning, sourceNotes:data.sourceNotes,translationReview:data.translationReview,status:data.status,strategyVersion:data.strategyVersion,direction, mode: currentMode, provider, requestId, preserveLayout, layoutStatus:data.layoutStatus } }));
+      if (data.translation||data.sourceNotes?.length) document.dispatchEvent(new CustomEvent("verba:translation-complete", { detail: { source: text, translation: data.translation, englishMeaning: data.englishMeaning, sourceNotes:data.sourceNotes,translationReview:data.translationReview,status:data.status,strategyVersion:data.strategyVersion,direction, mode: currentMode, provider, requestId, preserveLayout, layoutStatus:data.layoutStatus,punctuationStyle:data.punctuationStyle } }));
     } catch (error) { if (controller.signal.aborted || requestNumber !== activeTranslationRequest) return; window.VerbaEmailView?.render({status:'failed'}); result.classList.add("translation-error"); result.textContent = error.message || i18n.error("TRANSLATION_FAILED"); window.VerbaUi.showFeedback(result.textContent, "error"); }
     finally { if (requestNumber === activeTranslationRequest) { translationController = null; window.VerbaUi.setButtonState(translateButton); } }
   }

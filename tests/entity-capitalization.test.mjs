@@ -89,7 +89,7 @@ test('all providers and modes use the corrected protection in the complete HTTP 
     current={...example,provider,mode};calls.length=0;
     const response=await fetch(`http://127.0.0.1:${server.address().port}/api/translate`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(current)});
     const result=await response.json();assert.equal(response.status,200,JSON.stringify(result));
-    assert.equal(result.translation,directionIsEmail(current)?current.translation:current.translation.replace(/\.$/u,''));assert.equal(calls.length,1);
+    assert.equal(result.translation,current.translation.replace(/\.$/u,''));assert.equal(calls.length,1);
     assert.equal(calls[0].provider,provider);assert.doesNotMatch(result.translation,/VERBA_ENTITY/);
     if(example.text.startsWith('Teacher')){assert.match(calls[0].text,/^Teacher please/);assert.equal(result.translationReview,undefined);}
     if(directionIsEmail(current)){assert.equal(result.strategyVersion,EMAIL_STRATEGY);assert.deepEqual(result.sourceNotes,[]);}

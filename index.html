@@ -47,7 +47,7 @@
         <div class="model-management">
           <div class="model-management-heading"><div><strong>自动模型选择</strong><p>默认选择已验证的低成本稳定文本模型。</p></div><button type="button" class="model-refresh" id="refreshModels">重新检测模型</button></div>
           <dl class="model-status" id="modelStatus">
-            <div><dt id="currentModelLabel">当前模型</dt><dd><span id="modelCurrentValue">尚未检测</span><select id="geminiModelSelect" aria-labelledby="currentModelLabel" aria-describedby="geminiModelHelp" hidden><option value="">Automatic recommendation</option></select></dd></div>
+            <div><dt id="currentModelLabel">当前模型</dt><dd><span id="modelCurrentValue">尚未检测</span><select id="geminiModelSelect" aria-labelledby="currentModelLabel" aria-describedby="modelStartupNote" hidden><option value="">Automatic recommendation</option></select></dd></div>
             <div><dt id="modelStatusLabel">状态</dt><dd id="modelStatusValue">—</dd></div>
             <div><dt id="modelCheckedLabel">上次检测</dt><dd id="modelCheckedValue">—</dd></div>
           </dl>
@@ -55,16 +55,7 @@
             <label class="model-toggle"><input type="checkbox" id="manualModelToggle" /> 手动覆盖模型</label><datalist id="groqModels"></datalist><input id="manualModelInput" class="api-key-input" type="text" autocomplete="off" placeholder="Only after enabling manual override" disabled />
             <label class="model-toggle"><input type="checkbox" id="allowHighCostModels" /> 允许高成本模型作为手动覆盖</label><button type="button" class="model-override" id="saveModelOverride" disabled>保存模型设置</button>
           </div>
-          <div id="geminiModelHelp" class="gemini-model-help" hidden>
-            <p id="geminiFreeTierNote"></p>
-            <p class="gemini-model-links"><a href="https://ai.google.dev/gemini-api/docs/pricing" target="_blank" rel="noopener noreferrer" data-i18n="gemini.pricing">Official pricing</a> · <a href="https://ai.google.dev/gemini-api/docs/billing" target="_blank" rel="noopener noreferrer" data-i18n="gemini.billing">Billing and eligibility</a></p>
-            <p id="geminiRankingNote"></p><p id="geminiLifecycleNote" hidden></p>
-          </div>
-          <div id="groqModelHelp" class="gemini-model-help" hidden>
-            <p data-i18n="groq.freeTierNote">Free Plan support does not guarantee remaining quota or eligibility for your account.</p>
-            <p class="gemini-model-links"><a href="https://console.groq.com/docs/rate-limits" target="_blank" rel="noopener noreferrer" data-i18n="groq.freePlan">Official Free Plan limits</a> · <a href="https://console.groq.com/docs/models" target="_blank" rel="noopener noreferrer" data-i18n="groq.productionModels">Official models</a></p>
-            <p data-i18n="groq.rankingNote">GPT-OSS 120B is recommended for capability; GPT-OSS 20B favors speed. Measured latency is shown only when available. This is not a translation quality guarantee.</p>
-          </div>
+          <p class="model-help" id="modelStartupNote" data-i18n="modelSettings.startupDefaultProvider">Google (Gemini) is the default provider at every startup.</p>
           <p class="model-help" id="modelMessage" role="status" aria-live="polite">模型名会由本机自动检测；不会要求编辑 `.env`。</p>
         </div>
       </div>

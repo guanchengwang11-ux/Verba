@@ -70,9 +70,8 @@ window.VerbaI18n.ready.then(() => {
     document.querySelector("#modelCurrentValue").hidden = dropdown;
     geminiSelect.hidden = !dropdown;
     document.querySelector("#legacyModelControls").hidden = dropdown;
-    document.querySelector("#geminiModelHelp").hidden = !google;
-    document.querySelector("#groqModelHelp").hidden = !groq;
-    geminiSelect.setAttribute("aria-describedby", groq ? "groqModelHelp" : "geminiModelHelp");
+    document.querySelector("#modelStartupNote").textContent = i18n.t("modelSettings.startupDefaultProvider");
+    geminiSelect.setAttribute("aria-describedby", "modelStartupNote");
     document.querySelector("#currentModelLabel").textContent = i18n.t("api.currentModel");
     document.querySelector("#modelStatusLabel").textContent = i18n.t("api.status");
     document.querySelector("#modelCheckedLabel").textContent = i18n.t("api.lastChecked");
@@ -111,13 +110,6 @@ window.VerbaI18n.ready.then(() => {
         geminiSelect.value = unavailable.value;
       } else geminiSelect.value = selected;
       geminiSelect.setAttribute("aria-invalid", String(Boolean(model.selectionErrorCode || model.errorCode)));
-      document.querySelector("#geminiFreeTierNote").textContent = i18n.t("gemini.freeTierNote")
-        + (model.catalogCheckedAt ? ` ${i18n.t("gemini.catalogChecked", { date: model.catalogCheckedAt })}` : "");
-      document.querySelector("#geminiRankingNote").textContent = i18n.t("gemini.rankingNote");
-      const selectedChoice = choices.find(choice => choice.id === (selected || model.selectedModel));
-      const lifecycle = document.querySelector("#geminiLifecycleNote");
-      lifecycle.hidden = !selectedChoice?.shutdownDate;
-      lifecycle.textContent = selectedChoice?.shutdownDate ? i18n.t("gemini.retires", { date: selectedChoice.shutdownDate }) : "";
     }
     const hasError = Boolean(model.selectionErrorCode || model.errorCode || model.lastError);
     showMessage(busy ? i18n.t("gemini.saving") : hasError ? modelError(model)
