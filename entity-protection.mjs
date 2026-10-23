@@ -1,13 +1,11 @@
 import { extractCurrencies, extractDates } from "./factual-constraint-protection.mjs";
-import { activeGlossary, glossaryOccurrences } from './glossary.mjs';
+import { activeGlossary, glossaryOccurrences, isPreserveExactlyGlossaryEntry } from './glossary.mjs';
+export { isPreserveExactlyGlossaryEntry } from './glossary.mjs';
 
 const commonCapitalizedWords = new Set([
   "A", "An", "Are", "As", "Ask", "At", "Can", "Check", "Confirm", "Contact", "Could", "Do", "Does", "Don", "English", "For", "Friday", "From", "Good", "Have", "Hello", "Hey", "Hi", "How", "I", "If", "In", "Is", "It", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Let", "Monday", "My", "Need", "No", "On", "Our", "Please", "Remind", "Review", "Saturday", "Send", "Share", "Sunday", "Tell", "Thanks", "Thank", "That", "The", "This", "Thursday", "To", "Tuesday", "Update", "Want", "Wednesday", "We", "What", "When", "Where", "Which", "Who", "Why", "Will", "Would", "Yes", "You", "Your"
 ]);
 
-const preserveTargets = new Set([
-  "do not translate", "don't translate", "keep unchanged", "no translation", "preserve exactly", "不翻译", "保持原文", "原样保留"
-]);
 
 const knownBrands = ["Bybit", "Binance", "OKX", "KCEX", "OpenAI", "Google", "DeepSeek", "Ajuba"];
 
@@ -118,13 +116,6 @@ function overlaps(left, right) {
 function addRange(ranges, candidate) {
   if (!candidate.value || ranges.some((range) => overlaps(range, candidate))) return;
   ranges.push(candidate);
-}
-
-export function isPreserveExactlyGlossaryEntry(entry) {
-  if (!entry || typeof entry.source !== "string" || !entry.source.trim()) return false;
-  const source = entry.source.trim();
-  const target = typeof entry.target === "string" ? entry.target.trim() : "";
-  return entry.preserveExactly === true || source === target || preserveTargets.has(target.toLowerCase());
 }
 
 export function detectEntities(text, glossary = []) {
